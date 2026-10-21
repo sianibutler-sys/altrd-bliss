@@ -350,8 +350,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 
 /* learn / about */
 .feat{padding:60px 0}
-.feat__row{display:grid;grid-template-columns:1fr;gap:30px;align-items:center;margin-bottom:60px}
-@media (min-width:990px){.feat__row{grid-template-columns:1fr 1fr;gap:60px;margin-bottom:100px}.feat__row.rev .feat__img{order:2}}
+.feat__row{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center;margin-bottom:60px}
+@media (min-width:990px){.feat__row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;margin-bottom:100px}.feat__row.rev .feat__img{order:2}}
 .feat__img{border-radius:20px;overflow:hidden}
 .feat__img img{width:100%;height:auto}
 .feat__copy{display:flex;flex-direction:column;gap:20px;align-items:center;text-align:center}
@@ -560,6 +560,73 @@ body.has-bar .badge{bottom:96px}
 .idea div{flex:1}
 .idea b{display:block;font-weight:400;font-size:1.4rem}
 .idea small{font-size:1.2rem;color:rgba(16,22,24,.65)}
+.mb{padding:60px 0 100px}
+.mb__head{text-align:center;margin-bottom:36px}
+.mb__head p{font-size:16px;margin-top:10px}
+@media (min-width:990px){.mb__head p{font-size:22px}}
+.mb__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center}
+@media (min-width:990px){.mb__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px}}
+.mb__stage{background:#000;border-radius:20px;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px;position:relative;overflow:hidden}
+.mb__stage svg{width:min(62%,320px);height:auto}
+.mb__liquid{transition:fill .5s ease,y .7s ease,height .7s ease}
+.mb__name{font:800 30px/1 var(--font-expanded);text-transform:uppercase;text-align:center;transition:color .4s}
+.mb__steps{display:flex;flex-direction:column;gap:22px}
+.mb__step h3{font:800 18px/1 var(--font-matria);text-transform:uppercase;margin-bottom:12px}
+.mb__step h3 span{opacity:.5;margin-right:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;border-radius:999px;border:2px solid rgba(255,255,255,.6);padding:0 20px;font-size:1.5rem;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:#fff}
+.chip[aria-pressed="true"]{background:var(--c,#fff);border-color:var(--c,#fff);color:var(--ink)}
+.mb__out{background:#fff;color:var(--ink);border-radius:20px;padding:22px;display:none}
+.mb__out.on{display:block}
+.mb__out h4{font:800 16px/1 var(--font-matria);text-transform:uppercase;margin-bottom:10px}
+.mb__out ul{margin:0 0 16px;padding-left:18px;font-size:1.5rem;line-height:1.7}
+.mb__acts{display:flex;flex-wrap:wrap;gap:10px}
+.mb__acts .button{height:52px;padding:0 26px}
+.mb__acts .alt{background:var(--ink);color:#fff}
+.mb__acts .alt:hover{color:var(--ink)}
+.moment{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px;font-size:1.5rem}
+.moment b{font-weight:400;border-radius:999px;padding:6px 14px;color:var(--ink)}
+.moment button{text-decoration:underline;text-underline-offset:3px;font-size:1.3rem;opacity:.8}
+@media (min-width:990px){.moment{justify-content:flex-start}}
+.batch{background:#fff;color:var(--ink);border-radius:20px;padding:24px;width:100%;max-width:520px;text-align:left}
+.batch label{font:800 16px/1.2 var(--font-matria);text-transform:uppercase;display:block;margin-bottom:10px}
+.batch form{display:flex;gap:8px;background:var(--cream);border-radius:999px;padding:5px}
+.batch input{flex:1;min-width:0;border:0;background:none;padding:0 16px;font:400 1.6rem var(--font-body);text-transform:uppercase;height:46px}
+.batch form button{border-radius:999px;background:var(--ink);color:#fff;padding:0 20px;font-size:1.4rem}
+.batch small{display:block;margin-top:8px;font-size:1.3rem;color:rgba(16,22,24,.65)}
+.batch__res{margin-top:14px;font-size:1.5rem;line-height:1.6}
+.batch__res dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+.batch__res dt{color:rgba(16,22,24,.6)}
+.batch__res dd{margin:0}
+.sub-dlg .gate__c{max-height:calc(100vh - 4rem);overflow:auto}
+.sub-form{display:flex;flex-direction:column;gap:12px}
+.sub-form label{font-size:1.4rem}
+.sub-form input[type=text],.sub-form textarea,.sub-form select{width:100%;border:1px solid rgba(16,22,24,.3);border-radius:16px;padding:12px 16px;font:400 1.5rem var(--font-body)}
+.sub-form textarea{min-height:90px;resize:vertical}
+.sub-form .drop{border:2px dashed rgba(16,22,24,.3);border-radius:16px;padding:18px;text-align:center;cursor:pointer;font-size:1.4rem}
+.sub-form .drop img{max-height:160px;margin:0 auto 8px;border-radius:12px}
+.sub-form .row{display:flex;gap:8px;align-items:flex-start;font-size:1.3rem}
+.pending{position:absolute;top:14px;left:14px;z-index:2;background:var(--lime);color:var(--ink);border-radius:999px;padding:4px 12px;font-size:1.2rem}
+.byo{background:var(--cream);color:var(--ink);border-radius:20px;padding:22px;width:100%;margin-top:10px;text-align:left}
+.byo h3{font:800 20px/1.1 var(--font-matria);text-transform:uppercase}
+.byo p{font-size:1.4rem;margin:6px 0 14px}
+.byo__slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.byo__slot{aspect-ratio:1/1.3;border-radius:12px;border:2px dashed rgba(16,22,24,.3);display:grid;place-items:center;font-size:1.2rem;text-align:center;padding:4px;overflow:hidden}
+.byo__slot.full{border-style:solid;border-color:transparent;background:var(--c)}
+.byo__slot img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.byo__pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}
+.byo__pick button{display:flex;justify-content:space-between;align-items:center;border-radius:999px;border:2px solid var(--c);padding:8px 14px;font-size:1.4rem}
+.byo__pick button:disabled{opacity:.35}
+.byo__acts{display:flex;gap:10px;flex-wrap:wrap}
+.byo__acts .button{height:52px;padding:0 24px;background:var(--ink);color:#fff}
+.byo__acts .button:hover{color:var(--ink)}
+.byo__acts .clear{text-decoration:underline;font-size:1.4rem}
+.refill{background:var(--cream);border-radius:16px;padding:16px;margin:0 0 18px}
+.refill b{font:800 15px/1.2 var(--font-matria);text-transform:uppercase;display:block;margin-bottom:8px}
+.refill .chips .chip{border-color:rgba(16,22,24,.35);color:var(--ink);min-height:40px;font-size:1.4rem}
+.refill .chips .chip[aria-pressed="true"]{--c:var(--lime)}
+.refill p{margin:10px 0 0!important;font-size:1.4rem}
 .mini{border-radius:999px;background:var(--ink);color:#fff;padding:8px 14px;font-size:1.3rem;flex:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -621,7 +688,27 @@ body.has-bar .badge{bottom:96px}
         <li>The customer pays on Shopify's checkout page. Card details never touch this site.</li>
         <li>Shopify sends the receipt, and the order lands in your Shopify admin.</li>
       </ol>
+      <div class="refill" id="refill"></div>
       <button class="button button--ink" data-close>Back to the site</button>
+    </div>
+  </div>
+</div>
+<div class="gate dlg sub-dlg" id="subDlg" role="dialog" aria-modal="true" aria-labelledby="subT">
+  <div class="gate__ov" data-subclose></div>
+  <div class="gate__modal">
+    <div class="gate__c">
+      <h2 id="subT">SHARE YOUR MIX</h2>
+      <p style="margin-bottom:1.6rem">Let's see your mix with #SipALTRD. We read every one, and our favorites land on the site.</p>
+      <form class="sub-form" id="subForm" novalidate>
+        <label class="drop" for="subPhoto" id="subDrop">Add a photo of your mix<input id="subPhoto" type="file" accept="image/*" class="sr"></label>
+        <label for="subHandle">Your Instagram or TikTok handle</label><input id="subHandle" type="text" placeholder="@yourhandle" autocomplete="off">
+        <label for="subFlavor">Which flavor?</label><select id="subFlavor"><option value="the-original">The Original</option><option value="the-tini">The Tini</option><option value="the-rita">The Rita</option><option value="the-spritz">The Spritz</option></select>
+        <label for="subMsg">What's in your glass?</label><textarea id="subMsg" placeholder="Tell us your mix and when you sip it"></textarea>
+        <label class="row"><input type="checkbox" id="subOk"> <span>Altrd Bliss can feature my photo, handle and words on its site and social.</span></label>
+        <p class="cap__msg" id="subMsgOut" aria-live="polite"></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="button button--ink" type="submit">Send my mix</button><button class="gbtn" type="button" data-subclose>Cancel</button></div>
+        <small>Prefer Instagram? Tag <a href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">@altrdbliss</a>.</small>
+      </form>
     </div>
   </div>
 </div>
@@ -657,6 +744,26 @@ const P={
    how:'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501',packOnly:true}
 };
 /* dose picker hidden on The Original and The Rita until current lab reports are in */P['the-tini'].dose=[['CBD',5]];P['the-spritz'].dose=[['CBG',5]];
+/* batch lookup: real SC Labs batch numbers. The Original and The Rita show "updating" until current reports are in */
+const BATCH={'RD1-T':{h:'the-tini',c:'5.0mg CBD per serving',thc:'Not detected',d:'May 16, 2024',u:LAB+'tini-1/'},'RD1-S':{h:'the-spritz',c:'5.4mg CBG per serving',thc:'Not detected',d:'May 16, 2024',u:LAB+'spritz-1/'},'RD1-O':{h:'the-original',pending:1},'RD1-R':{h:'the-rita',pending:1}};
+const batchBox=()=>`<div class="batch"><label for="batchIn">Check your bottle</label><form id="batchForm"><input id="batchIn" placeholder="Batch code, like RD1-T" autocomplete="off" maxlength="12"><button type="submit">Look up</button></form><small>Find the batch code on the back of your bottle. Try RD1-T or RD1-S.</small><div class="batch__res" id="batchRes" aria-live="polite"></div></div>`;
+function batchLookup(code){const b=BATCH[code.trim().toUpperCase()];if(!b)return `We couldn't find batch ${code.trim().toUpperCase()||'that'}. Check the code on the back of your bottle, or email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a>.`;const p=P[b.h];if(b.pending)return `<b>The ${p.name}</b>: the report for this batch is being updated. Every batch is tested before it ships.`;return `<dl><dt>Flavor</dt><dd>The ${p.name}</dd><dt>Batch</dt><dd>${code.trim().toUpperCase()}</dd><dt>Tested</dt><dd>${b.d}, SC Labs</dd><dt>Potency</dt><dd>${b.c}</dd><dt>THC</dt><dd>${b.thc}</dd><dt>Safety</dt><dd>Pesticides, mycotoxins, solvents, microbes: pass</dd></dl><p style="margin-top:10px"><a href="${b.u}" target="_blank" rel="noopener">Read the full report</a></p>`}
+/* the right flavor for right now, using their own "For ..." labels */
+const MOMENTS=[['the-spritz','For daytime','#e57945'],['the-original','For everyday','#e0f47b'],['the-rita','For socializing','#cdb4f9'],['the-tini','For unwinding','#cc3f59']];
+let momentShift=0;
+function momentNow(){const d=new Date(),h=d.getHours(),day=d.getDay();let k;if(h>=6&&h<12)k=0;else if(h>=12&&h<17)k=1;else if(h>=17&&(day===4||day===5||day===6))k=2;else if(h>=17&&h<19)k=1;else k=3;return MOMENTS[(k+momentShift)%4]}
+const momentLine=()=>{const [h,l,c]=momentNow();const t=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});return `<span>${momentShift?'Another moment:':`It's ${t}.`}</span><b style="background:${c}">${l}: The ${P[h].name}</b><button data-moment>See another moment</button>`};
+/* mix builder: bases from their own copy ("mocktail, tonic, sparkling water, tea") */
+const BASES=[['mocktail','Mocktail','Mocktail','#f3c8a8'],['tonic','Tonic','Tonic','#e8f0ec'],['sparkling','Sparkling water','Fizz','#dcebf5'],['tea','Tea','Tea Time','#c98f52']];
+const GARN=[['lime','Lime wedge'],['orange','Orange peel'],['rosemary','Rosemary sprig'],['berries','Fresh berries'],['none','Keep it simple']];
+const MB={f:null,b:null,g:null};
+const vibeOrdered=()=>{const h=momentNow()[0];return [...VIBE.filter(v=>v[0]===h),...VIBE.filter(v=>v[0]!==h)]};
+let BYO=[];
+function byoRender(){const el=document.getElementById('byo');if(!el)return;const full=BYO.length>=4;
+ el.innerHTML=`<h3>Or build your own 4 Pack</h3><p>Some might call you indecisive, we call you ready for anything. Pick any four for the same $32.</p>
+ <div class="byo__slots">${[0,1,2,3].map(i=>{const h=BYO[i];return h?`<div class="byo__slot full" style="--c:${P[h].theme}"><img src="${I(pimg(h),200)}" alt="The ${P[h].name}"></div>`:`<div class="byo__slot">Bottle ${i+1}</div>`}).join('')}</div>
+ <div class="byo__pick">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button style="--c:${P[h].theme}" data-byo="${h}"${full?' disabled':''}><span>The ${P[h].name}</span><span>${BYO.filter(x=>x===h).length?'× '+BYO.filter(x=>x===h).length:'+'}</span></button>`).join('')}</div>
+ <div class="byo__acts"><button class="button" data-byoadd${full?'':' disabled'}>${MODE==='prelaunch'?'Join Waitlist':full?'Add my 4 Pack, $32':`Pick ${4-BYO.length} more`}</button>${BYO.length?'<button class="clear" data-byoclear>Start over</button>':''}</div>`}
 const SHOP_ORDER=['the-multipack','the-original','the-tini','the-rita','the-spritz'];
 const VIBE=[['the-tini','For unwinding','#cc3f59'],['the-spritz','For daytime','#e57945'],['the-original','For everyday','#e0f47b'],['the-rita','For socializing','#cdb4f9']];
 const PRICE={bottle:8,pack:32};
@@ -679,8 +786,9 @@ const HS=[
  {vid:'121e59bbbde946d99cefb192f895339b/121e59bbbde946d99cefb192f895339b.HD-1080p-7.2Mbps-82945591.mp4?v=0',poster:'preview_images/121e59bbbde946d99cefb192f895339b.thumbnail.0000000000_800x.jpg?v=1777408362'},
  {h:'@itsmckinzey',fav:'the-spritz',href:'https://www.instagram.com/itsmckinzey',img:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929',q:'"Since I stopped drinking, I’ve been on the hunt for something that still lets me go out and have fun without feeling like I’m missing out. Enter Altrd Bliss! The Spritz is my absolute favorite. It’s the perfect alternative to alcohol and gummies and somehow feels more social and elevated than both."'}
 ];
-const happy=(h)=>{const list=h?[...HS.filter(s=>s.fav===h),...HS.filter(s=>s.fav!==h)]:HS;return `<section class="hs"><div class="hs__head"><h2>Happy sippers</h2><p>Cheers to less stress and more bliss. Let's see your mix with #SipALTRD</p><a class="button button--sm hs__share" href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Share your mix</a></div>
-<div class="track" data-drag>${list.map(s=>{const media=s.vid?`<video muted loop playsinline preload="none" poster="${F+s.poster}" data-lazyplay><source src="${V+s.vid}" type="video/mp4"></video>`:`<img loading="lazy" src="${I(s.img,600)}" alt="" width="600" height="780">`;const body=s.h?`<div class="card__body"><span class="handle">${s.h}${s.fav?` · loves The ${P[s.fav].name}`:''}</span><p class="card__q">${s.q}</p></div>`:'';return `<div class="slide">${s.href?`<a class="card" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.h} on Instagram">`:'<div class="card">'}<div class="card__media">${media}</div>${body}${s.href?'</a>':'</div>'}${s.fav&&h===s.fav?'':''}</div>`}).join('')}</div></section>`};
+const pendingCards=()=>store.get('ab_subs',[]).map(s=>`<div class="slide"><div class="card"><span class="pending">Pending approval</span><div class="card__media">${s.img?`<img src="${s.img}" alt="">`:`<div style="width:100%;height:100%;background:${P[s.f].theme}"></div>`}</div><div class="card__body"><span class="handle">${s.handle||'@you'} · loves The ${P[s.f].name}</span><p class="card__q" style="opacity:1;transform:none">"${s.msg.replace(/</g,'&lt;')}"</p></div></div></div>`).join('');
+const happy=(h)=>{const list=h?[...HS.filter(s=>s.fav===h),...HS.filter(s=>s.fav!==h)]:HS;return `<section class="hs"><div class="hs__head"><h2>Happy sippers</h2><p>Cheers to less stress and more bliss. Let's see your mix with #SipALTRD</p><button class="button button--sm hs__share" data-subopen>Share your mix</button></div>
+<div class="track" data-drag>${pendingCards()}${list.map(s=>{const media=s.vid?`<video muted loop playsinline preload="none" poster="${F+s.poster}" data-lazyplay><source src="${V+s.vid}" type="video/mp4"></video>`:`<img loading="lazy" src="${I(s.img,600)}" alt="" width="600" height="780">`;const body=s.h?`<div class="card__body"><span class="handle">${s.h}${s.fav?` · loves The ${P[s.fav].name}`:''}</span><p class="card__q">${s.q}</p></div>`:'';return `<div class="slide">${s.href?`<a class="card" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.h} on Instagram">`:'<div class="card">'}<div class="card__media">${media}</div>${body}${s.href?'</a>':'</div>'}${s.fav&&h===s.fav?'':''}</div>`}).join('')}</div></section>`};
 const shopCard=h=>{const p=P[h];const label=p.packOnly?'4 Pack For $32':'4 Pack For $32 — $8 Per Bottle';return `<article class="shop__card"><a class="shop__media" href="#/products/${h}"><img loading="lazy" src="${I(pimg(h),700)}" alt="The ${p.name}" width="700" height="700"></a><div><h3>The ${p.name}</h3><p>${p.sub}</p></div><div><a class="button button--sm" href="#/products/${h}">${label}</a></div></article>`};
 
 /* --- pages --- */
@@ -702,8 +810,8 @@ const home=()=>`
   </div>
 </div></div></section>
 <section class="vibe">
-  <div class="vibe__head"><div><h2 class="c h66">What we're mixing up</h2><p>Pick your vibe</p></div><a class="button" href="#/pages/shop-all">Shop our syrups</a></div>
-  <div class="track" data-drag>${VIBE.map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill" style="background:${c}">${l}</span></div></a></div>`).join('')}</div>
+  <div class="vibe__head"><div><h2 class="c h66">What we're mixing up</h2><p>Pick your vibe</p><p class="moment" id="moment">${momentLine()}</p></div><a class="button" href="#/pages/shop-all">Shop our syrups</a></div>
+  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill" style="background:${c}">${l}</span></div></a></div>`).join('')}</div>
 </section>
 <section class="unwind"><div class="pw"><div class="two">
   <div><img class="two__img" loading="lazy" src="${I('ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit_JAM_v01f.png?v=1773156399',1200)}" alt="Mixing a mocktail with The Original" width="1200" height="1300"></div>
@@ -716,6 +824,7 @@ const home=()=>`
     <div><a class="button" href="#/blogs/recipes">Try Our Recipes</a></div>
   </div>
 </div></div></section>
+${mixBuilder()}
 ${marquee()}
 <section class="vid"><div class="vid__inner">
   <div class="vid__copy">
@@ -734,6 +843,34 @@ ${marquee()}
 ${happy()}
 ${sticky()}`;
 
+function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
+ <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
+ <div class="mb__grid">
+  <div class="mb__stage" id="mbStage">${glassSvg()}<p class="mb__name" id="mbName">Pick a flavor</p></div>
+  <div class="mb__steps">
+   <div class="mb__step"><h3><span>1</span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span>2</span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span>3</span>Finish it</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__out" id="mbOut" aria-live="polite"></div>
+  </div>
+ </div></div></section>`}
+function glassSvg(){return `<svg viewBox="0 0 200 240" aria-hidden="true"><defs><clipPath id="gclip"><path d="M40 30 L160 30 L146 200 Q144 214 130 214 L70 214 Q56 214 54 200 Z"/></clipPath></defs><g clip-path="url(#gclip)"><rect id="mbBase" x="0" y="214" width="200" height="0" fill="#dcebf5" class="mb__liquid"/><rect id="mbSyrup" x="0" y="214" width="200" height="0" fill="#e0f47b" class="mb__liquid" opacity=".85"/><g id="mbBubbles" fill="#fff" opacity="0"><circle cx="80" cy="170" r="3"/><circle cx="118" cy="140" r="2.5"/><circle cx="100" cy="185" r="2"/><circle cx="128" cy="175" r="3"/></g></g><path d="M40 30 L160 30 L146 200 Q144 214 130 214 L70 214 Q56 214 54 200 Z" fill="none" stroke="#fff" stroke-width="3"/><g id="mbGarnish"></g></svg>`}
+function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);
+ const base=document.getElementById('mbBase'),syr=document.getElementById('mbSyrup'),name=document.getElementById('mbName');if(!base)return;
+ const lvl=(r,h)=>{r.setAttribute('y',214-h);r.setAttribute('height',h)};
+ if(f){syr.setAttribute('fill',f.theme);lvl(syr,b?150:46)}else lvl(syr,0);
+ if(b){base.setAttribute('fill',b[3]);lvl(base,150);syr.setAttribute('opacity',.62)}else{lvl(base,0);syr.setAttribute('opacity',.85)}
+ document.getElementById('mbBubbles').setAttribute('opacity',b&&(b[0]==='sparkling'||b[0]==='tonic')?.8:0);
+ const gEl=document.getElementById('mbGarnish');gEl.innerHTML=!g||g[0]==='none'?'':g[0]==='lime'?'<circle cx="150" cy="34" r="22" fill="#9fd36b" stroke="#fff" stroke-width="3"/><path d="M150 12V56M128 34H172M134 18L166 50M166 18L134 50" stroke="#e8f6d6" stroke-width="2"/>':g[0]==='orange'?'<path d="M120 22 Q160 4 178 40 Q150 30 128 40 Z" fill="#f39a3d" stroke="#fff" stroke-width="2"/>':g[0]==='rosemary'?'<path d="M110 50 L140 0" stroke="#4f7a4a" stroke-width="3"/><path d="M118 38l-10-4M124 28l-10-4M130 18l-10-4M122 36l8-8M128 26l8-8M134 16l8-8" stroke="#6fa05e" stroke-width="3" stroke-linecap="round"/>':'<circle cx="138" cy="26" r="9" fill="#5b2a6e"/><circle cx="154" cy="22" r="9" fill="#c2304f"/><circle cx="146" cy="38" r="8" fill="#3f2a7a"/>';
+ name.textContent=f?`The ${f.name}${b?' '+b[2]:''}`:'Pick a flavor';name.style.color=f?f.theme:'#fff';
+ const out=document.getElementById('mbOut');
+ if(f&&b&&g){const amt={mocktail:'1 cup of your favorite mocktail',tonic:'1 cup tonic water',sparkling:'1 cup sparkling water',tea:'1 cup tea, hot or iced'}[b[0]];
+  out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4><ul><li>6 droppers The ${f.name}</li><li>${amt}</li><li>Ice${b[0]==='tea'?' (if iced)':''}</li>${g[0]!=='none'?`<li>${g[1]} for garnish</li>`:''}</ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
+function mbCard(){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b),g=GARN.find(x=>x[0]===MB.g);const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');
+ x.fillStyle='#101618';x.fillRect(0,0,1080,1350);const gr=x.createLinearGradient(0,0,1080,0);['#3a599d','#abdbca','#d9e36a','#c9b3d7','#f3703b','#e02d59'].forEach((col,i)=>gr.addColorStop(i/5,col));x.fillStyle=gr;x.fillRect(0,0,1080,14);
+ x.fillStyle=f.theme;x.beginPath();x.moveTo(360,420);x.lineTo(720,420);x.lineTo(680,900);x.quadraticCurveTo(675,940,640,940);x.lineTo(440,940);x.quadraticCurveTo(405,940,400,900);x.closePath();x.globalAlpha=.9;x.fill();x.globalAlpha=1;x.strokeStyle='#fff';x.lineWidth=8;x.beginPath();x.moveTo(340,330);x.lineTo(740,330);x.lineTo(684,904);x.quadraticCurveTo(678,946,640,946);x.lineTo(440,946);x.quadraticCurveTo(402,946,396,904);x.closePath();x.stroke();
+ x.textAlign='center';x.fillStyle='#fff';x.font='800 64px "Matria"';x.fillText('ALTRD BLISS',540,170);x.fillStyle=f.theme;x.font='800 72px "Matria Expanded"';x.fillText(`THE ${f.name.toUpperCase()}`,540,1060);x.font='900 92px "Matria Compressed"';x.fillText(b[2].toUpperCase(),540,1160);
+ x.fillStyle='#fff';x.font='400 34px "Supreme LL"';x.fillText(`6 droppers + ${b[1].toLowerCase()}${g[0]!=='none'?' + '+g[1].toLowerCase():''}`,540,1230);x.font='400 30px "Supreme LL"';x.fillText('#SipALTRD',540,1300);return c}
 const STEPS=[['THE REAL DEAL','Made with no artificial junk, only and always top-notch, natural ingredients.','ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910'],['PRECISE DOSAGES EVERY TIME','Know exactly what you’re taking and tailor your experience to find your perfect vibe.','The_Rita_GIF_JAM_v1b.gif?v=1778080802'],['FIGHTING FOR JUSTICE','We are committed to advocating for those impacted by unjust cannabis laws, and cannabis-related offenses.','123ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062860']];
 function sticky(){return `<section class="ss">
 <div class="ss__desk" id="ssDesk"><div class="ss__vp"><div class="ss__inner">
@@ -784,6 +921,7 @@ function product(h){const p=P[h];if(!p)return notFound();
      <div><h3>Sip</h3><p>Can’t be bothered? Simply drip it under the tongue.</p></div>
      <p class="fn">*Please use calibrated dropper</p></div>
  </div></div></section>
+ ${h==='the-multipack'?`<section class="tryin"><div class="pw" style="max-width:760px"><div class="byo" id="byo"></div></div></section>`:''}
  ${RECIPES.some(r=>r.h===h)?`<section class="tryin"><div class="pw"><h2 class="c h66">TRY IT IN</h2><div class="rgrid">${RECIPES.filter(r=>r.h===h).map(rcard).join('')}</div></div></section>`:''}
  <div class="wrap-ink">${happy(h)}</div>
  <div class="sbar" id="sbar" aria-hidden="true"><img src="${I(pimg(h),120)}" alt="" width="48" height="48"><div><b>The ${p.name}</b><span>${p.packOnly?'4 Pack for $32.00':'From $8.00'}</span></div><button class="addbtn" data-sbar>${buyLabel()}</button></div>
@@ -794,7 +932,7 @@ const learn=()=>`
  <div class="banner__box"><h1 class="banner__h1">SAME ROOTS</h1><h2 class="banner__h2">INFUSED AGAVE SYRUPS</h2><p class="banner__p" style="max-width:640px">The duo works together to keep your body calm, mind clear, and mood steady. CBD smooths the edges. CBG sharpens your focus without the caffeine crash.</p></div></section>
 <section class="feat"><div class="pw">
  <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Group_160.png?v=1775062239',1000)}" alt="" width="1000" height="1000"></div>
-  <div class="feat__copy"><div><h2 class="m h66">NO</h2><h2 class="c h66">SHADY SH*T</h2></div><p>We're transparent about what goes in every bottle. No hidden ingredients, no sketchy sourcing.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See The Receipts</a></div></div>
+  <div class="feat__copy"><div><h2 class="m h66">NO</h2><h2 class="c h66">SHADY SH*T</h2></div><p>We're transparent about what goes in every bottle. No hidden ingredients, no sketchy sourcing.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See The Receipts</a>${batchBox()}</div></div>
  <div class="feat__row rev"><div class="feat__img"><img loading="lazy" src="${I('Group_161.png?v=1775062239',1000)}" alt="" width="1000" height="1000"></div>
   <div class="feat__copy"><div><h2 class="x h66">YOUR BRAIN</h2><h2 class="c h66">ON BLISS</h2></div><p>No, bliss will not make you paranoid. In fact, it’s quite the opposite. It feels like the slow-motion exhale you didn’t know you were holding. Your shoulders drop, and suddenly you’re not in fight-or-flight, you’re in fck-it-I’m-fine*.</p><a class="button" href="#/pages/shop-all">Feel The Bliss</a></div></div>
  <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Screenshot_2026-03-30_at_12.09.41_AM.png?v=1774810858',1000)}" alt="" width="1000" height="1000"></div>
@@ -941,6 +1079,7 @@ function wire(){
   app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}app.querySelectorAll('.rcard').forEach(c=>c.style.display=!on||c.dataset.f===b.dataset.filter?'':'none')});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
   qa=[];quizStep();
+  MB.f=MB.b=MB.g=null;mbRender();byoRender();
 }
 function dragScroll(el){let down=false,x0=0,s0=0,moved=false;
   el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;s0=el.scrollLeft});
@@ -968,20 +1107,30 @@ drawer.addEventListener('click',e=>{if(e.target.tagName==='A')closeAll()});
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let cart=store.get('ab_cart2',[]);
 const cartEl=document.getElementById('cart'),scrim=document.getElementById('scrim');
-const unit=i=>i.h==='the-multipack'?PRICE.pack:PRICE[i.v];
+const unit=i=>i.h==='the-multipack'||i.h==='custom'?PRICE.pack:PRICE[i.v];
 function openCart(){cartEl.classList.add('on');scrim.classList.add('on');cartEl.setAttribute('aria-hidden','false');document.getElementById('cartClose').focus()}
 function closeCart(){cartEl.classList.remove('on');scrim.classList.remove('on');cartEl.setAttribute('aria-hidden','true')}
-function add(h,v,btn){const f=cart.find(i=>i.h===h&&i.v===v);f?f.q++:cart.push({h,v,q:1});save();const c=document.getElementById('count');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');if(btn){const t=btn.textContent;btn.textContent='Added';setTimeout(()=>btn.textContent=t,1200)}openCart()}
+function add(h,v,btn){const f=cart.find(i=>i.h===h&&i.v===v&&h!=='custom');f?f.q++:cart.push({h,v,q:1});save();const c=document.getElementById('count');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');if(btn){const t=btn.textContent;btn.textContent='Added';setTimeout(()=>btn.textContent=t,1200)}openCart()}
 function save(){store.set('ab_cart2',cart);renderCart()}
 function renderCart(){const n=cart.reduce((a,i)=>a+i.q,0),sub=cart.reduce((a,i)=>a+i.q*unit(i),0);const c=document.getElementById('count');c.textContent=n;c.classList.toggle('on',n>0);
   const items=document.getElementById('cartItems'),foot=document.getElementById('cartFoot');
   if(!n){items.innerHTML=`<div class="cart__empty"><h3>Your cart is empty</h3><a class="button button--ink" href="#/pages/shop-all" data-closecart>Continue shopping</a></div>`;foot.innerHTML='';return}
-  items.innerHTML=cart.map((i,k)=>{const p=P[i.h];return `<div class="ci"><img src="${I(pimg(i.h),160)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><small>${i.h==='the-multipack'?'All four flavors':i.v==='pack'?'4 Pack':'Per Bottle'} · ${money(unit(i))}</small></div><div class="qty"><button data-dec="${k}" aria-label="Remove one">−</button><span>${i.q}</span><button data-inc="${k}" aria-label="Add one">+</button></div></div>`}).join('');
-  const hasPack=cart.some(i=>i.h==='the-multipack');const first=cart.find(i=>i.h!=='the-multipack');const rec=first&&RECIPES.find(r=>r.h===first.h);
+  items.innerHTML=cart.map((i,k)=>{if(i.h==='custom'){const cnt={};i.mix.forEach(h=>cnt[h]=(cnt[h]||0)+1);return `<div class="ci"><img src="${I(pimg(i.mix[0]),160)}" alt="" width="72" height="72"><div><b>Build Your Own 4 Pack</b><small>${Object.entries(cnt).map(([h,n])=>n+' '+P[h].name).join(', ')} · ${money(unit(i))}</small></div><div class="qty"><button data-dec="${k}" aria-label="Remove one">−</button><span>${i.q}</span><button data-inc="${k}" aria-label="Add one">+</button></div></div>`}const p=P[i.h];return `<div class="ci"><img src="${I(pimg(i.h),160)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><small>${i.h==='the-multipack'?'All four flavors':i.v==='pack'?'4 Pack':'Per Bottle'} · ${money(unit(i))}</small></div><div class="qty"><button data-dec="${k}" aria-label="Remove one">−</button><span>${i.q}</span><button data-inc="${k}" aria-label="Add one">+</button></div></div>`}).join('');
+  const hasPack=cart.some(i=>i.h==='the-multipack'||i.h==='custom');const first=cart.find(i=>i.h!=='the-multipack'&&i.h!=='custom');const rec=first&&RECIPES.find(r=>r.h===first.h);
   items.innerHTML+=`<div class="cart__ideas">${!hasPack?`<div class="idea"><img src="${I('ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501',160)}" alt="" width="56" height="56"><div><b>Can’t pick just one?</b><small>The Multipack, 4 Flavors, 1 Box of Bliss</small></div><button class="mini" data-addpack>Add $32</button></div>`:''}${rec?`<a class="idea" href="#/blogs/recipes/${rec.s}" data-closecart><img src="${AI(rec.img,160)}" alt="" width="56" height="56"><div><b>Try it in</b><small>${rec.t}</small></div><span class="mini">View</span></a>`:''}</div>`;
   const st=store.get('ab_state',''),blocked=st&&NOSHIP.includes(st);
   foot.innerHTML=`${shipCheck('cart')}<div class="cart__sum"><span>Estimated total</span><span>${money(sub)} USD</span></div><small>Taxes, discounts and shipping calculated at checkout.</small><button class="button" id="checkout"${blocked?' disabled':''}>Check out</button>`}
 document.addEventListener('click',e=>{const t=e.target;
+  const pace=t.closest('[data-pace]');if(pace){refillRender(pace.dataset.pace);return}
+  const mb=t.closest('[data-mb]');if(mb){MB[mb.dataset.mb]=mb.dataset.v;mb.parentElement.querySelectorAll('[data-mb]').forEach(x=>x.setAttribute('aria-pressed',x===mb));mbRender();return}
+  if(t.closest('[data-mbcard]')){document.fonts.ready.then(()=>{const a=document.createElement('a');a.download=`altrd-bliss-${MB.f}-${MB.b}.png`;a.href=mbCard().toDataURL('image/png');a.click()});return}
+  if(t.closest('[data-mbshare]')){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b);const text=`My mix: The ${f.name} ${b[2]}. 6 droppers + ${b[1].toLowerCase()}. #SipALTRD`;mbCard().toBlob(blob=>{const file=new File([blob],'altrd-mix.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]}))navigator.share({files:[file],text}).catch(()=>{});else if(navigator.share)navigator.share({text}).catch(()=>{});else{navigator.clipboard&&navigator.clipboard.writeText(text);t.closest('[data-mbshare]').textContent='Copied'}});return}
+  if(t.closest('[data-moment]')){momentShift=(momentShift+1)%4;document.getElementById('moment').innerHTML=momentLine();const tr=document.getElementById('vibeTrack');const h=momentNow()[0];const first=[...tr.children].find(c=>c.querySelector(`a[href="#/products/${h}"]`));tr.prepend(first);tr.scrollTo({left:0,behavior:'smooth'});return}
+  const byo=t.closest('[data-byo]');if(byo){if(BYO.length<4)BYO.push(byo.dataset.byo);byoRender();return}
+  if(t.closest('[data-byoclear]')){BYO=[];byoRender();return}
+  if(t.closest('[data-byoadd]')){if(MODE==='prelaunch'){const f=app.querySelector('.wl');f.hidden=false;f.scrollIntoView({behavior:'smooth',block:'center'});f.querySelector('input').focus();return}if(BYO.length===4){cart.push({h:'custom',v:'pack',q:1,mix:[...BYO]});BYO=[];save();openCart();byoRender()}return}
+  if(t.closest('[data-subopen]')){document.getElementById('subDlg').classList.add('on');return}
+  if(t.closest('[data-subclose]')){document.getElementById('subDlg').classList.remove('on');return}
   const ans=t.closest('[data-ans]');if(ans){qa.push(ans.dataset.ans);quizStep();return}
   if(t.closest('[data-qback]')){qa.pop();quizStep();return}
   if(t.closest('[data-qrestart]')){qa=[];document.getElementById('quizRes').classList.remove('on');quizStep();document.getElementById('quiz').scrollIntoView({behavior:'smooth'});return}
@@ -990,13 +1139,21 @@ document.addEventListener('click',e=>{const t=e.target;
   const dec=t.closest('[data-dec]');if(dec){const k=+dec.dataset.dec;cart[k].q--;if(cart[k].q<1)cart.splice(k,1);save();return}
   if(t.closest('[data-addpack]')){add('the-multipack','pack');return}
   if(t.closest('[data-closecart]'))closeCart();
-  if(t.id==='checkout'){document.getElementById('checkoutDlg').classList.add('on')}
+  if(t.id==='checkout'){refillRender(null);document.getElementById('checkoutDlg').classList.add('on')}
   if(t.closest('[data-close]'))document.getElementById('checkoutDlg').classList.remove('on');
 });
 document.getElementById('cartBtn').onclick=openCart;document.getElementById('cartClose').onclick=closeCart;scrim.onclick=closeCart;
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAll();document.getElementById('checkoutDlg').classList.remove('on')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAll();document.getElementById('checkoutDlg').classList.remove('on');document.getElementById('subDlg').classList.remove('on')}});
 
+function refillRender(pace){const el=document.getElementById('refill');const bottles=cart.reduce((a,i)=>a+i.q*(i.h==='the-multipack'||i.h==='custom'||i.v==='pack'?4:1),0);const per={nightly:7,weekends:2,sometimes:1};
+ let out='';if(pace){const weeks=Math.max(1,Math.round(bottles*5/per[pace]));const d=new Date();d.setDate(d.getDate()+weeks*7-5);out=`<p>${bottles} bottle${bottles>1?'s':''} at 5 servings each lasts about ${weeks} week${weeks>1?'s':''}. We'll send a refill reminder around ${d.toLocaleDateString([],{month:'long',day:'numeric'})}.</p>`}
+ el.innerHTML=`<b>On your confirmation page: when will you sip?</b><div class="chips">${[['nightly','Nightly'],['weekends','Weekends'],['sometimes','Now and then']].map(([k,l])=>`<button class="chip" data-pace="${k}" aria-pressed="${pace===k}">${l}</button>`).join('')}</div>${out}`}
 /* --- email captures (demo) and state picker --- */
+let subImg='';
+document.addEventListener('change',e=>{if(e.target.id!=='subPhoto'||!e.target.files[0])return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,600/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);subImg=c.toDataURL('image/jpeg',.75);document.getElementById('subDrop').innerHTML=`<img src="${subImg}" alt="Your photo">Change photo<input id="subPhoto" type="file" accept="image/*" class="sr">`};im.src=r.result};r.readAsDataURL(e.target.files[0])});
+document.addEventListener('submit',e=>{if(e.target.id==='batchForm'){e.preventDefault();document.getElementById('batchRes').innerHTML=batchLookup(document.getElementById('batchIn').value);return}
+ if(e.target.id==='subForm'){e.preventDefault();const m=document.getElementById('subMsgOut'),msg=document.getElementById('subMsg').value.trim();if(!msg){m.textContent='Tell us what is in your glass.';document.getElementById('subMsg').focus();return}if(!document.getElementById('subOk').checked){m.textContent='Check the box so we can feature your mix.';return}
+  const subs=store.get('ab_subs',[]);subs.unshift({handle:document.getElementById('subHandle').value.trim(),f:document.getElementById('subFlavor').value,msg:msg.slice(0,240),img:subImg});try{store.set('ab_subs',subs.slice(0,3))}catch(x){}subImg='';e.target.reset();document.getElementById('subDlg').classList.remove('on');route();setTimeout(()=>{const hs=document.querySelector('.hs');hs&&hs.scrollIntoView({behavior:'smooth'})},100);return}});
 document.addEventListener('submit',e=>{const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
 document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');if(!s)return;store.set('ab_state',s.value);document.querySelectorAll('[data-state]').forEach(x=>{x.value=s.value;x.closest('.ship').querySelector('.ship__msg').innerHTML=shipMsg(s.value)});renderCart()});
 /* --- newsletter (demo) --- */
