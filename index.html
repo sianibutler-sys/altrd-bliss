@@ -427,7 +427,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .cart.on{transform:none}
 .cart__h{display:flex;justify-content:space-between;align-items:center;padding:24px}
 .cart__h h2{font:800 22px/1 var(--font-expanded);text-transform:uppercase}
-.x{width:44px;height:44px;border-radius:50%;border:1px solid rgba(16,22,24,.25);font-size:20px}
+.xbtn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(16,22,24,.25);font-size:20px}
 .cart__items{flex:1;overflow:auto;padding:0 24px}
 .ci{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-top:1px solid rgba(16,22,24,.1)}
 .ci img{width:72px;height:72px;border-radius:12px;object-fit:cover}
@@ -499,7 +499,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 
 <div class="scrim" id="scrim"></div>
 <aside class="cart" id="cart" aria-label="Cart" aria-hidden="true">
-  <div class="cart__h"><h2>Your cart</h2><button class="x" id="cartClose" aria-label="Close cart">×</button></div>
+  <div class="cart__h"><h2>Your cart</h2><button class="xbtn" id="cartClose" aria-label="Close cart">×</button></div>
   <div class="cart__items" id="cartItems"></div>
   <div class="cart__f" id="cartFoot"></div>
 </aside>
