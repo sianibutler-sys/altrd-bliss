@@ -468,7 +468,98 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .steps li{counter-increment:s;display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;padding:1rem 0;border-top:1px solid rgba(16,22,24,.12);font-size:1.5rem}
 .steps li::before{content:counter(s);width:2.8rem;height:2.8rem;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:1.3rem}
 
-.badge{position:fixed;left:16px;bottom:16px;z-index:70;background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:1.2rem;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.badge{position:fixed;left:16px;bottom:16px;z-index:70;background:#fff;color:var(--ink);border-radius:999px;padding:6px 6px 6px 14px;font-size:1.2rem;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;align-items:center;gap:10px;transition:bottom .25s ease}
+.badge button{background:var(--ink);color:#fff;border-radius:999px;padding:6px 12px;font-size:1.2rem}
+body.has-bar .badge{bottom:96px}
+.button[disabled]{opacity:.4;cursor:not-allowed}
+.button[disabled]::before{display:none}
+.count.bump{animation:bump .35s ease}
+@keyframes bump{50%{transform:scale(1.35)}}
+
+/* recipe page */
+.rcp{padding:120px 0 80px}
+@media (min-width:990px){.rcp{padding-top:150px}}
+.rcp__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+@media (min-width:990px){.rcp__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:start}.rcp__img{position:sticky;top:110px}}
+.rcp__img img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px}
+.rcp__t{font:800 36px/1 var(--font-matria);text-transform:uppercase}
+@media (min-width:990px){.rcp__t{font-size:52px}}
+.rcp__using{display:inline-block;margin:18px 0 28px;border:1px solid var(--acc);color:var(--acc);border-radius:20px;padding:10px 24px;text-decoration:none;font-size:1.4rem}
+.rcp__using:hover{background:var(--acc);color:var(--ink)}
+.rcp__box{background:#fff;color:var(--ink);border-radius:20px;padding:28px;margin-bottom:16px}
+.rcp__box h2{font:800 20px/1 var(--font-matria);margin-bottom:16px}
+.checks,.stepsl{margin:0;padding:0;list-style:none}
+.checks li{border-top:1px solid rgba(16,22,24,.1)}
+.checks label{display:flex;gap:12px;align-items:flex-start;padding:12px 0;cursor:pointer;font-size:1.6rem}
+.checks input{appearance:none;flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);margin:1px 0 0;display:grid;place-items:center;cursor:pointer}
+.checks input:checked{background:var(--acc);border-color:var(--acc)}
+.checks input:checked::after{content:"✓";font-size:13px;color:var(--ink)}
+.checks li.done span{text-decoration:line-through;opacity:.5}
+.rh{font:800 15px/1.3 var(--font-matria);text-transform:uppercase;padding:18px 0 4px;border:0!important}
+.stepsl{counter-reset:st}
+.stepsl li:not(.rh){counter-increment:st;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;font-size:1.6rem;line-height:1.5}
+.stepsl li:not(.rh)::before{content:counter(st);width:28px;height:28px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font-size:1.3rem}
+.rcp__hint{font-size:1.3rem;color:rgba(16,22,24,.6);margin-top:10px}
+.rcp__note{margin-top:16px;font-size:1.5rem;background:var(--cream);border-radius:12px;padding:14px 16px}
+.rcp__shop{display:flex;gap:14px;align-items:center;background:#000;border-radius:20px;padding:14px;flex-wrap:wrap}
+.rcp__shop img{width:72px;height:72px;border-radius:12px;object-fit:cover}
+.rcp__shop div{flex:1;min-width:140px}
+.rcp__shop b{display:block;font-weight:400;font-size:1.6rem}
+.rcp__shop span{font-size:1.3rem;opacity:.8}
+
+/* quiz steps */
+.quiz__n{font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.quiz__bar{height:4px;border-radius:4px;background:rgba(255,255,255,.15);max-width:420px;margin:12px auto 26px;overflow:hidden}
+.quiz__bar i{display:block;height:100%;background:var(--rainbow);transition:width .3s ease}
+.quiz__back{margin-top:22px;text-decoration:underline;text-underline-offset:3px;font-size:1.5rem}
+.quiz__res a:not(.button){color:inherit;text-underline-offset:3px}
+.quiz__code,.wl{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.quiz__code label,.wl label{font-size:1.4rem}
+.quiz__code div,.wl div{display:flex;gap:8px;background:#fff;border-radius:999px;padding:5px}
+.quiz__code input,.wl input{flex:1;min-width:0;border:0;background:none;padding:0 16px;font:400 1.5rem var(--font-body);color:var(--ink);height:46px}
+.quiz__code button,.wl button{border-radius:999px;background:var(--ink);color:#fff;padding:0 20px;font-size:1.4rem;flex:none}
+.cap__msg{font-size:1.3rem;min-height:1.3em}
+
+/* shipping checker */
+.ship{display:flex;flex-direction:column;gap:8px;margin:14px 0 4px;text-align:left}
+.ship label{font-size:1.4rem}
+.ship select{height:52px;border-radius:999px;border:1px solid rgba(16,22,24,.3);padding:0 20px;font:400 1.5rem var(--font-body);background:#fff;color:var(--ink);max-width:420px}
+.ship__msg{font-size:1.4rem;line-height:1.5}
+.ship__msg a{color:inherit;text-underline-offset:3px}
+.faq__sec>.ship{max-width:520px;margin:0 auto;text-align:center;align-items:center}
+.cart .ship{margin:0 0 14px}
+.cart .ship select{height:44px;max-width:none}
+
+/* product extras */
+.dose{width:100%;border:1px solid color-mix(in srgb,var(--ptext) 30%,transparent);border-radius:20px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:6px}
+.dose__t{font:800 18px/1 var(--font-matria);text-transform:uppercase;color:var(--theme)}
+.dose__btns{display:flex;gap:6px;background:#fff;border-radius:999px;padding:5px}
+.dose__btns button{border-radius:999px;padding:8px 18px;font-size:1.4rem;color:#050505}
+.dose__btns button[aria-pressed="true"]{background:var(--theme);color:var(--themefg)}
+.dose__drops{display:flex;gap:8px}
+.dose__drops i{width:14px;height:20px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;border:2px solid var(--theme);transition:background .2s}
+.dose__drops i.on{background:var(--theme)}
+.dose__out{font-size:1.5rem;line-height:1.5}
+.tryin{padding:20px 0 80px}
+.tryin h2{text-align:center;margin-bottom:40px;color:var(--themefg)}
+.tryin .rcard{color:var(--themefg)}
+.sbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:65;background:var(--pbg);color:var(--ptext);border-radius:999px;padding:8px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);transform:translateY(140%);transition:transform .25s ease;max-width:640px;margin:0 auto}
+.sbar.on{transform:none}
+.sbar img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.sbar div{flex:1;min-width:0}
+.sbar b{display:block;font-weight:400;font-size:1.5rem}
+.sbar span{font-size:1.2rem;opacity:.8}
+.sbar .addbtn{width:auto;height:52px;padding:0 24px;flex:none}
+.hs__share{margin-top:18px}
+
+/* cart suggestions */
+.cart__ideas{display:flex;flex-direction:column;gap:10px;padding:16px 0}
+.idea{display:flex;align-items:center;gap:12px;background:var(--cream);border-radius:16px;padding:10px;text-decoration:none;color:var(--ink)}
+.idea img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+.idea div{flex:1}
+.idea b{display:block;font-weight:400;font-size:1.4rem}
+.idea small{font-size:1.2rem;color:rgba(16,22,24,.65)}
+.mini{border-radius:999px;background:var(--ink);color:#fff;padding:8px 14px;font-size:1.3rem;flex:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -534,7 +625,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   </div>
 </div>
 
-<div class="badge">Demo by Siani Creates</div>
+<div class="badge"><span>Demo by Siani Creates</span><button id="modeBtn" aria-live="polite"></button></div>
 
 <script>
 const F='https://www.altrdbliss.com/cdn/shop/files/';
@@ -564,9 +655,12 @@ const P={
    ing:'Please visit each individual flavor page for information.',nut:'Please visit each individual flavor page for information.',serv:'Please visit each individual flavor page for information.',lab:LAB,
    how:'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501',packOnly:true}
 };
+P['the-original'].dose=[['CBD',2.5],['CBG',2.5]];P['the-rita'].dose=[['CBG',5]];P['the-tini'].dose=[['CBD',5]];P['the-spritz'].dose=[['CBG',5]];
 const SHOP_ORDER=['the-multipack','the-original','the-tini','the-rita','the-spritz'];
 const VIBE=[['the-tini','For unwinding','#cc3f59'],['the-spritz','For daytime','#e57945'],['the-original','For everyday','#e0f47b'],['the-rita','For socializing','#cdb4f9']];
 const PRICE={bottle:8,pack:32};
+let MODE=(()=>{try{return localStorage.getItem('ab_mode')||'prelaunch'}catch(e){return 'prelaunch'}})();
+const buyLabel=()=>MODE==='prelaunch'?'Join Waitlist':'Add to cart';
 const money=n=>'$'+n.toFixed(2);
 const pimg=h=>P[h].shopImg||P[h].img;
 
@@ -577,15 +671,15 @@ const marquee=()=>{const one=MQ.map(([t,c])=>`<span class="mq__item">${check(c)}
 const HS=[
  {h:'@bri_anna',href:'https://www.instagram.com/bri_anna',img:'DTS_FIRST_ROUND_JELLY_LUISE_10635.png?v=1775062005',q:'"I love Altrd Bliss! Traditional THC edibles are usually too much for me to handle and always make me really sleepy. But Altrd Bliss has changed the game for me, no THC but I still get the calming chill vibe, without getting too chill that I fall asleep. And I love the flavor!"'},
  {vid:'4f2de6b9464245d987c0d7c360af12f3/4f2de6b9464245d987c0d7c360af12f3.HD-1080p-7.2Mbps-80050360.mp4?v=0',poster:'preview_images/4f2de6b9464245d987c0d7c360af12f3.thumbnail.0000000000_800x.jpg?v=1775061404'},
- {h:'@tracy.delarosa',href:'https://www.instagram.com/tracy.delarosa',img:'Group_155.png?v=1775061962',q:'"An easy and delicious way to unwind. I appreciate that it’s made with simple natural ingredients and I enjoy the relaxation effects I get from it. My personal favorite flavor is The Tini! ❤️ It’s a perfect addition to a nightcap for me. 😌🍹"'},
- {h:'@janayediggs',href:'https://www.instagram.com/janayediggs',vid:'d07e34e8c2104cb499486abd0dbe4ecd/d07e34e8c2104cb499486abd0dbe4ecd.HD-1080p-7.2Mbps-80050506.mp4?v=0',poster:'preview_images/d07e34e8c2104cb499486abd0dbe4ecd.thumbnail.0000000000_800x.jpg?v=1775061604',q:'"The product is amazing! The bottles are SO CUTE! I’ve only tried the Tini thus far and it’s Incredible! Obsessed with the flavor! And got the best sleep I’ve had in a long time! AND woke up with no back pain! Oh my goodness!"'},
- {h:'@_liangxtine',href:'https://www.instagram.com/_liangxtine',img:'Berry_lime_smoothie_2.jpg?v=1775064523',q:'"Altrd Bliss is a great product for when you want something to take the edge off without having alcohol. The flavors are so yummy and I love to mix them into mocktails to unwind at night or get into a good headspace before social events. My favorite flavor is The Spritz, but honestly you can\'t go wrong with any of them."'},
+ {h:'@tracy.delarosa',fav:'the-tini',href:'https://www.instagram.com/tracy.delarosa',img:'Group_155.png?v=1775061962',q:'"An easy and delicious way to unwind. I appreciate that it’s made with simple natural ingredients and I enjoy the relaxation effects I get from it. My personal favorite flavor is The Tini! ❤️ It’s a perfect addition to a nightcap for me. 😌🍹"'},
+ {h:'@janayediggs',fav:'the-tini',href:'https://www.instagram.com/janayediggs',vid:'d07e34e8c2104cb499486abd0dbe4ecd/d07e34e8c2104cb499486abd0dbe4ecd.HD-1080p-7.2Mbps-80050506.mp4?v=0',poster:'preview_images/d07e34e8c2104cb499486abd0dbe4ecd.thumbnail.0000000000_800x.jpg?v=1775061604',q:'"The product is amazing! The bottles are SO CUTE! I’ve only tried the Tini thus far and it’s Incredible! Obsessed with the flavor! And got the best sleep I’ve had in a long time! AND woke up with no back pain! Oh my goodness!"'},
+ {h:'@_liangxtine',fav:'the-spritz',href:'https://www.instagram.com/_liangxtine',img:'Berry_lime_smoothie_2.jpg?v=1775064523',q:'"Altrd Bliss is a great product for when you want something to take the edge off without having alcohol. The flavors are so yummy and I love to mix them into mocktails to unwind at night or get into a good headspace before social events. My favorite flavor is The Spritz, but honestly you can\'t go wrong with any of them."'},
  {h:'@vidabobida',href:'https://www.instagram.com/vidabobida',img:'DTS_FIRST_ROUND_JELLY_LUISE_10670.png?v=1775062005',q:'"What really makes it special, though, is the creativity behind the brand. This isn’t just another wellness product; it’s bold, innovative, and truly unique in the space. Knowing it’s a proudly Black-owned company built on originality and vision makes supporting it feel even better. It’s more than just an infused syrup - it’s an experience, and honestly, a total game changer."'},
  {vid:'121e59bbbde946d99cefb192f895339b/121e59bbbde946d99cefb192f895339b.HD-1080p-7.2Mbps-82945591.mp4?v=0',poster:'preview_images/121e59bbbde946d99cefb192f895339b.thumbnail.0000000000_800x.jpg?v=1777408362'},
- {h:'@itsmckinzey',href:'https://www.instagram.com/itsmckinzey',img:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929',q:'"Since I stopped drinking, I’ve been on the hunt for something that still lets me go out and have fun without feeling like I’m missing out. Enter Altrd Bliss! The Spritz is my absolute favorite. It’s the perfect alternative to alcohol and gummies and somehow feels more social and elevated than both."'}
+ {h:'@itsmckinzey',fav:'the-spritz',href:'https://www.instagram.com/itsmckinzey',img:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929',q:'"Since I stopped drinking, I’ve been on the hunt for something that still lets me go out and have fun without feeling like I’m missing out. Enter Altrd Bliss! The Spritz is my absolute favorite. It’s the perfect alternative to alcohol and gummies and somehow feels more social and elevated than both."'}
 ];
-const happy=()=>`<section class="hs"><div class="hs__head"><h2>Happy sippers</h2><p>Cheers to less stress and more bliss. Let's see your mix with #SipALTRD</p></div>
-<div class="track" data-drag>${HS.map(s=>{const media=s.vid?`<video muted loop playsinline preload="none" poster="${F+s.poster}" data-lazyplay><source src="${V+s.vid}" type="video/mp4"></video>`:`<img loading="lazy" src="${I(s.img,600)}" alt="" width="600" height="780">`;const body=s.h?`<div class="card__body"><span class="handle">${s.h}</span><p class="card__q">${s.q}</p></div>`:'';return `<div class="slide">${s.href?`<a class="card" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.h} on Instagram">`:'<div class="card">'}<div class="card__media">${media}</div>${body}${s.href?'</a>':'</div>'}</div>`}).join('')}</div></section>`;
+const happy=(h)=>{const list=h?[...HS.filter(s=>s.fav===h),...HS.filter(s=>s.fav!==h)]:HS;return `<section class="hs"><div class="hs__head"><h2>Happy sippers</h2><p>Cheers to less stress and more bliss. Let's see your mix with #SipALTRD</p><a class="button button--sm hs__share" href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Share your mix</a></div>
+<div class="track" data-drag>${list.map(s=>{const media=s.vid?`<video muted loop playsinline preload="none" poster="${F+s.poster}" data-lazyplay><source src="${V+s.vid}" type="video/mp4"></video>`:`<img loading="lazy" src="${I(s.img,600)}" alt="" width="600" height="780">`;const body=s.h?`<div class="card__body"><span class="handle">${s.h}${s.fav?` · loves The ${P[s.fav].name}`:''}</span><p class="card__q">${s.q}</p></div>`:'';return `<div class="slide">${s.href?`<a class="card" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.h} on Instagram">`:'<div class="card">'}<div class="card__media">${media}</div>${body}${s.href?'</a>':'</div>'}${s.fav&&h===s.fav?'':''}</div>`}).join('')}</div></section>`};
 const shopCard=h=>{const p=P[h];const label=p.packOnly?'4 Pack For $32':'4 Pack For $32 — $8 Per Bottle';return `<article class="shop__card"><a class="shop__media" href="#/products/${h}"><img loading="lazy" src="${I(pimg(h),700)}" alt="The ${p.name}" width="700" height="700"></a><div><h3>The ${p.name}</h3><p>${p.sub}</p></div><div><a class="button button--sm" href="#/products/${h}">${label}</a></div></article>`};
 
 /* --- pages --- */
@@ -671,8 +765,10 @@ function product(h){const p=P[h];if(!p)return notFound();
    <p class="prod__foot">*While we hope you love our syrups, we can’t guarantee any specific health benefits.</p>
    <div class="buy">
      <div class="variants" role="group" aria-label="Size">${p.packOnly?`<button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`:`<button aria-pressed="false" data-v="bottle">$8.00 Per Bottle</button><button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`}</div>
-     <button class="addbtn" data-addp="${h}">Add to cart</button>
+     <button class="addbtn" data-addp="${h}">${buyLabel()}</button>
    </div>
+   <form class="wl" data-capture="waitlist" hidden><label for="wlE">Be first to sip The ${p.name}. We’ll email you the day it drops.</label><div><input id="wlE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Notify me</button></div><p class="cap__msg" aria-live="polite"></p></form>
+   ${p.dose?`<div class="dose" role="group" aria-label="Find your dose"><p class="dose__t">Find your dose</p><div class="dose__btns"><button data-dose="3" aria-pressed="false">Microdose</button><button data-dose="6" aria-pressed="true">Low dose</button></div><div class="dose__drops" aria-hidden="true">${'<i></i>'.repeat(6)}</div><p class="dose__out" aria-live="polite"></p></div>`:''}
    <div class="drawers">
      ${[['Ingredients',p.ing],['Nutritional Facts',p.nut],['Serving Size',p.serv],['Lab Report',p.packOnly?`<p>Each flavor is tested by an independent lab. <a href="${p.lab}" target="_blank" rel="noopener">See all reports</a></p>`:`<p>Independent lab results for this flavor. <a href="${p.lab}" target="_blank" rel="noopener">View the report</a></p>`]].map(([t,a],i)=>`<div class="dr"><button class="dr__h" aria-expanded="false" aria-controls="dr${i}"><span>${t}</span><span class="dr__icon" aria-hidden="true">→</span></button><div class="dr__a" id="dr${i}">${a.startsWith('<')?a:`<p>${a}</p>`}</div></div>`).join('')}
    </div>
@@ -687,7 +783,9 @@ function product(h){const p=P[h];if(!p)return notFound();
      <div><h3>Sip</h3><p>Can’t be bothered? Simply drip it under the tongue.</p></div>
      <p class="fn">*Please use calibrated dropper</p></div>
  </div></div></section>
- <div class="wrap-ink">${happy()}</div>
+ ${RECIPES.some(r=>r.h===h)?`<section class="tryin"><div class="pw"><h2 class="c h66">TRY IT IN</h2><div class="rgrid">${RECIPES.filter(r=>r.h===h).map(rcard).join('')}</div></div></section>`:''}
+ <div class="wrap-ink">${happy(h)}</div>
+ <div class="sbar" id="sbar" aria-hidden="true"><img src="${I(pimg(h),120)}" alt="" width="48" height="48"><div><b>The ${p.name}</b><span>${p.packOnly?'4 Pack for $32.00':'From $8.00'}</span></div><button class="addbtn" data-sbar>${buyLabel()}</button></div>
  <section class="more"><div class="pw"><div class="more__box"><h2>WAIT, THERE’S MORE TO LOVE!</h2><div class="shop__grid">${others.map(shopCard).join('')}</div></div></div></section>`}
 
 const learn=()=>`
@@ -699,7 +797,7 @@ const learn=()=>`
  <div class="feat__row rev"><div class="feat__img"><img loading="lazy" src="${I('Group_161.png?v=1775062239',1000)}" alt="" width="1000" height="1000"></div>
   <div class="feat__copy"><div><h2 class="x h66">YOUR BRAIN</h2><h2 class="c h66">ON BLISS</h2></div><p>No, bliss will not make you paranoid. In fact, it’s quite the opposite. It feels like the slow-motion exhale you didn’t know you were holding. Your shoulders drop, and suddenly you’re not in fight-or-flight, you’re in fck-it-I’m-fine*.</p><a class="button" href="#/pages/shop-all">Feel The Bliss</a></div></div>
  <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Screenshot_2026-03-30_at_12.09.41_AM.png?v=1774810858',1000)}" alt="" width="1000" height="1000"></div>
-  <div class="feat__copy"><h2 class="c h66">Built for our mom</h2><p>While our mom was battling breast cancer and searching for plant-based relief that didn’t feel like buying weed from a guy named Brian behind a gas station, there was nothing she could truly trust. Questionable labels and Ingredients no one could explain. “Testing” that brands claimed they did… but never showed.</p><p>She deserved better, and so does everyone else. We started ALTRD Bliss in her honor, making a promise: no shady fine print, no “just trust us.” Every batch is tested by independent labs for potency, purity, and safety, and we share the receipts so you never have to guess.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See our test results</a></div></div>
+  <div class="feat__copy"><h2 class="c h66">SHE DESERVED BETTER</h2><p>While our mom was battling breast cancer and searching for plant-based relief that didn’t feel like buying weed from a guy named Brian behind a gas station, there was nothing she could truly trust. Questionable labels and Ingredients no one could explain. “Testing” that brands claimed they did… but never showed.</p><p>She deserved better, and so does everyone else. We started ALTRD Bliss in her honor, making a promise: no shady fine print, no “just trust us.” Every batch is tested by independent labs for potency, purity, and safety, and we share the receipts so you never have to guess.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See our test results</a></div></div>
 </div></section>
 <section class="frames"><div class="pw"><div class="frames__grid">
  ${[['ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062237','Faq','Got questions? We’ve probably answered them, from “will I get paranoid?” to “is this legal in my state?” Yeah, we’ve heard it all. And we’ve answered it all','Read the FAQ','#/pages/faq'],['ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693','Quiz','Can’t decide what kind of bliss you need? Take our 30-second quiz and we’ll tell you exactly which blend is about to become your new favorite vice (;','Find your flavor','#/pages/find-your-bliss'],['ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910','Shop the collection','From The Original to The Tini, every flavor’s got a personality. One will be your go to. The rest? They’re waiting to crash the party.','Shop All','#/pages/shop-all']].map(f=>`<div class="frame"><div class="frame__img"><img loading="lazy" src="${I(f[0],700)}" alt="" width="700" height="780"></div><h3>${f[1]}</h3><p>${f[2]}</p><a class="button button--sm" href="${f[4]}">${f[3]}</a></div>`).join('')}
@@ -724,19 +822,67 @@ const FAQ=[['The Bliss',[['What does it feel like?','<p>Like collapsing into a p
  ['General',[['What is CBD, CBG?','<p>Think of them as two very different family members, all from the same household, the hemp plant. It’s a variety of cannabis that’s naturally low in THC (so, no, it won’t get you high), but each brings something different to the table.</p><p>CBD: The chill older sibling. Smooths the edges, eases tension, and helps you drift into deeper sleep. CBG: The focused cousin. Sharpens your thinking, clears the fog, and keeps your body in that easy, steady flow. They’re cut from the same plant, but each brings their own vibe.</p>'],['Is this legal in my state?','<p>Yes, our products are made from hemp-derived ingredients that are federally legal across the United States. However, we can’t ship to a handful of states yet: AK, DC, HI, ID, KS, KY, ME, MA, MI, MS, MT, NE, NV, NH, NC, ND, PA, RI, VA, WA, CO, CT, FL, IA, LA, MN, NY, OR. We’re lobbying hard to change that, so hopefully your state will get with the program soon.</p>'],['What is the shelf life of ALTRD Bliss products?','<p>Our syrups have a shelf life of 12 months when stored in a cool, dry place. Be sure to check the expiration date on the bottle; bliss is always better fresh.</p>']]],
  ['Find Us',[['Where can I find ALTRD Bliss products?','<p>The easiest way is right here on our website. We also partner with select retailers across the country, and we’re adding new ones all the time. Check our store locator for the latest list, and if you don’t see your area yet, tell your favorite shop they’re missing out.</p>'],['Can I sell ALTRD Bliss in my store?','<p>Absolutely. We love working with new retailers. Just email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> with your store info, and we’ll get back to you with the next steps.</p>']]],
  ['Shipping & Returns',[['What’s your return policy?','<p>Because our syrups are made in small batches and considered a food product, we can’t accept returns or offer refunds once they’ve shipped. That said, if your order shows up looking rough, leaking, or just… wrong, email us at <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> and we’ll make it right.</p>']]]];
-const faq=()=>`<section class="ptitle"><h1>Frequently Asked Questions</h1></section><section class="faq">${FAQ.map(([t,items],si)=>`<div class="faq__sec"><h2>${t}</h2><div class="faq__items">${items.map(([q,a],i)=>`<div class="fq"><button class="fq__q" aria-expanded="false" aria-controls="fq${si}-${i}"><span>${q}</span><span class="fq__icon" aria-hidden="true">→</span></button><div class="fq__a" id="fq${si}-${i}">${a}</div></div>`).join('')}</div></div>`).join('')}</section>`;
+const faq=()=>`<section class="ptitle"><h1>Frequently Asked Questions</h1></section><section class="faq">${FAQ.map(([t,items],si)=>`<div class="faq__sec"><h2>${t}</h2><div class="faq__items">${items.map(([q,a],i)=>`<div class="fq"><button class="fq__q" aria-expanded="false" aria-controls="fq${si}-${i}"><span>${q}</span><span class="fq__icon" aria-hidden="true">→</span></button><div class="fq__a" id="fq${si}-${i}">${a}${/legal in my state/.test(q)?shipCheck('faq'):''}${/Where can I find/.test(q)?`<p><a class="button button--sm" href="mailto:hello@altrdbliss.com?subject=My%20favorite%20shop%20is%20missing%20out">Tell us your favorite shop</a></p>`:''}</div></div>`).join('')}</div></div>`).join('')}
+<div class="faq__sec"><h2>Do we ship to you?</h2>${shipCheck('page')}</div></section>`;
+const STATES=[['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','Washington, D.C.'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
+/* their FAQ list, verbatim */
+const NOSHIP='AK DC HI ID KS KY ME MA MI MS MT NE NV NH NC ND PA RI VA WA CO CT FL IA LA MN NY OR'.split(' ');
+function shipCheck(where){const st=store.get('ab_state','');return `<div class="ship" data-ship="${where}"><label for="st-${where}">Where are we sending your bliss?</label><select id="st-${where}" data-state><option value="">Choose your state</option>${STATES.map(([c,n])=>`<option value="${c}"${c===st?' selected':''}>${n}</option>`).join('')}</select><p class="ship__msg" aria-live="polite">${shipMsg(st)}</p></div>`}
+function shipMsg(st){if(!st)return '';const n=(STATES.find(s=>s[0]===st)||[])[1];return NOSHIP.includes(st)?`We can’t ship to ${n} yet. We’re lobbying hard to change that. <a href="#nl" data-tonl>Join SipSmarter</a> and we’ll tell you the minute we can.`:`Good news: we ship to ${n}.`}
 
-const QUIZ=[['Winding down for the night','the-tini'],['Getting things done during the day','the-spritz'],['Going out with friends','the-rita'],['A little of everything','the-original']];
+const QUIZ=[
+ {q:'When do you want your bliss?',o:[['Winding down for the night','the-tini'],['Getting things done during the day','the-spritz'],['Going out with friends','the-rita'],['A little of everything','the-original']]},
+ {q:'Pick a flavor mood.',o:[['Tart & earthy','the-tini'],['Tropical & tangy','the-spritz'],['Berry & bright','the-rita'],['Smooth & sweet','the-original']]},
+ {q:'How do you like to sip?',o:[['In a mocktail','drink'],['In something sweet','treat'],['Straight under the tongue','tongue']]}
+];
 const findBliss=()=>`
 <section class="banner" style="text-align:left;justify-content:flex-start"><div class="banner__media"><img src="${I('Group_157.png?v=1775062117',1800)}" alt="" width="1800" height="1100"></div>
  <div class="banner__box" style="align-items:flex-start;padding-left:clamp(20px,6vw,130px)"><h1 class="banner__h1">FIND</h1><h2 class="banner__h2">YOUR FLAVOR</h2><p class="banner__p" style="max-width:520px">Need some help? Your perfect syrup match is just 30 seconds away (and a surprise promo code might be waiting for you at the end)</p><a class="button" href="#quiz" data-scroll="quiz">Start Quiz</a></div></section>
-<section class="quiz" id="quiz"><div class="pw"><p class="quiz__q">When do you want your bliss?</p>
- <div class="quiz__opts">${QUIZ.map(([l,h])=>`<button class="qopt" data-pick="${h}">${l}</button>`).join('')}</div>
- <div class="quiz__res" id="quizRes" aria-live="polite"></div></div></section>`;
+<section class="quiz" id="quiz"><div class="pw"><div id="quizBox"></div><div class="quiz__res" id="quizRes" aria-live="polite"></div></div></section>`;
+let qa=[];
+function quizStep(){const box=document.getElementById('quizBox');if(!box)return;const n=qa.length;
+ if(n>=QUIZ.length){box.innerHTML='';quizResult();return}
+ const s=QUIZ[n];box.innerHTML=`<p class="quiz__n">${n+1} of ${QUIZ.length}</p><div class="quiz__bar"><i style="width:${n/QUIZ.length*100}%"></i></div><p class="quiz__q">${s.q}</p><div class="quiz__opts">${s.o.map(([l,v])=>`<button class="qopt" data-ans="${v}">${l}</button>`).join('')}</div>${n?'<button class="quiz__back" data-qback>Back</button>':''}`}
+function quizResult(){const score={};[qa[0],qa[1]].forEach((h,i)=>score[h]=(score[h]||0)+(i?1:1.5));const h=Object.entries(score).sort((a,b)=>b[1]-a[1])[0][0],p=P[h],how=qa[2];
+ const rec=how==='tongue'?null:RECIPES.find(r=>r.h===h&&r.kind===how)||RECIPES.find(r=>r.h===h);
+ const r=document.getElementById('quizRes');
+ r.innerHTML=`<img src="${I(p.img,800)}" alt="The ${p.name}" width="800" height="800"><div class="b"><p>Your match</p><h3 style="color:${p.theme}">The ${p.name}</h3><p>${p.sub}. ${p.use}.</p>
+ ${rec?`<p>Start with the <a href="#/blogs/recipes/${rec.s}">${rec.t}</a>.</p>`:`<p>Six droppers under the tongue is the fast lane to bliss.</p>`}
+ <a class="button" href="#/products/${h}">Shop The ${p.name}</a>
+ <form class="quiz__code" data-capture="quiz"><label for="qE">Want your promo code? We'll send it to your inbox.</label><div><input id="qE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Send my code</button></div><p class="cap__msg" aria-live="polite"></p></form>
+ <button class="quiz__back" data-qrestart>Take it again</button></div>`;
+ r.classList.add('on');r.scrollIntoView({behavior:'smooth',block:'nearest'})}
 
-const RECIPES=[['Altrd Bliss Ice Cream','the-tini','altrd-bliss-ice-cream'],['Rosemary Grapefruit Paloma Mocktail','the-original','rosemary-grapefruit-paloma-mocktail'],['Berry Lime Smoothie','the-rita','berry-lime-smoothie'],['Orange Juice Passion Fruit Spritz','the-spritz','orange-juice-passion-fruit-spritz'],['Cran-Cherry Sleep Tonic','the-tini','green-mango-matcha'],['Altrd Bliss Yogurt Bowl','the-original','iced-mango-matcha-3'],['Blackberry Lime Rita Mocktail','the-rita','iced-mango-matcha-2'],['Iced Mango Matcha','the-spritz','iced-mango-matcha-1']];
+const A='https://www.altrdbliss.com/cdn/shop/articles/';
+const AI=(f,w)=>A+f+'&width='+w;
+/* recipes: their photos, ingredients and steps, word for word. "#" lines are sub-headings. kind: drink | treat */
+const RECIPES=[
+ {s:'altrd-bliss-ice-cream',t:'Altrd Bliss Ice Cream',h:'the-tini',kind:'treat',img:'Altrd_Bliss_Ice_Cream_1_9981359d-1f00-486e-b72f-98917f2b062f.jpg?v=1777409590',ing:['Ice cream of your choice (1–2 scoops)','1 serving Altrd Bliss Tini'],steps:['Add 1–2 scoops of your favorite ice cream to a glass.','Pour Altrd Bliss Tini over the ice cream.','Serve immediately and enjoy.'],note:['Optional Garnish','Whipped cream · Cherry · Crushed cookies or chocolate shavings']},
+ {s:'rosemary-grapefruit-paloma-mocktail',t:'Rosemary Grapefruit Paloma Mocktail',h:'the-original',kind:'drink',img:'Rosemary_Grapefruit_Paloma_Mocktail_2.jpg?v=1777409264',ing:['1/2 cup grapefruit juice','1/2 cup seltzer','1 serving Altrd Bliss Original','Ice','Grapefruit peel and rosemary sprig (for garnish)'],steps:['Fill a glass with ice.','Pour in the grapefruit juice and Altrd Bliss Original.','Top with seltzer and gently stir.','Garnish with a grapefruit peel (and rosemary sprig if using). Serve immediately.']},
+ {s:'berry-lime-smoothie',t:'Berry Lime Smoothie',h:'the-rita',kind:'treat',img:'Berry_lime_smoothie_2_ef66fb26-0f93-4b50-a6c7-4087a8b10f24.jpg?v=1777409611',ing:['3/4 cup frozen mixed berries','1 cup liquid of your choice (milk or water)','1/2 lime, juiced','1 serving Altrd Bliss Rita','Optional: protein powder'],steps:['Add frozen berries, liquid, lime juice, and Altrd Bliss Rita to a blender.','Add protein powder (optional).','Blend until smooth.','Pour into a glass and enjoy immediately.'],note:['Tip','Want it thicker? Use less liquid or add ice.']},
+ {s:'orange-juice-passion-fruit-spritz',t:'Orange Juice Passion Fruit Spritz',h:'the-spritz',kind:'drink',img:'Orange_Juice_Passion_Fruit_Spritz.jpg?v=1777408991',ing:['1/2 cup orange juice','1 serving Altrd Bliss Spritz','1/2 cup sparkling water','Ice','Orange peel (for garnish)'],steps:['Fill a glass with ice.','Pour in the orange juice and Altrd Bliss Spritz.','Top with sparkling water and gently stir.','Garnish with an orange peel and serve.']},
+ {s:'cran-cherry-sleep-tonic',t:'Cran-Cherry Sleep Tonic',h:'the-tini',kind:'drink',img:'The_Tini_Sleep_Tonic.jpg?v=1775065213',ing:['1/4 cup cranberry juice','1/4 cup tart cherry juice','1 serving Altrd Bliss Tini','Ice','Lime wedge for garnish'],steps:['Add juices and Altrd Bliss Tini to a glass.','Stir to combine.','Fill with ice.','Pour over and garnish with lime. Serve.'],note:['Notes','For a colder drink, stir with ice first then strain over fresh ice.']},
+ {s:'altrd-bliss-yogurt-bowl',t:'Altrd Bliss Yogurt Bowl',h:'the-original',kind:'treat',img:'The_Original_Yogurt_Bowl.jpg?v=1775064911',ing:['1 cup yogurt','1/8 cup raspberries','1/8 cup blueberries','1/8 cup blackberries','1 serving Altrd Bliss Original','Pomegranate seeds for garnish','Optional nut butter'],steps:['Add yogurt to a bowl.','Top with berries.','Pour Altrd Bliss Original over the top.','Garnish with pomegranate seeds.','Add nut butter if desired. Serve.'],note:['Tip','Add granola or chopped nuts for texture.']},
+ {s:'blackberry-lime-rita-mocktail',t:'Blackberry Lime Rita Mocktail',h:'the-rita',kind:'drink',img:'Blackberry_Lime_Rita_Mocktail.jpg?v=1775064818',ing:['1.5 oz lime juice','6 blackberries','1 serving Altrd Bliss Rita Syrup','1/3 cup sparkling water','Ice','Lime wedge for garnish'],steps:['Muddle blackberries in a glass until juicy.','Add lime juice and Altrd Bliss Rita Syrup. Stir to combine.','Fill with ice.','Top with sparkling water.','Stir gently.','Garnish with lime and serve.']},
+ {s:'iced-mango-matcha',t:'Iced Mango Matcha',h:'the-spritz',kind:'drink',img:'Iced_Mango_Matcha_1_41c35261-df51-4269-9d63-a93e37a85741.jpg?v=1778103967',ing:['1 serving matcha','2 tbsp water','1 cup milk of your choice (coconut, almond, or oat)','1 serving Altrd Bliss Spritz','1/4–1/3 cup fresh mango purée (see instructions below)','Ice','#Mango Purée Ingredients','1 ripe mango','1 tsp lemon or lime juice (optional, to brighten flavor)','1 tsp sugar or honey (optional, depending on sweetness)'],steps:['#Step 1: Make the mango purée','Peel and chop the mango, removing the pit.','Place mango pieces in a blender. Add lemon/lime juice and sugar or honey if using.','Blend until smooth. For a thinner purée, add 1–2 tsp water and blend again.','#Step 2: Assemble the drink','Add 2–3 tablespoons of the mango purée to the bottom of a glass (more if you like it sweeter).','Fill the glass with ice.','Pour in the milk over the ice.','Add 1 serving Altrd Bliss Spritz and gently stir.','#Step 3: Prepare the matcha','In a small bowl or cup, whisk 1 serving matcha with 2 tbsp water until smooth and frothy.','Slowly pour the matcha on top of the milk, spritz, and mango mixture to create layers.','#Step 4: Serve','Stir before drinking (or enjoy the layered effect).']}
+];
+const rcard=r=>`<a class="rcard" data-f="${r.h}" href="#/blogs/recipes/${r.s}"><div class="rcard__m"><img loading="lazy" src="${AI(r.img,700)}" alt="${r.t}" width="700" height="700"></div><h3>${r.t}</h3><p>Using The ${P[r.h].name}</p></a>`;
 const recipes=()=>`<section class="ptitle"><h1>Recipes</h1></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div>
-<div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(([t,h,s])=>`<a class="rcard" data-f="${h}" href="https://www.altrdbliss.com/blogs/recipes/${s}" target="_blank" rel="noopener"><div class="rcard__m"><img loading="lazy" src="${I(P[h].hov,600)}" alt="" width="600" height="600"></div><h3>${t}</h3><p>Using The ${P[h].name}</p></a>`).join('')}</div></div></section>`;
+<div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(rcard).join('')}</div></div></section>`;
+function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound();const p=P[r.h];
+ const li=(arr,ol)=>arr.map((x,i)=>x.startsWith('#')?`<li class="rh">${x.slice(1)}</li>`:ol?`<li>${x}</li>`:`<li><label><input type="checkbox"><span>${x}</span></label></li>`).join('');
+ const more=RECIPES.filter(x=>x.h===r.h&&x.s!==r.s).concat(RECIPES.filter(x=>x.h!==r.h)).slice(0,3);
+ return `<section class="rcp" style="--acc:${p.theme}"><div class="pw"><div class="rcp__grid">
+  <div class="rcp__img"><img src="${AI(r.img,1200)}" alt="${r.t}" width="1200" height="1200"></div>
+  <div class="rcp__body">
+   <h1 class="rcp__t">${r.t}</h1>
+   <a class="rcp__using" href="#/products/${r.h}">Using The ${p.name}</a>
+   <div class="rcp__box"><h2>INGREDIENTS</h2><ul class="checks">${li(r.ing)}</ul><p class="rcp__hint">Tap to check off what you've got.</p></div>
+   <div class="rcp__box"><h2>INSTRUCTIONS</h2><ol class="stepsl">${li(r.steps,true)}</ol>${r.note?`<p class="rcp__note"><b>${r.note[0]}</b><br>${r.note[1]}</p>`:''}</div>
+   <div class="rcp__shop"><img src="${I(pimg(r.h),200)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><span>${p.sub}</span></div><button class="button" data-quick="${r.h}">${buyLabel()}</button></div>
+  </div></div>
+  <h2 class="c h66" style="text-align:center;margin:80px 0 40px">MORE TO SIP</h2><div class="rgrid">${more.map(rcard).join('')}</div>
+ </div></section>`}
 
 const notFound=()=>`<section class="ptitle"><h1>Page not found</h1><p>That page isn't part of this demo.</p><p style="margin-top:24px"><a class="button" href="#/">Back home</a></p></section>`;
 
@@ -762,15 +908,18 @@ document.getElementById('drawer').innerHTML=`<a href="#/pages/shop-all">Shop</a>
 /* --- router --- */
 const app=document.getElementById('app');
 const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about':about,'pages/faq':faq,'pages/find-your-bliss':findBliss,'blogs/recipes':recipes};
+const DESC={'':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.'};
 const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes'};
 let fadeTimer=null;
+function setMeta(d,ld){let m=document.querySelector('meta[name=description]');m.setAttribute('content',d);let s=document.getElementById('ld');if(!s){s=document.createElement('script');s.type='application/ld+json';s.id='ld';document.head.appendChild(s)}s.textContent=ld?JSON.stringify(ld):''}
 function route(){
   const path=(location.hash.replace(/^#\/?/,'')||'').replace(/\/$/,'');
   closeAll();
-  let html,title='Altrd Bliss';const root=document.body.style;
-  if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss'}}
-  else{root.removeProperty('background-color');html=(ROUTES[path]||notFound)();if(TITLES[path])title=TITLES[path]+' – Altrd Bliss'}
-  app.innerHTML=html;document.title=title;window.scrollTo(0,0);wire();
+  let html,title='Altrd Bliss',desc=DESC[''],ld=null;const root=document.body.style;document.body.classList.remove('has-bar');
+  if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss';desc=`The ${p.name}: ${p.sub}. ${p.desc.split('.')[0].toLowerCase().replace(/^./,c=>c.toUpperCase())}.`;ld={'@context':'https://schema.org','@type':'Product',name:'The '+p.name,brand:{'@type':'Brand',name:'Altrd Bliss'},image:I(p.img,1200),description:p.desc,offers:{'@type':'Offer',price:p.packOnly?'32.00':'8.00',priceCurrency:'USD',availability:MODE==='prelaunch'?'https://schema.org/PreOrder':'https://schema.org/InStock'}}}}
+  else if(path.startsWith('blogs/recipes/')){root.removeProperty('background-color');const r=RECIPES.find(x=>x.s===path.split('/')[2]);html=recipe(path.split('/')[2]);if(r){title=r.t+' – Altrd Bliss';desc=`${r.t}, made with The ${P[r.h].name}. ${r.ing.filter(x=>!x.startsWith('#')).length} ingredients, ${r.steps.filter(x=>!x.startsWith('#')).length} steps.`;ld={'@context':'https://schema.org','@type':'Recipe',name:r.t,image:AI(r.img,1200),recipeIngredient:r.ing.filter(x=>!x.startsWith('#')),recipeInstructions:r.steps.filter(x=>!x.startsWith('#')).map(t=>({'@type':'HowToStep',text:t})),author:{'@type':'Organization',name:'Altrd Bliss'}}}}
+  else{root.removeProperty('background-color');html=(ROUTES[path]||notFound)();if(TITLES[path])title=TITLES[path]+' – Altrd Bliss';desc=DESC[path]||desc}
+  app.innerHTML=html;document.title=title;setMeta(desc,ld);window.scrollTo(0,0);wire();
 }
 function wire(){
   clearInterval(fadeTimer);
@@ -781,10 +930,16 @@ function wire(){
   app.querySelectorAll('.dr__h').forEach(b=>b.onclick=()=>{const d=b.parentElement;const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o)});
   app.querySelectorAll('.fq__q').forEach(b=>b.onclick=()=>{const d=b.parentElement;const o=d.classList.toggle('open');b.setAttribute('aria-expanded',o)});
   app.querySelectorAll('.variants button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
-  app.querySelectorAll('[data-addp]').forEach(b=>b.onclick=()=>{const v=app.querySelector('.variants [aria-pressed="true"]').dataset.v;add(b.dataset.addp,v)});
+  const buyAct=(h,btn)=>{if(MODE==='prelaunch'){const f=app.querySelector('.wl');f.hidden=false;f.querySelector('input').focus({preventScroll:false});f.scrollIntoView({behavior:'smooth',block:'center'});return}const v=(app.querySelector('.variants [aria-pressed="true"]')||{dataset:{v:'pack'}}).dataset.v;add(h,v,btn)};
+  app.querySelectorAll('[data-addp]').forEach(b=>b.onclick=()=>buyAct(b.dataset.addp,b));
+  app.querySelectorAll('[data-sbar]').forEach(b=>b.onclick=()=>{const a=app.querySelector('[data-addp]');a.scrollIntoView({behavior:'smooth',block:'center'});buyAct(a.dataset.addp,b)});
+  app.querySelectorAll('[data-quick]').forEach(b=>b.onclick=()=>{if(MODE==='prelaunch'){location.hash='#/products/'+b.dataset.quick;return}add(b.dataset.quick,'pack',b)});
+  const dose=app.querySelector('.dose');if(dose){const h=app.querySelector('[data-addp]').dataset.addp,p=P[h];const set=n=>{dose.querySelectorAll('[data-dose]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.dose===n));dose.querySelectorAll('.dose__drops i').forEach((d,k)=>d.classList.toggle('on',k<n));const mg=p.dose.map(([c,m])=>`${+(m*n/6).toFixed(2)}mg ${c}`).join(' + ');dose.querySelector('.dose__out').innerHTML=`<b>${n} droppers</b> = ${mg}<br>${n===3?'10':'5'} servings per bottle`};dose.querySelectorAll('[data-dose]').forEach(x=>x.onclick=()=>set(+x.dataset.dose));set(6)}
+  const sb=document.getElementById('sbar'),bu=app.querySelector('.buy');if(sb&&bu&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{const show=!e.isIntersecting&&e.boundingClientRect.top<0;sb.classList.toggle('on',show);sb.setAttribute('aria-hidden',!show);document.body.classList.toggle('has-bar',show)});o.observe(bu)}
+  app.querySelectorAll('.checks input').forEach(c=>c.onchange=()=>c.closest('li').classList.toggle('done',c.checked));
   app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}app.querySelectorAll('.rcard').forEach(c=>c.style.display=!on||c.dataset.f===b.dataset.filter?'':'none')});
-  app.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{const h=b.dataset.pick,p=P[h],r=document.getElementById('quizRes');r.innerHTML=`<img src="${I(p.img,800)}" alt="The ${p.name}" width="800" height="800"><div class="b"><p>Your match</p><h3 style="color:${p.theme}">The ${p.name}</h3><p>${p.sub}. ${p.use}.</p><a class="button" href="#/products/${h}">Shop The ${p.name}</a></div>`;r.classList.add('on');r.scrollIntoView({behavior:'smooth',block:'nearest'})});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
+  qa=[];quizStep();
 }
 function dragScroll(el){let down=false,x0=0,s0=0,moved=false;
   el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;s0=el.scrollLeft});
@@ -815,16 +970,24 @@ const cartEl=document.getElementById('cart'),scrim=document.getElementById('scri
 const unit=i=>i.h==='the-multipack'?PRICE.pack:PRICE[i.v];
 function openCart(){cartEl.classList.add('on');scrim.classList.add('on');cartEl.setAttribute('aria-hidden','false');document.getElementById('cartClose').focus()}
 function closeCart(){cartEl.classList.remove('on');scrim.classList.remove('on');cartEl.setAttribute('aria-hidden','true')}
-function add(h,v){const f=cart.find(i=>i.h===h&&i.v===v);f?f.q++:cart.push({h,v,q:1});save();openCart()}
+function add(h,v,btn){const f=cart.find(i=>i.h===h&&i.v===v);f?f.q++:cart.push({h,v,q:1});save();const c=document.getElementById('count');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');if(btn){const t=btn.textContent;btn.textContent='Added';setTimeout(()=>btn.textContent=t,1200)}openCart()}
 function save(){store.set('ab_cart2',cart);renderCart()}
 function renderCart(){const n=cart.reduce((a,i)=>a+i.q,0),sub=cart.reduce((a,i)=>a+i.q*unit(i),0);const c=document.getElementById('count');c.textContent=n;c.classList.toggle('on',n>0);
   const items=document.getElementById('cartItems'),foot=document.getElementById('cartFoot');
   if(!n){items.innerHTML=`<div class="cart__empty"><h3>Your cart is empty</h3><a class="button button--ink" href="#/pages/shop-all" data-closecart>Continue shopping</a></div>`;foot.innerHTML='';return}
   items.innerHTML=cart.map((i,k)=>{const p=P[i.h];return `<div class="ci"><img src="${I(pimg(i.h),160)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><small>${i.h==='the-multipack'?'All four flavors':i.v==='pack'?'4 Pack':'Per Bottle'} · ${money(unit(i))}</small></div><div class="qty"><button data-dec="${k}" aria-label="Remove one">−</button><span>${i.q}</span><button data-inc="${k}" aria-label="Add one">+</button></div></div>`}).join('');
-  foot.innerHTML=`<div class="cart__sum"><span>Estimated total</span><span>${money(sub)} USD</span></div><small>Taxes, discounts and shipping calculated at checkout.</small><button class="button" id="checkout">Check out</button>`}
+  const hasPack=cart.some(i=>i.h==='the-multipack');const first=cart.find(i=>i.h!=='the-multipack');const rec=first&&RECIPES.find(r=>r.h===first.h);
+  items.innerHTML+=`<div class="cart__ideas">${!hasPack?`<div class="idea"><img src="${I('ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501',160)}" alt="" width="56" height="56"><div><b>Can’t pick just one?</b><small>The Multipack, 4 Flavors, 1 Box of Bliss</small></div><button class="mini" data-addpack>Add $32</button></div>`:''}${rec?`<a class="idea" href="#/blogs/recipes/${rec.s}" data-closecart><img src="${AI(rec.img,160)}" alt="" width="56" height="56"><div><b>Try it in</b><small>${rec.t}</small></div><span class="mini">View</span></a>`:''}</div>`;
+  const st=store.get('ab_state',''),blocked=st&&NOSHIP.includes(st);
+  foot.innerHTML=`${shipCheck('cart')}<div class="cart__sum"><span>Estimated total</span><span>${money(sub)} USD</span></div><small>Taxes, discounts and shipping calculated at checkout.</small><button class="button" id="checkout"${blocked?' disabled':''}>Check out</button>`}
 document.addEventListener('click',e=>{const t=e.target;
+  const ans=t.closest('[data-ans]');if(ans){qa.push(ans.dataset.ans);quizStep();return}
+  if(t.closest('[data-qback]')){qa.pop();quizStep();return}
+  if(t.closest('[data-qrestart]')){qa=[];document.getElementById('quizRes').classList.remove('on');quizStep();document.getElementById('quiz').scrollIntoView({behavior:'smooth'});return}
+  if(t.closest('[data-tonl]')){e.preventDefault();closeCart();document.getElementById('nlE').focus();document.querySelector('.nl').scrollIntoView({behavior:'smooth'});return}
   const inc=t.closest('[data-inc]');if(inc){cart[+inc.dataset.inc].q++;save();return}
   const dec=t.closest('[data-dec]');if(dec){const k=+dec.dataset.dec;cart[k].q--;if(cart[k].q<1)cart.splice(k,1);save();return}
+  if(t.closest('[data-addpack]')){add('the-multipack','pack');return}
   if(t.closest('[data-closecart]'))closeCart();
   if(t.id==='checkout'){document.getElementById('checkoutDlg').classList.add('on')}
   if(t.closest('[data-close]'))document.getElementById('checkoutDlg').classList.remove('on');
@@ -832,9 +995,16 @@ document.addEventListener('click',e=>{const t=e.target;
 document.getElementById('cartBtn').onclick=openCart;document.getElementById('cartClose').onclick=closeCart;scrim.onclick=closeCart;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAll();document.getElementById('checkoutDlg').classList.remove('on')}});
 
+/* --- email captures (demo) and state picker --- */
+document.addEventListener('submit',e=>{const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
+document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');if(!s)return;store.set('ab_state',s.value);document.querySelectorAll('[data-state]').forEach(x=>{x.value=s.value;x.closest('.ship').querySelector('.ship__msg').innerHTML=shipMsg(s.value)});renderCart()});
 /* --- newsletter (demo) --- */
 document.getElementById('nl').onsubmit=e=>{e.preventDefault();const em=document.getElementById('nlE'),m=document.getElementById('nlMsg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent='You’re in. In the live site, this signs you up through Klaviyo.';e.target.reset()};
 
+/* --- preview switch: pre-launch (live today) vs launch --- */
+const modeBtn=document.getElementById('modeBtn');
+const paintMode=()=>{modeBtn.textContent=MODE==='prelaunch'?'Pre-launch view · switch':'Launch view · switch'};
+modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();route()};paintMode();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 if(!store.get('ab_21',false)){gate.classList.add('on');document.body.style.overflow='hidden'}
