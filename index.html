@@ -203,7 +203,7 @@ body.menu-open .hdr{z-index:57}
 .pkit h2{font:800 22px/1 var(--font-matria);text-transform:uppercase;margin:0 0 18px}
 .pkit ul{margin:0;padding-left:18px;font-size:1.6rem;line-height:1.8}
 .pkit p{font-size:1.6rem;margin:0 0 20px}
-.badge__by{display:inline-flex;align-items:center;gap:6px}.sclogo{height:20px;width:auto;vertical-align:middle}.sclogo--ft{height:16px;filter:brightness(0) invert(1);opacity:.85}
+.badge__by{display:inline-flex;align-items:center;gap:6px}.sclogo{height:26px;width:auto;vertical-align:middle;display:inline-block}.sclogo--ft{height:30px;filter:brightness(0) invert(1);opacity:.9;margin-left:4px}
 /* marquee */
 .mq{overflow:hidden;padding:40px 0}
 @media (min-width:990px){.mq{padding:80px 0}}
@@ -818,6 +818,62 @@ body.has-bar .badge{bottom:96px}
 .qz__rec{font-size:1.4rem;margin:6px 0 0}.qz__rec a{text-decoration:underline;text-underline-offset:3px}
 .qz__card .qz__next{margin-top:12px}
 
+.ffruit{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;padding:0 20px;margin:-14px auto 40px;max-width:900px}
+.ffruit__l{font-size:1.3rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-right:6px}
+.fchip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.45);font-size:1.4rem;transition:background .2s,color .2s,border-color .2s}
+.fchip:hover{border-color:#fff}
+.fchip[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.rnone{text-align:center;font-size:1.6rem;margin:0 0 40px}
+.rnone[hidden]{display:none}
+.guide__in{background:#0b0f10}
+.guide__cov{display:block;padding:clamp(20px,3vw,40px);background:radial-gradient(120% 90% at 30% 20%,#2a2f31 0,#0b0f10 70%)}
+.guide__img{aspect-ratio:612/792!important;min-height:0!important;height:auto;max-width:440px;margin:0 auto;display:block;border-radius:6px;box-shadow:0 30px 60px rgba(0,0,0,.55),0 4px 10px rgba(0,0,0,.4);transform:rotate(-2deg);transition:transform .4s ease}
+.guide__cov:hover .guide__img{transform:rotate(0) scale(1.01)}
+.guide__p a{color:var(--lime);text-underline-offset:3px}
+.uti{padding:140px 0 90px}
+.uti__hero{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
+@media (min-width:990px){.uti__hero{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:70px}}
+.uti__cov{padding:clamp(16px,3vw,40px);border-radius:20px;background:radial-gradient(120% 90% at 30% 20%,#2a2f31 0,#0b0f10 70%)}
+.uti__cov img{display:block;width:100%;max-width:480px;height:auto;margin:0 auto;border-radius:6px;box-shadow:0 34px 70px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4);transform:rotate(-2deg)}
+.uti__copy{display:flex;flex-direction:column;gap:18px}
+.uti__copy p{margin:0;font-size:1.7rem;max-width:32em}
+.uti__copy .uti__lede{font-size:2.2rem;line-height:1.35}
+.uti__stamp{display:flex;flex-direction:column;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:16px 18px;max-width:420px}
+.uti__stamp b{font:800 14px/1 var(--font-matria);letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+.uti__stamp span{font-size:1.5rem}
+.uti__in{color:var(--lime)}
+.uti__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:60px 0}
+@media (min-width:750px){.uti__facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.uti__facts div{border-radius:16px;background:rgba(255,255,255,.06);padding:22px;text-align:center}
+.uti__facts b{display:block;font:800 44px/1 var(--font-expanded)}
+.uti__facts span{font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.uti__h2{font:900 clamp(36px,4.6vw,60px)/1 var(--font-compressed);text-transform:uppercase;text-align:center;margin:0}
+.uti__sub{text-align:center;font-size:1.6rem;margin:10px 0 34px}
+.uti__lock{position:relative;margin-top:40px;border-radius:20px;overflow:hidden}
+.uti__tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:750px){.uti__tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.uti__tiles img{width:100%;aspect-ratio:1/1;object-fit:cover;filter:blur(14px) saturate(1.1);transform:scale(1.08)}
+.uti__lockc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;background:rgba(11,15,16,.45);padding:20px}
+.uti__lockh{font:800 clamp(22px,3vw,34px)/1.1 var(--font-matria);margin:0}
+.uti__lockc p{margin:0}
+.season{padding:20px 0 70px}
+.season__in{display:grid;grid-template-columns:minmax(0,1fr);border-radius:20px;overflow:hidden;background:var(--sc);color:var(--sf)}
+@media (min-width:990px){.season__in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.season__copy{padding:clamp(28px,4vw,60px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.season__copy p{margin:0;font-size:1.6rem;max-width:30em}
+.season__h{font:900 clamp(64px,8vw,120px)/.9 var(--font-compressed);text-transform:uppercase;margin:0;letter-spacing:-1px}
+.season__copy .season__line{font-size:2.1rem;line-height:1.3}
+.season__acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.season__alt{background:var(--ink);color:#fff}.season__alt:hover{color:var(--ink)}
+.season__media{position:relative;min-height:340px}
+.season__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.six{width:100%;max-width:48rem;border:1px solid color-mix(in srgb,var(--ptext) 25%,transparent);border-radius:20px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.six__t{font:800 14px/1 var(--font-matria);letter-spacing:.12em;text-transform:uppercase;color:var(--theme);margin:0}
+.six__f{font:800 22px/1.15 var(--font-expanded);text-transform:uppercase;margin:2px 0 6px}
+.six__l{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.six__l li{font-size:1.3rem;padding:5px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ptext) 30%,transparent)}
+.six__l li.fr{background:var(--theme);color:var(--themefg);border-color:var(--theme)}
+.six__n{font-size:1.2rem;opacity:.75;margin:4px 0 0}
 </style>
 </head>
 <body>
@@ -952,7 +1008,7 @@ const TZ=()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone}catch(
 const momentLine=()=>{const [h,l,c]=momentNow();const t=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',timeZone:TZ()});return `<span>${momentShift?'Another moment:':`It's ${t}.`}</span><b style="background:${c}">${l}: The ${P[h].name}</b><button data-moment>See another moment</button>`};
 /* mix builder: bases from their own copy ("mocktail, tonic, sparkling water, tea") */
 const BASES=[['mocktail','Mocktail','Mocktail','#f3c8a8'],['tonic','Tonic','Tonic','#e8f0ec'],['sparkling','Sparkling water','Fizz','#dcebf5'],['tea','Tea','Tea Time','#c98f52']];
-const GARN=[['lime','Lime wedge'],['orange','Orange peel'],['rosemary','Rosemary sprig'],['berries','Fresh berries'],['none','Keep it simple']];
+const GARN=[['lime','Lime','lime','A squeeze of lime and a wedge on the rim'],['grapefruit','Grapefruit','grapefruit','A splash of grapefruit juice and a twist of peel'],['orange','Orange','orange','A splash of orange juice and an orange peel'],['berries','Berries','muddled berries','A few berries, muddled in the bottom of the glass'],['cranberry','Cranberry','cranberry','A splash of cranberry juice and a few fresh cranberries'],['mango','Mango','mango','A spoonful of mango purée, stirred in']];
 const MB={f:null,b:null,g:null};
 const vibeOrdered=()=>{const h=momentNow()[0];return [...VIBE.filter(v=>v[0]===h),...VIBE.filter(v=>v[0]!==h)]};
 let BYO=[];
@@ -1020,6 +1076,7 @@ const home=()=>`
     <div><a class="button" href="#/blogs/recipes">Try Our Recipes</a></div>
   </div>
 </div></div></section>
+${season()}
 ${mixBuilder()}
 ${marquee()}
 ${guide()}
@@ -1042,11 +1099,20 @@ ${igRow()}
 ${sticky()}`;
 
 const GUIDE_AT=()=>new Date(2026,10,6,0,0,0);
+const SEASON={10:{fruit:'Cranberry',h:'the-tini',rec:'cran-cherry-sleep-tonic',line:'Tart, bright and right on time for the table.',pair:'The Tini is made with cranberry and thyme, so it’s already in season. Six droppers in a glass of cranberry and cherry, and the night is yours.',img:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708'}};
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const seasonPick=()=>{const m=new Date().getMonth();if(SEASON[m])return [m,SEASON[m]];for(let k=1;k<12;k++){const n=(m+k)%12;if(SEASON[n])return [n,SEASON[n]]}};
+const season=()=>{const [m,x]=seasonPick(),p=P[x.h],r=RECIPES.find(z=>z.s===x.rec);return `<section class="season" id="season" style="--sc:${p.theme};--sf:${p.fg}"><div class="pw"><div class="season__in">
+ <div class="season__copy"><p class="guide__k" id="seasonK">In season · ${MONTHS[m]}</p><h2 class="season__h">${x.fruit}</h2><p class="season__line">${x.line}</p><p>${x.pair}</p>
+  <div class="season__acts"><a class="button" href="#/blogs/recipes/${r.s}">Make the ${r.t}</a><a class="button season__alt" href="#/products/${x.h}">Shop The ${p.name}</a></div></div>
+ <div class="season__media"><img loading="lazy" src="${I(x.img,1200)}" alt="The ${p.name} in a coupe with a cranberry garnish" width="1200" height="1200"><span class="vpill" style="background:#fff">The ${p.name} · ${p.use}</span></div>
+</div></div></section>`};
+function seasonInit(){}
 const guide=()=>`<section class="guide" id="guide"><div class="pw"><div class="guide__in">
- <img class="guide__img" loading="lazy" src="${AI('Rosemary_Grapefruit_Paloma_Mocktail_2.jpg?v=1777409264',1200)}" alt="A rosemary grapefruit paloma made with The Original" width="1200" height="900">
+ <a class="guide__cov" href="#/pages/under-the-influence" aria-label="Preview Under the Influence (of Fruit)"><img class="guide__img" loading="lazy" src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></a>
  <div class="guide__b"><p class="guide__k">Our first drinking guide</p>
   <h2 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h2>
-  <p class="guide__p">30 zero-proof drinks, all sweetened with agave. Fruit is the main character. Out November 6, free for everyone on the waitlist.</p>
+  <p class="guide__p">30 fruit-forward drinks with zero proof and maximum personality. Five minutes to make. Considerably longer to forget.</p><p class="guide__p">Out November 6, free for everyone on the waitlist. <a href="#/pages/under-the-influence">Preview the guide</a></p>
   <div class="cd" id="cd" aria-live="off"></div>
   <form class="quiz__code" data-capture="guide"><label for="gE">Get the guide first</label><div><input id="gE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>
  </div></div></div></section>`;
@@ -1066,7 +1132,7 @@ function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
   <div class="mb__steps">
    <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
    <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
-   <div class="mb__step"><h3><span aria-hidden="true">3</span><span class="sr">Step 3: </span>Finish it</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">3</span><span class="sr">Step 3: </span>Pick your fruit</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
    <div class="mb__out" id="mbOut" aria-live="polite"></div>
   </div>
  </div></div></section>`}
@@ -1088,13 +1154,13 @@ function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=M
  const alt=!f?'Four Altrd Bliss mocktails on the set':!b?`Six droppers of The ${f.name} going into a drink`:`The ${f.name} bottle beside a finished drink`;
  mbPhoto(src,alt);
  shown.hidden=true;
- const gl=g&&g[0]!=='none'?g[1].toLowerCase():'';
+ const gl=g?g[2]:'';
  const html=!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
   :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>`;
  const key=[MB.f,MB.b,MB.g].join('|');if(key!==MBV.key){cap.innerHTML=html;cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');MBV.key=key}
  const out=document.getElementById('mbOut');
  if(f&&b&&g){const amt={mocktail:'1 cup of your favorite mocktail',tonic:'1 cup tonic water',sparkling:'1 cup sparkling water',tea:'1 cup tea, hot or iced'}[b[0]];
-  out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${amt}</li><li>Ice${b[0]==='tea'?' (if iced)':''}</li>${g[0]!=='none'?`<li>${g[1]} for garnish</li>`:''}</ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
+  out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${amt}</li><li>Ice${b[0]==='tea'?' (if iced)':''}</li><li>${g[3]}</li></ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
 function mbLoad(u){return new Promise((res,rej)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=rej;im.src=u})}
 async function mbCard(){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b),g=GARN.find(x=>x[0]===MB.g);await document.fonts.ready;
  const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');x.fillStyle='#101618';x.fillRect(0,0,1080,1350);
@@ -1104,7 +1170,7 @@ async function mbCard(){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b),g=GARN.find
  const rb=x.createLinearGradient(80,0,240,0);['#3a599d','#abdbca','#d9e36a','#c9b3d7','#f3703b','#e02d59'].forEach((col,i)=>rb.addColorStop(i/5,col));x.fillStyle=rb;x.fillRect(80,990,160,8);
  x.textAlign='left';x.fillStyle='#fff';x.font='400 30px "Supreme LL"';x.fillText('MY MIX',80,1050);
  x.font='800 76px "Matria Expanded"';x.fillText(`THE ${f.name.toUpperCase()} ${b[2].toUpperCase()}`,80,1140,920);
- x.font='400 34px "Supreme LL"';x.globalAlpha=.9;x.fillText(`6 droppers + ${b[1].toLowerCase()}${g&&g[0]!=='none'?' + '+g[1].toLowerCase():''}`,80,1200,920);x.globalAlpha=1;
+ x.font='400 34px "Supreme LL"';x.globalAlpha=.9;x.fillText(`6 droppers + ${b[1].toLowerCase()}${g?' + '+g[2]:''}`,80,1200,920);x.globalAlpha=1;
  x.font='800 30px "Matria"';x.fillText('ALTRD BLISS',80,1290);x.textAlign='right';x.font='400 30px "Supreme LL"';x.fillText('#SipALTRD',1000,1290);
  return c}
 const STEPS=[['THE REAL DEAL','Made with no artificial junk, only and always top-notch, natural ingredients.','ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910'],['PRECISE DOSAGES EVERY TIME','Know exactly what you’re taking and tailor your experience to find your perfect vibe.','The_Rita_GIF_JAM_v1b.gif?v=1778080802'],['FIGHTING FOR JUSTICE','We are committed to advocating for those impacted by unjust cannabis laws, and cannabis-related offenses.','123ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062860']];
@@ -1135,7 +1201,7 @@ function product(h){const p=P[h];if(!p)return notFound();
    <h1 class="prod__title${p.name.length>7?' long':''}"><span>The</span>${p.name}</h1>
    <p class="prod__comp">${p.sub}</p>
    ${p.use?`<p class="prod__usage">${p.use}</p>`:''}
-   <p class="prod__desc">${p.desc}</p>${draft}
+   <p class="prod__desc">${p.desc}</p>${draft}${sixBlock(h)}
    <p class="prod__foot">*While we hope you love our syrups, we can’t guarantee any specific health benefits.</p>
    <div class="buy">
      <div class="variants" role="group" aria-label="Size">${p.packOnly?`<button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`:`<button aria-pressed="false" data-v="bottle">$8.00 Per Bottle</button><button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`}</div>
@@ -1245,8 +1311,14 @@ const RECIPES=[
  {s:'blackberry-lime-rita-mocktail',t:'Blackberry Lime Rita Mocktail',h:'the-rita',kind:'drink',img:'Blackberry_Lime_Rita_Mocktail.jpg?v=1775064818',ing:['1.5 oz lime juice','6 blackberries','1 serving Altrd Bliss Rita Syrup','1/3 cup sparkling water','Ice','Lime wedge for garnish'],steps:['Muddle blackberries in a glass until juicy.','Add lime juice and Altrd Bliss Rita Syrup. Stir to combine.','Fill with ice.','Top with sparkling water.','Stir gently.','Garnish with lime and serve.']},
  {s:'iced-mango-matcha',t:'Iced Mango Matcha',h:'the-spritz',kind:'drink',img:'Iced_Mango_Matcha_1_41c35261-df51-4269-9d63-a93e37a85741.jpg?v=1778103967',ing:['1 serving matcha','2 tbsp water','1 cup milk of your choice (coconut, almond, or oat)','1 serving Altrd Bliss Spritz','1/4–1/3 cup fresh mango purée (see instructions below)','Ice','#Mango Purée Ingredients','1 ripe mango','1 tsp lemon or lime juice (optional, to brighten flavor)','1 tsp sugar or honey (optional, depending on sweetness)'],steps:['#Step 1: Make the mango purée','Peel and chop the mango, removing the pit.','Place mango pieces in a blender. Add lemon/lime juice and sugar or honey if using.','Blend until smooth. For a thinner purée, add 1–2 tsp water and blend again.','#Step 2: Assemble the drink','Add 2–3 tablespoons of the mango purée to the bottom of a glass (more if you like it sweeter).','Fill the glass with ice.','Pour in the milk over the ice.','Add 1 serving Altrd Bliss Spritz and gently stir.','#Step 3: Prepare the matcha','In a small bowl or cup, whisk 1 serving matcha with 2 tbsp water until smooth and frothy.','Slowly pour the matcha on top of the milk, spritz, and mango mixture to create layers.','#Step 4: Serve','Stir before drinking (or enjoy the layered effect).']}
 ];
-const rcard=r=>`<a class="rcard" data-f="${r.h}" href="#/blogs/recipes/${r.s}"><div class="rcard__m"><img loading="lazy" src="${AI(r.img,700)}" alt="${r.t}" width="700" height="700"></div><h3>${r.t}</h3><p>Using The ${P[r.h].name}</p></a>`;
+const FRUITS=[['berries','Berries'],['citrus','Citrus'],['cranberry','Cranberry'],['cherry','Cherry'],['mango','Mango'],['passion','Passion fruit'],['pomegranate','Pomegranate']];
+const R_FRUIT={'altrd-bliss-ice-cream':['cranberry'],'rosemary-grapefruit-paloma-mocktail':['citrus'],'berry-lime-smoothie':['berries','citrus'],'orange-juice-passion-fruit-spritz':['citrus','passion','mango'],'cran-cherry-sleep-tonic':['cranberry','cherry','citrus'],'altrd-bliss-yogurt-bowl':['berries','pomegranate'],'blackberry-lime-rita-mocktail':['berries','citrus'],'iced-mango-matcha':['mango','passion']};
+const rcard=r=>`<a class="rcard" data-f="${r.h}" data-fr="${(R_FRUIT[r.s]||[]).join(' ')}" href="#/blogs/recipes/${r.s}"><div class="rcard__m"><img loading="lazy" src="${AI(r.img,700)}" alt="${r.t}" width="700" height="700"></div><h3>${r.t}</h3><p>Using The ${P[r.h].name}</p></a>`;
+const FRUIT_NOTE={'the-original':'Classic agave','the-rita':'Blackberry, lime + lavender','the-tini':'Cranberry + thyme','the-spritz':'Passion fruit + mango'};
+const FRUITY=/lime|blackberry|lavender|cranberry|thyme|passion|mango/i;
+const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const ing=p.ing.split(',').map(x=>x.trim()).filter(Boolean);return `<div class="six"><p class="six__t">${ing.length} ingredients</p><p class="six__f">${FRUIT_NOTE[h]}</p><ul class="six__l">${ing.map(x=>`<li${FRUITY.test(x)?' class="fr"':''}>${x}</li>`).join('')}</ul><p class="six__n">6 ingredients or fewer, in every bottle.</p></div>`};
 const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn${h==='the-tini'?' rose':''}" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false"${h==='the-tini'?' data-rose':''}>The ${P[h].name}</button>`).join('')}</div>
+<div class="ffruit" role="group" aria-label="Sort by fruit"><span class="ffruit__l">Or by fruit</span>${FRUITS.map(([k,l])=>`<button class="fchip" data-fruit="${k}" aria-pressed="false">${l}</button>`).join('')}</div><p class="rnone" id="rnone" hidden>No recipes match both. Try another fruit or flavor.</p>
 <div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(rcard).join('')}</div></div></section>`;
 function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound();const p=P[r.h];
  const li=(arr,ol)=>arr.map((x,i)=>x.startsWith('#')?`<li class="rh">${x.slice(1)}</li>`:ol?`<li>${x}</li>`:`<li><label><input type="checkbox"><span>${x}</span></label></li>`).join('');
@@ -1275,6 +1347,23 @@ const press=()=>`<section class="press"><div class="pw">
  <div class="pkit"><div><h2>Fast facts</h2><ul><li>Founded by identical twin sisters Erika and Jamie Isaac</li><li>CBD and CBG infused agave syrups, non-intoxicating</li><li>Four flavors: The Original, The Tini, The Rita and The Spritz</li><li>$8 a bottle, $32 a 4 pack</li><li>Drinking guide out November 6, product launch in Q1</li></ul></div>
  <div><h2>For press</h2><p>Interviews, samples and images. Write to us and we’ll get back to you.</p><a class="button" href="#/pages/contact">Contact us</a></div></div>
 </div></section>`;
+const UTI_TEASE=['rosemary-grapefruit-paloma-mocktail','orange-juice-passion-fruit-spritz','cran-cherry-sleep-tonic'];
+const UTI_LOCK=['ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit-2.png?v=1775060929'];
+const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti"><div class="pw"><div class="uti__hero">
+ <div class="uti__cov"><img src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></div>
+ <div class="uti__copy"><p class="guide__k">The Altrd Bliss drinking guide</p><h1 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h1>
+  <p class="uti__lede">30 fruit-forward drinks with zero proof and maximum personality.</p>
+  <p>A collection of recipes for people who take pleasure seriously. Five minutes to make. Considerably longer to forget.</p>
+  <div class="uti__stamp"><b>Made with just agave</b><span>No CBD. No CBG. No surprises. The Bliss is a dropper away, whenever you’re ready.</span></div>
+  <div class="cd" id="cd" aria-live="off"></div>
+  ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
+ </div></div>
+ <div class="uti__facts"><div><b>30</b><span>drinks</span></div><div><b>0</b><span>proof</span></div><div><b>5</b><span>minutes each</span></div><div><b>1</b><span>sweetener: agave</span></div></div>
+ <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub">Three fruit-forward recipes already on the site.</p>
+ <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
+ <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
+  <div class="uti__lockc"><p class="guide__k">27 more inside</p><p class="uti__lockh">${got?'Unlocks November 6':'The full guide is for the waitlist'}</p>${got?'<p>Watch your inbox.</p>':'<a class="button" href="#gE2" data-scroll="gE2">Get the guide</a>'}</div></div>
+</div></section>`};
 const notFound=()=>`<section class="ptitle"><h1>Page not found</h1><p>That page isn't part of this demo.</p><p style="margin-top:24px"><a class="button" href="#/">Back home</a></p></section>`;
 
 /* --- footer, menus --- */
@@ -1285,7 +1374,7 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
 <footer class="ft"><div class="ft__row">
  <div class="ft__cols">
   <div><h4>Shop</h4><ul><li><a href="#/pages/shop-all">Shop All</a></li>${['the-multipack','the-original','the-spritz','the-tini','the-rita'].map(h=>`<li><a href="#/products/${h}">The ${P[h].name}</a></li>`).join('')}</ul></div>
-  <div><h4>Explore</h4><ul><li><a href="#/pages/find-your-bliss">Find your Bliss</a></li><li><a href="#/pages/about">About</a></li><li><a href="#/pages/learn">Learn</a></li><li><a href="#/blogs/recipes">Recipes</a></li><li><a href="#/pages/press">Press</a></li></ul></div>
+  <div><h4>Explore</h4><ul><li><a href="#/pages/find-your-bliss">Find your Bliss</a></li><li><a href="#/pages/about">About</a></li><li><a href="#/pages/learn">Learn</a></li><li><a href="#/blogs/recipes">Recipes</a></li><li><a href="#/pages/press">Press</a></li><li><a href="#/pages/under-the-influence">The Guide</a></li></ul></div>
   <div><h4>Help</h4><ul><li><a href="#/pages/faq">FAQ</a></li><li><a href="#/pages/contact">Contact Us</a></li>${[['Privacy Policy','pages/privacy-policy'],['Terms & Conditions','pages/terms-conditions'],['Return Policy','pages/return-policy']].map(([t,u])=>`<li><a href="https://www.altrdbliss.com/${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>
   <div><h4>Connect</h4><ul><li><a href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@altrdbliss" target="_blank" rel="noopener">TikTok</a></li></ul></div>
  </div>
@@ -1293,7 +1382,7 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
 </div></footer>`;
 const SHOPDD=[['Shop All','#/pages/shop-all','ALTRD_BLISS_HHD_2A_COCKTAIL_GROUP_HANDS7241-Edit_JAM_v02_88d4db93-6a62-474e-9d7c-c4ef33c59a14.png?v=1778080338'],...SHOP_ORDER.map(h=>['The '+P[h].name,'#/products/'+h,h==='the-multipack'?'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501':pimg(h)])];
 document.getElementById('dd-shop').innerHTML=SHOPDD.map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,240)}" alt="" width="111" height="109">${t}</a>`).join('');
-const MENU=[['Find your Bliss','#/pages/find-your-bliss'],['About','#/pages/about'],['Learn','#/pages/learn'],['FAQ','#/pages/faq'],['Recipes','#/blogs/recipes'],['Press','#/pages/press']];
+const MENU=[['Find your Bliss','#/pages/find-your-bliss'],['About','#/pages/about'],['Learn','#/pages/learn'],['FAQ','#/pages/faq'],['Recipes','#/blogs/recipes'],['Press','#/pages/press'],['The Guide','#/pages/under-the-influence']];
 document.getElementById('dd-menu').innerHTML=`<img loading="lazy" src="${I('DTS_my_own_summer_Daniel_Faro_Photos_ID9790_4e08198d-ca72-4ebf-a8a2-98a3803a2716.png?v=1778081854',600)}" alt="" width="260" height="109">`+MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('');
 document.getElementById('drawer').innerHTML=`<p class="dm__h">Shop</p><div class="dm__shop">${SHOPDD.map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,120)}" alt="" width="48" height="48">${t}</a>`).join('')}</div><hr><p class="dm__h">Explore</p><div class="dm__links">${MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('')}</div>`;
 
@@ -1302,9 +1391,9 @@ function clockTick(){const m=document.getElementById('moment');if(m&&!momentShif
 setInterval(clockTick,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)clockTick()});window.addEventListener('focus',clockTick);
 /* --- router --- */
 const app=document.getElementById('app');
-const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about':about,'pages/faq':faq,'pages/find-your-bliss':findBliss,'blogs/recipes':recipes,'pages/contact':contact,'pages/press':press};
-const DESC={'':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.','pages/press':'Altrd Bliss in the news, with fast facts and a press contact.','pages/contact':'Questions about an order, wholesale or your bliss? Send Altrd Bliss a note and we’ll get back to you.'};
-const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes','pages/contact':'Contact Us','pages/press':'Press'};
+const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about':about,'pages/faq':faq,'pages/find-your-bliss':findBliss,'blogs/recipes':recipes,'pages/contact':contact,'pages/press':press,'pages/under-the-influence':uti};
+const DESC={'':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.','pages/under-the-influence':'Under the Influence (of Fruit): 30 fruit-forward, zero-proof drinks made with just agave. Out November 6 for the waitlist.','pages/press':'Altrd Bliss in the news, with fast facts and a press contact.','pages/contact':'Questions about an order, wholesale or your bliss? Send Altrd Bliss a note and we’ll get back to you.'};
+const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes','pages/contact':'Contact Us','pages/press':'Press','pages/under-the-influence':'Under the Influence (of Fruit)'};
 let fadeTimer=null;
 function setOg(t,d,img){const set=(p,v)=>{let m=document.querySelector(`meta[property="${p}"]`);if(!m){m=document.createElement('meta');m.setAttribute('property',p);document.head.appendChild(m)}m.setAttribute('content',v)};set('og:title',t);set('og:description',d);set('og:image',img);CUR={t,d,img}}
 let CUR={};
@@ -1335,12 +1424,14 @@ function wire(){
   const dose=app.querySelector('.dose:not(.dose--home)');if(dose){const h=app.querySelector('[data-addp]').dataset.addp,p=P[h];const set=n=>{dose.querySelectorAll('[data-dose]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.dose===n));dose.querySelectorAll('.dose__drops i').forEach((d,k)=>d.classList.toggle('on',k<n));const mg=p.dose.map(([c,m])=>`${+(m*n/6).toFixed(2)}mg ${c}`).join(' + ');dose.querySelector('.dose__out').innerHTML=`<b>${n} droppers</b> = ${mg}<br>${n===3?'10':'5'} servings per bottle`};dose.querySelectorAll('[data-dose]').forEach(x=>x.onclick=()=>set(+x.dataset.dose));set(6)}
   const sb=document.getElementById('sbar'),bu=app.querySelector('.buy');if(sb&&bu&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{const show=!e.isIntersecting&&e.boundingClientRect.top<0;sb.classList.toggle('on',show);sb.setAttribute('aria-hidden',!show);document.body.classList.toggle('has-bar',show)});o.observe(bu)}
   app.querySelectorAll('.checks input').forEach(c=>c.onchange=()=>c.closest('li').classList.toggle('done',c.checked));
-  app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}app.querySelectorAll('.rcard').forEach(c=>c.style.display=!on||c.dataset.f===b.dataset.filter?'':'none')});
+  const RF={f:null,fr:null};const rApply=()=>{let n=0;app.querySelectorAll('.rcard').forEach(c=>{const ok=(!RF.f||c.dataset.f===RF.f)&&(!RF.fr||(c.dataset.fr||'').split(' ').includes(RF.fr));c.style.display=ok?'':'none';if(ok)n++});const rn=app.querySelector('#rnone');if(rn)rn.hidden=n>0};
+  app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}RF.f=on?b.dataset.filter:null;rApply()});
+  app.querySelectorAll('[data-fruit]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-fruit]').forEach(x=>x.setAttribute('aria-pressed',false));if(on)b.setAttribute('aria-pressed',true);RF.fr=on?b.dataset.fruit:null;rApply()});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
   qa=[];quizStep();
   MB.f=MB.b=MB.g=null;MBV.key='';mbRender();byoRender();
   const mixS=document.getElementById('mix');if(mixS&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();['the-original','the-tini','the-rita','the-spritz'].forEach(h=>{const i=new Image();i.src=I(P[h].hov,1400)})},{rootMargin:'600px'});o.observe(mixS)}
-  igInit();guideInit();
+  igInit();guideInit();seasonInit();
 }
 function dragScroll(el){let down=false,x0=0,s0=0,moved=false;
   el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;s0=el.scrollLeft});
@@ -1417,7 +1508,7 @@ document.addEventListener('change',e=>{if(e.target.id!=='subPhoto'||!e.target.fi
 document.addEventListener('submit',e=>{if(e.target.id==='batchForm'){e.preventDefault();document.getElementById('batchRes').innerHTML=batchLookup(document.getElementById('batchIn').value);return}
  if(e.target.id==='subForm'){e.preventDefault();const m=document.getElementById('subMsgOut'),msg=document.getElementById('subMsg').value.trim();if(!msg){m.textContent='Tell us what is in your glass.';document.getElementById('subMsg').focus();return}if(!document.getElementById('subOk').checked){m.textContent='Check the box so we can feature your mix.';return}
   const subs=store.get('ab_subs',[]);subs.unshift({handle:document.getElementById('subHandle').value.trim(),f:document.getElementById('subFlavor').value,msg:msg.slice(0,240),img:subImg});try{store.set('ab_subs',subs.slice(0,3))}catch(x){}subImg='';e.target.reset();document.getElementById('subDlg').classList.remove('on');route();setTimeout(()=>{const hs=document.querySelector('.hs');hs&&hs.scrollIntoView({behavior:'smooth'})},100);return}});
-document.addEventListener('submit',e=>{if(e.target.id==='qzForm'){e.preventDefault();const em=document.getElementById('qzE');if(!/^\S+@\S+\.\S+$/.test(em.value)){document.getElementById('qzErr').textContent='Enter an email address like name@example.com.';em.focus();return}qMail=em.value;store.set('ab_quiz_email',qMail);quizFinish();return}const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='contact'?'Thanks. In the live site, this goes to hello@altrdbliss.com through Shopify.':f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':f.dataset.capture==='guide'?'You’re on the list. The guide lands in your inbox November 6.':'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
+document.addEventListener('submit',e=>{if(e.target.id==='qzForm'){e.preventDefault();const em=document.getElementById('qzE');if(!/^\S+@\S+\.\S+$/.test(em.value)){document.getElementById('qzErr').textContent='Enter an email address like name@example.com.';em.focus();return}qMail=em.value;store.set('ab_quiz_email',qMail);quizFinish();return}const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='contact'?'Thanks. In the live site, this goes to hello@altrdbliss.com through Shopify.':f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':f.dataset.capture==='guide'?(f.hasAttribute('data-unlock')?(store.set('ab_guide',true),setTimeout(route,900),'You’re on the list. The guide lands in your inbox November 6.'):'You’re on the list. The guide lands in your inbox November 6.'):'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
 document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');if(!s)return;store.set('ab_state',s.value);document.querySelectorAll('[data-state]').forEach(x=>{x.value=s.value;x.closest('.ship').querySelector('.ship__msg').innerHTML=shipMsg(s.value)});renderCart()});
 /* --- newsletter (demo) --- */
 document.getElementById('nl').onsubmit=e=>{e.preventDefault();const em=document.getElementById('nlE'),m=document.getElementById('nlMsg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent='You’re in. In the live site, this signs you up through Klaviyo.';e.target.reset()};
@@ -1456,9 +1547,9 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'pages/shop-all':['No search description, and shared links show the age gate photo.'],
  'blogs/recipes':['No search description, and shared links show the age gate photo.'],
  'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
-const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
+const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front, with the fruit called out','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
  if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist','Buy the flavor from the recipe','More recipes to sip','Recipe data Google can show with the photo'];
- return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','Mix your bliss, shot on your own photography, with a shareable card','Under the Influence (of Fruit) countdown in each visitor’s own time zone','Your latest Instagram posts, loaded only when someone scrolls to them','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
+ return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','In season this month: one fruit, the flavor it matches, and a recipe','Mix your bliss, shot on your own photography, with a pick-your-fruit step and a shareable card','Under the Influence (of Fruit) countdown in each visitor’s own time zone','Your latest Instagram posts, loaded only when someone scrolls to them','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
