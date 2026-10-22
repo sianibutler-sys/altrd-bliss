@@ -83,11 +83,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .logo{position:fixed;top:40px;left:50%;transform:translateX(-50%);z-index:60;mix-blend-mode:exclusion;width:253px;pointer-events:auto}
 .logo img{width:100%;height:auto}
 @media (max-width:989px){.logo{width:200px;top:25px}}
-.drawer-menu{position:fixed;inset:0;z-index:55;background:#000;padding:120px 30px 40px;display:none;flex-direction:column;gap:6px;overflow:auto}
-.drawer-menu.open{display:flex}
-.drawer-menu a{color:#fff;text-decoration:none;font:800 30px/1.4 var(--font-matria);text-transform:uppercase}
-.drawer-menu .sub{font:400 1.8rem/2 var(--font-body);text-transform:none;padding-left:4px}
-.drawer-menu hr{border:0;border-top:1px solid rgba(255,255,255,.15);margin:18px 0}
+.drawer-menu{position:fixed;top:96px;left:16px;z-index:56;width:min(380px,calc(100vw - 32px));max-height:calc(100dvh - 112px);overflow:auto;overscroll-behavior:contain;background:#fff;color:var(--ink);border-radius:20px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:none;flex-direction:column;transform-origin:top left}
+.drawer-menu.open{display:flex;animation:ddIn .18s ease-out}
+@keyframes ddIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
+.dm__h{font:800 12px/1 var(--font-matria);text-transform:uppercase;letter-spacing:.08em;color:rgba(16,22,24,.6);margin:6px 8px 8px}
+.dm__shop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.dm__shop a{display:flex;align-items:center;gap:10px;padding:6px;border-radius:12px;text-decoration:none;color:var(--ink);font-size:1.5rem;line-height:1.25;min-height:60px}
+.dm__shop img{width:48px;height:48px;border-radius:10px;object-fit:cover;flex:none}
+.dm__links a{display:flex;align-items:center;min-height:50px;padding:0 10px;border-radius:12px;text-decoration:none;color:var(--ink);font:800 17px/1 var(--font-matria);text-transform:uppercase}
+.drawer-menu a:hover,.drawer-menu a:focus-visible{background:var(--cream)}
+.drawer-menu hr{border:0;border-top:1px solid rgba(16,22,24,.12);margin:8px 6px}
+.mscrim{position:fixed;inset:0;z-index:54;background:rgba(0,0,0,.35);display:none}
+.mscrim.on{display:block}
+body.menu-open .hdr{z-index:57}
+.burger .ic-x{display:none}.burger[aria-expanded="true"] .ic-x{display:block}.burger[aria-expanded="true"] .ic-b{display:none}
+@media (max-width:420px){.drawer-menu{left:12px;width:calc(100vw - 24px)}}
+@media (min-width:990px){.drawer-menu,.mscrim{display:none!important}}
 
 /* hero banner */
 .banner{position:relative;min-height:90vh;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;text-align:center}
@@ -553,6 +564,11 @@ body.has-bar .badge{bottom:96px}
 .dose__drops i{width:14px;height:20px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;border:2px solid var(--theme);transition:background .2s}
 .dose__drops i.on{background:var(--theme)}
 .dose__out{font-size:1.5rem;line-height:1.5}
+.dose--home{--theme:var(--lime);--themefg:var(--ink);--ptext:#fff;max-width:420px;margin:28px 0 14px;padding:24px 18px}
+.dose--home .dose__drops{gap:10px}.dose--home .dose__drops i{width:18px;height:26px}
+.dose--home .dose__out{font-size:1.7rem}
+.dose__drops i{transition:background .2s,transform .25s}.dose__drops i.on{transform:translateY(-2px)}
+@media (max-width:989px){.dose--home{margin:24px auto 14px}}
 .tryin{padding:20px 0 80px}
 .tryin h2{text-align:center;margin-bottom:40px;color:var(--themefg)}
 .tryin .rcard{color:var(--themefg)}
@@ -578,10 +594,31 @@ body.has-bar .badge{bottom:96px}
 @media (min-width:990px){.mb__head p{font-size:22px}}
 .mb__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center}
 @media (min-width:990px){.mb__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px}}
-.mb__stage{background:#000;border-radius:20px;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px;position:relative;overflow:hidden}
-.mb__stage svg{width:min(62%,320px);height:auto}
-.mb__liquid{transition:fill .5s ease,y .7s ease,height .7s ease}
-.mb__name{font:800 30px/1 var(--font-expanded);text-transform:uppercase;text-align:center;transition:color .4s}
+.mb__stage{--set:#59636a;position:relative;aspect-ratio:1/1;border-radius:20px;overflow:hidden;background:#111;transition:--set .7s ease;isolation:isolate}
+.mb__set{position:absolute;inset:0 0 18% 0;background:
+ repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 6px,rgba(255,255,255,.36) 8px,rgba(255,255,255,0) 11px,rgba(0,0,0,.2) 15px,rgba(255,255,255,0) 21px),
+ repeating-linear-gradient(90deg,rgba(0,0,0,0) 0 13px,rgba(0,0,0,.16) 17px,rgba(255,255,255,.22) 22px,rgba(0,0,0,0) 29px),
+ repeating-linear-gradient(91deg,rgba(255,255,255,0) 0 37px,rgba(255,255,255,.3) 40px,rgba(255,255,255,0) 46px),
+ radial-gradient(120% 95% at 32% 22%,color-mix(in srgb,var(--set) 50%,#fff) 0%,var(--set) 42%,color-mix(in srgb,var(--set) 50%,#000) 100%)}
+.mb__set::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);background-size:260% 100%;animation:foil 7s ease-in-out infinite alternate;mix-blend-mode:soft-light}
+@keyframes foil{from{background-position:100% 0}to{background-position:0 0}}
+.mb__floor{position:absolute;left:0;right:0;bottom:0;height:18%;background:
+ repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 7px,rgba(255,255,255,.12) 9px,rgba(255,255,255,0) 13px),
+ linear-gradient(180deg,color-mix(in srgb,var(--set) 35%,#fff) 0,color-mix(in srgb,var(--set) 80%,#000) 5%,color-mix(in srgb,var(--set) 40%,#000) 100%)}
+.mb__stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 110% at 40% 35%,transparent 55%,rgba(0,0,0,.35) 100%);z-index:1}
+.mb__svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.mb__name{position:absolute;left:16px;top:16px;z-index:3;background:#fff;color:var(--ink);border-radius:32px;padding:.6rem 1.4rem;font-size:1.4rem;line-height:1.3;max-width:calc(100% - 32px)}
+@media (min-width:990px){.mb__name{left:24px;top:24px;padding:.8rem 1.8rem;font-size:1.5rem}}
+.mbx-drop{opacity:0}
+.mbx-dropper{transform:translateY(-300px)}
+.mbx-dropper.go{animation:dropper 2.3s ease-in-out both}
+.mbx-dropper.go .mbx-drop{animation:fall .45s cubic-bezier(.5,0,1,1) both;animation-delay:calc(.55s + var(--i)*.17s)}
+@keyframes dropper{0%{transform:translateY(-300px)}22%{transform:translateY(0)}78%{transform:translateY(0)}100%{transform:translateY(-300px)}}
+@keyframes fall{0%{opacity:1;transform:translateY(0)}92%{opacity:1}100%{opacity:0;transform:translateY(var(--fall))}}
+.mbx-bub{animation:rise var(--d,3s) linear infinite;animation-delay:var(--dl,0s)}
+@keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.85}100%{transform:translateY(var(--r));opacity:0}}
+.mbx-steam{animation:steam 3.4s ease-in-out infinite;animation-delay:var(--dl,0s);opacity:0}
+@keyframes steam{0%{transform:translateY(8px);opacity:0}35%{opacity:.5}100%{transform:translateY(-34px);opacity:0}}
 .mb__steps{display:flex;flex-direction:column;gap:22px}
 .mb__step h3{font:800 18px/1 var(--font-matria);text-transform:uppercase;margin-bottom:12px}
 .mb__step h3 span{opacity:.5;margin-right:8px}
@@ -597,6 +634,7 @@ body.has-bar .badge{bottom:96px}
 .mb__acts .button{height:52px;padding:0 26px}
 .mb__acts .alt{background:var(--ink);color:#fff}
 .mb__acts .alt:hover{color:var(--ink)}
+@property --set{syntax:'<color>';inherits:true;initial-value:#59636a}
 .moment{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px;font-size:1.5rem}
 .moment b{font-weight:400;border-radius:999px;padding:6px 14px;color:var(--ink)}
 .moment button{text-decoration:underline;text-underline-offset:3px;font-size:1.3rem;opacity:.8}
@@ -703,7 +741,7 @@ body.has-bar .badge{bottom:96px}
 <a class="skip" href="#app" data-skip>Skip to content</a>
 <header class="hdr">
   <div class="hdr__left">
-    <button class="circle glass burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="#fff" stroke-width="1.6"/></svg></button>
+    <button class="circle glass burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg class="ic-b" width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="#fff" stroke-width="1.6"/></svg><svg class="ic-x" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1l14 14M15 1L1 15" stroke="#fff" stroke-width="1.6"/></svg></button>
     <div class="navwrap">
       <button class="pill glass" data-dd="shop" aria-expanded="false">Shop</button>
       <div class="dd dd--shop" id="dd-shop"></div>
@@ -719,6 +757,7 @@ body.has-bar .badge{bottom:96px}
   </div>
 </header>
 <a class="logo" href="#/" aria-label="Altrd Bliss home"><img src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"></a>
+<div class="mscrim" id="mscrim"></div>
 <nav class="drawer-menu" id="drawer" aria-label="Menu"></nav>
 
 <main id="app" tabindex="-1"></main>
@@ -892,7 +931,7 @@ const home=()=>`
     <h2 class="h66"><span class="m">UNWIND</span> <span class="c">YOUR WAY</span></h2>
     <h3>HOW TO INDULGE</h3>
     <p>Simply mix 6 droppers into your drink of choice—mocktail, tonic, sparkling water, tea—or enjoy it under the tongue.</p>
-    <p class="t">Microdose = 3 droppers<br>Low dose = 6 droppers</p>
+    <div class="dose dose--home" role="group" aria-label="Find your dose"><p class="dose__t">Find your dose</p><div class="dose__btns"><button data-dose="3" aria-pressed="false">Microdose</button><button data-dose="6" aria-pressed="true">Low dose</button></div><div class="dose__drops" aria-hidden="true">${'<i></i>'.repeat(6)}</div><p class="dose__out" aria-live="polite">Low dose = 6 droppers<br>5 servings per bottle</p></div>
     <p class="fine">*Please use calibrated dropper</p>
     <div><a class="button" href="#/blogs/recipes">Try Our Recipes</a></div>
   </div>
@@ -919,7 +958,7 @@ ${sticky()}`;
 function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
  <div class="mb__grid">
-  <div class="mb__stage" id="mbStage">${glassSvg()}<p class="mb__name" id="mbName">Pick a flavor</p></div>
+  <div class="mb__stage" id="mbStage"><div class="mb__set"></div><div class="mb__floor"></div><svg class="mb__svg" id="mbSvg" viewBox="0 0 400 400" aria-hidden="true"></svg><p class="mb__name" id="mbName" aria-live="polite">Pick a flavor</p></div>
   <div class="mb__steps">
    <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
    <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
@@ -927,15 +966,88 @@ function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
    <div class="mb__out" id="mbOut" aria-live="polite"></div>
   </div>
  </div></div></section>`}
-function glassSvg(){return `<svg viewBox="0 0 200 240" aria-hidden="true"><defs><clipPath id="gclip"><path d="M40 30 L160 30 L146 200 Q144 214 130 214 L70 214 Q56 214 54 200 Z"/></clipPath></defs><g clip-path="url(#gclip)"><rect id="mbBase" x="0" y="214" width="200" height="0" fill="#dcebf5" class="mb__liquid"/><rect id="mbSyrup" x="0" y="214" width="200" height="0" fill="#e0f47b" class="mb__liquid" opacity=".85"/><g id="mbBubbles" fill="#fff" opacity="0"><circle cx="80" cy="170" r="3"/><circle cx="118" cy="140" r="2.5"/><circle cx="100" cy="185" r="2"/><circle cx="128" cy="175" r="3"/></g></g><path d="M40 30 L160 30 L146 200 Q144 214 130 214 L70 214 Q56 214 54 200 Z" fill="none" stroke="#fff" stroke-width="3"/><g id="mbGarnish"></g></svg>`}
+const hx=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const mixC=(a,b,t)=>{const A=hx(a),B=hx(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join('')};
+const rnd=i=>{const x=Math.sin(i*99.13+7)*43758.5453;return x-Math.floor(x)};
+const GL={
+ martini:{rim:110,bot:222,hw:y=>Math.max(0,95*(222-y)/112),bowl:'M105 110 L295 110 L206 218 Q200 225 194 218 Z',stem:'M197.5 222 L197.5 322 L202.5 322 L202.5 222 Z',foot:1,full:132,spec:'M120 118 L184 196',spec2:'M282 118 L262 142'},
+ wine:{rim:100,bot:234,hw:y=>60*Math.sqrt(Math.max(0,(234-y)/134)),bowl:'M140 100 C138 190 165 234 200 234 C235 234 262 190 260 100 Z',stem:'M197.5 232 L197.5 322 L202.5 322 L202.5 232 Z',foot:1,full:126,spec:'M151 112 C151 168 160 202 178 220',spec2:'M250 116 C250 140 248 156 244 168'},
+ highball:{rim:96,bot:304,hw:y=>50+5*(304-y)/208,bowl:'M145 96 L150 318 Q151 326 160 326 L240 326 Q249 326 250 318 L255 96 Z',base:'M150.4 304 L249.6 304 L250 318 Q249 326 240 326 L160 326 Q151 326 150 318 Z',full:118,spec:'M158 106 L162 296',spec2:'M244 110 L241 180'},
+ mug:{rim:150,bot:314,hw:y=>54+8*(314-y)/164,bowl:'M138 150 L146 318 Q147 326 156 326 L244 326 Q253 326 254 318 L262 150 Z',base:'M146.5 314 L253.5 314 L254 318 Q253 326 244 326 L156 326 Q147 326 146 318 Z',handle:'M259 192 C306 192 306 284 252 286',full:168,spec:'M151 160 L156 306',spec2:'M250 166 L247 220'}};
+const MBV={type:null,lvl:null,f:null,raf:0,t:0};
+function sprig(x1,y1,x2,y2){let o=`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="#5b4a2e" stroke-width="2.6" stroke-linecap="round"/>`;const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L;for(let i=2;i<=17;i++){const t=i/18,px=x1+dx*t,py=y1+dy*t,len=14*(1-t*.5);[1,-1].forEach((g,k)=>{const a=g*.9,vx=ux*Math.cos(a)-uy*Math.sin(a),vy=ux*Math.sin(a)+uy*Math.cos(a);o+=`<path d="M${px.toFixed(1)} ${py.toFixed(1)} l${(vx*len).toFixed(1)} ${(vy*len).toFixed(1)}" stroke="${(i+k)%2?'#2f5d34':'#55894d'}" stroke-width="3.4" stroke-linecap="round"/>`})}return o}
+function berry(cx,cy,col,hi){return [[0,0],[-5,-3],[5,-3],[-6,4],[6,4],[0,-7],[0,7],[-3,11],[3,11],[-3,-10],[3,-10]].map(([x,y])=>`<circle cx="${cx+x}" cy="${cy+y}" r="4.4" fill="${col}"/><circle cx="${cx+x-1.4}" cy="${cy+y-1.6}" r="1.2" fill="${hi}" opacity=".75"/>`).join('')}
+function garnish(G,k){const xr=200+G.hw(G.rim),y=G.rim;
+ if(k==='lime')return `<g transform="translate(${xr-4} ${y-6}) rotate(-18)"><circle r="25" fill="#5e9e25"/><circle r="22" fill="#eef6cf"/><circle r="19" fill="#a9d95a"/>${[...Array(8)].map((_,i)=>{const a=i*Math.PI/4;return `<path d="M0 0 L${(18*Math.cos(a)).toFixed(1)} ${(18*Math.sin(a)).toFixed(1)}" stroke="#eef6cf" stroke-width="1.8"/>`}).join('')}<circle r="3.4" fill="#eef6cf"/><path d="M-14 -11 A18 18 0 0 1 4 -18" stroke="#fff" stroke-width="2.5" fill="none" opacity=".6" stroke-linecap="round"/></g>`;
+ if(k==='orange')return `<g transform="translate(${xr-10} ${y-4}) rotate(-8)"><defs><linearGradient id="mbxOr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb04a"/><stop offset=".5" stop-color="#f07f1c"/><stop offset="1" stop-color="#c85a0c"/></linearGradient></defs><path d="M-6 -2 C8 -24 34 -26 48 -10 C56 -1 58 14 70 20 L66 30 C50 24 46 8 40 0 C30 -12 12 -12 4 6 Z" fill="url(#mbxOr)" stroke="#ffd08a" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 -10 C18 -20 34 -18 42 -8" stroke="#fff" stroke-width="2" fill="none" opacity=".55" stroke-linecap="round"/>${[...Array(9)].map((_,i)=>`<circle cx="${(8+rnd(i+300)*44).toFixed(1)}" cy="${(-14+rnd(i+330)*14).toFixed(1)}" r=".9" fill="#c85a0c" opacity=".6"/>`).join('')}</g>`;
+ if(k==='rosemary')return sprig(xr-58,y+70,xr+18,y-72);
+ if(k==='berries'){const x1=xr-62,y1=y+48,x2=xr+14,y2=y-50;return `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="#c9ccd1" stroke-width="2.6" stroke-linecap="round"/><circle cx="${x2}" cy="${y2}" r="4" fill="#e4e6ea"/>${berry(x1+(x2-x1)*.78,y1+(y2-y1)*.78,'#2a1433','#b9a6d6')}${berry(x1+(x2-x1)*.6,y1+(y2-y1)*.6,'#b42746','#ffb3c1')}`}
+ return ''}
+function mbSvg(G,type,col,lvl,f,b,g,pour,from){
+ const lq=col||'#ffffff',top=mixC(lq,'#ffffff',.18),bot=mixC(lq,'#000000',.12),tipY=G.rim+18,fall=Math.max(10,(from??G.bot)-tipY-6);
+ const iced=b&&type==='highball',fizz=b&&(b[0]==='tonic'||b[0]==='sparkling'),hot=b&&b[0]==='tea';
+ let ice='',bub='',cond='',steam='';
+ if(iced)ice=[[176,lvl+18,14],[214,lvl+34,-20],[186,lvl+66,32],[222,lvl+88,8]].map(([x,y,r])=>`<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-18" y="-18" width="36" height="36" rx="7" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/><path d="M-11 -10 L7 -13" stroke="rgba(255,255,255,.85)" stroke-width="2.5" stroke-linecap="round"/><path d="M-12 9 L-12 -4" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/></g>`).join('');
+ if(fizz){const span=G.bot-lvl-6;bub=[...Array(14)].map((_,i)=>{const yy=G.bot-4-rnd(i+3)*10,w=G.hw(yy)-8,x=200+(rnd(i)*2-1)*Math.max(4,w*.9);return `<circle class="mbx-bub" cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" r="${(1.2+rnd(i+9)*2).toFixed(1)}" fill="#fff" style="--r:${-span}px;--d:${(2.2+rnd(i+5)*2.2).toFixed(2)}s;--dl:${(-rnd(i+11)*4).toFixed(2)}s"/>`}).join('')}
+ if(iced)cond=[...Array(70)].map((_,i)=>{const y=lvl+6+rnd(i+40)*(G.bot-lvl-8),w=G.hw(y)-3,x=200+(rnd(i+80)*2-1)*w;return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.7+rnd(i+120)*1.9).toFixed(1)}" fill="#fff" opacity="${(.35+rnd(i+160)*.4).toFixed(2)}"/>`}).join('');
+ if(hot)steam=[0,1,2].map(i=>`<path class="mbx-steam" style="--dl:${i*1.1}s" d="M${180+i*20} ${G.rim-8} c-10 -14 10 -22 0 -36 c-8 -12 8 -20 2 -32" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>`).join('');
+ const rx=G.hw(G.rim);
+ const glass=`<g id="mbxGlass">
+  <path d="${G.bowl}" fill="url(#mbxGl)"/>
+  ${G.stem?`<path d="${G.stem}" fill="rgba(255,255,255,.28)" stroke="rgba(255,255,255,.65)" stroke-width="1"/>`:''}
+  ${G.foot?`<ellipse cx="200" cy="323" rx="58" ry="7" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.8)" stroke-width="2"/><path d="M152 322 Q170 318 186 318" stroke="#fff" stroke-width="2" opacity=".7" fill="none" stroke-linecap="round"/>`:''}
+  ${G.base?`<path d="${G.base}" fill="rgba(255,255,255,.2)"/>`:''}
+  <g clip-path="url(#mbxClip)">
+   <rect id="mbxLiq" x="0" y="${lvl}" width="400" height="${Math.max(0,G.bot-lvl+2)}" fill="url(#mbxLq)" opacity="${col?.94:0}"/>
+   <rect id="mbxShade" x="0" y="${lvl}" width="400" height="${Math.max(0,G.bot-lvl+2)}" fill="url(#mbxSh)" opacity="${col?1:0}"/>
+   ${ice}${bub}
+   <ellipse id="mbxMen" cx="200" cy="${lvl}" rx="${Math.max(0,G.hw(lvl)-1)}" ry="${Math.max(1.5,G.hw(lvl)*.075)}" fill="${mixC(lq,'#ffffff',.45)}" stroke="rgba(255,255,255,.55)" stroke-width="1" opacity="${col&&lvl<G.bot-2?.95:0}"/>
+   <g opacity=".9">${cond}</g>
+  </g>
+  ${G.handle?`<path d="${G.handle}" stroke="rgba(255,255,255,.75)" stroke-width="10" fill="none" stroke-linecap="round"/><path d="${G.handle}" stroke="rgba(255,255,255,.95)" stroke-width="2.5" fill="none" stroke-linecap="round" transform="translate(-2 -2)"/>`:''}
+  <path d="${G.bowl}" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2.2" stroke-linejoin="round"/>
+  <ellipse cx="200" cy="${G.rim}" rx="${rx}" ry="${(rx*.08).toFixed(1)}" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.9)" stroke-width="2"/>
+  <path d="${G.spec}" stroke="#fff" stroke-width="4.5" stroke-linecap="round" fill="none" opacity=".75"/>
+  <path d="${G.spec2}" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".45"/>
+  ${garnish(G,g&&g[0])}${steam}
+ </g>`;
+ const dc=f?mixC(f.theme,'#000000',.18):'#fff';
+ const dropper=`<g class="mbx-dropper${pour?' go':''}">${[...Array(6)].map((_,i)=>`<ellipse class="mbx-drop" cx="200" cy="${tipY+4}" rx="3.4" ry="4.4" fill="${dc}" stroke="rgba(255,255,255,.8)" stroke-width="1" style="--i:${i};--fall:${fall}px"/>`).join('')}
+  <path d="M195.5 ${tipY-64} L195.5 ${tipY-10} L199 ${tipY} L201 ${tipY} L204.5 ${tipY-10} L204.5 ${tipY-64} Z" fill="rgba(255,255,255,.4)" stroke="rgba(16,22,24,.35)" stroke-width="1.2"/>
+  <path d="M197.4 ${tipY-36} L197.4 ${tipY-10} L200 ${tipY-2} L202.6 ${tipY-10} L202.6 ${tipY-36} Z" fill="${dc}" opacity=".9"/>
+  <path d="M197 ${tipY-60} L197 ${tipY-14}" stroke="#fff" stroke-width="1.4" opacity=".8"/>
+  <rect x="185" y="${tipY-76}" width="30" height="14" rx="4" fill="${f?mixC(f.theme,'#000000',.3):'#bbb'}"/>
+  <rect x="188" y="${tipY-126}" width="24" height="54" rx="12" fill="url(#mbxBulb)"/>
+  <path d="M193 ${tipY-116} L193 ${tipY-86}" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+ </g>`;
+ const fc=f?f.theme:'#cccccc';
+ return `<defs>
+  <linearGradient id="mbxGl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".2" stop-color="#fff" stop-opacity=".07"/><stop offset=".5" stop-color="#fff" stop-opacity=".02"/><stop offset=".8" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity=".24"/></linearGradient>
+  <linearGradient id="mbxLq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${bot}"/></linearGradient>
+  <linearGradient id="mbxSh" gradientUnits="userSpaceOnUse" x1="${200-G.hw(G.rim)}" x2="${200+G.hw(G.rim)}"><stop offset="0" stop-color="#000" stop-opacity=".2"/><stop offset=".3" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>
+  <linearGradient id="mbxBulb" x1="0" x2="1"><stop offset="0" stop-color="${mixC(fc,'#ffffff',.25)}"/><stop offset=".6" stop-color="${fc}"/><stop offset="1" stop-color="${mixC(fc,'#000000',.3)}"/></linearGradient>
+  <linearGradient id="mbxFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <mask id="mbxRef" maskUnits="userSpaceOnUse"><rect x="0" y="328" width="400" height="72" fill="url(#mbxFade)"/></mask>
+  <clipPath id="mbxClip"><path d="${G.bowl}"/></clipPath>
+  <filter id="mbxBlur" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+ </defs>
+ <ellipse cx="214" cy="328" rx="74" ry="8" fill="#000" opacity=".4" filter="url(#mbxBlur)"/>
+ <ellipse id="mbxCaustic" cx="246" cy="333" rx="56" ry="7" fill="${lq}" opacity="${col&&lvl<G.bot-2?.75:0}" filter="url(#mbxBlur)"/>
+ <use href="#mbxGlass" transform="matrix(1 0 0 -1 0 654)" opacity=".22" mask="url(#mbxRef)"/>
+ ${glass}${dropper}`}
+function mbSetLvl(G,y,col){const svg=document.getElementById('mbSvg');if(!svg)return;const h=Math.max(0,G.bot-y+2);['mbxLiq','mbxShade'].forEach(id=>{const r=svg.querySelector('#'+id);r.setAttribute('y',y);r.setAttribute('height',h)});const m=svg.querySelector('#mbxMen'),w=G.hw(y);m.setAttribute('cy',y);m.setAttribute('rx',Math.max(0,w-1));m.setAttribute('ry',Math.max(1.5,w*.075));const on=col&&y<G.bot-2;m.setAttribute('opacity',on?.95:0);svg.querySelector('#mbxCaustic').setAttribute('opacity',on?.75:0);MBV.lvl=y}
 function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);
- const base=document.getElementById('mbBase'),syr=document.getElementById('mbSyrup'),name=document.getElementById('mbName');if(!base)return;
- const lvl=(r,h)=>{r.setAttribute('y',214-h);r.setAttribute('height',h)};
- if(f){syr.setAttribute('fill',f.theme);lvl(syr,b?150:46)}else lvl(syr,0);
- if(b){base.setAttribute('fill',b[3]);lvl(base,150);syr.setAttribute('opacity',.62)}else{lvl(base,0);syr.setAttribute('opacity',.85)}
- document.getElementById('mbBubbles').setAttribute('opacity',b&&(b[0]==='sparkling'||b[0]==='tonic')?.8:0);
- const gEl=document.getElementById('mbGarnish');gEl.innerHTML=!g||g[0]==='none'?'':g[0]==='lime'?'<circle cx="150" cy="34" r="22" fill="#9fd36b" stroke="#fff" stroke-width="3"/><path d="M150 12V56M128 34H172M134 18L166 50M166 18L134 50" stroke="#e8f6d6" stroke-width="2"/>':g[0]==='orange'?'<path d="M120 22 Q160 4 178 40 Q150 30 128 40 Z" fill="#f39a3d" stroke="#fff" stroke-width="2"/>':g[0]==='rosemary'?'<path d="M110 50 L140 0" stroke="#4f7a4a" stroke-width="3"/><path d="M118 38l-10-4M124 28l-10-4M130 18l-10-4M122 36l8-8M128 26l8-8M134 16l8-8" stroke="#6fa05e" stroke-width="3" stroke-linecap="round"/>':'<circle cx="138" cy="26" r="9" fill="#5b2a6e"/><circle cx="154" cy="22" r="9" fill="#c2304f"/><circle cx="146" cy="38" r="8" fill="#3f2a7a"/>';
- name.textContent=f?`The ${f.name}${b?' '+b[2]:''}`:'Pick a flavor';name.style.color=f?f.theme:'#fff';
+ const stage=document.getElementById('mbStage'),svg=document.getElementById('mbSvg'),name=document.getElementById('mbName');if(!stage||!svg)return;
+ const type=b?{mocktail:'martini',tonic:'highball',sparkling:'wine',tea:'mug'}[b[0]]:'martini',G=GL[type];
+ const col=f&&b?mixC(f.theme,b[3],b[0]==='tea'?.22:.1):f?f.theme:b?b[3]:null;
+ const target=!f&&!b?G.bot:f&&!b?G.bot-(G.bot-G.full)*.18:G.full+(G.bot-G.full)*.04;
+ const pour=!!f&&MB.f!==MBV.f;const sameType=MBV.type===type;const from=sameType&&MBV.lvl!=null?MBV.lvl:G.bot;
+ stage.style.setProperty('--set',f?f.theme:'#59636a');
+ svg.innerHTML=mbSvg(G,type,col,from,f,b,g,pour,from);MBV.type=type;MBV.f=MB.f;MBV.lvl=from;
+ cancelAnimationFrame(MBV.raf);clearTimeout(MBV.t);
+ const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(still||from===target){mbSetLvl(G,target,col)}else{MBV.t=setTimeout(()=>{const t0=performance.now(),d=900;const step=now=>{const k=Math.min(1,(now-t0)/d),e=1-Math.pow(1-k,3);mbSetLvl(G,from+(target-from)*e,col);if(k<1)MBV.raf=requestAnimationFrame(step)};MBV.raf=requestAnimationFrame(step)},pour?1250:0)}
+ name.textContent=f?`The ${f.name}${b?' '+b[2]:''}`:'Pick a flavor';
  const out=document.getElementById('mbOut');
  if(f&&b&&g){const amt={mocktail:'1 cup of your favorite mocktail',tonic:'1 cup tonic water',sparkling:'1 cup sparkling water',tea:'1 cup tea, hot or iced'}[b[0]];
   out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4><ul><li>6 droppers The ${f.name}</li><li>${amt}</li><li>Ice${b[0]==='tea'?' (if iced)':''}</li>${g[0]!=='none'?`<li>${g[1]} for garnish</li>`:''}</ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
@@ -1114,10 +1226,11 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
  </div>
  <div class="ft__logo"><img loading="lazy" src="${F}Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"><p class="ft__copy">© 2026 Altrd Bliss. All Rights Reserved · Site by Siani Creates</p></div>
 </div></footer>`;
-document.getElementById('dd-shop').innerHTML=[['Shop All','#/pages/shop-all','ALTRD_BLISS_HHD_2A_COCKTAIL_GROUP_HANDS7241-Edit_JAM_v02_88d4db93-6a62-474e-9d7c-c4ef33c59a14.png?v=1778080338'],...SHOP_ORDER.map(h=>['The '+P[h].name,'#/products/'+h,h==='the-multipack'?'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501':pimg(h)])].map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,240)}" alt="" width="111" height="109">${t}</a>`).join('');
+const SHOPDD=[['Shop All','#/pages/shop-all','ALTRD_BLISS_HHD_2A_COCKTAIL_GROUP_HANDS7241-Edit_JAM_v02_88d4db93-6a62-474e-9d7c-c4ef33c59a14.png?v=1778080338'],...SHOP_ORDER.map(h=>['The '+P[h].name,'#/products/'+h,h==='the-multipack'?'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501':pimg(h)])];
+document.getElementById('dd-shop').innerHTML=SHOPDD.map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,240)}" alt="" width="111" height="109">${t}</a>`).join('');
 const MENU=[['Find your Bliss','#/pages/find-your-bliss'],['About','#/pages/about'],['Learn','#/pages/learn'],['FAQ','#/pages/faq'],['Recipes','#/blogs/recipes']];
 document.getElementById('dd-menu').innerHTML=`<img loading="lazy" src="${I('DTS_my_own_summer_Daniel_Faro_Photos_ID9790_4e08198d-ca72-4ebf-a8a2-98a3803a2716.png?v=1778081854',600)}" alt="" width="260" height="109">`+MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('');
-document.getElementById('drawer').innerHTML=`<a href="#/pages/shop-all">Shop</a>${SHOP_ORDER.map(h=>`<a class="sub" href="#/products/${h}">The ${P[h].name}</a>`).join('')}<hr>${MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('')}`;
+document.getElementById('drawer').innerHTML=`<p class="dm__h">Shop</p><div class="dm__shop">${SHOPDD.map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,120)}" alt="" width="48" height="48">${t}</a>`).join('')}</div><hr><p class="dm__h">Explore</p><div class="dm__links">${MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('')}</div>`;
 
 /* --- router --- */
 const app=document.getElementById('app');
@@ -1150,7 +1263,8 @@ function wire(){
   app.querySelectorAll('[data-addp]').forEach(b=>b.onclick=()=>buyAct(b.dataset.addp,b));
   app.querySelectorAll('[data-sbar]').forEach(b=>b.onclick=()=>{const a=app.querySelector('[data-addp]');a.scrollIntoView({behavior:'smooth',block:'center'});buyAct(a.dataset.addp,b)});
   app.querySelectorAll('[data-quick]').forEach(b=>b.onclick=()=>{if(MODE==='prelaunch'){location.hash='#/products/'+b.dataset.quick;return}add(b.dataset.quick,'pack',b)});
-  const dose=app.querySelector('.dose');if(dose){const h=app.querySelector('[data-addp]').dataset.addp,p=P[h];const set=n=>{dose.querySelectorAll('[data-dose]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.dose===n));dose.querySelectorAll('.dose__drops i').forEach((d,k)=>d.classList.toggle('on',k<n));const mg=p.dose.map(([c,m])=>`${+(m*n/6).toFixed(2)}mg ${c}`).join(' + ');dose.querySelector('.dose__out').innerHTML=`<b>${n} droppers</b> = ${mg}<br>${n===3?'10':'5'} servings per bottle`};dose.querySelectorAll('[data-dose]').forEach(x=>x.onclick=()=>set(+x.dataset.dose));set(6)}
+  const hd=app.querySelector('.dose--home');if(hd){const set=n=>{hd.querySelectorAll('[data-dose]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.dose===n));hd.querySelectorAll('.dose__drops i').forEach((d,k)=>{d.style.transitionDelay=(k*70)+'ms';d.classList.toggle('on',k<n)});hd.querySelector('.dose__out').innerHTML=n===3?'Microdose = 3 droppers<br>10 servings per bottle':'Low dose = 6 droppers<br>5 servings per bottle'};hd.querySelectorAll('[data-dose]').forEach(x=>x.onclick=()=>set(+x.dataset.dose));set(6)}
+  const dose=app.querySelector('.dose:not(.dose--home)');if(dose){const h=app.querySelector('[data-addp]').dataset.addp,p=P[h];const set=n=>{dose.querySelectorAll('[data-dose]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.dose===n));dose.querySelectorAll('.dose__drops i').forEach((d,k)=>d.classList.toggle('on',k<n));const mg=p.dose.map(([c,m])=>`${+(m*n/6).toFixed(2)}mg ${c}`).join(' + ');dose.querySelector('.dose__out').innerHTML=`<b>${n} droppers</b> = ${mg}<br>${n===3?'10':'5'} servings per bottle`};dose.querySelectorAll('[data-dose]').forEach(x=>x.onclick=()=>set(+x.dataset.dose));set(6)}
   const sb=document.getElementById('sbar'),bu=app.querySelector('.buy');if(sb&&bu&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{const show=!e.isIntersecting&&e.boundingClientRect.top<0;sb.classList.toggle('on',show);sb.setAttribute('aria-hidden',!show);document.body.classList.toggle('has-bar',show)});o.observe(bu)}
   app.querySelectorAll('.checks input').forEach(c=>c.onchange=()=>c.closest('li').classList.toggle('done',c.checked));
   app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}app.querySelectorAll('.rcard').forEach(c=>c.style.display=!on||c.dataset.f===b.dataset.filter?'':'none')});
@@ -1174,10 +1288,11 @@ function stickyInit(){if(ssHandler)window.removeEventListener('scroll',ssHandler
 
 /* --- header menus --- */
 const burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
-function closeAll(){document.querySelectorAll('.dd').forEach(d=>d.classList.remove('open'));document.querySelectorAll('[data-dd]').forEach(b=>b.setAttribute('aria-expanded','false'));drawer.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu')}
+const mscrim=document.getElementById('mscrim');mscrim.onclick=()=>closeAll();
+function closeAll(){const wasOpen=drawer.classList.contains('open');mscrim.classList.remove('on');document.body.classList.remove('menu-open');if(wasOpen&&drawer.contains(document.activeElement))burger.focus({preventScroll:true});document.querySelectorAll('.dd').forEach(d=>d.classList.remove('open'));document.querySelectorAll('[data-dd]').forEach(b=>b.setAttribute('aria-expanded','false'));drawer.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu')}
 document.querySelectorAll('[data-dd]').forEach(b=>b.onclick=e=>{e.stopPropagation();const d=document.getElementById('dd-'+b.dataset.dd);const open=!d.classList.contains('open');closeAll();if(open){d.classList.add('open');b.setAttribute('aria-expanded','true')}});
 document.addEventListener('click',e=>{if(!e.target.closest('.navwrap'))document.querySelectorAll('.dd.open').forEach(()=>closeAll())});
-burger.onclick=()=>{const o=!drawer.classList.contains('open');closeAll();if(o){drawer.classList.add('open');burger.setAttribute('aria-expanded','true');burger.setAttribute('aria-label','Close menu')}};
+burger.onclick=()=>{const o=!drawer.classList.contains('open');closeAll();if(o){drawer.classList.add('open');mscrim.classList.add('on');document.body.classList.add('menu-open');burger.setAttribute('aria-expanded','true');burger.setAttribute('aria-label','Close menu');drawer.scrollTop=0}};
 drawer.addEventListener('click',e=>{if(e.target.tagName==='A')closeAll()});
 
 /* --- cart --- */
@@ -1272,7 +1387,7 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
  if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist','Buy the flavor from the recipe','More recipes to sip','Recipe data Google can show with the photo'];
- return ({'':['The right flavor first, by time of day','Mix your bliss, with a shareable card','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['A three-question quiz on your own site, with a recipe match and email for the promo code'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
+ return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','Mix your bliss, with a shareable card','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['A three-question quiz on your own site, with a recipe match and email for the promo code'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
