@@ -947,62 +947,34 @@ html.ag-no #gate .gate__no{display:block}
 .mood a:hover{color:inherit}
 .nw{white-space:nowrap}
 .unwind h2.h66{text-wrap:balance}
-@property --liq{syntax:'<color>';inherits:true;initial-value:#ffffff}
-@property --liqd{syntax:'<color>';inherits:true;initial-value:#cccccc}
-.mb__stage{--set:#59636a;--gd:62%;background:#101618;transition:--set .8s ease,--liq .9s ease,--liqd .9s ease}
-.mb__stage::after{background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.62) 100%)}
+.mb__stage{background:#0d0d0d}
+.mb__stage::after{background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.66) 100%)}
 .mb__ph,.mb__shown{display:none}
-.bar{position:absolute;inset:0;background:linear-gradient(118deg,transparent 28%,rgba(255,255,255,.12) 40%,rgba(255,255,255,.03) 48%,transparent 56%),radial-gradient(130% 110% at 26% 16%,color-mix(in srgb,var(--set) 58%,#fff) 0%,var(--set) 44%,color-mix(in srgb,var(--set) 48%,#000) 100%)}
 .mb__phtag{position:absolute;top:14px;right:14px;z-index:7;color:#fff;background:rgba(16,22,24,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0}
-.mb__stage[data-base="mocktail"]{--gd:66%}.mb__stage[data-base="sparkling"]{--gd:56%}.mb__stage[data-base="tonic"]{--gd:48%}.mb__stage[data-base="tea"]{--gd:50%}
-.gl{position:absolute;left:45%;top:42%;width:var(--gd);aspect-ratio:1;transform:translate(-50%,-50%);transition:width .9s cubic-bezier(.2,.8,.2,1);z-index:1}
-.gl>div,.gl>img{position:absolute}
-.gl__sh{inset:0;border-radius:50%;background:rgba(0,0,0,.5);filter:blur(16px);transform:translate(8%,10%)}
-.gl__ca{inset:10%;border-radius:50%;background:radial-gradient(circle,var(--liq) 0,transparent 70%);opacity:0;filter:blur(12px);transform:translate(20%,22%);mix-blend-mode:screen;transition:opacity .8s}
-.has-liq .gl__ca{opacity:.6}
-.gl__body{inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.03) 0 57%,rgba(255,255,255,.1) 70%,rgba(255,255,255,.24) 84%,rgba(255,255,255,.07) 90%,rgba(255,255,255,.38) 96%,rgba(255,255,255,.1) 100%);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6),inset 0 0 40px rgba(255,255,255,.07)}
-.mb__stage[data-base="tonic"] .gl__body{background:radial-gradient(circle,rgba(255,255,255,.05) 0 46%,rgba(255,255,255,.2) 50%,rgba(255,255,255,.06) 56% 82%,rgba(255,255,255,.3) 92%,rgba(255,255,255,.1) 100%)}
-.gl__liq{inset:9%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 42% 38%,color-mix(in srgb,var(--liq) 70%,#fff) 0,var(--liq) 48%,var(--liqd) 100%);transform:scale(var(--ls,0));opacity:var(--lo,0);transition:transform 1.3s cubic-bezier(.2,.8,.2,1),opacity .5s}
-.gl__liq::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.22),inset 0 0 28px rgba(0,0,0,.3)}
-.gl__swirl{position:absolute;inset:-12%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.4),transparent 28%,rgba(0,0,0,.2) 48%,transparent 66%,rgba(255,255,255,.3),transparent);filter:blur(10px);opacity:0}
-.gl__swirl.go{animation:swirl 1.8s ease-out}
-@keyframes swirl{0%{opacity:.95;transform:rotate(0)}100%{opacity:0;transform:rotate(320deg)}}
-.gl__ice{position:absolute;inset:0;display:none}
-.mb__stage[data-base="tonic"] .gl__ice{display:block}
-.gl__ice i{position:absolute;width:34%;aspect-ratio:1;border-radius:16%;background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,.04) 45%,rgba(255,255,255,.2) 82%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),inset -6px -8px 14px rgba(255,255,255,.14),0 4px 10px rgba(0,0,0,.18)}
-.gl__ice i:nth-child(1){left:14%;top:14%;transform:rotate(14deg)}.gl__ice i:nth-child(2){left:50%;top:30%;transform:rotate(-18deg)}.gl__ice i:nth-child(3){left:20%;top:52%;transform:rotate(31deg)}
-.gl__ice.go i{animation:ice .7s cubic-bezier(.3,1.4,.5,1) both}.gl__ice.go i:nth-child(2){animation-delay:.12s}.gl__ice.go i:nth-child(3){animation-delay:.24s}
-@keyframes ice{from{opacity:0;scale:1.5}to{opacity:1;scale:1}}
-.gl__fizz{position:absolute;inset:0;display:none}
-.mb__stage[data-base="sparkling"] .gl__fizz,.mb__stage[data-base="tonic"] .gl__fizz{display:block}
-.gl__fizz i{position:absolute;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 0 2px rgba(255,255,255,.8);animation:fizz 2s ease-in-out infinite;opacity:0}
-@keyframes fizz{0%{opacity:0;scale:.3}30%{opacity:.9;scale:1}70%{opacity:.7}100%{opacity:0;scale:1.4}}
-.gl__rips{position:absolute;inset:0}
-.gl__rips i{position:absolute;width:18%;aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.75);transform:translate(-50%,-50%) scale(.1);opacity:0;animation:rip 1.2s ease-out forwards}
-.gl__rips i::after{content:"";position:absolute;left:50%;top:50%;width:26%;aspect-ratio:1;border-radius:50%;background:var(--liqd);transform:translate(-50%,-50%)}
-.gl__rips i.big{width:34%;border-width:3px}
-@keyframes rip{0%{opacity:1;transform:translate(-50%,-50%) scale(.1)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.3)}}
-.gl__fruit{z-index:3;transform:translate(-50%,-50%) rotate(var(--fr,0deg));filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}
-.gl__fruit.w{left:60%;top:40%;width:54%}
-.gl__fruit.c{left:52%;top:54%;width:48%}
-.gl__fruit.drop{animation:fdrop .8s cubic-bezier(.3,1.25,.5,1) both}
-@keyframes fdrop{0%{opacity:0;transform:translate(-50%,-90%) rotate(calc(var(--fr,0deg) - 30deg)) scale(1.5);filter:drop-shadow(0 50px 30px rgba(0,0,0,.2))}100%{opacity:1;transform:translate(-50%,-50%) rotate(var(--fr,0deg)) scale(1);filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}}
-.gl__sheen{inset:9%;border-radius:50%;z-index:4;background:radial-gradient(ellipse 58% 40% at 34% 26%,rgba(255,255,255,.34),transparent 62%);opacity:0;transition:opacity .8s;pointer-events:none}
-.has-liq .gl__sheen{opacity:1}
-.gl__rim{inset:0;border-radius:50%;z-index:5;background:conic-gradient(from 210deg,transparent 0 6%,rgba(255,255,255,.9) 11%,transparent 17% 56%,rgba(255,255,255,.55) 61%,transparent 67%);-webkit-mask:radial-gradient(circle,transparent calc(50% - 7px),#000 calc(50% - 6px),#000 calc(50% - 1px),transparent 50%);mask:radial-gradient(circle,transparent calc(50% - 7px),#000 calc(50% - 6px),#000 calc(50% - 1px),transparent 50%)}
-.gl__handle{display:none;width:30%;height:44%;right:-22%;top:28%;border-radius:46%;border:clamp(7px,1.8vw,12px) solid rgba(255,255,255,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 0 0 1px rgba(255,255,255,.4),6px 10px 16px rgba(0,0,0,.3);z-index:0}
-.mb__stage[data-base="tea"] .gl__handle{display:block}
-.gl__steam{inset:-10%;display:none;z-index:6;pointer-events:none}
-.mb__stage[data-base="tea"] .gl__steam{display:block}
-.gl__steam i{position:absolute;left:40%;top:40%;width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 70%);filter:blur(8px);animation:steamt 4s ease-in-out infinite}
-.gl__steam i:nth-child(2){left:28%;animation-delay:1.3s}.gl__steam i:nth-child(3){left:52%;animation-delay:2.6s}
-@keyframes steamt{0%{opacity:0;transform:translate(0,10%) scale(.6)}40%{opacity:.8}100%{opacity:0;transform:translate(14%,-60%) scale(1.3)}}
-.side{position:absolute;z-index:2;right:5%;top:9%;width:21%;filter:drop-shadow(6px 10px 12px rgba(0,0,0,.4));transform:rotate(-16deg)}
-.side.c{width:19%}
-.side.drop2{animation:sdrop .7s .25s cubic-bezier(.3,1.25,.5,1) both}
-@keyframes sdrop{0%{opacity:0;transform:translateY(-40%) rotate(-40deg) scale(1.3)}100%{opacity:1;transform:rotate(-16deg)}}
-.side[hidden],.gl__fruit[hidden]{display:none}
-@media (max-width:600px){.mb__phtag{top:10px;right:10px}}
+.ms{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+.ms.on{opacity:1;z-index:1}
+.ms.pour{opacity:1;-webkit-mask-image:linear-gradient(to top,#000 40%,transparent 56%);mask-image:linear-gradient(to top,#000 40%,transparent 56%);-webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:pour 1.5s cubic-bezier(.45,.05,.3,1) both}
+@keyframes pour{from{-webkit-mask-position:0 0;mask-position:0 0}to{-webkit-mask-position:0 100%;mask-position:0 100%}}
+.dr{position:absolute;z-index:3;left:50%;top:0;height:32%;width:auto;pointer-events:none;opacity:0;transform:translate(-50%,-110%);filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
+.dr.go{animation:drIn 3.1s cubic-bezier(.3,.7,.2,1) both}
+@keyframes drIn{0%{opacity:0;transform:translate(-50%,-110%)}10%{opacity:1}24%{transform:translate(-50%,0)}26%{transform:translate(-50%,0) scaleY(1)}84%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-110%)}}
+.drops{position:absolute;inset:0;z-index:2;pointer-events:none}
+.drops i{position:absolute;width:1.4%;aspect-ratio:3/4;border-radius:50% 50% 50% 50%/62% 62% 40% 40%;background:radial-gradient(circle at 38% 34%,rgba(255,255,255,.75) 0 14%,var(--dc) 46%,color-mix(in srgb,var(--dc) 60%,#000) 100%);transform:translate(-50%,0);opacity:0;animation:drip .5s cubic-bezier(.55,0,1,.45) forwards}
+@keyframes drip{0%{opacity:0;transform:translate(-50%,0) scale(.4)}12%{opacity:1;transform:translate(-50%,0) scale(1)}92%{opacity:1}100%{opacity:0;transform:translate(-50%,var(--fall)) scaleY(1.25)}}
+.drops b{position:absolute;width:6%;aspect-ratio:3/1;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);transform:translate(-50%,-50%) scale(.2);opacity:0;animation:splash .7s ease-out forwards}
+@keyframes splash{0%{opacity:.9;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
+.gz{position:absolute;z-index:2;pointer-events:none;filter:drop-shadow(0 8px 10px rgba(0,0,0,.32));transition:opacity .35s}
+.gz[hidden]{display:none}
+.gz.w{transform:translate(-50%,-50%)}
+.gz.k{transform-origin:50% 100%;transform:translate(-50%,-100%) rotate(16deg)}
+.gz.drop.w{animation:gzW .8s cubic-bezier(.3,1.3,.5,1) both}
+.gz.drop.k{animation:gzK .9s cubic-bezier(.3,1.25,.5,1) both}
+@keyframes gzW{0%{opacity:0;transform:translate(-50%,-150%) rotate(-24deg)}55%{opacity:1}100%{opacity:1;transform:translate(-50%,-50%) rotate(0)}}
+@keyframes gzK{0%{opacity:0;transform:translate(-50%,-160%) rotate(4deg)}55%{opacity:1}100%{opacity:1;transform:translate(-50%,-100%) rotate(16deg)}}
+.gz.out{opacity:0!important;animation:none!important}
+.mb__cap .mb__glass{display:inline-block;margin-top:12px;font-size:1.2rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+@media (max-width:600px){.mb__phtag{top:10px;right:10px}.mb__cap{padding:20px 20px 22px}.mb__cap .mb__meta{font-size:1.3rem;margin-top:8px}.mb__cap .mb__glass{margin-top:8px;font-size:1.05rem}}
+@media (prefers-reduced-motion:reduce){.ms{transition:none}.ms.pour{animation:none;-webkit-mask-image:none;mask-image:none}.dr,.drops{display:none}.gz.drop.w,.gz.drop.k{animation:none}}
 </style>
 </head>
 <body>
@@ -1136,7 +1108,7 @@ function momentNow(){const d=new Date(),h=d.getHours(),day=d.getDay();let k;if(h
 const TZ=()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){return undefined}};
 const momentLine=()=>{const [h,l,c]=momentNow();const t=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',timeZone:TZ()});return `<span>${momentShift?'Another moment:':`It's ${t}.`}</span><b style="background:${c}">${l}: The ${P[h].name}</b><button data-moment>See another moment</button>`};
 /* mix builder: bases from their own copy ("mocktail, tonic, sparkling water, tea") */
-const BASES=[['mocktail','Mocktail','Mocktail','#f3c8a8'],['tonic','Tonic','Tonic','#e8f0ec'],['sparkling','Sparkling water','Fizz','#dcebf5'],['tea','Tea','Tea Time','#c98f52']];
+const BASES=[['sparkling','Sparkling water','Fizz','crystal coupe'],['tonic','Tonic','Tonic','balloon copa'],['tea','Iced tea','Tea Time','highball'],['lemonade','Lemonade','Lemonade','cut-crystal rocks glass']];
 const GARN=[['lime','Lime','lime','A squeeze of lime and a wedge on the rim'],['grapefruit','Grapefruit','grapefruit','A splash of grapefruit juice and a twist of peel'],['orange','Orange','orange','A splash of orange juice and an orange peel'],['berries','Berries','muddled berries','A few berries, muddled in the bottom of the glass'],['cranberry','Cranberry','cranberry','A splash of cranberry juice and a few fresh cranberries'],['mango','Mango','mango','A spoonful of mango purée, stirred in']];
 const MB={f:null,b:null,g:null};
 const vibeOrdered=()=>{const h=momentNow()[0];return [...VIBE.filter(v=>v[0]===h),...VIBE.filter(v=>v[0]!==h)]};
@@ -1256,7 +1228,7 @@ function igInit(){const cards=app.querySelectorAll('[data-ig]');if(!cards.length
 function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
  <div class="mb__grid">
-  <div class="mb__stage" id="mbStage" data-base="" data-fruit=""><div class="bar"></div><span class="ph mb__phtag">Placeholder fruit photos</span><img class="side" id="mbSide" alt="" hidden><div class="gl" aria-hidden="true"><div class="gl__sh"></div><div class="gl__ca"></div><div class="gl__handle"></div><div class="gl__body"></div><div class="gl__liq" id="mbLiq"><div class="gl__swirl" id="mbSwirl"></div><div class="gl__ice" id="mbIce"><i></i><i></i><i></i></div><div class="gl__fizz"><i style="left:36.0%;top:23.2%;width:4.0px;animation-delay:0.17s;animation-duration:2.04s"></i><i style="left:39.1%;top:16.3%;width:3.5px;animation-delay:0.09s;animation-duration:1.92s"></i><i style="left:17.2%;top:18.7%;width:3.3px;animation-delay:1.98s;animation-duration:1.55s"></i><i style="left:28.5%;top:58.4%;width:4.8px;animation-delay:1.39s;animation-duration:1.88s"></i><i style="left:84.2%;top:15.4%;width:4.6px;animation-delay:0.70s;animation-duration:1.57s"></i><i style="left:20.7%;top:34.8%;width:4.4px;animation-delay:0.43s;animation-duration:2.10s"></i><i style="left:59.3%;top:39.6%;width:3.6px;animation-delay:0.15s;animation-duration:1.47s"></i><i style="left:27.2%;top:62.3%;width:3.3px;animation-delay:0.75s;animation-duration:2.10s"></i><i style="left:45.5%;top:34.2%;width:4.4px;animation-delay:1.68s;animation-duration:1.69s"></i><i style="left:54.5%;top:50.9%;width:4.6px;animation-delay:1.75s;animation-duration:1.75s"></i><i style="left:84.5%;top:20.7%;width:3.3px;animation-delay:1.82s;animation-duration:1.58s"></i><i style="left:48.2%;top:14.9%;width:4.0px;animation-delay:1.83s;animation-duration:2.09s"></i><i style="left:76.8%;top:35.2%;width:4.1px;animation-delay:1.43s;animation-duration:2.10s"></i><i style="left:45.8%;top:74.2%;width:4.8px;animation-delay:1.14s;animation-duration:2.20s"></i><i style="left:16.5%;top:63.9%;width:3.9px;animation-delay:2.38s;animation-duration:2.39s"></i><i style="left:33.1%;top:40.5%;width:4.0px;animation-delay:0.05s;animation-duration:1.95s"></i><i style="left:24.4%;top:20.7%;width:2.2px;animation-delay:1.84s;animation-duration:1.56s"></i><i style="left:30.3%;top:40.9%;width:4.6px;animation-delay:0.19s;animation-duration:1.94s"></i><i style="left:52.7%;top:77.4%;width:4.5px;animation-delay:2.07s;animation-duration:1.73s"></i><i style="left:42.7%;top:38.5%;width:4.7px;animation-delay:2.30s;animation-duration:1.58s"></i><i style="left:25.0%;top:29.2%;width:2.7px;animation-delay:1.16s;animation-duration:2.11s"></i><i style="left:31.4%;top:12.3%;width:3.3px;animation-delay:0.89s;animation-duration:2.08s"></i><i style="left:82.5%;top:63.1%;width:3.5px;animation-delay:1.48s;animation-duration:2.21s"></i><i style="left:16.0%;top:78.6%;width:4.3px;animation-delay:2.10s;animation-duration:2.36s"></i><i style="left:41.0%;top:41.5%;width:2.3px;animation-delay:1.52s;animation-duration:1.47s"></i><i style="left:17.0%;top:27.4%;width:2.5px;animation-delay:0.82s;animation-duration:1.46s"></i><i style="left:12.0%;top:23.2%;width:2.3px;animation-delay:0.87s;animation-duration:1.43s"></i><i style="left:76.7%;top:57.4%;width:2.4px;animation-delay:0.61s;animation-duration:1.82s"></i><i style="left:38.9%;top:21.1%;width:4.5px;animation-delay:2.38s;animation-duration:1.96s"></i><i style="left:47.8%;top:18.4%;width:2.3px;animation-delay:0.82s;animation-duration:1.72s"></i><i style="left:73.3%;top:23.9%;width:2.1px;animation-delay:2.28s;animation-duration:2.03s"></i><i style="left:22.8%;top:52.2%;width:2.1px;animation-delay:1.27s;animation-duration:2.57s"></i><i style="left:75.9%;top:63.5%;width:2.8px;animation-delay:0.88s;animation-duration:1.60s"></i><i style="left:69.1%;top:51.4%;width:4.3px;animation-delay:0.79s;animation-duration:1.67s"></i></div><div class="gl__rips" id="mbRips"></div></div><img class="gl__fruit" id="mbFruit" alt="" hidden><div class="gl__sheen"></div><div class="gl__rim"></div><div class="gl__steam"><i></i><i></i><i></i></div></div><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
+  <div class="mb__stage" id="mbStage"><img class="ms on" src="img/mix/neutral.webp" data-sc="neutral" alt="An empty crystal coupe on a black foil-curtain set" width="1200" height="1200" decoding="async"><img class="ms" alt="" width="1200" height="1200" decoding="async"><span class="ph mb__phtag">Placeholder imagery</span><img class="dr" id="mbDr" alt="" aria-hidden="true"><div class="drops" id="mbDrops" aria-hidden="true"></div><img class="gz" id="mbGz" alt="" aria-hidden="true" hidden><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
   <div class="mb__steps">
    <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
    <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
@@ -1268,43 +1240,58 @@ const hx=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const mixC=(a,b,t)=>{const A=hx(a),B=hx(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join('')};
 const rnd=i=>{const x=Math.sin(i*99.13+7)*43758.5453;return x-Math.floor(x)};
 const MB_GROUP='ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693';
-const MB_REC={'the-original':{sparkling:'rosemary-grapefruit-paloma-mocktail',mocktail:'rosemary-grapefruit-paloma-mocktail'},'the-spritz':{sparkling:'orange-juice-passion-fruit-spritz',mocktail:'orange-juice-passion-fruit-spritz',tea:'iced-mango-matcha'},'the-tini':{tonic:'cran-cherry-sleep-tonic',mocktail:'cran-cherry-sleep-tonic'},'the-rita':{mocktail:'blackberry-lime-rita-mocktail',sparkling:'blackberry-lime-rita-mocktail'}};
-const MB_AMT={mocktail:'1 cup of your favorite mocktail',tonic:'1 cup tonic water',sparkling:'1 cup sparkling water',tea:'1 cup tea, hot or iced'};
-const MBV={src:'',key:'',f:null,b:null,g:null};
-function mbPhoto(src,alt){const st=document.getElementById('mbStage');if(!st)return;const ims=[...st.querySelectorAll('.mb__ph')],cur=ims.find(i=>i.classList.contains('on'))||ims[0],nx=ims.find(i=>i!==cur);MBV.src=src;if(cur.dataset.src===src){cur.alt=alt;return}
- const show=()=>{if(MBV.src!==src)return;nx.alt=alt;cur.alt='';nx.classList.add('on');cur.classList.remove('on')};
- if(nx.dataset.src===src&&nx.complete){requestAnimationFrame(show);return}
- nx.onload=show;nx.dataset.src=src;nx.src=src}
+const MB_REC={'the-original':{sparkling:'rosemary-grapefruit-paloma-mocktail'},'the-spritz':{sparkling:'orange-juice-passion-fruit-spritz',tea:'iced-mango-matcha'},'the-tini':{tonic:'cran-cherry-sleep-tonic'},'the-rita':{sparkling:'blackberry-lime-rita-mocktail'}};
+const MB_AMT={sparkling:'1 cup sparkling water',tonic:'1 cup tonic water',tea:'1 cup iced tea',lemonade:'1 cup lemonade'};
+const MB_ICE={sparkling:'Served up in a chilled coupe, no ice',tonic:'A copa full of ice',tea:'A tall glass of ice',lemonade:'A few big cubes'};
+const DRINK={'the-original':'#d9a441','the-tini':'#b3123a','the-rita':'#6a2a63','the-spritz':'#f0952e'};
+const MIXR={'neutral':[30,70,28],'original-syrup':[30,70,32],'tini-syrup':[27,74,30],'rita-syrup':[28,73,26],'spritz-syrup':[27,74,23],'original-sparkling':[27,75,26],'original-tonic':[31,71,23],'original-tea':[37,62,26],'original-lemonade':[27,74,31],'tini-sparkling':[27,74,24],'tini-tonic':[32,69,29],'tini-tea':[36,67,22],'tini-lemonade':[28,75,28],'rita-sparkling':[31,72,28],'rita-tonic':[28,72,18],'rita-tea':[37,64,21],'rita-lemonade':[29,74,29],'spritz-sparkling':[26,76,24],'spritz-tonic':[32,69,23],'spritz-tea':[38,66,20],'spritz-lemonade':[31,73,34]};
+const MIXW=['lime','grapefruit','orange'];
+function mbScene(){return MB.f?MB.f.replace('the-','')+'-'+(MB.b||'syrup'):'neutral'}
+function mbGzBox(sc,g){const [xl,xr,y]=MIXR[sc];if(g==='grapefruit')return{x:xr-2,y:y-3.5,w:22,c:'w'};if(MIXW.includes(g))return{x:xr-2,y,w:17,c:'w'};return{x:(xl+xr)/2+6,y:y+16,h:36,c:'k'}}
+const MBT=[];function mbClear(){while(MBT.length)clearTimeout(MBT.pop())}
+function mbAt(ms,fn){MBT.push(setTimeout(fn,ms))}
+function mbPre(list){list.forEach(n=>{const im=new Image();im.src=`img/mix/${n}.webp`})}
+const MBV={src:'',key:'',sc:'',f:null,b:null,g:null,still:false};
+function mbSwap(sc,mode){const st=document.getElementById('mbStage');const ims=[...st.querySelectorAll('.ms')],cur=ims.find(i=>i.classList.contains('on'))||ims[0],nx=ims.find(i=>i!==cur);
+ MBV.sc=sc;if(cur.dataset.sc===sc)return Promise.resolve();
+ return new Promise(res=>{const go=()=>{if(MBV.sc!==sc)return res();nx.style.zIndex=2;nx.className='ms '+(mode==='pour'?'pour':'on');nx.alt=mbAlt();cur.alt='';
+  const done=()=>{nx.className='ms on';nx.style.zIndex='';cur.className='ms';res()};if(mode==='pour'&&!MBV.still){nx.addEventListener('animationend',done,{once:true})}else setTimeout(done,mode==='cut'?0:1100)};
+  if(nx.dataset.sc===sc&&nx.complete&&nx.naturalWidth){requestAnimationFrame(go);return}nx.onload=go;nx.dataset.sc=sc;nx.src=`img/mix/${sc}.webp`})}
+function mbAlt(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);if(!f)return 'An empty crystal coupe on a black foil-curtain set';return `${b?`The ${f.name} ${b[2]} in a ${b[3]}`:`Six droppers of The ${f.name} in a crystal coupe`}${g?' with '+g[2]:''}, on a foil-curtain set in the flavor's color`}
+function mbGz(sc,animate){const gz=document.getElementById('mbGz');if(!gz)return;if(!MB.g){gz.hidden=true;return}const bx=mbGzBox(sc,MB.g);
+ gz.className='gz '+bx.c;gz.style.left=bx.x+'%';gz.style.top=bx.y+'%';gz.style.width=bx.w?bx.w+'%':'auto';gz.style.height=bx.h?bx.h+'%':'auto';
+ const src=`img/mix/g-${MB.g}.webp`;if(!gz.src.endsWith(src))gz.src=src;gz.hidden=false;if(animate&&!MBV.still){void gz.offsetWidth;gz.classList.add('drop')}}
+function mbDrip(sc,f){const dr=document.getElementById('mbDr'),box=document.getElementById('mbDrops');if(!dr||MBV.still)return 0;const [,,y]=MIXR[sc],tip=y-1,lvl=sc.endsWith('syrup')||sc==='neutral'?y+13:y+9;
+ dr.src=`img/mix/dropper-${f.replace('the-','')}.webp`;dr.style.top=(tip-32)+'%';dr.classList.remove('go');void dr.offsetWidth;dr.classList.add('go');box.innerHTML='';box.style.setProperty('--dc',DRINK[f]);
+ const H=box.clientHeight||1;for(let k=0;k<6;k++){mbAt(900+k*260,()=>{const d=document.createElement('i');d.style.left='50%';d.style.top=tip+'%';d.style.setProperty('--fall',((lvl-tip)/100*H)+'px');box.appendChild(d);
+  mbAt(480,()=>{d.remove();const sp=document.createElement('b');sp.style.left='50%';sp.style.top=lvl+'%';box.appendChild(sp);mbAt(700,()=>sp.remove())})})}
+ return 900+6*260+300}
 function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);
  const cap=document.getElementById('mbCap'),st=document.getElementById('mbStage');if(!cap||!st)return;
+ MBV.still=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const rs=f&&b&&MB_REC[MB.f][MB.b],rec=rs&&RECIPES.find(r=>r.s===rs);
- MBV.src=f?I(f.how,1400):I(MB_GROUP,1400);
- const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const DRINK={'the-original':'#d9a441','the-tini':'#9e1631','the-rita':'#6a2a63','the-spritz':'#f0952e'},BASEMIX={mocktail:['#ffffff',0],tonic:['#eef3f0',.24],sparkling:['#f3f7fb',.28],tea:['#8a4a1c',.45]};const dk=f&&DRINK[MB.f];const col=f&&b?mixC(dk,BASEMIX[b[0]][0],BASEMIX[b[0]][1]):f?dk:b?b[3]:'#ffffff';
- st.style.setProperty('--set',f?f.theme:'#59636a');st.style.setProperty('--liq',col);st.style.setProperty('--liqd',mixC(col,'#000000',.3));
- st.style.setProperty('--ls',!f&&!b?0:f&&!b?.44:1);st.style.setProperty('--lo',f||b?1:0);st.classList.toggle('has-liq',!!(f||b));
- st.dataset.base=b?b[0]:'';st.dataset.fruit=g?g[0]:'';
- const restart=(el,c)=>{if(!el||still)return;el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
- const rips=document.getElementById('mbRips');
- const ripple=(x,y,d,big)=>{if(still)return;const i=document.createElement('i');if(big)i.className='big';i.style.left=x+'%';i.style.top=y+'%';i.style.animationDelay=d+'s';rips.appendChild(i);setTimeout(()=>i.remove(),(d+1.4)*1000)};
- if(f&&MB.f!==MBV.f){for(let k=0;k<6;k++)ripple(50+(rnd(k+Date.now()%97)*2-1)*14,50+(rnd(k*3+Date.now()%89)*2-1)*14,.15+k*.22)}
- if(b&&MB.b!==MBV.b){restart(document.getElementById('mbSwirl'),'go');restart(document.getElementById('mbIce'),'go')}
- const fr=document.getElementById('mbFruit'),sd=document.getElementById('mbSide');
- if(g){if(MB.g!==MBV.g){const src=`img/fruit/${g[0]}.webp`,wheel=['lime','grapefruit','orange'].includes(g[0]);fr.src=src;sd.src=src;fr.alt='';sd.alt='';fr.hidden=false;sd.hidden=false;fr.className='gl__fruit '+(wheel?'w':'c');sd.className='side '+(wheel?'w':'c');fr.style.setProperty('--fr',(Math.round(rnd(Date.now()%53)*60)-30)+'deg');restart(fr,'drop');restart(sd,'drop2');ripple(wheel?60:52,wheel?40:54,.62,true)}}
- else{fr.hidden=true;sd.hidden=true}
+ const sc=mbScene(),fC=MB.f!==MBV.f,bC=MB.b!==MBV.b,gC=MB.g!==MBV.g;
+ if(f&&fC)mbPre(BASES.map(x=>MB.f.replace('the-','')+'-'+x[0]));
+ if(sc!==MBV.sc||!MBV.sc){mbClear();const gz=document.getElementById('mbGz');
+  if(f&&fC){mbDrip(st.querySelector('.ms.on').dataset.sc||sc,MB.f);if(MB.g&&gz)gz.classList.add('out');mbAt(MBV.still?0:1500,()=>mbSwap(sc,'fade').then(()=>mbGz(sc,true)))}
+  else if(b&&bC&&f){if(MB.g&&gz)gz.classList.add('out');mbSwap(sc,MBV.still?'cut':'pour').then(()=>mbGz(sc,true))}
+  else{mbSwap(sc,'fade').then(()=>mbGz(sc,false))}}
+ else if(gC)mbGz(sc,true);
  MBV.f=MB.f;MBV.b=MB.b;MBV.g=MB.g;
  const gl=g?g[2]:'';
- const html=!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
-  :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>`;
+ const html=!f&&b?`<span class="mb__rule"></span><p class="mb__kick">Flavor goes in first</p><p class="mb__name">Pick your flavor</p><p class="mb__meta">Six droppers, then the ${b[1].toLowerCase()}.</p>`
+  :!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
+  :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>${b?`<span class="mb__glass">In a ${b[3]}</span>`:''}`;
  const key=[MB.f,MB.b,MB.g].join('|');if(key!==MBV.key){cap.innerHTML=html;cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');MBV.key=key}
  const out=document.getElementById('mbOut');
- if(f&&b&&g){const amt={mocktail:'1 cup of your favorite mocktail',tonic:'1 cup tonic water',sparkling:'1 cup sparkling water',tea:'1 cup tea, hot or iced'}[b[0]];
-  out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${amt}</li><li>Ice${b[0]==='tea'?' (if iced)':''}</li><li>${g[3]}</li></ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
+ if(f&&b&&g){out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${MB_AMT[b[0]]}</li><li>${MB_ICE[b[0]]}</li><li>${g[3]}</li></ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
 function mbLoad(u){return new Promise((res,rej)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=rej;im.src=u})}
 async function mbCard(){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b),g=GARN.find(x=>x[0]===MB.g);await document.fonts.ready;
  const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');x.fillStyle='#101618';x.fillRect(0,0,1080,1350);
- let im=null;const cdn=MBV.src.replace('https://www.altrdbliss.com/cdn/shop/','https://cdn.shopify.com/s/files/1/0742/7001/5660/');try{im=await mbLoad(cdn)}catch(e){try{im=await mbLoad(MBV.src)}catch(e2){im=null}}
- if(im){const H=960,sc=Math.max(1080/im.width,H/im.height),w=im.width*sc,h=im.height*sc;x.save();x.beginPath();x.rect(0,0,1080,H);x.clip();x.drawImage(im,(1080-w)/2,(H-h)/2,w,h);x.restore();const gr=x.createLinearGradient(0,H-260,0,H);gr.addColorStop(0,'rgba(16,22,24,0)');gr.addColorStop(1,'rgba(16,22,24,1)');x.fillStyle=gr;x.fillRect(0,H-260,1080,260)}
+ const scn=mbScene();let im=null,gi=null;try{im=await mbLoad(`img/mix/${scn}.webp`)}catch(e){im=null}if(g){try{gi=await mbLoad(`img/mix/g-${g[0]}.webp`)}catch(e){gi=null}}
+ if(im){const H=960,S=1080,oy=(H-S)/2;x.save();x.beginPath();x.rect(0,0,1080,H);x.clip();x.drawImage(im,0,oy,S,S);
+  if(gi){const bx=mbGzBox(scn,g[0]),cx=bx.x/100*S,cy=oy+bx.y/100*S;if(bx.c==='w'){const w=bx.w/100*S,h=w*gi.height/gi.width;x.drawImage(gi,cx-w/2,cy-h/2,w,h)}else{const h=bx.h/100*S,w=h*gi.width/gi.height;x.translate(cx,cy);x.rotate(16*Math.PI/180);x.drawImage(gi,-w/2,-h,w,h)}}
+  x.restore();const gr=x.createLinearGradient(0,H-260,0,H);gr.addColorStop(0,'rgba(16,22,24,0)');gr.addColorStop(1,'rgba(16,22,24,1)');x.fillStyle=gr;x.fillRect(0,H-260,1080,260)}
  else{x.fillStyle=f.theme;x.fillRect(0,0,1080,960)}
  const rb=x.createLinearGradient(80,0,240,0);['#3a599d','#abdbca','#d9e36a','#c9b3d7','#f3703b','#e02d59'].forEach((col,i)=>rb.addColorStop(i/5,col));x.fillStyle=rb;x.fillRect(80,990,160,8);
  x.textAlign='left';x.fillStyle='#fff';x.font='400 30px "Supreme LL"';x.fillText('MY MIX',80,1050);
@@ -1572,7 +1559,7 @@ function wire(){
   app.querySelectorAll('[data-fruit]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-fruit]').forEach(x=>x.setAttribute('aria-pressed',false));if(on)b.setAttribute('aria-pressed',true);RF.fr=on?b.dataset.fruit:null;rApply()});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
   qa=[];quizStep();
-  MB.f=MB.b=MB.g=null;MBV.key='';MBV.f=MBV.b=MBV.g=null;mbRender();byoRender();
+  MB.f=MB.b=MB.g=null;MBV.key='';MBV.sc='';MBV.f=MBV.b=MBV.g=null;mbClear();mbRender();byoRender();
   const mixS=document.getElementById('mix');if(mixS&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();['the-original','the-tini','the-rita','the-spritz'].forEach(h=>{const i=new Image();i.src=I(P[h].hov,1400)})},{rootMargin:'600px'});o.observe(mixS)}
   igInit();guideInit();seasonInit();
 }
@@ -1692,7 +1679,7 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front, with the fruit called out','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
  if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist','Buy the flavor from the recipe','More recipes to sip','Recipe data Google can show with the photo'];
- return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor','Mix your bliss, with a pick-your-fruit step and a shareable card','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram posts, loaded only when someone scrolls to them'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
+ return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor','Mix your bliss in real glassware: a dropper for each flavor, four bases, pick your fruit, and a shareable card','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram posts, loaded only when someone scrolls to them'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
