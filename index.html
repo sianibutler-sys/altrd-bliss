@@ -496,6 +496,14 @@ body.menu-open .hdr{z-index:57}
 .rcard h3{font:800 24px/1 var(--font-matria);text-transform:uppercase;margin:18px 0 10px;text-align:center}
 @media (min-width:990px){.rcard h3{font-size:31px}}
 .rcard p{text-align:center;font-size:16px}
+.gcard .rcard__m{position:relative}
+.gcard__tag{position:absolute;left:14px;top:14px;background:var(--lime);color:var(--ink);font:800 11px/1 var(--font-matria);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:999px}
+.gcard__d{margin:16px auto 0;max-width:420px;text-align:left;border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:0 18px}
+.gcard__d summary{cursor:pointer;list-style:none;text-align:center;padding:14px 0;font:800 13px/1 var(--font-matria);letter-spacing:.08em;text-transform:uppercase}
+.gcard__d summary::-webkit-details-marker{display:none}
+.gcard__d summary::after{content:" +"}.gcard__d[open] summary::after{content:" −"}
+.gcard__d h4{font:800 13px/1.2 var(--font-matria);letter-spacing:.08em;text-transform:uppercase;margin:6px 0 8px;color:var(--lime)}
+.gcard__d ul,.gcard__d ol{margin:0 0 16px;padding-left:20px;font-size:15px;line-height:1.55}
 
 /* quiz */
 .quiz{padding:60px 0 100px;text-align:center}
@@ -1648,7 +1656,9 @@ const press=()=>`<section class="press"><div class="pw">
  <div class="pkit"><div class="pkit__facts"><h2 class="pkit__h"><span class="c">Fast</span> <span class="x">facts</span></h2><ul class="pkit__l">${[['Founded by identical twin sisters Erika and Jamie Isaac','#cc3f59'],['CBD and CBG infused agave syrups, non-intoxicating','#e57945'],['Four flavors: The Original, The Tini, The Rita and The Spritz','#cdb4f9'],['$8 a bottle, $32 a 4 pack','#e0f47b'],['Drinking guide out November 6, product launch in Q1','#b3edd4']].map(([t,c])=>`<li>${check(c)}<span>${t}</span></li>`).join('')}</ul></div>
  <div class="pkit__press"><h2 class="nl__h"><span class="a">FOR</span><span class="b">PRESS</span></h2><p>Interviews, samples and images. Write to us and we’ll get back to you.</p><a class="pkit__btn" href="#/pages/contact">Contact us</a></div></div>
 </div></section>`;
-const UTI_TEASE=['rosemary-grapefruit-paloma-mocktail','orange-juice-passion-fruit-spritz','cran-cherry-sleep-tonic'];
+const UTI_TEASE=['rosemary-grapefruit-paloma-mocktail','orange-juice-passion-fruit-spritz'];
+const GUIDE_REC={t:'Strawberry Lemonade Stand Off',img:'img/guide-strawberry-lemonade.webp',ing:['4 strawberries','1 oz lemon juice','3 tsp agave','½ cup sparkling water','Ice'],steps:['Muddle strawberries and agave in a shaker.','Add lemon juice and ice.','Shake until chilled.','Strain into an ice-filled glass.','Top with sparkling water and garnish with a strawberry and lemon wheel.']};
+const gcard=()=>{const r=GUIDE_REC;return `<article class="rcard gcard"><div class="rcard__m"><img loading="lazy" src="${r.img}" alt="Strawberry lemonade splashing over a ribbed glass with a strawberry and a lemon wheel on the rim" width="800" height="800"><span class="gcard__tag">From the guide</span></div><h3>${r.t}</h3><p>Prep time 5 min · Serves 1 drink · Made with just agave</p><details class="gcard__d"><summary>See the recipe</summary><h4>Ingredients</h4><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Instructions</h4><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol></details></article>`};
 const UTI_LOCK=['ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit-2.png?v=1775060929'];
 const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti"><div class="pw"><div class="uti__hero">
  <div class="uti__cov"><img src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></div>
@@ -1665,8 +1675,8 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
  <figure class="peek"><p class="guide__k">First look</p><h2 class="uti__h2">Inside the guide</h2>
   <div class="peek__img"><img loading="lazy" src="img/guide-spread-1000.webp" srcset="img/guide-spread-1000.webp 1000w, img/guide-spread.webp 2048w" sizes="(min-width:1100px) 1060px, 100vw" alt="Pages 36 and 37 of Under the Influence (of Fruit): a red strawberry lemonade splashing over a ribbed glass with a strawberry and lemon wheel, beside the Strawberry Lemonade Stand Off recipe" width="2048" height="1321"></div>
   <figcaption class="peek__cap"><p class="peek__q">“One garnish is a drink. Two garnishes are a moment. Three is a personality.”</p><p class="peek__m">Strawberry Lemonade Stand Off, pages 36–37. Prep time 5 minutes, serves 1 drink. First shown in <a href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Voyage LA</a>.</p></figcaption></figure>
- <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub"><span class="ph">Placeholder</span> These three recipes are already on the site. Three recipes from the guide will go here.</p>
- <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
+ <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub">The Strawberry Lemonade Stand Off is from the guide. <span class="ph">Placeholder</span> The other two are already on the site, and two more from the guide will go here.</p>
+ <div class="rgrid uti__tease">${gcard()}${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
  <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
   <div class="uti__lockc"><p class="guide__k"><span class="ph">Placeholder</span> 27 more inside</p><p class="uti__lockh">${got?'Unlocks November 6':'The full guide is for the waitlist'}</p>${got?'<p>Watch your inbox.</p>':'<a class="button" href="#gE2" data-scroll="gE2">Get the guide</a>'}</div></div>
 </div></section>`};
@@ -1870,7 +1880,7 @@ const SAME=path=>{if(path.startsWith('products/')){const h=path.split('/')[1],p=
  'blogs/recipes':['Recipes and “Elevated drinks, made simple”','The four flavor buttons','All eight recipes and their photos'],
  'pages/contact':['Hi, Get in touch and hello@altrdbliss.com','View Return policy','The contact form: Name, Email, Phone number, Comment, Send'],
  'pages/press':['This page is new. The interview, quotes and dates come from Voyage LA, October 12, 2026.'],
- 'pages/under-the-influence':['This page is new. The guide’s name, cover, 30 recipes and November 6 date come from your Voyage LA interview and the cover file.','Inside the guide: the Strawberry Lemonade Stand Off spread, as Voyage LA showed it.']})[path]||[]};
+ 'pages/under-the-influence':['This page is new. The guide’s name, cover, 30 recipes and November 6 date come from your Voyage LA interview and the cover file.','Inside the guide: the Strawberry Lemonade Stand Off spread, as Voyage LA showed it.','The Strawberry Lemonade Stand Off recipe card uses the ingredients and steps from that spread, word for word.']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
