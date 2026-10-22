@@ -924,6 +924,14 @@ body.has-bar .badge{bottom:96px}
 @media (min-width:990px){.ulabel__f{grid-column:2}}
 .uti__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:60px 0}
 @media (min-width:750px){.uti__facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.peek{margin:10px 0 80px;text-align:center}
+.peek .guide__k{margin-bottom:8px}
+.peek__img{margin:28px auto 0;max-width:1060px;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);background:#a9d3e3}
+.peek__img img{display:block;width:100%;height:auto}
+.peek__cap{max-width:760px;margin:26px auto 0}
+.peek__q{font:900 clamp(26px,3.2vw,40px)/1.05 var(--font-compressed);text-transform:uppercase;color:var(--lime);margin:0}
+.peek__m{font-size:1.5rem;opacity:.8;margin:12px 0 0}
+.peek__m a{color:inherit;text-underline-offset:3px}
 .uti__h2{font:900 clamp(36px,4.6vw,60px)/1 var(--font-compressed);text-transform:uppercase;text-align:center;margin:0}
 .uti__sub{text-align:center;font-size:1.6rem;margin:10px 0 34px}
 .uti__lock{position:relative;margin-top:40px;border-radius:20px;overflow:hidden}
@@ -1654,6 +1662,9 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
  <section class="ulabel" aria-labelledby="ulabelH"><div class="ulabel__a"><h2 class="ulabel__h" id="ulabelH">Guide facts</h2><p class="ulabel__srv"><span>Serving size</span><b>1 glass</b></p><p class="ulabel__srv"><span>Delivered</span><b>By email</b></p></div>
   <dl class="ulabel__g">${[['Recipes','30','var(--lime)','Fruit-forward, every one','0'],['Proof','Zero','var(--lavender)','Maximum personality','80'],['Minutes per drink','5','var(--ember)','Considerably longer to forget','0'],['Sweetener','Agave','var(--rose)','No CBD. No CBG. No surprises.','']].map(([l,v,c,n,f])=>`<div tabindex="0" style="--c:${c}"><dt><span class="ulabel__l">${l}</span><span class="ulabel__n">${n}</span></dt><dd><span class="ulabel__v" data-v="${v}"${f?` data-from="${f}"`:''}>${v}</span></dd></div>`).join('')}</dl>
   <p class="ulabel__f">Contains fruit. Made with just agave. Arrives November 6.</p></section>
+ <figure class="peek"><p class="guide__k">First look</p><h2 class="uti__h2">Inside the guide</h2>
+  <div class="peek__img"><img loading="lazy" src="img/guide-spread-1000.webp" srcset="img/guide-spread-1000.webp 1000w, img/guide-spread.webp 2048w" sizes="(min-width:1100px) 1060px, 100vw" alt="Pages 36 and 37 of Under the Influence (of Fruit): a red strawberry lemonade splashing over a ribbed glass with a strawberry and lemon wheel, beside the Strawberry Lemonade Stand Off recipe" width="2048" height="1321"></div>
+  <figcaption class="peek__cap"><p class="peek__q">“One garnish is a drink. Two garnishes are a moment. Three is a personality.”</p><p class="peek__m">Strawberry Lemonade Stand Off, pages 36–37. Prep time 5 minutes, serves 1 drink. First shown in <a href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Voyage LA</a>.</p></figcaption></figure>
  <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub"><span class="ph">Placeholder</span> These three recipes are already on the site. Three recipes from the guide will go here.</p>
  <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
  <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
@@ -1859,7 +1870,7 @@ const SAME=path=>{if(path.startsWith('products/')){const h=path.split('/')[1],p=
  'blogs/recipes':['Recipes and “Elevated drinks, made simple”','The four flavor buttons','All eight recipes and their photos'],
  'pages/contact':['Hi, Get in touch and hello@altrdbliss.com','View Return policy','The contact form: Name, Email, Phone number, Comment, Send'],
  'pages/press':['This page is new. The interview, quotes and dates come from Voyage LA, October 12, 2026.'],
- 'pages/under-the-influence':['This page is new. The guide’s name, cover, 30 recipes and November 6 date come from your Voyage LA interview and the cover file.']})[path]||[]};
+ 'pages/under-the-influence':['This page is new. The guide’s name, cover, 30 recipes and November 6 date come from your Voyage LA interview and the cover file.','Inside the guide: the Strawberry Lemonade Stand Off spread, as Voyage LA showed it.']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
