@@ -569,6 +569,8 @@ body.has-bar .badge{bottom:96px}
 .rcp__shop div{flex:1;min-width:140px}
 .rcp__shop b{display:block;font-weight:400;font-size:1.6rem}
 .rcp__shop span{font-size:1.3rem;opacity:.8}
+.rcp__shop .button{flex:none}
+@media (max-width:600px){.rcp__shop{display:grid;grid-template-columns:72px 1fr;gap:14px 16px;padding:16px}.rcp__shop div{min-width:0}.rcp__shop .button{grid-column:1/-1;width:100%;height:54px;justify-content:center}}
 
 /* quiz steps */
 .quiz__n{font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
@@ -714,6 +716,8 @@ body.has-bar .badge{bottom:96px}
 .refill .chips .chip[aria-pressed="true"]{--c:var(--lime)}
 .refill p{margin:10px 0 0!important;font-size:1.4rem}
 .badge{flex-wrap:wrap}
+.badge .b-sm{display:none}
+@media (max-width:600px){.badge{flex-wrap:nowrap;left:12px;bottom:12px;gap:6px;padding:4px 4px 4px 12px;font-size:1.1rem;white-space:nowrap;max-width:calc(100% - 24px);transition:bottom .25s ease,transform .35s ease}.badge button{padding:7px 10px;font-size:1.1rem;white-space:nowrap}.badge .b-lg{display:none}.badge .b-sm{display:inline}body.sc-down .badge{transform:translateY(calc(100% + 24px))}body.has-bar .badge{bottom:84px}}
 #btsBtn{background:var(--rose);color:#fff}
 .bts{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:95;background:#fff;color:var(--ink);transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.3)}
 .bts.on{transform:none}
@@ -972,6 +976,19 @@ html.ag-no #gate .gate__no{display:block}
 @keyframes gzW{0%{opacity:0;transform:translate(-50%,-150%) rotate(-24deg)}55%{opacity:1}100%{opacity:1;transform:translate(-50%,-50%) rotate(0)}}
 @keyframes gzK{0%{opacity:0;transform:translate(-50%,-160%) rotate(4deg)}55%{opacity:1}100%{opacity:1;transform:translate(-50%,-100%) rotate(16deg)}}
 .gz.out{opacity:0!important;animation:none!important}
+.gz.k.l{transform:translate(-50%,-100%) rotate(-16deg)}
+.gz.drop.k.l{animation:gzKL .9s cubic-bezier(.3,1.25,.5,1) both}
+@keyframes gzKL{0%{opacity:0;transform:translate(-50%,-160%) rotate(-4deg)}55%{opacity:1}100%{opacity:1;transform:translate(-50%,-100%) rotate(-16deg)}}
+.mb__temp{display:flex;align-items:center;gap:8px;margin-top:12px}
+.mb__temp[hidden]{display:none}
+.mb__temp span{font-size:1.3rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-right:4px}
+.mb__temp .chip{min-height:38px;padding:0 18px;font-size:1.4rem}
+.stm{position:absolute;left:50%;top:var(--sy,30%);width:22%;height:24%;transform:translate(-50%,-100%);z-index:2;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.is-hot .stm{opacity:1}
+.stm i{position:absolute;bottom:0;left:35%;width:30%;height:60%;border-radius:50%;background:radial-gradient(ellipse at 50% 60%,rgba(255,255,255,.55),transparent 68%);filter:blur(10px);opacity:0;animation:wisp 4.2s ease-in-out infinite}
+.stm i:nth-child(2){left:18%;animation-delay:1.4s}.stm i:nth-child(3){left:52%;animation-delay:2.8s}
+@keyframes wisp{0%{opacity:0;transform:translate(0,10%) scale(.6,.8)}35%{opacity:.7}100%{opacity:0;transform:translate(16%,-120%) scale(1.2,1.6) rotate(8deg)}}
+@media (prefers-reduced-motion:reduce){.stm{display:none}}
 .mb__cap .mb__glass{display:inline-block;margin-top:12px;font-size:1.2rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
 @media (max-width:600px){.mb__phtag{top:10px;right:10px}.mb__cap{padding:20px 20px 22px}.mb__cap .mb__meta{font-size:1.3rem;margin-top:8px}.mb__cap .mb__glass{margin-top:8px;font-size:1.05rem}}
 @media (prefers-reduced-motion:reduce){.ms{transition:none}.ms.pour{animation:none;-webkit-mask-image:none;mask-image:none}.dr,.drops{display:none}.gz.drop.w,.gz.drop.k{animation:none}}
@@ -1061,7 +1078,7 @@ html.ag-no #gate .gate__no{display:block}
   </div>
 </div>
 
-<div class="badge"><span>Demo by Siani Creates</span><button id="modeBtn" aria-live="polite"></button><button id="btsBtn" aria-expanded="false" aria-controls="bts">Behind the scenes</button></div>
+<div class="badge"><span><span class="b-lg">Demo by </span>Siani Creates<span class="b-sm"> demo</span></span><button id="modeBtn" aria-live="polite"></button><button id="btsBtn" aria-expanded="false" aria-controls="bts">Behind the scenes</button></div>
 <aside class="bts" id="bts" aria-label="Behind the scenes" aria-hidden="true">
   <div class="bts__h"><h2>Behind the scenes</h2><button class="xbtn" id="btsClose" aria-label="Close behind the scenes">×</button></div>
   <div class="bts__tabs" role="tablist"><button role="tab" aria-selected="true" data-btstab="page">This page</button><button role="tab" aria-selected="false" data-btstab="share">Search &amp; sharing</button><button role="tab" aria-selected="false" data-btstab="a11y">Accessibility</button></div>
@@ -1108,9 +1125,11 @@ function momentNow(){const d=new Date(),h=d.getHours(),day=d.getDay();let k;if(h
 const TZ=()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){return undefined}};
 const momentLine=()=>{const [h,l,c]=momentNow();const t=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit',timeZone:TZ()});return `<span>${momentShift?'Another moment:':`It's ${t}.`}</span><b style="background:${c}">${l}: The ${P[h].name}</b><button data-moment>See another moment</button>`};
 /* mix builder: bases from their own copy ("mocktail, tonic, sparkling water, tea") */
-const BASES=[['sparkling','Sparkling water','Fizz','crystal coupe'],['tonic','Tonic','Tonic','balloon copa'],['tea','Iced tea','Tea Time','highball'],['lemonade','Lemonade','Lemonade','cut-crystal rocks glass']];
+const BASES=[['sparkling','Sparkling water','Fizz','crystal coupe'],['tonic','Tonic','Tonic','balloon copa'],['tea','Tea','Tea Time','highball'],['lemonade','Lemonade','Squeeze','cut-crystal rocks glass']];
+const HOTTEA=['hottea','Hot tea','Tea Time','glass teacup and saucer'];
+function mbB(){if(!MB.b)return null;if(MB.b==='tea'&&MB.t==='hot')return HOTTEA;const b=BASES.find(x=>x[0]===MB.b);return b[0]==='tea'?['tea','Iced tea',b[2],b[3]]:b}
 const GARN=[['lime','Lime','lime','A squeeze of lime and a wedge on the rim'],['grapefruit','Grapefruit','grapefruit','A splash of grapefruit juice and a twist of peel'],['orange','Orange','orange','A splash of orange juice and an orange peel'],['berries','Berries','muddled berries','A few berries, muddled in the bottom of the glass'],['cranberry','Cranberry','cranberry','A splash of cranberry juice and a few fresh cranberries'],['mango','Mango','mango','A spoonful of mango purée, stirred in']];
-const MB={f:null,b:null,g:null};
+const MB={f:null,b:null,g:null,t:'iced'};
 const vibeOrdered=()=>{const h=momentNow()[0];return [...VIBE.filter(v=>v[0]===h),...VIBE.filter(v=>v[0]!==h)]};
 let BYO=[];
 function byoRender(){const el=document.getElementById('byo');if(!el)return;const full=BYO.length>=4;
@@ -1228,10 +1247,10 @@ function igInit(){const cards=app.querySelectorAll('[data-ig]');if(!cards.length
 function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
  <div class="mb__grid">
-  <div class="mb__stage" id="mbStage"><img class="ms on" src="img/mix/neutral.webp" data-sc="neutral" alt="An empty crystal coupe on a black foil-curtain set" width="1200" height="1200" decoding="async"><img class="ms" alt="" width="1200" height="1200" decoding="async"><span class="ph mb__phtag">Placeholder imagery</span><img class="dr" id="mbDr" alt="" aria-hidden="true"><div class="drops" id="mbDrops" aria-hidden="true"></div><img class="gz" id="mbGz" alt="" aria-hidden="true" hidden><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
+  <div class="mb__stage" id="mbStage"><img class="ms on" src="img/mix/neutral.webp" data-sc="neutral" alt="An empty crystal coupe on a black foil-curtain set" width="1200" height="1200" decoding="async"><img class="ms" alt="" width="1200" height="1200" decoding="async"><span class="ph mb__phtag">Placeholder imagery</span><img class="dr" id="mbDr" alt="" aria-hidden="true"><div class="drops" id="mbDrops" aria-hidden="true"></div><img class="gz" id="mbGz" alt="" aria-hidden="true" hidden><div class="stm" aria-hidden="true"><i></i><i></i><i></i></div><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
   <div class="mb__steps">
    <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
-   <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div><div class="mb__temp" id="mbTemp" role="group" aria-label="Tea temperature" hidden><span>Serve it</span><button class="chip" data-mb="t" data-v="iced" aria-pressed="${MB.t!=='hot'}">Iced</button><button class="chip" data-mb="t" data-v="hot" aria-pressed="${MB.t==='hot'}">Hot</button></div></div>
    <div class="mb__step"><h3><span aria-hidden="true">3</span><span class="sr">Step 3: </span>Pick your fruit</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
    <div class="mb__out" id="mbOut" aria-live="polite"></div>
   </div>
@@ -1241,13 +1260,13 @@ const mixC=(a,b,t)=>{const A=hx(a),B=hx(b);return '#'+A.map((v,i)=>Math.round(v+
 const rnd=i=>{const x=Math.sin(i*99.13+7)*43758.5453;return x-Math.floor(x)};
 const MB_GROUP='ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693';
 const MB_REC={'the-original':{sparkling:'rosemary-grapefruit-paloma-mocktail'},'the-spritz':{sparkling:'orange-juice-passion-fruit-spritz',tea:'iced-mango-matcha'},'the-tini':{tonic:'cran-cherry-sleep-tonic'},'the-rita':{sparkling:'blackberry-lime-rita-mocktail'}};
-const MB_AMT={sparkling:'1 cup sparkling water',tonic:'1 cup tonic water',tea:'1 cup iced tea',lemonade:'1 cup lemonade'};
-const MB_ICE={sparkling:'Served up in a chilled coupe, no ice',tonic:'A copa full of ice',tea:'A tall glass of ice',lemonade:'A few big cubes'};
+const MB_AMT={sparkling:'1 cup sparkling water',tonic:'1 cup tonic water',tea:'1 cup iced tea',hottea:'1 cup hot tea',lemonade:'1 cup lemonade'};
+const MB_ICE={sparkling:'Served up in a chilled coupe, no ice',tonic:'A copa full of ice',tea:'A tall glass of ice',hottea:'Served hot, no ice',lemonade:'A few big cubes'};
 const DRINK={'the-original':'#d9a441','the-tini':'#b3123a','the-rita':'#6a2a63','the-spritz':'#f0952e'};
-const MIXR={'neutral':[30,70,28],'original-syrup':[30,70,32],'tini-syrup':[27,74,30],'rita-syrup':[28,73,26],'spritz-syrup':[27,74,23],'original-sparkling':[27,75,26],'original-tonic':[31,71,23],'original-tea':[37,62,26],'original-lemonade':[27,74,31],'tini-sparkling':[27,74,24],'tini-tonic':[32,69,29],'tini-tea':[36,67,22],'tini-lemonade':[28,75,28],'rita-sparkling':[31,72,28],'rita-tonic':[28,72,18],'rita-tea':[37,64,21],'rita-lemonade':[29,74,29],'spritz-sparkling':[26,76,24],'spritz-tonic':[32,69,23],'spritz-tea':[38,66,20],'spritz-lemonade':[31,73,34]};
+const MIXR={'neutral':[30,70,28],'original-syrup':[30,70,32],'tini-syrup':[27,74,30],'rita-syrup':[28,73,26],'spritz-syrup':[27,74,23],'original-sparkling':[27,75,26],'original-tonic':[31,71,23],'original-tea':[37,62,26],'original-lemonade':[27,74,31],'tini-sparkling':[27,74,24],'tini-tonic':[32,69,29],'tini-tea':[36,67,22],'tini-lemonade':[28,75,28],'rita-sparkling':[31,72,28],'rita-tonic':[28,72,18],'rita-tea':[37,64,21],'rita-lemonade':[29,74,29],'spritz-sparkling':[26,76,24],'spritz-tonic':[32,69,23],'spritz-tea':[38,66,20],'spritz-lemonade':[31,73,34],'original-hottea':[27,73,37],'tini-hottea':[30,72,33],'rita-hottea':[28,71,32],'spritz-hottea':[28,71,35]};
 const MIXW=['lime','grapefruit','orange'];
-function mbScene(){return MB.f?MB.f.replace('the-','')+'-'+(MB.b||'syrup'):'neutral'}
-function mbGzBox(sc,g){const [xl,xr,y]=MIXR[sc];if(g==='grapefruit')return{x:xr-2,y:y-3.5,w:22,c:'w'};if(MIXW.includes(g))return{x:xr-2,y,w:17,c:'w'};return{x:(xl+xr)/2+6,y:y+16,h:36,c:'k'}}
+function mbScene(){const b=mbB();return MB.f?MB.f.replace('the-','')+'-'+(b?b[0]:'syrup'):'neutral'}
+function mbGzBox(sc,g){const [xl,xr,y]=MIXR[sc];if(sc.endsWith('hottea')){if(g==='grapefruit')return{x:xl+3,y:y-3.5,w:20,c:'w'};if(MIXW.includes(g))return{x:xl+3,y,w:16,c:'w'};return{x:(xl+xr)/2-7,y:y+13,h:32,c:'k l'}}if(g==='grapefruit')return{x:xr-2,y:y-3.5,w:22,c:'w'};if(MIXW.includes(g))return{x:xr-2,y,w:17,c:'w'};return{x:(xl+xr)/2+6,y:y+16,h:36,c:'k'}}
 const MBT=[];function mbClear(){while(MBT.length)clearTimeout(MBT.pop())}
 function mbAt(ms,fn){MBT.push(setTimeout(fn,ms))}
 function mbPre(list){list.forEach(n=>{const im=new Image();im.src=`img/mix/${n}.webp`})}
@@ -1257,7 +1276,7 @@ function mbSwap(sc,mode){const st=document.getElementById('mbStage');const ims=[
  return new Promise(res=>{const go=()=>{if(MBV.sc!==sc)return res();nx.style.zIndex=2;nx.className='ms '+(mode==='pour'?'pour':'on');nx.alt=mbAlt();cur.alt='';
   const done=()=>{nx.className='ms on';nx.style.zIndex='';cur.className='ms';res()};if(mode==='pour'&&!MBV.still){nx.addEventListener('animationend',done,{once:true})}else setTimeout(done,mode==='cut'?0:1100)};
   if(nx.dataset.sc===sc&&nx.complete&&nx.naturalWidth){requestAnimationFrame(go);return}nx.onload=go;nx.dataset.sc=sc;nx.src=`img/mix/${sc}.webp`})}
-function mbAlt(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);if(!f)return 'An empty crystal coupe on a black foil-curtain set';return `${b?`The ${f.name} ${b[2]} in a ${b[3]}`:`Six droppers of The ${f.name} in a crystal coupe`}${g?' with '+g[2]:''}, on a foil-curtain set in the flavor's color`}
+function mbAlt(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB.g);if(!f)return 'An empty crystal coupe on a black foil-curtain set';return `${b?`The ${f.name} ${b[2]} in a ${b[3]}`:`Six droppers of The ${f.name} in a crystal coupe`}${g?' with '+g[2]:''}, on a foil-curtain set in the flavor's color`}
 function mbGz(sc,animate){const gz=document.getElementById('mbGz');if(!gz)return;if(!MB.g){gz.hidden=true;return}const bx=mbGzBox(sc,MB.g);
  gz.className='gz '+bx.c;gz.style.left=bx.x+'%';gz.style.top=bx.y+'%';gz.style.width=bx.w?bx.w+'%':'auto';gz.style.height=bx.h?bx.h+'%':'auto';
  const src=`img/mix/g-${MB.g}.webp`;if(!gz.src.endsWith(src))gz.src=src;gz.hidden=false;if(animate&&!MBV.still){void gz.offsetWidth;gz.classList.add('drop')}}
@@ -1266,31 +1285,32 @@ function mbDrip(sc,f){const dr=document.getElementById('mbDr'),box=document.getE
  const H=box.clientHeight||1;for(let k=0;k<6;k++){mbAt(900+k*260,()=>{const d=document.createElement('i');d.style.left='50%';d.style.top=tip+'%';d.style.setProperty('--fall',((lvl-tip)/100*H)+'px');box.appendChild(d);
   mbAt(480,()=>{d.remove();const sp=document.createElement('b');sp.style.left='50%';sp.style.top=lvl+'%';box.appendChild(sp);mbAt(700,()=>sp.remove())})})}
  return 900+6*260+300}
-function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);
+function mbRender(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB.g);
  const cap=document.getElementById('mbCap'),st=document.getElementById('mbStage');if(!cap||!st)return;
  MBV.still=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const rs=f&&b&&MB_REC[MB.f][MB.b],rec=rs&&RECIPES.find(r=>r.s===rs);
- const sc=mbScene(),fC=MB.f!==MBV.f,bC=MB.b!==MBV.b,gC=MB.g!==MBV.g;
- if(f&&fC)mbPre(BASES.map(x=>MB.f.replace('the-','')+'-'+x[0]));
+ const bk=mbB()&&mbB()[0],sc=mbScene(),fC=MB.f!==MBV.f,bC=bk!==MBV.b,gC=MB.g!==MBV.g;
+ const tp=document.getElementById('mbTemp');if(tp)tp.hidden=MB.b!=='tea';st.classList.toggle('is-hot',sc.endsWith('hottea'));if(MIXR[sc])st.style.setProperty('--sy',MIXR[sc][2]+'%');
+ if(f&&fC)mbPre([...BASES.map(x=>x[0]),'hottea'].map(x=>MB.f.replace('the-','')+'-'+x));
  if(sc!==MBV.sc||!MBV.sc){mbClear();const gz=document.getElementById('mbGz');
   if(f&&fC){mbDrip(st.querySelector('.ms.on').dataset.sc||sc,MB.f);if(MB.g&&gz)gz.classList.add('out');mbAt(MBV.still?0:1500,()=>mbSwap(sc,'fade').then(()=>mbGz(sc,true)))}
   else if(b&&bC&&f){if(MB.g&&gz)gz.classList.add('out');mbSwap(sc,MBV.still?'cut':'pour').then(()=>mbGz(sc,true))}
   else{mbSwap(sc,'fade').then(()=>mbGz(sc,false))}}
  else if(gC)mbGz(sc,true);
- MBV.f=MB.f;MBV.b=MB.b;MBV.g=MB.g;
+ MBV.f=MB.f;MBV.b=bk;MBV.g=MB.g;
  const gl=g?g[2]:'';
  const html=!f&&b?`<span class="mb__rule"></span><p class="mb__kick">Flavor goes in first</p><p class="mb__name">Pick your flavor</p><p class="mb__meta">Six droppers, then the ${b[1].toLowerCase()}.</p>`
   :!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
   :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>${b?`<span class="mb__glass">In a ${b[3]}</span>`:''}`;
- const key=[MB.f,MB.b,MB.g].join('|');if(key!==MBV.key){cap.innerHTML=html;cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');MBV.key=key}
+ const key=[MB.f,bk,MB.g].join('|');if(key!==MBV.key){cap.innerHTML=html;cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');MBV.key=key}
  const out=document.getElementById('mbOut');
  if(f&&b&&g){out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${MB_AMT[b[0]]}</li><li>${MB_ICE[b[0]]}</li><li>${g[3]}</li></ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
 function mbLoad(u){return new Promise((res,rej)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=rej;im.src=u})}
-async function mbCard(){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b),g=GARN.find(x=>x[0]===MB.g);await document.fonts.ready;
+async function mbCard(){const f=P[MB.f],b=mbB(),g=GARN.find(x=>x[0]===MB.g);await document.fonts.ready;
  const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');x.fillStyle='#101618';x.fillRect(0,0,1080,1350);
  const scn=mbScene();let im=null,gi=null;try{im=await mbLoad(`img/mix/${scn}.webp`)}catch(e){im=null}if(g){try{gi=await mbLoad(`img/mix/g-${g[0]}.webp`)}catch(e){gi=null}}
  if(im){const H=960,S=1080,oy=(H-S)/2;x.save();x.beginPath();x.rect(0,0,1080,H);x.clip();x.drawImage(im,0,oy,S,S);
-  if(gi){const bx=mbGzBox(scn,g[0]),cx=bx.x/100*S,cy=oy+bx.y/100*S;if(bx.c==='w'){const w=bx.w/100*S,h=w*gi.height/gi.width;x.drawImage(gi,cx-w/2,cy-h/2,w,h)}else{const h=bx.h/100*S,w=h*gi.width/gi.height;x.translate(cx,cy);x.rotate(16*Math.PI/180);x.drawImage(gi,-w/2,-h,w,h)}}
+  if(gi){const bx=mbGzBox(scn,g[0]),cx=bx.x/100*S,cy=oy+bx.y/100*S;if(bx.c==='w'){const w=bx.w/100*S,h=w*gi.height/gi.width;x.drawImage(gi,cx-w/2,cy-h/2,w,h)}else{const h=bx.h/100*S,w=h*gi.width/gi.height;x.translate(cx,cy);x.rotate((bx.c==='k l'?-16:16)*Math.PI/180);x.drawImage(gi,-w/2,-h,w,h)}}
   x.restore();const gr=x.createLinearGradient(0,H-260,0,H);gr.addColorStop(0,'rgba(16,22,24,0)');gr.addColorStop(1,'rgba(16,22,24,1)');x.fillStyle=gr;x.fillRect(0,H-260,1080,260)}
  else{x.fillStyle=f.theme;x.fillRect(0,0,1080,960)}
  const rb=x.createLinearGradient(80,0,240,0);['#3a599d','#abdbca','#d9e36a','#c9b3d7','#f3703b','#e02d59'].forEach((col,i)=>rb.addColorStop(i/5,col));x.fillStyle=rb;x.fillRect(80,990,160,8);
@@ -1460,7 +1480,7 @@ function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound(
    <a class="rcp__using" href="#/products/${r.h}">Using The ${p.name}</a>
    <div class="rcp__box"><h2>INGREDIENTS</h2><ul class="checks">${li(r.ing)}</ul><p class="rcp__hint">Tap to check off what you've got.</p></div>
    <div class="rcp__box"><h2>INSTRUCTIONS</h2><ol class="stepsl">${li(r.steps,true)}</ol>${r.note?`<p class="rcp__note"><b>${r.note[0]}</b><br>${r.note[1]}</p>`:''}</div>
-   <div class="rcp__shop"><img src="${I(pimg(r.h),200)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><span>${p.sub}</span></div><button class="button" data-quick="${r.h}">${buyLabel()}</button></div>
+   <div class="rcp__shop"><img src="${I(pimg(r.h),200)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><span>${p.sub}</span></div><a class="button" href="#/products/${r.h}">Shop Now</a></div>
   </div></div>
   <h2 class="c h66" style="text-align:center;margin:80px 0 40px">MORE TO SIP</h2><div class="rgrid">${more.map(rcard).join('')}</div>
  </div></section>`}
@@ -1559,7 +1579,7 @@ function wire(){
   app.querySelectorAll('[data-fruit]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-fruit]').forEach(x=>x.setAttribute('aria-pressed',false));if(on)b.setAttribute('aria-pressed',true);RF.fr=on?b.dataset.fruit:null;rApply()});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
   qa=[];quizStep();
-  MB.f=MB.b=MB.g=null;MBV.key='';MBV.sc='';MBV.f=MBV.b=MBV.g=null;mbClear();mbRender();byoRender();
+  MB.f=MB.b=MB.g=null;MB.t='iced';MBV.key='';MBV.sc='';MBV.f=MBV.b=MBV.g=null;mbClear();mbRender();byoRender();
   const mixS=document.getElementById('mix');if(mixS&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();['the-original','the-tini','the-rita','the-spritz'].forEach(h=>{const i=new Image();i.src=I(P[h].hov,1400)})},{rootMargin:'600px'});o.observe(mixS)}
   igInit();guideInit();seasonInit();
 }
@@ -1607,7 +1627,7 @@ document.addEventListener('click',e=>{const t=e.target;
   const pace=t.closest('[data-pace]');if(pace){refillRender(pace.dataset.pace);return}
   const mb=t.closest('[data-mb]');if(mb){MB[mb.dataset.mb]=mb.dataset.v;mb.parentElement.querySelectorAll('[data-mb]').forEach(x=>x.setAttribute('aria-pressed',x===mb));mbRender();return}
   if(t.closest('[data-mbcard]')){mbCard().then(c=>{const a=document.createElement('a');a.download=`altrd-bliss-${MB.f}-${MB.b}.png`;try{a.href=c.toDataURL('image/png')}catch(e){return}a.click()});return}
-  if(t.closest('[data-mbshare]')){const f=P[MB.f],b=BASES.find(x=>x[0]===MB.b);const text=`My mix: The ${f.name} ${b[2]}. 6 droppers + ${b[1].toLowerCase()}. #SipALTRD`;mbCard().then(c=>c.toBlob(blob=>{const file=new File([blob],'altrd-mix.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]}))navigator.share({files:[file],text}).catch(()=>{});else if(navigator.share)navigator.share({text}).catch(()=>{});else{navigator.clipboard&&navigator.clipboard.writeText(text);t.closest('[data-mbshare]').textContent='Copied'}}));return}
+  if(t.closest('[data-mbshare]')){const f=P[MB.f],b=mbB();const text=`My mix: The ${f.name} ${b[2]}. 6 droppers + ${b[1].toLowerCase()}. #SipALTRD`;mbCard().then(c=>c.toBlob(blob=>{const file=new File([blob],'altrd-mix.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]}))navigator.share({files:[file],text}).catch(()=>{});else if(navigator.share)navigator.share({text}).catch(()=>{});else{navigator.clipboard&&navigator.clipboard.writeText(text);t.closest('[data-mbshare]').textContent='Copied'}}));return}
   if(t.closest('[data-moment]')){momentShift=(momentShift+1)%4;document.getElementById('moment').innerHTML=momentLine();const tr=document.getElementById('vibeTrack');const h=momentNow()[0];const first=[...tr.children].find(c=>c.querySelector(`a[href="#/products/${h}"]`));tr.prepend(first);tr.scrollTo({left:0,behavior:'smooth'});return}
   const byo=t.closest('[data-byo]');if(byo){if(BYO.length<4)BYO.push(byo.dataset.byo);byoRender();return}
   if(t.closest('[data-byoclear]')){BYO=[];byoRender();return}
@@ -1679,7 +1699,7 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front, with the fruit called out','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
  if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist','Buy the flavor from the recipe','More recipes to sip','Recipe data Google can show with the photo'];
- return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor','Mix your bliss in real glassware: a dropper for each flavor, four bases, pick your fruit, and a shareable card','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram posts, loaded only when someone scrolls to them'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
+ return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor','Mix your bliss in real glassware: a dropper for each flavor, four bases with tea hot or iced, pick your fruit, and a shareable card','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram posts, loaded only when someone scrolls to them'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
@@ -1739,7 +1759,8 @@ document.querySelectorAll('[data-btstab]').forEach(b=>b.onclick=()=>{btsTab=b.da
 document.querySelector('[data-skip]').onclick=e=>{e.preventDefault();app.focus()};
 /* --- preview switch: pre-launch (live today) vs launch --- */
 const modeBtn=document.getElementById('modeBtn');
-const paintMode=()=>{modeBtn.textContent=MODE==='prelaunch'?'Pre-launch view · switch':'Launch view · switch'};
+const paintMode=()=>{const v=MODE==='prelaunch'?'Pre-launch':'Launch';modeBtn.innerHTML=`<span class="b-lg">${v} view · switch</span><span class="b-sm">${v} ⇄</span>`;modeBtn.setAttribute('aria-label',`${v} view. Switch view`)};
+{let ly=scrollY;addEventListener('scroll',()=>{const y=scrollY,end=y+innerHeight>document.documentElement.scrollHeight-80;document.body.classList.toggle('sc-down',y>ly+2&&y>240&&!end);if(y<ly-2||end)document.body.classList.remove('sc-down');ly=y},{passive:true})}
 modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();route()};paintMode();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
