@@ -790,7 +790,13 @@ body.has-bar .badge{bottom:96px}
 .bts__lbl{display:inline-block;font-size:1.1rem;border-radius:999px;padding:2px 10px;margin-bottom:6px}
 .bts__lbl.old{background:#f2e6e8;color:#7a1f30}.bts__lbl.new{background:#e5f6ec;color:#1c5a35}
 .serp{border:1px solid rgba(16,22,24,.12);border-radius:14px;padding:14px;margin-bottom:12px;font-family:Arial,sans-serif}
-.serp .u{font-size:12px;color:#4d5156}
+.serp .u{font-size:12px;color:#4d5156;display:block}
+.serp.has-im{display:flex;gap:14px;align-items:flex-start}.serp__b{flex:1;min-width:0}
+.serp__im{width:90px;height:90px;border-radius:10px;object-fit:cover;flex:none;margin-top:30px}
+.serp__s{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.serp__fav{width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid rgba(16,22,24,.2);display:grid;place-items:center;font:800 6px/1 var(--font-matria);text-align:center;color:#101618;flex:none}
+.serp__n{display:block;font-size:14px;color:#202124}
+.serp .d b{font-weight:700}
 .serp .t{font-size:18px;color:#1a0dab;line-height:1.3;margin:2px 0 4px}
 .serp .d{font-size:13px;color:#4d5156;line-height:1.5}
 .serp .d.miss{color:#9a3a2b;font-style:italic}
@@ -937,7 +943,7 @@ body.has-bar .badge{bottom:96px}
 .peek__img{margin:28px auto 0;max-width:1060px;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);background:#a9d3e3}
 .peek__img img{display:block;width:100%;height:auto}
 .peek__cap{max-width:760px;margin:26px auto 0}
-.peek__q{font:900 clamp(26px,3.2vw,40px)/1.05 var(--font-compressed);text-transform:uppercase;color:var(--lime);margin:0}
+.peek__q{font:900 clamp(24px,2.8vw,36px)/1.08 var(--font-compressed);text-transform:uppercase;color:var(--lime);margin:0}
 .peek__m{font-size:1.5rem;opacity:.8;margin:12px 0 0}
 .peek__m a{color:inherit;text-underline-offset:3px}
 .uti__h2{font:900 clamp(36px,4.6vw,60px)/1 var(--font-compressed);text-transform:uppercase;text-align:center;margin:0}
@@ -1674,7 +1680,7 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
   <p class="ulabel__f">Contains fruit. Made with just agave. Arrives November 6.</p></section>
  <figure class="peek"><p class="guide__k">First look</p><h2 class="uti__h2">Inside the guide</h2>
   <div class="peek__img"><img loading="lazy" src="img/guide-spread-1000.webp" srcset="img/guide-spread-1000.webp 1000w, img/guide-spread.webp 2048w" sizes="(min-width:1100px) 1060px, 100vw" alt="Pages 36 and 37 of Under the Influence (of Fruit): a red strawberry lemonade splashing over a ribbed glass with a strawberry and lemon wheel, beside the Strawberry Lemonade Stand Off recipe" width="2048" height="1321"></div>
-  <figcaption class="peek__cap"><p class="peek__q">“One garnish is a drink. Two garnishes are a moment. Three is a personality.”</p><p class="peek__m">Strawberry Lemonade Stand Off, pages 36–37. Prep time 5 minutes, serves 1 drink. First shown in <a href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Voyage LA</a>.</p></figcaption></figure>
+  <figcaption class="peek__cap"><p class="peek__q">“We loved the idea of changing what you’re actually ‘under the influence’ of and making fruit the main character instead.”</p><p class="peek__m">Erika and Jamie Isaac, in Voyage LA. The spread is the Strawberry Lemonade Stand Off, pages 36–37, first shown in <a href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Voyage LA</a>.</p></figcaption></figure>
  <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub">The Strawberry Lemonade Stand Off is from the guide. <span class="ph">Placeholder</span> The other two are already on the site, and two more from the guide will go here.</p>
  <div class="rgrid uti__tease">${gcard()}${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
  <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
@@ -1835,6 +1841,11 @@ document.getElementById('nl').onsubmit=e=>{e.preventDefault();const em=document.
 /* --- behind the scenes: what Google and link previews see, and what assistive tech hears --- */
 const LOGO_OG='https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?height=628&pad_color=ffffff&v=1772195683&width=1200';
 /* scanned from altrdbliss.com on October 22, 2026 */
+/* Google results as they appeared on October 22, 2026 (screenshots from Siani). Bold is Google's. */
+const GSHOW={'pages/find-your-bliss':{t:'Find your Bliss',d:'Need some help? <b>Your perfect syrup match is just 30 seconds away</b> (and a surprise promo code might be waiting for you at the end).'},
+ 'pages/about':{t:'About',d:'As Black women founders, we’re all about giving back. We’re committed to supporting our community, customers, and the causes that matter. From advocating for ...'},
+ 'pages/learn':{t:'Learn',d:'No, <b>bliss will not make you paranoid</b>. In fact, it’s quite the opposite. It feels like the slow-motion exhale you didn’t know you were holding.'},
+ 'blogs/recipes':{t:'Recipes',d:'<b>Recipes</b> ; Altrd Bliss Ice Cream. Using The Tini ; Rosemary Grapefruit Paloma Mocktail. Using The Original ; Berry Lime Smoothie. Using The Rita ; Orange Juice ...',img:'ice'}};
 const TODAY=path=>{const pg={'':['Altrd Bliss'],'pages/shop-all':['Shop All'],'pages/learn':['Learn'],'pages/about':['About'],'pages/faq':['FAQ'],'pages/find-your-bliss':['Find your Bliss'],'blogs/recipes':['Recipes'],'pages/contact':['Contact Us']};
  if(path.startsWith('products/')){const p=P[path.split('/')[1]];if(!p)return null;return {title:`The ${p.name} – Altrd Bliss`,desc:p.desc,ogt:`The ${p.name}`,ogd:p.desc,img:I(p.img,1200),url:path}}
  if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);if(!r)return null;const old={'cran-cherry-sleep-tonic':'green-mango-matcha','altrd-bliss-yogurt-bowl':'iced-mango-matcha-3','blackberry-lime-rita-mocktail':'iced-mango-matcha-2','iced-mango-matcha':'iced-mango-matcha-1'}[r.s]||r.s;const pt={'altrd-bliss-ice-cream':2,'rosemary-grapefruit-paloma-mocktail':3,'berry-lime-smoothie':5,'orange-juice-passion-fruit-spritz':3,'cran-cherry-sleep-tonic':2,'altrd-bliss-yogurt-bowl':5,'blackberry-lime-rita-mocktail':5,'iced-mango-matcha':10}[r.s]||2;const dd=`Prep Time: ${pt} minutesServes: 1`;return {title:`${r.t} – Altrd Bliss`,desc:dd,ogt:r.t,ogd:dd,img:AI(r.img,1200),url:'blogs/recipes/'+old}}
@@ -1843,7 +1854,7 @@ function ogImg(path){if(path.startsWith('products/')){const p=P[path.split('/')[
  const m={'pages/learn':'Group_159_f21ce4e1-4abf-4133-805e-a197d50bb615.png?v=1777937613','pages/about':'ALTRD5016.png?v=1778079819','pages/faq':'ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062237','pages/find-your-bliss':'Group_157.png?v=1775062117','blogs/recipes':'ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693','pages/shop-all':'ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7420-Edit_JAM_v02.png?v=1778079956'};return I(m[path]||'ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',1200)}
 const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const cut=(t,n)=>t&&t.length>n?t.slice(0,n-1).trim()+'…':t;
-const serp=(o,old)=>`<div class="serp"><div class="u">altrdbliss.com${o.url?' › '+esc(o.url.replace(/\//g,' › ')):''}</div><div class="t">${esc(cut(o.title,60))}</div>${o.desc?`<div class="d">${esc(cut(o.desc,155))}</div>`:`<div class="d miss">No description set. Google picks text from the page itself, which can be the age gate: "ARE YOU 21+? Sorry, before we get to the good stuff…"</div>`}</div>`;
+const serp=(o,g)=>{const crumbs='https://www.altrdbliss.com'+(o.url?' › '+esc(o.url.split('/').join(' › ')):'');const im=g&&g.img==='ice'?AI(RECIPES.find(r=>r.s==='altrd-bliss-ice-cream').img,200):'';return `<div class="serp${im?' has-im':''}"><div class="serp__b"><div class="serp__s"><span class="serp__fav" aria-hidden="true">ALTRD<br>BLISS</span><span><span class="serp__n">Altrd Bliss</span><span class="u">${crumbs}</span></span></div><div class="t">${esc(cut(g?g.t:o.title,60))}</div>${g?`<div class="d">${g.d}</div>`:o.desc?`<div class="d">${esc(cut(o.desc,155))}</div>`:`<div class="d miss">No description set, so Google writes its own from text on the page.</div>`}</div>${im?`<img class="serp__im" src="${im}" alt="" width="90" height="90">`:''}</div>${g?'<p class="sm">As Google showed it on October 22, 2026. No description is set, so Google picked this text from the page.</p>':''}`};
 const ogc=o=>`<div class="og">${o.img?`<div class="im" style="background-image:url('${o.img}')"></div>`:'<div class="im noimg">No image</div>'}<div class="tx"><div class="s">altrdbliss.com</div><div class="t">${esc(cut(o.ogt,70))}</div><div class="d">${esc(cut(o.ogd,110))}</div></div></div>`;
 let btsTab='page',a11yOn=false;
 const bts=document.getElementById('bts');
@@ -1859,12 +1870,12 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  if(path.startsWith('products/'))return [...(prod[p]||[]),'4 of 15 images have no description.',...(p==='the-multipack'?[]:['No microdose option and no recipes for this flavor on the page.'])];
  if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);const old=r&&TODAY(path).url.split('/').pop();return [`The search and share description is the prep line run together: “${TODAY(path).desc}.”`,'No recipe data, so Google can’t show it as a recipe with photo and ingredients.',...(r&&old!==r.s?[`The address ends in /${old}, which names a different drink.`]:[])]}
  return ({'':['The “Pick your vibe” cards are crossed: The Tini card opens The Spritz, The Spritz opens The Rita, and The Rita opens The Tini.','Six main headlines on one page, so screen readers hear it as six separate pages.','The vibe cards read “For socializing” twice and never name the flavor.','No search description, so Google pulls text from the page.','First visit: 237 files and 2.4 MB, with the main photo at 3.7 seconds.'],
- 'pages/learn':['Your mom’s story sits under the heading “Recipes, For your sip.”','No search description.','Shared links show the age gate photo instead of this page.'],
- 'pages/about':['Four main headlines on one page.','3 of 6 images have no description.','No search description, and shared links show the age gate photo.'],
+ 'pages/learn':['Your mom’s story sits under the heading “Recipes, For your sip.”','No search description, so Google shows a line from the page about paranoia.','Shared links show the age gate photo instead of this page.'],
+ 'pages/about':['Four main headlines on one page.','3 of 6 images have no description.','No search description, so Google shows the page’s giving-back paragraph cut off mid-sentence.','Shared links show the age gate photo.'],
  'pages/faq':['“Where can I find ALTRD Bliss products?” points to a store locator that doesn’t exist.','The 28 states you can’t ship to are a typed list a customer has to scan.','No search description.'],
- 'pages/find-your-bliss':['Start Quiz sends customers to altrd-bliss-hms.myshopify.com, a different address.','Picking the cozy, sleep-time answer on every question returns The Original as a 100% match. The Tini is your unwinding flavor.','The banner image has no description.','No search description.'],
+ 'pages/find-your-bliss':['Start Quiz sends customers to altrd-bliss-hms.myshopify.com, a different address.','Picking the cozy, sleep-time answer on every question returns The Original as a 100% match. The Tini is your unwinding flavor.','The banner image has no description.','No search description. Google shows the page’s intro, which reads well here, but it can change without notice.'],
  'pages/shop-all':['No search description, and shared links show the age gate photo.'],
- 'blogs/recipes':['No search description, and shared links show the age gate photo.'],
+ 'blogs/recipes':['No search description, so Google strings recipe names together with semicolons.','Shared links show the age gate photo.'],
  'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];const fix0=ART_ON?['Fruit illustration over the ingredients (preview option)']:[];const fix={'the-rita':['A draft description written from Rita’s own ingredients, labeled on the page for you to replace'],'the-spritz':['The tag reads “For Daytime” to match its own copy. Live has “For Socializing,” the same as The Rita']}[h]||[];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front in their own box, with the fruit called out (this replaces the Ingredients dropdown)','Nutritional Facts laid out as a nutrition label, every line from the live page','Serving Size shown as three numbers you can read at a glance','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch',...fix,...fix0]}
  if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist you can tap','More to sip: three more recipes','Recipe data Google can show with the photo','A clean address that matches the drink'];
@@ -1891,7 +1902,7 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
   const iss=ISSUES(path),add=ADDED(path),same=SAME(path),fresh=path==='pages/press'||path==='pages/under-the-influence';
   body.innerHTML=`<p class="bts__path">altrdbliss.com/${esc(path)}</p>
   <h3>At a glance</h3><table class="snap"><thead><tr><th></th><th>Today</th><th>New</th></tr></thead><tbody>
-  ${row('Search description',old?(old.desc?`<span class="warn">${esc(cut(old.desc,48))}</span>`:'<span class="bad">None</span>'):'',`<span class="good">${CUR.d.length} characters</span>`)}
+  ${row('Search description',old?(old.desc?`<span class="warn">${esc(cut(old.desc,48))}</span>`:`<span class="bad">None</span>${GSHOW[path]?'<small>Google picks page text</small>':''}`):'',`<span class="good">${CUR.d.length} characters</span>`)}
   ${row('Shared in iMessage',old?thumb(old.imsg)+(old.usesLogo?'<small>Age gate photo</small>':'<small>This page’s photo</small>'):'',thumb(now.img)+'<small>This page’s photo</small>')}
   ${row('Main headlines',st?(st.h1===1?'1':`<span class="bad">${st.h1}</span>`):'',`<span class="good">${app.querySelectorAll('h1').length}</span>`)}
   ${row('Images without a description',st?(st.noalt?`<span class="bad">${st.noalt} of ${st.imgs}</span>`:`0 of ${st.imgs}`):'',`<span class="good">${miss} of ${imgs.length}</span>${dec?`<small>${dec} marked decorative</small>`:''}`)}
@@ -1903,7 +1914,7 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
   ${iss.length?`<h3>On the live site today, fixed here</h3><ul class="issl">${iss.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
   <div class="bts__note">Live site figures come from scans of altrdbliss.com on October 21 and 22, 2026. File counts are from loading each page; some images without a description may be decorative.</div>`}
  else if(btsTab==='share'){
-  body.innerHTML=`<h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old)}`:''}<span class="bts__lbl new">New</span>${serp(now)}
+  body.innerHTML=`<h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old,GSHOW[path])}`:''}<span class="bts__lbl new">New</span>${serp(now)}
   <h3>Texted in iMessage</h3>${old?`<span class="bts__lbl old">Today</span>${imsg({...old,img:old.imsg,ogt:old.ogt})}`:''}<span class="bts__lbl new">New</span>${imsg({...now})}
   ${old&&old.usesLogo?`<div class="bts__note">This page tells apps to use the white Altrd Bliss logo, a file type iMessage can’t show, so iMessage grabs the first photo it finds: the age gate. That’s why every page shares the same picture.</div>`:''}
   <h3>Posted on Facebook, LinkedIn or Slack</h3><p class="sm">These apps read the page’s title, description and image tags directly.</p>${old?`<span class="bts__lbl old">Today</span>${ogc(old.usesLogo?{...old,img:''}:old)}`:''}<span class="bts__lbl new">New</span>${ogc(now)}
