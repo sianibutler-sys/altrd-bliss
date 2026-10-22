@@ -671,7 +671,7 @@ body.has-bar .badge{bottom:96px}
 .togg[aria-pressed="true"]{background:#1c7a45}
 .a11y-tag{position:absolute;max-width:220px;overflow:hidden;z-index:40;background:#1c7a45;color:#fff;font:600 11px/1.2 ui-monospace,Menlo,monospace;padding:3px 6px;border-radius:6px;pointer-events:none;max-width:220px;white-space:normal}
 .a11y-tag.img{background:#3a599d}.a11y-tag.dec{background:#6b6b70}
-.a11y-on h1,.a11y-on h2,.a11y-on h3{outline:2px dashed #1c7a45;outline-offset:3px}
+.a11y-on #app h1,.a11y-on #app h2,.a11y-on #app h3{outline:2px dashed #1c7a45;outline-offset:3px}
 .a11y-on #app img:not([aria-hidden]){outline:2px dashed #3a599d;outline-offset:-2px}
 .mini{border-radius:999px;background:var(--ink);color:#fff;padding:8px 14px;font-size:1.3rem;flex:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -899,9 +899,9 @@ function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__grid">
   <div class="mb__stage" id="mbStage">${glassSvg()}<p class="mb__name" id="mbName">Pick a flavor</p></div>
   <div class="mb__steps">
-   <div class="mb__step"><h3><span>1</span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
-   <div class="mb__step"><h3><span>2</span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
-   <div class="mb__step"><h3><span>3</span>Finish it</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">3</span><span class="sr">Step 3: </span>Finish it</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
    <div class="mb__out" id="mbOut" aria-live="polite"></div>
   </div>
  </div></div></section>`}
@@ -1229,13 +1229,14 @@ const serp=(o,old)=>`<div class="serp"><div class="u">altrdbliss.com${o.url?' â€
 const ogc=o=>`<div class="og"><div class="im" style="background-image:url('${o.img}')"></div><div class="tx"><div class="s">altrdbliss.com</div><div class="t">${esc(cut(o.ogt,70))}</div><div class="d">${esc(cut(o.ogd,110))}</div></div></div>`;
 let btsTab='share',a11yOn=false;
 const bts=document.getElementById('bts');
-function accName(el){const l=el.getAttribute('aria-label');if(l)return l;const img=el.querySelector('img[alt]:not([alt=""])');const txt=el.textContent.replace(/\s+/g,' ').trim();return txt||(img&&img.alt)||''}
+function vis(el){const c=el.cloneNode(true);c.querySelectorAll('[aria-hidden="true"]').forEach(x=>x.remove());return c.textContent.replace(/\s+/g,' ').trim()}
+function accName(el){const l=el.getAttribute('aria-label');if(l)return l;const img=el.querySelector('img[alt]:not([alt=""])');const txt=vis(el);return txt||(img&&img.alt)||''}
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');
  if(btsTab==='share'){const old=TODAY(path);const now={title:document.title,desc:CUR.d,ogt:CUR.t.replace(' â€“ Altrd Bliss',''),ogd:CUR.d,img:CUR.img,url:path};
   body.innerHTML=`<h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old,1)}`:''}<span class="bts__lbl new">New</span>${serp(now)}
   <h3>Link preview</h3><p style="margin-bottom:8px">What people see when this page is texted or posted.</p>${old?`<span class="bts__lbl old">Today</span>${ogc(old)}`:''}<span class="bts__lbl new">New</span>${ogc(now)}
   <div class="bts__note">Today most pages send "Altrd Bliss" as the description and a white logo on a white background as the image, so shared links show a blank card. In the live build, every page gets its own address, description, photo and product or recipe details written into its code, where Google, iMessage, Instagram and Facebook read them.</div>`}
- else{const heads=[...app.querySelectorAll('h1,h2,h3')].filter(h=>h.offsetParent).slice(0,14).map(h=>`<li><b>${h.tagName==='H1'?'Main':'Heading '+h.tagName[1]}</b>${esc(h.textContent.replace(/\s+/g,' ').trim())}</li>`).join('');
+ else{const heads=[...app.querySelectorAll('h1,h2,h3')].filter(h=>h.offsetParent).slice(0,14).map(h=>`<li><b>${h.tagName==='H1'?'Main':'Heading '+h.tagName[1]}</b>${esc(vis(h))}</li>`).join('');
   const links=[...app.querySelectorAll('a[href],button')].filter(a=>a.offsetParent).slice(0,12).map(a=>`<li><b>${a.tagName==='A'?'Link':'Button'}</b>${esc(cut(accName(a),70))}</li>`).join('');
   body.innerHTML=`<button class="togg" id="a11yT" aria-pressed="${a11yOn}">${a11yOn?'Hide':'Show'} labels on the page</button><p>Outlines every heading and image on this page with what assistive technology reads.</p>
   <h3>What a screen reader hears: headings</h3><ul class="sr-list">${heads}</ul>
@@ -1254,7 +1255,7 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
   document.getElementById('a11yT').onclick=()=>{a11yOn=!a11yOn;a11yPaint();btsRender()}}}
 function a11yPaint(){document.querySelectorAll('.a11y-tag').forEach(t=>t.remove());document.body.classList.toggle('a11y-on',a11yOn);if(!a11yOn)return;
  const add=(el,txt,cls)=>{const r=el.getBoundingClientRect();if(!r.width||!el.offsetParent||r.left<0||r.left>innerWidth-40)return;const t=document.createElement('span');t.className='a11y-tag '+(cls||'');t.textContent=txt;t.style.left=Math.min(r.left+scrollX,document.documentElement.clientWidth-232)+'px';t.style.top=(r.top+scrollY-18)+'px';document.body.appendChild(t)};
- app.querySelectorAll('h1,h2,h3').forEach(h=>add(h,(h.tagName==='H1'?'Main headline':h.tagName)+': '+cut(h.textContent.replace(/\s+/g,' ').trim(),40)));
+ app.querySelectorAll('h1,h2,h3').forEach(h=>add(h,(h.tagName==='H1'?'Main headline':h.tagName)+': '+cut(vis(h),40)));
  app.querySelectorAll('img').forEach(i=>{if(i.closest('[aria-hidden="true"]'))return;const a=i.getAttribute('alt');add(i,a?'Image: '+cut(a,40):'Decorative, skipped',a?'img':'dec')})}
 window.addEventListener('resize',()=>a11yOn&&a11yPaint());
 const btsBtn=document.getElementById('btsBtn');
