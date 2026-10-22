@@ -815,7 +815,8 @@ body.has-bar .badge{bottom:96px}
 .qz__rec{font-size:1.4rem;margin:6px 0 0}.qz__rec a{text-decoration:underline;text-underline-offset:3px}
 .qz__card .qz__next{margin-top:12px}
 
-.ffruit{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;padding:0 20px;margin:-14px auto 40px;max-width:900px}
+.ffruit{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;padding:0 20px;margin:-16px auto 40px;max-width:1000px}
+@media (min-width:990px){.filters:has(+.ffruit){margin-bottom:36px}.ffruit{margin:0 auto 95px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12);max-width:1080px;gap:12px}}
 .ffruit__l{font-size:1.3rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-right:6px}
 .fchip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.45);font-size:1.4rem;transition:background .2s,color .2s,border-color .2s}
 .fchip:hover{border-color:#fff}
@@ -836,6 +837,23 @@ body.has-bar .badge{bottom:96px}
 .uti__copy p{margin:0;font-size:1.7rem;max-width:32em}
 .uti__copy .uti__lede{font-size:2.2rem;line-height:1.35}
 .uti__in{color:var(--lime)}
+.ulabel{background:var(--cream);color:var(--ink);border-radius:20px;margin:60px 0;padding:26px 24px 22px;display:grid;grid-template-columns:minmax(0,1fr);gap:0 56px}
+@media (min-width:990px){.ulabel{grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);padding:40px 44px 30px}}
+.ulabel__a{border-bottom:10px solid var(--ink);padding-bottom:14px;margin-bottom:4px}
+@media (min-width:990px){.ulabel__a{border-bottom:0;border-right:1px solid rgba(16,22,24,.2);padding:0 44px 0 0;margin:0}}
+.ulabel__h{font:900 clamp(56px,6.4vw,92px)/.86 var(--font-compressed);text-transform:uppercase;letter-spacing:-1px;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.ulabel__srv{display:flex;justify-content:space-between;gap:12px;margin:0;padding:7px 0;font-size:1.5rem;border-bottom:1px solid rgba(16,22,24,.2)}
+.ulabel__srv:last-child{border-bottom:0}
+.ulabel__srv b{font-weight:400}
+.ulabel__g{margin:0;display:grid;grid-template-columns:minmax(0,1fr)}
+@media (min-width:600px){.ulabel__g{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}}
+.ulabel__g div{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0 10px;border-top:1px solid rgba(16,22,24,.2)}
+@media (min-width:990px){.ulabel__g div:nth-child(-n+2){border-top:4px solid var(--ink)}}
+.ulabel__g dt{font:800 14px/1.2 var(--font-matria);text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:10px}
+.ulabel__g dt::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(16,22,24,.25);flex:none}
+.ulabel__g dd{margin:0;font:900 clamp(48px,5vw,76px)/.9 var(--font-compressed);text-transform:uppercase}
+.ulabel__f{grid-column:1/-1;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ink);font-size:1.3rem;letter-spacing:.02em}
+@media (min-width:990px){.ulabel__f{grid-column:2}}
 .uti__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:60px 0}
 @media (min-width:750px){.uti__facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .uti__h2{font:900 clamp(36px,4.6vw,60px)/1 var(--font-compressed);text-transform:uppercase;text-align:center;margin:0}
@@ -1265,7 +1283,10 @@ const MB_ICE={sparkling:'Served up in a chilled coupe, no ice',tonic:'A copa ful
 const DRINK={'the-original':'#d9a441','the-tini':'#b3123a','the-rita':'#6a2a63','the-spritz':'#f0952e'};
 const MIXR={'neutral':[30,70,28],'original-syrup':[30,70,32],'tini-syrup':[27,74,30],'rita-syrup':[28,73,26],'spritz-syrup':[27,74,23],'original-sparkling':[27,75,26],'original-tonic':[31,71,23],'original-tea':[37,62,26],'original-lemonade':[27,74,31],'tini-sparkling':[27,74,24],'tini-tonic':[32,69,29],'tini-tea':[36,67,22],'tini-lemonade':[28,75,28],'rita-sparkling':[31,72,28],'rita-tonic':[28,72,18],'rita-tea':[37,64,21],'rita-lemonade':[29,74,29],'spritz-sparkling':[26,76,24],'spritz-tonic':[32,69,23],'spritz-tea':[38,66,20],'spritz-lemonade':[31,73,34],'original-hottea':[27,73,37],'tini-hottea':[30,72,33],'rita-hottea':[28,71,32],'spritz-hottea':[28,71,35]};
 const MIXW=['lime','grapefruit','orange'];
-function mbScene(){const b=mbB();return MB.f?MB.f.replace('the-','')+'-'+(b?b[0]:'syrup'):'neutral'}
+function mbBaseScene(){const b=mbB();return MB.f?MB.f.replace('the-','')+'-'+(b?b[0]:'syrup'):'neutral'}
+const GZ=new Set(["original-hottea-berries", "original-hottea-cranberry", "original-hottea-grapefruit", "original-hottea-lime", "original-hottea-mango", "original-hottea-orange", "original-lemonade-berries", "original-lemonade-cranberry", "original-lemonade-grapefruit", "original-lemonade-lime", "original-lemonade-mango", "original-lemonade-orange", "original-sparkling-berries", "original-sparkling-cranberry", "original-sparkling-grapefruit", "original-sparkling-lime", "original-sparkling-mango", "original-sparkling-orange", "original-tea-berries", "original-tea-cranberry", "original-tea-grapefruit", "original-tea-lime", "original-tea-mango", "original-tea-orange", "original-tonic-berries", "original-tonic-cranberry", "original-tonic-grapefruit", "original-tonic-lime", "original-tonic-mango", "original-tonic-orange", "rita-lemonade-lime", "rita-sparkling-lime", "spritz-lemonade-mango", "spritz-tea-orange", "tini-hottea-berries", "tini-hottea-cranberry", "tini-hottea-grapefruit", "tini-hottea-lime", "tini-hottea-mango", "tini-hottea-orange", "tini-lemonade-berries", "tini-lemonade-cranberry", "tini-lemonade-grapefruit", "tini-lemonade-lime", "tini-lemonade-mango", "tini-lemonade-orange", "tini-sparkling-berries", "tini-sparkling-cranberry", "tini-sparkling-grapefruit", "tini-sparkling-lime", "tini-sparkling-mango", "tini-sparkling-orange", "tini-tea-berries", "tini-tea-cranberry", "tini-tea-grapefruit", "tini-tea-lime", "tini-tea-mango", "tini-tea-orange", "tini-tonic-berries", "tini-tonic-cranberry", "tini-tonic-grapefruit", "tini-tonic-lime", "tini-tonic-mango", "tini-tonic-orange"]);
+function mbStrip(s){return (s||'').replace(/^g\//,'').replace(/-(lime|grapefruit|orange|berries|cranberry|mango)$/,'')}
+function mbScene(){const s=mbBaseScene();return MB.g&&mbB()&&GZ.has(s+'-'+MB.g)?'g/'+s+'-'+MB.g:s}
 function mbGzBox(sc,g){const [xl,xr,y]=MIXR[sc];if(sc.endsWith('hottea')){if(g==='grapefruit')return{x:xl+3,y:y-3.5,w:20,c:'w'};if(MIXW.includes(g))return{x:xl+3,y,w:16,c:'w'};return{x:(xl+xr)/2-7,y:y+13,h:32,c:'k l'}}if(g==='grapefruit')return{x:xr-2,y:y-3.5,w:22,c:'w'};if(MIXW.includes(g))return{x:xr-2,y,w:17,c:'w'};return{x:(xl+xr)/2+6,y:y+16,h:36,c:'k'}}
 const MBT=[];function mbClear(){while(MBT.length)clearTimeout(MBT.pop())}
 function mbAt(ms,fn){MBT.push(setTimeout(fn,ms))}
@@ -1277,7 +1298,7 @@ function mbSwap(sc,mode){const st=document.getElementById('mbStage');const ims=[
   const done=()=>{nx.className='ms on';nx.style.zIndex='';cur.className='ms';res()};if(mode==='pour'&&!MBV.still){nx.addEventListener('animationend',done,{once:true})}else setTimeout(done,mode==='cut'?0:1100)};
   if(nx.dataset.sc===sc&&nx.complete&&nx.naturalWidth){requestAnimationFrame(go);return}nx.onload=go;nx.dataset.sc=sc;nx.src=`img/mix/${sc}.webp`})}
 function mbAlt(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB.g);if(!f)return 'An empty crystal coupe on a black foil-curtain set';return `${b?`The ${f.name} ${b[2]} in a ${b[3]}`:`Six droppers of The ${f.name} in a crystal coupe`}${g?' with '+g[2]:''}, on a foil-curtain set in the flavor's color`}
-function mbGz(sc,animate){const gz=document.getElementById('mbGz');if(!gz)return;if(!MB.g){gz.hidden=true;return}const bx=mbGzBox(sc,MB.g);
+function mbGz(sc,animate){const gz=document.getElementById('mbGz');if(!gz)return;if(!MB.g||!MB.b||sc.startsWith('g/')){gz.hidden=true;return}sc=mbStrip(sc);const bx=mbGzBox(sc,MB.g);
  gz.className='gz '+bx.c;gz.style.left=bx.x+'%';gz.style.top=bx.y+'%';gz.style.width=bx.w?bx.w+'%':'auto';gz.style.height=bx.h?bx.h+'%':'auto';
  const src=`img/mix/g-${MB.g}.webp`;if(!gz.src.endsWith(src))gz.src=src;gz.hidden=false;if(animate&&!MBV.still){void gz.offsetWidth;gz.classList.add('drop')}}
 function mbDrip(sc,f){const dr=document.getElementById('mbDr'),box=document.getElementById('mbDrops');if(!dr||MBV.still)return 0;const [,,y]=MIXR[sc],tip=y-1,lvl=sc.endsWith('syrup')||sc==='neutral'?y+13:y+9;
@@ -1290,10 +1311,10 @@ function mbRender(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB
  MBV.still=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const rs=f&&b&&MB_REC[MB.f][MB.b],rec=rs&&RECIPES.find(r=>r.s===rs);
  const bk=mbB()&&mbB()[0],sc=mbScene(),fC=MB.f!==MBV.f,bC=bk!==MBV.b,gC=MB.g!==MBV.g;
- const tp=document.getElementById('mbTemp');if(tp)tp.hidden=MB.b!=='tea';st.classList.toggle('is-hot',sc.endsWith('hottea'));if(MIXR[sc])st.style.setProperty('--sy',MIXR[sc][2]+'%');
+ const tp=document.getElementById('mbTemp');if(tp)tp.hidden=MB.b!=='tea';const bsc=mbBaseScene();st.classList.toggle('is-hot',bsc.endsWith('hottea'));if(MIXR[bsc])st.style.setProperty('--sy',MIXR[bsc][2]+'%');
  if(f&&fC)mbPre([...BASES.map(x=>x[0]),'hottea'].map(x=>MB.f.replace('the-','')+'-'+x));
  if(sc!==MBV.sc||!MBV.sc){mbClear();const gz=document.getElementById('mbGz');
-  if(f&&fC){mbDrip(st.querySelector('.ms.on').dataset.sc||sc,MB.f);if(MB.g&&gz)gz.classList.add('out');mbAt(MBV.still?0:1500,()=>mbSwap(sc,'fade').then(()=>mbGz(sc,true)))}
+  if(f&&fC){mbDrip(mbStrip(st.querySelector('.ms.on').dataset.sc)||bsc,MB.f);if(MB.g&&gz)gz.classList.add('out');mbAt(MBV.still?0:1500,()=>mbSwap(sc,'fade').then(()=>mbGz(sc,true)))}
   else if(b&&bC&&f){if(MB.g&&gz)gz.classList.add('out');mbSwap(sc,MBV.still?'cut':'pour').then(()=>mbGz(sc,true))}
   else{mbSwap(sc,'fade').then(()=>mbGz(sc,false))}}
  else if(gC)mbGz(sc,true);
@@ -1301,16 +1322,16 @@ function mbRender(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB
  const gl=g?g[2]:'';
  const html=!f&&b?`<span class="mb__rule"></span><p class="mb__kick">Flavor goes in first</p><p class="mb__name">Pick your flavor</p><p class="mb__meta">Six droppers, then the ${b[1].toLowerCase()}.</p>`
   :!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
-  :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>${b?`<span class="mb__glass">In a ${b[3]}</span>`:''}`;
+  :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:(g?`Pick a base. Fruit goes in last.`:`${f.sub} · ${f.use}`)}</p>${b?`<span class="mb__glass">In a ${b[3]}</span>`:''}`;
  const key=[MB.f,bk,MB.g].join('|');if(key!==MBV.key){cap.innerHTML=html;cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');MBV.key=key}
  const out=document.getElementById('mbOut');
  if(f&&b&&g){out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${MB_AMT[b[0]]}</li><li>${MB_ICE[b[0]]}</li><li>${g[3]}</li></ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
 function mbLoad(u){return new Promise((res,rej)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=rej;im.src=u})}
 async function mbCard(){const f=P[MB.f],b=mbB(),g=GARN.find(x=>x[0]===MB.g);await document.fonts.ready;
  const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');x.fillStyle='#101618';x.fillRect(0,0,1080,1350);
- const scn=mbScene();let im=null,gi=null;try{im=await mbLoad(`img/mix/${scn}.webp`)}catch(e){im=null}if(g){try{gi=await mbLoad(`img/mix/g-${g[0]}.webp`)}catch(e){gi=null}}
+ const scn=mbScene();let im=null,gi=null;try{im=await mbLoad(`img/mix/${scn}.webp`)}catch(e){im=null}if(g&&MB.b&&!scn.startsWith('g/')){try{gi=await mbLoad(`img/mix/g-${g[0]}.webp`)}catch(e){gi=null}}
  if(im){const H=960,S=1080,oy=(H-S)/2;x.save();x.beginPath();x.rect(0,0,1080,H);x.clip();x.drawImage(im,0,oy,S,S);
-  if(gi){const bx=mbGzBox(scn,g[0]),cx=bx.x/100*S,cy=oy+bx.y/100*S;if(bx.c==='w'){const w=bx.w/100*S,h=w*gi.height/gi.width;x.drawImage(gi,cx-w/2,cy-h/2,w,h)}else{const h=bx.h/100*S,w=h*gi.width/gi.height;x.translate(cx,cy);x.rotate((bx.c==='k l'?-16:16)*Math.PI/180);x.drawImage(gi,-w/2,-h,w,h)}}
+  if(gi){const bx=mbGzBox(mbStrip(scn),g[0]),cx=bx.x/100*S,cy=oy+bx.y/100*S;if(bx.c==='w'){const w=bx.w/100*S,h=w*gi.height/gi.width;x.drawImage(gi,cx-w/2,cy-h/2,w,h)}else{const h=bx.h/100*S,w=h*gi.width/gi.height;x.translate(cx,cy);x.rotate((bx.c==='k l'?-16:16)*Math.PI/180);x.drawImage(gi,-w/2,-h,w,h)}}
   x.restore();const gr=x.createLinearGradient(0,H-260,0,H);gr.addColorStop(0,'rgba(16,22,24,0)');gr.addColorStop(1,'rgba(16,22,24,1)');x.fillStyle=gr;x.fillRect(0,H-260,1080,260)}
  else{x.fillStyle=f.theme;x.fillRect(0,0,1080,960)}
  const rb=x.createLinearGradient(80,0,240,0);['#3a599d','#abdbca','#d9e36a','#c9b3d7','#f3703b','#e02d59'].forEach((col,i)=>rb.addColorStop(i/5,col));x.fillStyle=rb;x.fillRect(80,990,160,8);
@@ -1508,7 +1529,9 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
   <div class="cd" id="cd" aria-live="off"></div>
   ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
- <div class="uti__facts">${[['30','Drinks','var(--lime)'],['0','Proof','var(--lavender)'],['5','Minutes each','var(--ember)'],['1','Sweetener: agave','var(--rose)']].map(([n,l,c],i)=>`<div class="ufact${i===3?' ufact--rose':''}" style="--c:${c}"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
+ <section class="ulabel" aria-labelledby="ulabelH"><div class="ulabel__a"><h2 class="ulabel__h" id="ulabelH">Guide facts</h2><p class="ulabel__srv"><span>Serving size</span><b>1 glass</b></p><p class="ulabel__srv"><span>Delivered</span><b>By email</b></p></div>
+  <dl class="ulabel__g">${[['Recipes','30','var(--lime)'],['Proof','0','var(--lavender)'],['Minutes per drink','5','var(--ember)'],['Sweetener','Agave','var(--rose)']].map(([l,v,c])=>`<div style="--c:${c}"><dt>${l}</dt><dd>${v}</dd></div>`).join('')}</dl>
+  <p class="ulabel__f">Contains fruit. Made with just agave. Arrives November 6.</p></section>
  <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub"><span class="ph">Placeholder</span> These three recipes are already on the site. Three recipes from the guide will go here.</p>
  <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
  <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
