@@ -338,6 +338,15 @@ body.menu-open .hdr{z-index:57}
 .ft__logo img{width:253px;height:auto}
 .ft__copy{font-size:1.1rem;color:rgba(255,255,255,.8)}
 .ft__copy a{font-size:1.1rem;color:rgba(255,255,255,.9)}
+/* product pages: Sip Smarter box goes black with the flavor's color on Join Now, as on the live site */
+.is-prod .nl__box{background:#050505;color:#fff}
+.is-prod .nl button{background:var(--nlbtn);color:var(--nlbtnfg)}
+.is-prod .nl button:hover{filter:brightness(1.08)}
+/* light flavor colors (The Original, The Rita, The Spritz): dark footer text so it reads */
+.prod-light .ft,.prod-light .ft h4,.prod-light .ft a,.prod-light .ft__copy,.prod-light .ft__copy a{color:#101618}
+.prod-light .ft a:hover{color:#101618}
+.prod-light .ft__logo img:not(.sclogo){filter:brightness(0)}
+.prod-light .ft__logo .sclogo--ft{filter:brightness(0);opacity:.85}
 
 /* page title */
 .ptitle{padding:120px 20px 40px;text-align:center}
@@ -1757,6 +1766,7 @@ function route(){
   const [rawPath,qs]=(location.hash.replace(/^#\/?/,'')||'').split('?');const path=rawPath.replace(/\/$/,'');const want=new URLSearchParams(qs||'').get('bts');
   closeAll();
   let html,title='Altrd Bliss',desc=DESC[''],ld={'@context':'https://schema.org','@type':'Organization',name:'Altrd Bliss',url:'https://www.altrdbliss.com',logo:F+'Horizontal_Logo_White.svg',sameAs:['https://www.instagram.com/altrdbliss/','https://www.tiktok.com/@altrdbliss']};const root=document.body.style;document.body.classList.remove('has-bar');
+  {const pp=path.startsWith('products/')&&P[path.split('/')[1]];document.body.classList.toggle('is-prod',!!pp);document.body.classList.toggle('prod-light',!!pp&&pp.fg!=='#ffffff');document.body.style.setProperty('--nlbtn',pp?(pp.packOnly?'#fff':pp.theme):'');document.body.style.setProperty('--nlbtnfg',pp?(pp.packOnly?'#101618':'#050505'):'')}
   if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss';desc=(()=>{const sen=p.desc.split(/(?<=\.)\s+/);let body=(sen[1]||sen[0]);const pre=`The ${p.name}: ${p.sub}${p.use?', '+p.use.toLowerCase():''}. `,post=' 4 Pack for $32.';const room=158-pre.length-post.length;if(body.length>room)body=body.slice(0,room-1).replace(/[\s,]+\S*$/,'')+'…';return pre+body+post})();ld={'@context':'https://schema.org','@type':'Product',name:'The '+p.name,brand:{'@type':'Brand',name:'Altrd Bliss'},image:I(p.img,1200),description:p.desc,offers:{'@type':'Offer',price:p.packOnly?'32.00':'8.00',priceCurrency:'USD',availability:MODE==='prelaunch'?'https://schema.org/PreOrder':'https://schema.org/InStock'}}}}
   else if(path.startsWith('blogs/recipes/')){root.removeProperty('background-color');const r=RECIPES.find(x=>x.s===path.split('/')[2]);html=recipe(path.split('/')[2]);if(r){title=r.t+' – Altrd Bliss';desc=`${r.t}, made with The ${P[r.h].name}. ${r.ing.filter(x=>!x.startsWith('#')).length} ingredients, ${r.steps.filter(x=>!x.startsWith('#')).length} steps.`;ld={'@context':'https://schema.org','@type':'Recipe',name:r.t,image:AI(r.img,1200),recipeIngredient:r.ing.filter(x=>!x.startsWith('#')),recipeInstructions:r.steps.filter(x=>!x.startsWith('#')).map(t=>({'@type':'HowToStep',text:t})),author:{'@type':'Organization',name:'Altrd Bliss'}}}}
   else{root.removeProperty('background-color');html=(ROUTES[path]||notFound)();if(TITLES[path])title=TITLES[path]+' – Altrd Bliss';desc=DESC[path]||desc}
