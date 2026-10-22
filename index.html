@@ -481,6 +481,18 @@ body.menu-open .hdr{z-index:57}
 .wrap-ink .mq,.wrap-ink .hs{background:var(--ink)}
 
 /* learn / about */
+.lc{display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+@media (min-width:990px){.lc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lc__card{position:relative;height:65vh;min-height:420px;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+@media (min-width:990px){.lc__card{height:95vh;min-height:560px}}
+.lc__card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lc__card::after{content:"";position:absolute;inset:0;background:#000;opacity:.4}
+.lc__in{position:relative;z-index:2;max-width:80%;display:flex;flex-direction:column;align-items:center;gap:20px}
+@media (min-width:990px){.lc__in{width:70%}}
+.lc__in p{font-size:16px;line-height:1.5}
+.lc .h66{line-height:1}.lc .h66+.h66{margin-top:2px}
+.lc__batch{display:flex;justify-content:center;margin:30px 0 60px}
+@media (min-width:990px){.lc__batch{margin:40px 0 100px}}
 .feat{padding:60px 0}
 .feat__row{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center;margin-bottom:60px}
 @media (min-width:990px){.feat__row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;margin-bottom:100px}.feat__row.rev .feat__img{order:2}}
@@ -1641,10 +1653,11 @@ const learn=()=>`
 <section class="banner"><div class="banner__media"><img src="${I('Group_159_f21ce4e1-4abf-4133-805e-a197d50bb615.png?v=1777937613',1800)}" alt="" width="1800" height="1100"></div>
  <div class="banner__box"><h1 class="banner__h1">SAME ROOTS</h1><h2 class="banner__h2">INFUSED AGAVE SYRUPS</h2><p class="banner__p" style="max-width:640px">The duo works together to keep your body calm, mind clear, and mood steady. CBD smooths the edges. CBG sharpens your focus without the caffeine crash.</p></div></section>
 <section class="feat"><div class="pw">
- <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Group_160.png?v=1775062239',1000)}" alt="" width="1000" height="1000"></div>
-  <div class="feat__copy"><div><h2 class="c h66">NO</h2><h2 class="m h66">SHADY SH*T</h2></div><p>We're transparent about what goes in every bottle. No hidden ingredients, no sketchy sourcing.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See The Receipts</a>${batchBox()}</div></div>
- <div class="feat__row rev"><div class="feat__img"><img loading="lazy" src="${I('Group_161.png?v=1775062239',1000)}" alt="" width="1000" height="1000"></div>
-  <div class="feat__copy"><div><h2 class="c h66">YOUR BRAIN</h2><h2 class="m h66">ON BLISS</h2></div><p>No, bliss will not make you paranoid. In fact, it’s quite the opposite. It feels like the slow-motion exhale you didn’t know you were holding. Your shoulders drop, and suddenly you’re not in fight-or-flight, you’re in fck-it-I’m-fine*.</p><a class="button" href="#/pages/shop-all">Feel The Bliss</a></div></div>
+ <div class="lc">
+  <div class="lc__card"><img loading="lazy" src="${I('Group_160.png?v=1775062239',1200)}" alt="" width="1000" height="1000"><div class="lc__in"><div><h2 class="c h66">NO</h2><h2 class="m h66">SHADY SH*T</h2></div><p>We're transparent about what goes in every bottle. No hidden ingredients, no sketchy sourcing.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See The Receipts</a></div></div>
+  <div class="lc__card"><img loading="lazy" src="${I('Group_161.png?v=1775062239',1200)}" alt="" width="1000" height="1000"><div class="lc__in"><div><h2 class="c h66">YOUR BRAIN</h2><h2 class="m h66">ON BLISS</h2></div><p>No, bliss will not make you paranoid. In fact, it’s quite the opposite. It feels like the slow-motion exhale you didn’t know you were holding. Your shoulders drop, and suddenly you’re not in fight-or-flight, you’re in fck-it-I’m-fine*.</p><a class="button" href="#/pages/shop-all">Feel The Bliss</a></div></div>
+ </div>
+ <div class="lc__batch">${batchBox()}</div>
  <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Screenshot_2026-03-30_at_12.09.41_AM.png?v=1774810858',1000)}" alt="" width="1000" height="1000"></div>
   <div class="feat__copy"><h2 class="c h66">SHE DESERVED BETTER</h2><p>While our mom was battling breast cancer and searching for plant-based relief that didn’t feel like buying weed from a guy named Brian behind a gas station, there was nothing she could truly trust. Questionable labels and Ingredients no one could explain. “Testing” that brands claimed they did… but never showed.</p><p>She deserved better, and so does everyone else. We started ALTRD Bliss in her honor, making a promise: no shady fine print, no “just trust us.” Every batch is tested by independent labs for potency, purity, and safety, and we share the receipts so you never have to guess.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See our test results</a></div></div>
 </div></section>
