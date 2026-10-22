@@ -908,6 +908,22 @@ html.ag-no #gate .gate__no{display:block}
 }
 @media (max-width:989px) and (max-height:620px){#gate .gate__img{display:none}#gate .gate__c{border-radius:2rem}}
 @media (max-width:420px){#gate{padding:1.2rem}#gate .gate__c{padding:2.8rem 2rem 2.2rem}}
+.ship__msg{width:100%;max-width:520px}
+.ship__hint{font-size:1.4rem;opacity:.75;margin:4px 0 0}
+.shipr{display:flex;gap:14px;align-items:flex-start;text-align:left;border-radius:16px;padding:16px 18px;margin-top:6px;border:2px solid}
+.shipr svg{flex:none;margin-top:2px}
+.shipr p{margin:0;font-size:1.5rem;line-height:1.45}
+.shipr .shipr__h{font:800 18px/1.2 var(--font-matria);text-transform:uppercase;margin-bottom:4px}
+.shipr--ok{border-color:var(--mint);background:rgba(179,237,212,.12);color:#fff}
+.shipr--ok svg{color:var(--mint)}.shipr--ok .shipr__h{color:var(--mint)}
+.shipr--no{border-color:var(--rose);background:rgba(204,63,89,.14);color:#fff}
+.shipr--no svg{color:var(--rose)}.shipr--no .shipr__h{color:#ff9fb1}
+.shipr a{color:inherit;font-weight:400;text-decoration:underline;text-underline-offset:3px}
+.shipr.pop{animation:shipPop .45s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes shipPop{0%{opacity:0;transform:translateY(6px) scale(.97)}100%{opacity:1;transform:none}}
+.cart .shipr{padding:12px 14px;gap:10px}.cart .shipr p{font-size:1.3rem}.cart .shipr .shipr__h{font-size:15px}
+.cart .shipr--ok,.cart .shipr--no{color:var(--ink)}
+.cart .shipr--no .shipr__h{color:#a3213c}.cart .shipr--ok .shipr__h{color:#1d6b4b}.cart .shipr--ok svg{color:#2f9b6e}
 </style>
 </head>
 <body>
@@ -1303,8 +1319,9 @@ const faq=()=>`<section class="ptitle"><h1>Frequently Asked Questions</h1><p>Eve
 const STATES=[['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','Washington, D.C.'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
 /* their FAQ list, verbatim */
 const NOSHIP='AK DC HI ID KS KY ME MA MI MS MT NE NV NH NC ND PA RI VA WA CO CT FL IA LA MN NY OR'.split(' ');
-function shipCheck(where){const st=store.get('ab_state','');return `<div class="ship" data-ship="${where}"><label for="st-${where}">Where are we sending your bliss?</label><select id="st-${where}" data-state><option value="">Choose your state</option>${STATES.map(([c,n])=>`<option value="${c}"${c===st?' selected':''}>${n}</option>`).join('')}</select><p class="ship__msg" aria-live="polite">${shipMsg(st)}</p></div>`}
-function shipMsg(st){if(!st)return '';const n=(STATES.find(s=>s[0]===st)||[])[1];return NOSHIP.includes(st)?`We can’t ship to ${n} yet. We’re lobbying hard to change that. <a href="#nl" data-tonl>Join SipSmarter</a> and we’ll tell you the minute we can.`:`Good news: we ship to ${n}.`}
+function shipCheck(where){const st=store.get('ab_state','');return `<div class="ship" data-ship="${where}"><label for="st-${where}">Where are we sending your bliss?</label><select id="st-${where}" data-state><option value="">Choose your state</option>${STATES.map(([c,n])=>`<option value="${c}"${c===st?' selected':''}>${n}</option>`).join('')}</select><div class="ship__msg" aria-live="polite">${shipMsg(st)}</div></div>`}
+const SHIP_OK='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17.5 8.5" fill="none" stroke="#101618" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',SHIP_NO='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M8 8l8 8M16 8l-8 8" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>';
+function shipMsg(st){if(!st)return '<p class="ship__hint">Pick your state to see if we can ship there.</p>';const n=(STATES.find(s=>s[0]===st)||[])[1];return NOSHIP.includes(st)?`<div class="shipr shipr--no">${SHIP_NO}<div><p class="shipr__h">Not yet in ${n}</p><p>We can’t ship to ${n} yet. We’re lobbying hard to change that. <a href="#nl" data-tonl>Join SipSmarter</a> and we’ll tell you the minute we can.</p></div></div>`:`<div class="shipr shipr--ok">${SHIP_OK}<div><p class="shipr__h">Yes, we ship to ${n}</p><p>Good news: your bliss can come straight to your door.</p></div></div>`}
 
 const QUIZ=[
  {q:'What’s your favorite way to unwind? ✨',o:[['Snuggling up with a good book or binging a show',['the-tini']],['Going out with friends',['the-rita']],['Dinner and drinks',['the-original','the-rita']],['A sleep tonic and an early night',['the-tini']]]},
@@ -1545,7 +1562,7 @@ document.addEventListener('submit',e=>{if(e.target.id==='batchForm'){e.preventDe
  if(e.target.id==='subForm'){e.preventDefault();const m=document.getElementById('subMsgOut'),msg=document.getElementById('subMsg').value.trim();if(!msg){m.textContent='Tell us what is in your glass.';document.getElementById('subMsg').focus();return}if(!document.getElementById('subOk').checked){m.textContent='Check the box so we can feature your mix.';return}
   const subs=store.get('ab_subs',[]);subs.unshift({handle:document.getElementById('subHandle').value.trim(),f:document.getElementById('subFlavor').value,msg:msg.slice(0,240),img:subImg});try{store.set('ab_subs',subs.slice(0,3))}catch(x){}subImg='';e.target.reset();document.getElementById('subDlg').classList.remove('on');route();setTimeout(()=>{const hs=document.querySelector('.hs');hs&&hs.scrollIntoView({behavior:'smooth'})},100);return}});
 document.addEventListener('submit',e=>{if(e.target.id==='qzForm'){e.preventDefault();const em=document.getElementById('qzE');if(!/^\S+@\S+\.\S+$/.test(em.value)){document.getElementById('qzErr').textContent='Enter an email address like name@example.com.';em.focus();return}qMail=em.value;store.set('ab_quiz_email',qMail);quizFinish();return}const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='contact'?'Thanks. In the live site, this goes to hello@altrdbliss.com through Shopify.':f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':f.dataset.capture==='guide'?(f.hasAttribute('data-unlock')?(store.set('ab_guide',true),setTimeout(route,900),'You’re on the list. The guide lands in your inbox November 6.'):'You’re on the list. The guide lands in your inbox November 6.'):'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
-document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');if(!s)return;store.set('ab_state',s.value);document.querySelectorAll('[data-state]').forEach(x=>{x.value=s.value;x.closest('.ship').querySelector('.ship__msg').innerHTML=shipMsg(s.value)});renderCart()});
+document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');if(!s)return;store.set('ab_state',s.value);document.querySelectorAll('[data-state]').forEach(x=>{x.value=s.value;const m=x.closest('.ship').querySelector('.ship__msg');m.innerHTML=shipMsg(s.value);const c=m.firstElementChild;if(c){c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop')}});renderCart()});
 /* --- newsletter (demo) --- */
 document.getElementById('nl').onsubmit=e=>{e.preventDefault();const em=document.getElementById('nlE'),m=document.getElementById('nlMsg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent='You’re in. In the live site, this signs you up through Klaviyo.';e.target.reset()};
 
