@@ -1105,7 +1105,7 @@ const seasonPick=()=>{const m=new Date().getMonth();if(SEASON[m])return [m,SEASO
 const season=()=>{const [m,x]=seasonPick(),p=P[x.h],r=RECIPES.find(z=>z.s===x.rec);return `<section class="season" id="season" style="--sc:${p.theme};--sf:${p.fg}"><div class="pw"><div class="season__in">
  <div class="season__copy"><p class="guide__k" id="seasonK">In season · ${MONTHS[m]}</p><h2 class="season__h">${x.fruit}</h2><p class="season__line">${x.line}</p><p>${x.pair}</p>
   <div class="season__acts"><a class="button" href="#/blogs/recipes/${r.s}">Make the ${r.t}</a><a class="button season__alt" href="#/products/${x.h}">Shop The ${p.name}</a></div></div>
- <div class="season__media"><img loading="lazy" src="${I(x.img,1200)}" alt="The ${p.name} in a coupe with a cranberry garnish" width="1200" height="1200"><span class="vpill" style="background:#fff">The ${p.name} · ${p.use}</span></div>
+ <div class="season__media"><img loading="lazy" src="${I(x.img,1200)}" alt="The ${p.name} in a martini glass with a cherry" width="1200" height="1200"><span class="vpill" style="background:#fff">The ${p.name} · ${p.use}</span></div>
 </div></div></section>`};
 function seasonInit(){}
 const guide=()=>`<section class="guide" id="guide"><div class="pw"><div class="guide__in">
