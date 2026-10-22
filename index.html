@@ -673,6 +673,22 @@ body.has-bar .badge{bottom:96px}
 .a11y-tag.img{background:#3a599d}.a11y-tag.dec{background:#6b6b70}
 .a11y-on #app h1,.a11y-on #app h2,.a11y-on #app h3{outline:2px dashed #1c7a45;outline-offset:3px}
 .a11y-on #app img:not([aria-hidden]){outline:2px dashed #3a599d;outline-offset:-2px}
+.bts__path{font:600 1.2rem ui-monospace,Menlo,monospace;color:#6b6b70;margin-bottom:6px;word-break:break-all}
+.snap{width:100%;border-collapse:collapse;font-size:1.3rem}
+.snap th,.snap td{text-align:left;vertical-align:top;padding:8px 6px;border-top:1px solid rgba(16,22,24,.1)}
+.snap thead th{border-top:0;font-size:1.1rem;color:#6b6b70;font-weight:400;text-transform:uppercase;letter-spacing:.05em}
+.snap tbody th{font-weight:400;color:#3b3f41;width:34%}
+.snap small{display:block;font-size:1.1rem;color:#6b6b70;margin-top:2px}
+.snap .bad{color:#9a2a3b;font-weight:600}.snap .warn{color:#8a5a00}.snap .good{color:#1c7a45;font-weight:600}
+.th{display:block;width:72px;height:44px;border-radius:6px;background:#eee center/cover no-repeat}
+.issl{list-style:none;margin:0;padding:0}
+.issl li{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:8px 0;border-top:1px solid rgba(16,22,24,.08)}
+.issl li::before{content:"!";width:20px;height:20px;border-radius:50%;background:#9a2a3b;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:2px}
+.sm{font-size:1.3rem;color:#55555a;margin-bottom:8px}
+.imsg{width:78%;margin:0 0 12px auto;border-radius:18px;overflow:hidden;background:#b8876a;font-family:-apple-system,Arial,sans-serif}
+.imsg .im{aspect-ratio:1/1;background:#ddd center/cover no-repeat}
+.imsg .tx{padding:10px 14px;color:#fff}.imsg .t{font-weight:600;font-size:14px}.imsg .s{font-size:12px;opacity:.75}
+.og .im.noimg{display:grid;place-items:center;color:#8a8a8f;font-size:12px;background:#ececee}
 .mini{border-radius:999px;background:var(--ink);color:#fff;padding:8px 14px;font-size:1.3rem;flex:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -763,7 +779,7 @@ body.has-bar .badge{bottom:96px}
 <div class="badge"><span>Demo by Siani Creates</span><button id="modeBtn" aria-live="polite"></button><button id="btsBtn" aria-expanded="false" aria-controls="bts">Behind the scenes</button></div>
 <aside class="bts" id="bts" aria-label="Behind the scenes" aria-hidden="true">
   <div class="bts__h"><h2>Behind the scenes</h2><button class="xbtn" id="btsClose" aria-label="Close behind the scenes">×</button></div>
-  <div class="bts__tabs" role="tablist"><button role="tab" aria-selected="true" data-btstab="share">Search &amp; sharing</button><button role="tab" aria-selected="false" data-btstab="a11y">Accessibility</button></div>
+  <div class="bts__tabs" role="tablist"><button role="tab" aria-selected="true" data-btstab="page">This page</button><button role="tab" aria-selected="false" data-btstab="share">Search &amp; sharing</button><button role="tab" aria-selected="false" data-btstab="a11y">Accessibility</button></div>
   <div class="bts__body" id="btsBody"></div>
 </aside>
 
@@ -1100,7 +1116,7 @@ document.getElementById('drawer').innerHTML=`<a href="#/pages/shop-all">Shop</a>
 /* --- router --- */
 const app=document.getElementById('app');
 const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about':about,'pages/faq':faq,'pages/find-your-bliss':findBliss,'blogs/recipes':recipes,'pages/contact':contact};
-const DESC={'':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.'};
+const DESC={'':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.','pages/contact':'Questions about an order, wholesale or your bliss? Send Altrd Bliss a note and we’ll get back to you.'};
 const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes','pages/contact':'Contact Us'};
 let fadeTimer=null;
 function setOg(t,d,img){const set=(p,v)=>{let m=document.querySelector(`meta[property="${p}"]`);if(!m){m=document.createElement('meta');m.setAttribute('property',p);document.head.appendChild(m)}m.setAttribute('content',v)};set('og:title',t);set('og:description',d);set('og:image',img);CUR={t,d,img}}
@@ -1109,8 +1125,8 @@ function setMeta(d,ld){let m=document.querySelector('meta[name=description]');m.
 function route(){
   const path=(location.hash.replace(/^#\/?/,'')||'').replace(/\/$/,'');
   closeAll();
-  let html,title='Altrd Bliss',desc=DESC[''],ld=null;const root=document.body.style;document.body.classList.remove('has-bar');
-  if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss';desc=`The ${p.name}: ${p.sub}. ${p.desc.split('.')[0].toLowerCase().replace(/^./,c=>c.toUpperCase())}.`;ld={'@context':'https://schema.org','@type':'Product',name:'The '+p.name,brand:{'@type':'Brand',name:'Altrd Bliss'},image:I(p.img,1200),description:p.desc,offers:{'@type':'Offer',price:p.packOnly?'32.00':'8.00',priceCurrency:'USD',availability:MODE==='prelaunch'?'https://schema.org/PreOrder':'https://schema.org/InStock'}}}}
+  let html,title='Altrd Bliss',desc=DESC[''],ld={'@context':'https://schema.org','@type':'Organization',name:'Altrd Bliss',url:'https://www.altrdbliss.com',logo:F+'Horizontal_Logo_White.svg',sameAs:['https://www.instagram.com/altrdbliss/','https://www.tiktok.com/@altrdbliss']};const root=document.body.style;document.body.classList.remove('has-bar');
+  if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss';desc=(()=>{const sen=p.desc.split(/(?<=\.)\s+/);let body=(sen[1]||sen[0]);const pre=`The ${p.name}: ${p.sub}${p.use?', '+p.use.toLowerCase():''}. `,post=' 4 Pack for $32.';const room=158-pre.length-post.length;if(body.length>room)body=body.slice(0,room-1).replace(/[\s,]+\S*$/,'')+'…';return pre+body+post})();ld={'@context':'https://schema.org','@type':'Product',name:'The '+p.name,brand:{'@type':'Brand',name:'Altrd Bliss'},image:I(p.img,1200),description:p.desc,offers:{'@type':'Offer',price:p.packOnly?'32.00':'8.00',priceCurrency:'USD',availability:MODE==='prelaunch'?'https://schema.org/PreOrder':'https://schema.org/InStock'}}}}
   else if(path.startsWith('blogs/recipes/')){root.removeProperty('background-color');const r=RECIPES.find(x=>x.s===path.split('/')[2]);html=recipe(path.split('/')[2]);if(r){title=r.t+' – Altrd Bliss';desc=`${r.t}, made with The ${P[r.h].name}. ${r.ing.filter(x=>!x.startsWith('#')).length} ingredients, ${r.steps.filter(x=>!x.startsWith('#')).length} steps.`;ld={'@context':'https://schema.org','@type':'Recipe',name:r.t,image:AI(r.img,1200),recipeIngredient:r.ing.filter(x=>!x.startsWith('#')),recipeInstructions:r.steps.filter(x=>!x.startsWith('#')).map(t=>({'@type':'HowToStep',text:t})),author:{'@type':'Organization',name:'Altrd Bliss'}}}}
   else{root.removeProperty('background-color');html=(ROUTES[path]||notFound)();if(TITLES[path])title=TITLES[path]+' – Altrd Bliss';desc=DESC[path]||desc}
   app.innerHTML=html;document.title=title;setMeta(desc,ld);setOg(title,desc,ogImg(path));CUR.path=path;if(typeof bts!=='undefined'){if(bts.classList.contains('on'))btsRender();if(a11yOn)setTimeout(a11yPaint,300)}window.scrollTo(0,0);wire();
@@ -1226,33 +1242,78 @@ function ogImg(path){if(path.startsWith('products/')){const p=P[path.split('/')[
 const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const cut=(t,n)=>t&&t.length>n?t.slice(0,n-1).trim()+'…':t;
 const serp=(o,old)=>`<div class="serp"><div class="u">altrdbliss.com${o.url?' › '+esc(o.url.replace(/\//g,' › ')):''}</div><div class="t">${esc(cut(o.title,60))}</div>${o.desc?`<div class="d">${esc(cut(o.desc,155))}</div>`:`<div class="d miss">No description set. Google picks text from the page itself, which can be the age gate: "ARE YOU 21+? Sorry, before we get to the good stuff…"</div>`}</div>`;
-const ogc=o=>`<div class="og"><div class="im" style="background-image:url('${o.img}')"></div><div class="tx"><div class="s">altrdbliss.com</div><div class="t">${esc(cut(o.ogt,70))}</div><div class="d">${esc(cut(o.ogd,110))}</div></div></div>`;
-let btsTab='share',a11yOn=false;
+const ogc=o=>`<div class="og">${o.img?`<div class="im" style="background-image:url('${o.img}')"></div>`:'<div class="im noimg">No image</div>'}<div class="tx"><div class="s">altrdbliss.com</div><div class="t">${esc(cut(o.ogt,70))}</div><div class="d">${esc(cut(o.ogd,110))}</div></div></div>`;
+let btsTab='page',a11yOn=false;
 const bts=document.getElementById('bts');
 function vis(el){const c=el.cloneNode(true);c.querySelectorAll('[aria-hidden="true"]').forEach(x=>x.remove());return c.textContent.replace(/\s+/g,' ').trim()}
 function accName(el){const l=el.getAttribute('aria-label');if(l)return l;const img=el.querySelector('img[alt]:not([alt=""])');const txt=vis(el);return txt||(img&&img.alt)||''}
-function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');
- if(btsTab==='share'){const old=TODAY(path);const now={title:document.title,desc:CUR.d,ogt:CUR.t.replace(' – Altrd Bliss',''),ogd:CUR.d,img:CUR.img,url:path};
-  body.innerHTML=`<h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old,1)}`:''}<span class="bts__lbl new">New</span>${serp(now)}
-  <h3>Link preview</h3><p style="margin-bottom:8px">What people see when this page is texted or posted.</p>${old?`<span class="bts__lbl old">Today</span>${ogc(old)}`:''}<span class="bts__lbl new">New</span>${ogc(now)}
-  <div class="bts__note">Today most pages send "Altrd Bliss" as the description and a white logo on a white background as the image, so shared links show a blank card. In the live build, every page gets its own address, description, photo and product or recipe details written into its code, where Google, iMessage, Instagram and Facebook read them.</div>`}
- else{const heads=[...app.querySelectorAll('h1,h2,h3')].filter(h=>h.offsetParent).slice(0,14).map(h=>`<li><b>${h.tagName==='H1'?'Main':'Heading '+h.tagName[1]}</b>${esc(vis(h))}</li>`).join('');
-  const links=[...app.querySelectorAll('a[href],button')].filter(a=>a.offsetParent).slice(0,12).map(a=>`<li><b>${a.tagName==='A'?'Link':'Button'}</b>${esc(cut(accName(a),70))}</li>`).join('');
-  body.innerHTML=`<button class="togg" id="a11yT" aria-pressed="${a11yOn}">${a11yOn?'Hide':'Show'} labels on the page</button><p>Outlines every heading and image on this page with what assistive technology reads.</p>
-  <h3>What a screen reader hears: headings</h3><ul class="sr-list">${heads}</ul>
+const GATE_IMG=I('DTS_Please_Do_Not_Disturb_Fanette_Guilloud_Photos_ID8862.png?v=1778179153',800);
+const FIRST_LOAD=(()=>{try{return performance.getEntriesByType('resource').length+1}catch(e){return null}})();
+/* per-page facts scanned from altrdbliss.com, October 21, 2026 */
+function todayStats(path){const prod=path.startsWith('products/'),rec=path.startsWith('blogs/recipes/');
+ const m={'':[6,26,15,'Organization, WebSite'],'pages/shop-all':[1,5,0,'Organization'],'pages/learn':[1,7,3,'Organization'],'pages/about':[4,6,3,'Organization'],'pages/faq':[1,0,0,'Organization'],'pages/find-your-bliss':[1,1,1,'Organization'],'blogs/recipes':[1,8,0,'Organization'],'pages/contact':[0,0,0,'Organization']};
+ const v=prod?[1,15,4,'Product']:rec?[1,1,0,'Organization only, no recipe data']:m[path];if(!v)return null;return {h1:v[0],imgs:v[1],noalt:v[2],ld:v[3]}}
+const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark text on the rose buttons falls below the color contrast guideline.'],'the-rita':['The description is a word-for-word copy of The Original’s.'],'the-spritz':['Labeled “For Socializing,” the same as The Rita, while its own copy is about brightening your day.'],'the-original':[],'the-multipack':['The Multipack is the only way to try more than one flavor; there’s no way to pick your own four.']};
+ if(path.startsWith('products/'))return [...(prod[p]||[]),'4 of 15 images have no description.','No dose guide or recipes for this flavor on the page.'];
+ if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);const old=r&&TODAY(path).url.split('/').pop();return [`The search and share description reads “Prep Time: 2 minutesServes: 1.”`,'No recipe data, so Google can’t show it as a recipe with photo and ingredients.','No way to buy the flavor from the recipe.',...(r&&old!==r.s?[`The address ends in /${old}, which names a different drink.`]:[])]}
+ return ({'':['The “Pick your vibe” cards are crossed: The Tini card opens The Spritz, The Spritz opens The Rita, and The Rita opens The Tini.','Six main headlines on one page, so screen readers hear it as six separate pages.','The vibe cards read “For socializing” twice and never name the flavor.','No search description, so Google pulls text from the page.','First visit: 237 files and 2.4 MB, with the main photo at 3.7 seconds.'],
+ 'pages/learn':['Your mom’s story sits under the heading “Recipes, For your sip.”','No search description.','Shared links show the age gate photo instead of this page.'],
+ 'pages/about':['Four main headlines on one page.','3 of 6 images have no description.','No search description, and shared links show the age gate photo.'],
+ 'pages/faq':['“Where can I find ALTRD Bliss products?” points to a store locator that doesn’t exist.','The 28 states you can’t ship to are a typed list a customer has to scan.','No search description.'],
+ 'pages/find-your-bliss':['Start Quiz sends customers to altrd-bliss-hms.myshopify.com, a different address.','The banner image has no description.','No search description.'],
+ 'pages/shop-all':['No search description, and shared links show the age gate photo.'],
+ 'blogs/recipes':['No search description, and shared links show the age gate photo.'],
+ 'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
+const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
+ if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist','Buy the flavor from the recipe','More recipes to sip','Recipe data Google can show with the photo'];
+ return ({'':['The right flavor first, by time of day','Mix your bliss, with a shareable card','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['A three-question quiz on your own site, with a recipe match and email for the promo code'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
+function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
+const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
+function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
+ const now={title:document.title,desc:CUR.d,ogt:CUR.t.replace(' – Altrd Bliss',''),ogd:CUR.d,img:CUR.img,url:path};
+ if(btsTab==='page'){const imgs=[...app.querySelectorAll('img')],dec=imgs.filter(i=>i.getAttribute('alt')==='').length,miss=imgs.filter(i=>!i.hasAttribute('alt')).length;
+  const ld=(()=>{try{const j=JSON.parse(document.getElementById('ld').textContent||'null');return j?j['@type']:'Organization'}catch(e){return 'Organization'}})();
+  const row=(k,a,b)=>`<tr><th>${k}</th><td>${a}</td><td>${b}</td></tr>`;
+  const iss=ISSUES(path),add=ADDED(path);
+  body.innerHTML=`<p class="bts__path">altrdbliss.com/${esc(path)}</p>
+  <h3>At a glance</h3><table class="snap"><thead><tr><th></th><th>Today</th><th>New</th></tr></thead><tbody>
+  ${row('Search description',old?(old.desc?`<span class="warn">${esc(cut(old.desc,48))}</span>`:'<span class="bad">None</span>'):'',`<span class="good">${CUR.d.length} characters</span>`)}
+  ${row('Shared in iMessage',old?thumb(old.imsg)+(old.usesLogo?'<small>Age gate photo</small>':'<small>This page’s photo</small>'):'',thumb(now.img)+'<small>This page’s photo</small>')}
+  ${row('Main headlines',st?(st.h1===1?'1':`<span class="bad">${st.h1}</span>`):'',`<span class="good">${app.querySelectorAll('h1').length}</span>`)}
+  ${row('Images without a description',st?(st.noalt?`<span class="bad">${st.noalt} of ${st.imgs}</span>`:`0 of ${st.imgs}`):'',`<span class="good">${miss} of ${imgs.length}</span>${dec?`<small>${dec} marked decorative</small>`:''}`)}
+  ${row('Data for Google',st?esc(st.ld):'',`<span class="good">${esc(ld)}</span>`)}
+  ${row('Files loaded',`<span class="bad">About 280</span><small>65 scripts</small>`,`<span class="good">${FIRST_LOAD||14}</span><small>first visit, whole site</small>`)}
+  </tbody></table>
+  ${iss.length?`<h3>Needs attention today</h3><ul class="issl">${iss.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  ${add.length?`<h3>New on this page</h3><ul class="checkl">${add.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  <div class="bts__note">Today figures come from a scan of altrdbliss.com on October 21, 2026. File counts are from loading each page; some images without a description may be decorative.</div>`}
+ else if(btsTab==='share'){
+  body.innerHTML=`<h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old)}`:''}<span class="bts__lbl new">New</span>${serp(now)}
+  <h3>Texted in iMessage</h3>${old?`<span class="bts__lbl old">Today</span>${imsg({...old,img:old.imsg,ogt:old.ogt})}`:''}<span class="bts__lbl new">New</span>${imsg({...now})}
+  ${old&&old.usesLogo?`<div class="bts__note">This page tells apps to use the white Altrd Bliss logo, a file type iMessage can’t show, so iMessage grabs the first photo it finds: the age gate. That’s why every page shares the same picture.</div>`:''}
+  <h3>Posted on Facebook, LinkedIn or Slack</h3><p class="sm">These apps read the page’s title, description and image tags directly.</p>${old?`<span class="bts__lbl old">Today</span>${ogc(old.usesLogo?{...old,img:''}:old)}`:''}<span class="bts__lbl new">New</span>${ogc(now)}
+  ${old&&old.usesLogo?`<div class="bts__note">Today the description is just “Altrd Bliss,” and the image is the white logo file, which these apps usually don’t display.</div>`:''}
+  <div class="bts__note">In the live build, every page gets its own address with its description, photo and product or recipe details written into its code, where Google and these apps read them.</div>`}
+ else{const heads=[...app.querySelectorAll('h1,h2,h3')].filter(h=>h.offsetParent).slice(0,16).map(h=>`<li><b>${h.tagName==='H1'?'Main':'Heading '+h.tagName[1]}</b>${esc(vis(h))}</li>`).join('');
+  const links=[...app.querySelectorAll('a[href],button')].filter(a=>a.offsetParent).slice(0,14).map(a=>`<li><b>${a.tagName==='A'?'Link':'Button'}</b>${esc(cut(accName(a),70))}</li>`).join('');
+  const imgs=[...app.querySelectorAll('img')].filter(i=>!i.closest('[aria-hidden="true"]')).slice(0,10).map(i=>`<li><b>${i.alt?'Image':'Skipped'}</b>${esc(i.alt?cut(i.alt,70):'Decorative')}</li>`).join('');
+  body.innerHTML=`<button class="togg" id="a11yT" aria-pressed="${a11yOn}">${a11yOn?'Hide':'Show'} labels on the page</button><p class="sm">Outlines every heading and image on this page with what assistive technology reads.</p>
+  <h3>Headings a screen reader lists</h3><ul class="sr-list">${heads}</ul>
   <h3>Links and buttons, in order</h3><ul class="sr-list">${links}</ul>
+  ${imgs?`<h3>Images, as they are read</h3><ul class="sr-list">${imgs}</ul>`:''}
   <h3>Built into the demo</h3><ul class="checkl">
-   <li>A "Skip to content" link for keyboard users. Press Tab on any page to see it.</li>
+   <li>A “Skip to content” link for keyboard users. Press Tab on any page to see it.</li>
    <li>One main headline per page, with the rest in order beneath it.</li>
-   <li>Every product card names its flavor. Today the vibe cards only say "For socializing," twice.</li>
+   <li>Every product card names its flavor.</li>
    <li>Photos that carry meaning are described. Decorative ones are marked so screen readers skip them.</li>
    <li>The age gate and pop-ups take keyboard focus and keep it until they close, and Escape closes them.</li>
-   <li>Dark text on The Tini's rose is switched to white. The live site's dark-on-rose buttons fall below the contrast guideline.</li>
+   <li>White text on The Tini’s rose, which meets the contrast guideline.</li>
    <li>Every form field has a label, and errors say how to fix them.</li>
    <li>Moving sections stop for visitors who set their device to reduce motion.</li>
   </ul>
-  <div class="bts__note">A full accessibility review against WCAG 2.1 AA, the standard used in ADA website claims, is part of the launch package.</div>`;
+  <div class="bts__note">A full review against WCAG 2.1 AA, the standard used in ADA website claims, is part of the launch package.</div>`;
   document.getElementById('a11yT').onclick=()=>{a11yOn=!a11yOn;a11yPaint();btsRender()}}}
+const imsg=o=>`<div class="imsg"><div class="im" style="background-image:url('${o.img}')"></div><div class="tx"><div class="t">${esc(cut(o.ogt,60))}</div><div class="s">altrdbliss.com</div></div></div>`;
 function a11yPaint(){document.querySelectorAll('.a11y-tag').forEach(t=>t.remove());document.body.classList.toggle('a11y-on',a11yOn);if(!a11yOn)return;
  const add=(el,txt,cls)=>{const r=el.getBoundingClientRect();if(!r.width||!el.offsetParent||r.left<0||r.left>innerWidth-40)return;const t=document.createElement('span');t.className='a11y-tag '+(cls||'');t.textContent=txt;t.style.left=Math.min(r.left+scrollX,document.documentElement.clientWidth-232)+'px';t.style.top=(r.top+scrollY-18)+'px';document.body.appendChild(t)};
  app.querySelectorAll('h1,h2,h3').forEach(h=>add(h,(h.tagName==='H1'?'Main headline':h.tagName)+': '+cut(vis(h),40)));
