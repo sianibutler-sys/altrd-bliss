@@ -684,6 +684,25 @@ body.has-bar .badge{bottom:96px}
 .mb__steps{display:flex;flex-direction:column;gap:22px}
 .mb__step h3{font:800 18px/1 var(--font-matria);text-transform:uppercase;margin-bottom:12px}
 .mb__step h3 span{opacity:.5;margin-right:8px}
+.mb__hint{font-size:1.4rem;line-height:1.4;opacity:.85;margin:-4px 0 12px;max-width:46rem}
+.mb__m{border-bottom:2px dotted currentColor}
+.chip__t{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;text-align:left}
+.chip__t small{font-size:1.15rem;opacity:.7;margin-top:2px;letter-spacing:.01em}
+[data-mb="f"].chip,.chips--fruit .chip{min-height:56px;display:inline-flex;align-items:center;gap:10px;padding:6px 20px}
+[data-mb="f"].chip:has(.fm){padding-left:8px}
+.chips--fruit .chip.match{border-style:dotted;border-color:var(--mbc,#fff)}
+.chips--fruit .chip.match .chip__t::after{content:"In the bottle too";font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;opacity:.85}
+.fl{display:flex;align-items:center;gap:8px;font:800 12px/1.2 var(--font-matria);text-transform:uppercase;letter-spacing:.08em;margin:6px 0 4px;color:inherit}
+.shop__card .fl{color:#fff;opacity:.95;justify-content:center}
+@media (min-width:900px){.shop__card .fl{font-size:13px}}
+.qz__card .fl{justify-content:center;margin:4px 0}
+.fl--slide{margin:12px 2px 0;color:#fff;font-size:13px}
+.ddf{display:block;font-size:1.2rem;opacity:.65;margin-top:2px;text-decoration:none}
+.fm{flex:none;width:36px;height:36px;border-radius:50%;background:var(--cream);display:grid;place-items:center;box-shadow:0 0 0 2px var(--c)}
+.fm svg{width:78%;height:78%}
+.fm--chip{width:40px;height:40px}
+.fm--pdp{width:96px;height:96px;margin:4px 0 2px;box-shadow:0 0 0 3px var(--c)}
+.fl--slide .fm,.shop__card .fm{width:40px;height:40px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{min-height:48px;border-radius:999px;border:2px solid rgba(255,255,255,.6);padding:0 20px;font-size:1.5rem;transition:background .2s,color .2s,border-color .2s}
 .chip:hover{border-color:#fff}
@@ -1188,7 +1207,59 @@ const momentLine=()=>{const [h,l,c]=momentNow();const t=new Date().toLocaleTimeS
 const BASES=[['sparkling','Sparkling water','Fizz','crystal coupe'],['tonic','Tonic','Tonic','balloon copa'],['tea','Tea','Tea Time','highball'],['lemonade','Lemonade','Squeeze','cut-crystal rocks glass']];
 const HOTTEA=['hottea','Hot tea','Tea Time','glass teacup and saucer'];
 function mbB(){if(!MB.b)return null;if(MB.b==='tea'&&MB.t==='hot')return HOTTEA;const b=BASES.find(x=>x[0]===MB.b);return b[0]==='tea'?['tea','Iced tea',b[2],b[3]]:b}
-const GARN=[['lime','Lime','lime','A squeeze of lime and a wedge on the rim'],['grapefruit','Grapefruit','grapefruit','A splash of grapefruit juice and a twist of peel'],['orange','Orange','orange','A splash of orange juice and an orange peel'],['berries','Berries','muddled berries','A few berries, muddled in the bottom of the glass'],['cranberry','Cranberry','cranberry','A splash of cranberry juice and a few fresh cranberries'],['mango','Mango','mango','A spoonful of mango purée, stirred in']];
+const GARN=[['lime','Lime','a squeeze of lime','A squeeze of lime and a wedge on the rim','Squeeze + wedge','a lime wedge on the rim'],['grapefruit','Grapefruit','a splash of grapefruit juice','A splash of grapefruit juice and a twist of peel','Juice + twist','a twist of grapefruit peel'],['orange','Orange','a splash of orange juice','A splash of orange juice and an orange peel','Juice + peel','an orange peel'],['berries','Berries','muddled berries','A few berries, muddled in the bottom of the glass','Muddled in',''],['cranberry','Cranberry','a splash of cranberry juice','A splash of cranberry juice and a few fresh cranberries','Juice + berries','a few fresh cranberries'],['mango','Mango','mango purée','A spoonful of mango purée, stirred in','Purée, stirred in','']];
+const FRUIT_NOTE={'the-original':'Classic agave','the-rita':'Blackberry, lime + lavender','the-tini':'Cranberry + thyme','the-spritz':'Passion fruit + mango'};
+const fmark=(h,c='')=>ART_ON&&ART[h]?`<span class="fm${c}" style="--c:${P[h].theme}">${ART[h]}</span>`:'';
+const fline=(h,c='')=>FRUIT_NOTE[h]?`<p class="fl${c}">${fmark(h)}<span>${FRUIT_NOTE[h]}</span></p>`:'';
+const BOTTLE_MATCH={'the-tini':['cranberry'],'the-rita':['lime','berries'],'the-spritz':['mango']};
+const ART_ON=/[?&]art(=|&|$)/.test(location.search);
+const AK='#101618';const AW='#fff';
+const AS=`stroke="${AK}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"`;
+const ART={
+ 'the-original':`<svg viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M26 55C14 52 6 46 2 38c9 2 18 6 26 14z" fill="#B3EDD4" ${AS}/>
+  <path d="M38 55c12-3 20-9 24-17-9 2-18 6-26 14z" fill="#B3EDD4" ${AS}/>
+  <path d="M27 54C17 46 11 34 9 18c8 8 16 20 22 34z" fill="#E0F47B" ${AS}/>
+  <path d="M37 54c10-8 16-20 18-36-8 8-16 20-22 34z" fill="#E0F47B" ${AS}/>
+  <path d="M32 55c-7-12-8-30 0-49 8 19 7 37 0 49z" fill="#B3EDD4" ${AS}/>
+  <path d="M32 50V16M15 32c4 6 8 12 12 19M49 32c-4 6-8 12-12 19" stroke="${AK}" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".55"/>
+  <path d="M30 22l-2 .6M34 28l2 .6M30 36l-2 .6M13.5 27l1.6-1M50.5 27l-1.6-1" stroke="${AK}" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M14 57h36" ${AS} fill="none"/>
+ </svg>`,
+ 'the-tini':`<svg viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M44 6c-3 10-6 22-11 34" fill="none" ${AS}/>
+  <g fill="#B3EDD4" ${AS} stroke-width="2">
+   <ellipse cx="47" cy="11" rx="4.2" ry="2.4" transform="rotate(-30 47 11)"/><ellipse cx="39.5" cy="13" rx="4.2" ry="2.4" transform="rotate(30 39.5 13)"/>
+   <ellipse cx="45" cy="20" rx="4.2" ry="2.4" transform="rotate(-30 45 20)"/><ellipse cx="37" cy="22" rx="4.2" ry="2.4" transform="rotate(30 37 22)"/>
+   <ellipse cx="42" cy="29" rx="4.2" ry="2.4" transform="rotate(-30 42 29)"/><ellipse cx="34" cy="31" rx="4.2" ry="2.4" transform="rotate(30 34 31)"/>
+  </g>
+  <circle cx="22" cy="42" r="12" fill="#CC3F59" ${AS}/>
+  <circle cx="41" cy="48" r="9.5" fill="#CC3F59" ${AS}/>
+  <path d="M15.5 37a7 7 0 0 1 5-4.5M36.5 44a5 5 0 0 1 3.5-3" stroke="${AW}" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <path d="M22 52.5l.01 0M41 56l.01 0" ${AS}/>
+ </svg>`,
+ 'the-rita':`<svg viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M50 4c-2 10-4 18-9 26" fill="none" ${AS}/>
+  <g fill="#CDB4F9" ${AS} stroke-width="2"><ellipse cx="50.5" cy="7" rx="2.6" ry="3.6"/><ellipse cx="46.5" cy="10" rx="2.6" ry="3.6" transform="rotate(-25 46.5 10)"/><ellipse cx="51.5" cy="14" rx="2.6" ry="3.6" transform="rotate(25 51.5 14)"/><ellipse cx="46" cy="18" rx="2.6" ry="3.6" transform="rotate(-25 46 18)"/><ellipse cx="50" cy="22" rx="2.6" ry="3.6" transform="rotate(25 50 22)"/></g>
+  <path d="M6 40a24 24 0 0 0 40 14z" fill="#E0F47B" ${AS}/>
+  <path d="M11 41a19 19 0 0 0 31 11z" fill="#F6F2E7" stroke="none"/>
+  <path d="M26 47.5L14 43.5M26 47.5l3 9M26 47.5l-8 7.5" stroke="#B3EDD4" stroke-width="2" stroke-linecap="round"/>
+  <g fill="#3B1F4F" ${AS} stroke-width="2">
+   <circle cx="31" cy="20" r="4.4"/><circle cx="38" cy="22" r="4.4"/><circle cx="27" cy="27" r="4.4"/><circle cx="34.5" cy="29" r="4.4"/><circle cx="41" cy="30" r="4.4"/><circle cx="30" cy="34.5" r="4.4"/><circle cx="37" cy="36" r="4.4"/>
+  </g>
+  <path d="M33 16c1-3 4-5 7-5" fill="none" ${AS}/>
+  <path d="M29.5 18.6l1.2-1M36.5 20.6l1.2-1M25.5 25.6l1.2-1M33 27.6l1.2-1" stroke="${AW}" stroke-width="1.6" stroke-linecap="round"/>
+ </svg>`,
+ 'the-spritz':`<svg viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M30 14c14-6 30 4 28 22-2 16-16 24-28 20C18 52 14 38 18 26c2-6 6-10 12-12z" fill="#E57945" ${AS}/>
+  <path d="M26 22c4-4 10-5 14-3" stroke="${AW}" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <path d="M44 13c2-4 6-6 10-6-1 4-4 7-8 8" fill="#B3EDD4" ${AS}/>
+  <circle cx="18" cy="44" r="13" fill="#5B2A45" ${AS}/>
+  <circle cx="18" cy="44" r="9.5" fill="#F6C443" ${AS} stroke-width="2"/>
+  <g fill="${AK}"><circle cx="14" cy="41" r="1.5"/><circle cx="19" cy="38.5" r="1.5"/><circle cx="22.5" cy="43" r="1.5"/><circle cx="20" cy="48" r="1.5"/><circle cx="14.5" cy="47.5" r="1.5"/><circle cx="18" cy="44" r="1.5"/></g>
+ </svg>`
+};
+
 const MB={f:null,b:null,g:null,t:'iced'};
 const vibeOrdered=()=>{const h=momentNow()[0];return [...VIBE.filter(v=>v[0]===h),...VIBE.filter(v=>v[0]!==h)]};
 let BYO=[];
@@ -1222,7 +1293,7 @@ const HS=[
 const pendingCards=()=>store.get('ab_subs',[]).map(s=>`<div class="slide"><div class="card"><span class="pending">Pending approval</span><div class="card__media">${s.img?`<img src="${s.img}" alt="">`:`<div style="width:100%;height:100%;background:${P[s.f].theme}"></div>`}</div><div class="card__body"><span class="handle">${s.handle||'@you'} · loves The ${P[s.f].name}</span><p class="card__q" style="opacity:1;transform:none">"${s.msg.replace(/</g,'&lt;')}"</p></div></div></div>`).join('');
 const happy=(h)=>{const list=h?[...HS.filter(s=>s.fav===h),...HS.filter(s=>s.fav!==h)]:HS;return `<section class="hs"><div class="hs__head"><h2>Happy sippers</h2><p>Cheers to less stress and more bliss. Let's see your mix with #SipALTRD</p><button class="button button--sm hs__share" data-subopen>Share your mix</button></div>
 <div class="track" data-drag>${pendingCards()}${list.map(s=>{const media=s.vid?`<video muted loop playsinline preload="none" poster="${F+s.poster}" data-lazyplay><source src="${V+s.vid}" type="video/mp4"></video>`:`<img loading="lazy" src="${I(s.img,600)}" alt="" width="600" height="780">`;const body=s.h?`<div class="card__body"><span class="handle">${s.h}${s.fav?` · loves The ${P[s.fav].name}`:''}</span><p class="card__q">${s.q}</p></div>`:'';return `<div class="slide">${s.href?`<a class="card" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.h} on Instagram">`:'<div class="card">'}<div class="card__media">${media}</div>${body}${s.href?'</a>':'</div>'}${s.fav&&h===s.fav?'':''}</div>`}).join('')}</div></section>`};
-const shopCard=h=>{const p=P[h];const label=p.packOnly?'4 Pack For $32':'4 Pack For $32 — $8 Per Bottle';return `<article class="shop__card"><a class="shop__media" href="#/products/${h}"><img loading="lazy" src="${I(pimg(h),700)}" alt="The ${p.name}" width="700" height="700"></a><div><h3>The ${p.name}</h3><p>${p.sub}</p></div><div><a class="button button--sm" href="#/products/${h}">${label}</a></div></article>`};
+const shopCard=h=>{const p=P[h];const label=p.packOnly?'4 Pack For $32':'4 Pack For $32 — $8 Per Bottle';return `<article class="shop__card"><a class="shop__media" href="#/products/${h}"><img loading="lazy" src="${I(pimg(h),700)}" alt="The ${p.name}" width="700" height="700"></a><div><h3>The ${p.name}</h3>${fline(h)}<p>${p.sub}</p></div><div><a class="button button--sm" href="#/products/${h}">${label}</a></div></article>`};
 
 /* --- pages --- */
 const home=()=>`
@@ -1244,7 +1315,7 @@ const home=()=>`
 </div></div></section>
 <section class="vibe">
   <div class="vibe__head"><div><h2 class="c h66">What we're mixing up</h2><p>Pick your vibe</p><p class="moment" id="moment">${momentLine()}</p></div><a class="button" href="#/pages/shop-all">Shop our syrups</a></div>
-  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill${c==='#cc3f59'?' rose':''}" style="background:${c}">${l}</span></div></a></div>`).join('')}</div>
+  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill${c==='#cc3f59'?' rose':''}" style="background:${c}">${l}</span></div>${fline(h,' fl--slide')}</a></div>`).join('')}</div>
 </section>
 <section class="unwind"><div class="pw"><div class="two">
   <div><img class="two__img" loading="lazy" src="${I('ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit_JAM_v01f.png?v=1773156399',1200)}" alt="Mixing a mocktail with The Original" width="1200" height="1300"></div>
@@ -1309,9 +1380,9 @@ function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__grid">
   <div class="mb__stage" id="mbStage"><img class="ms on" src="img/mix/neutral.webp" data-sc="neutral" alt="An empty crystal coupe on a black foil-curtain set" width="1200" height="1200" decoding="async"><img class="ms" alt="" width="1200" height="1200" decoding="async"><span class="ph mb__phtag">Placeholder imagery</span><img class="mbdr" id="mbDr" alt="" aria-hidden="true"><div class="drops" id="mbDrops" aria-hidden="true"></div><img class="gz" id="mbGz" alt="" aria-hidden="true" hidden><div class="stm" aria-hidden="true"><i></i><i></i><i></i></div><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
   <div class="mb__steps">
-   <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">${fmark(h,' fm--chip')}<span class="chip__t">The ${P[h].name}<small>${FRUIT_NOTE[h]}</small></span></button>`).join('')}</div></div>
    <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div><div class="mb__temp" id="mbTemp" role="group" aria-label="Tea temperature" hidden><span>Serve it</span><button class="chip" data-mb="t" data-v="iced" aria-pressed="${MB.t!=='hot'}">Iced</button><button class="chip" data-mb="t" data-v="hot" aria-pressed="${MB.t==='hot'}">Hot</button></div></div>
-   <div class="mb__step"><h3><span aria-hidden="true">3</span><span class="sr">Step 3: </span>Pick your fruit</h3><div class="chips">${GARN.map(([k,l])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+   <div class="mb__step"><h3><span aria-hidden="true">3</span><span class="sr">Step 3: </span>Add fruit</h3><p class="mb__hint" id="mbHint">Some goes in the drink, some goes on the glass. Each pick tells you which.</p><div class="chips chips--fruit">${GARN.map(([k,l,,,t])=>`<button class="chip" data-mb="g" data-v="${k}" aria-pressed="false"><span class="chip__t">${l}<small>${t}</small></span></button>`).join('')}</div></div>
    <div class="mb__out" id="mbOut" aria-live="polite"></div>
   </div>
  </div></div></section>`}
@@ -1349,6 +1420,7 @@ function mbDrip(sc,f){const dr=document.getElementById('mbDr'),box=document.getE
   mbAt(480,()=>{d.remove();const sp=document.createElement('b');sp.style.left='50%';sp.style.top=lvl+'%';box.appendChild(sp);mbAt(700,()=>sp.remove())})})}
  return 900+6*260+300}
 function mbRender(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB.g);
+ {const hint=document.getElementById('mbHint'),mt=(MB.f&&BOTTLE_MATCH[MB.f])||[];if(hint){const nm=mt.map((k,i)=>{const l=GARN.find(x=>x[0]===k)[1];return i?l.toLowerCase():l});const fc=document.querySelector('.chips--fruit');if(fc)fc.style.setProperty('--mbc',f?f.theme:'#fff');hint.innerHTML=!f?'Some goes in the drink, some goes on the glass. Each pick tells you which.':MB.f==='the-original'?`In the bottle: classic agave. Any fruit works with it.`:`In the bottle: ${FRUIT_NOTE[MB.f].toLowerCase()}. <span class="mb__m">${nm.join(' and ')}</span> ${nm.length>1?'double':'doubles'} down on it.`}document.querySelectorAll('[data-mb="g"]').forEach(c=>c.classList.toggle('match',mt.includes(c.dataset.v)))}
  const cap=document.getElementById('mbCap'),st=document.getElementById('mbStage');if(!cap||!st)return;
  MBV.still=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const rs=f&&b&&MB_REC[MB.f][MB.b],rec=rs&&RECIPES.find(r=>r.s===rs);
@@ -1364,10 +1436,10 @@ function mbRender(){const f=MB.f&&P[MB.f],b=mbB(),g=MB.g&&GARN.find(x=>x[0]===MB
  const gl=g?g[2]:'';
  const html=!f&&b?`<span class="mb__rule"></span><p class="mb__kick">Flavor goes in first</p><p class="mb__name">Pick your flavor</p><p class="mb__meta">Six droppers, then the ${b[1].toLowerCase()}.</p>`
   :!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
-  :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:(g?`Pick a base. Fruit goes in last.`:`${f.sub} · ${f.use}`)}</p>${b?`<span class="mb__glass">In a ${b[3]}</span>`:''}`;
+  :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:(g?`Pick a base. Fruit goes in last.`:`${f.sub} · ${f.use}`)}</p>${b?`<span class="mb__glass">In a ${b[3]}${g&&g[5]?` · Garnish: ${g[5]}`:''}</span>`:''}`;
  const key=[MB.f,bk,MB.g].join('|');if(key!==MBV.key){cap.innerHTML=html;cap.classList.remove('in');void cap.offsetWidth;cap.classList.add('in');MBV.key=key}
  const out=document.getElementById('mbOut');
- if(f&&b&&g){out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${MB_AMT[b[0]]}</li><li>${MB_ICE[b[0]]}</li><li>${g[3]}</li></ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
+ if(f&&b&&g){out.innerHTML=`<h4>Your mix: The ${f.name} ${b[2]}</h4>${rec?`<p class="mb__try">See it made: <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<ul><li>6 droppers The ${f.name}</li><li>${MB_AMT[b[0]]}</li><li>${MB_ICE[b[0]]}</li><li>In the drink: ${g[2]}</li>${g[5]?`<li>On the glass: ${g[5]}</li>`:''}</ul><div class="mb__acts"><button class="button" data-mbcard>Save my mix card</button><button class="button alt" data-mbshare>Share it</button><a class="button alt" href="#/products/${MB.f}">Shop The ${f.name}</a></div>`;out.classList.add('on')}else out.classList.remove('on')}
 function mbLoad(u){return new Promise((res,rej)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>res(im);im.onerror=rej;im.src=u})}
 async function mbCard(){const f=P[MB.f],b=mbB(),g=GARN.find(x=>x[0]===MB.g);await document.fonts.ready;
  const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');x.fillStyle='#101618';x.fillRect(0,0,1080,1350);
@@ -1507,7 +1579,7 @@ function quizFinish(){const box=document.getElementById('quizBox');box.innerHTML
 function quizResult(){const box=document.getElementById('quizBox'),r=document.getElementById('quizRes');box.hidden=true;box.innerHTML='';
  const ranked=quizScore(),top=ranked[0][1],picks=ranked.filter(([,v],i)=>i===0||(v===top)||(i===1&&v>=top-15)).slice(0,2);
  r.innerHTML=`<button class="qz__back" data-qrestart>↻ Start over</button><h2 class="qz__q">🥁🍹 Your perfect match is... 🥁🍹</h2>${qMail?'<p class="qz__sub">P.S. Don’t forget to check your email for your discount code.</p>':''}
- <div class="qz__cards">${picks.map(([h,pct])=>{const p=P[h],rec=RECIPES.find(x=>x.h===h&&x.kind==='drink')||RECIPES.find(x=>x.h===h);return `<article class="qz__card"><p class="qz__pct">${pct}% match</p><a href="#/products/${h}"><img src="${I(p.img,700)}" alt="The ${p.name}" width="700" height="700"></a><h3><a href="#/products/${h}">The ${p.name}</a></h3><p class="qz__price">$8.00 <span>Per Bottle</span></p><p class="qz__pack">4 Pack</p>${rec?`<p class="qz__rec">Try it in the <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<button class="qz__next" data-quick="${h}">${MODE==='prelaunch'?'Join Waitlist':'Add to cart'}</button></article>`}).join('')}</div>`;
+ <div class="qz__cards">${picks.map(([h,pct])=>{const p=P[h],rec=RECIPES.find(x=>x.h===h&&x.kind==='drink')||RECIPES.find(x=>x.h===h);return `<article class="qz__card"><p class="qz__pct">${pct}% match</p><a href="#/products/${h}"><img src="${I(p.img,700)}" alt="The ${p.name}" width="700" height="700"></a><h3><a href="#/products/${h}">The ${p.name}</a></h3>${fline(h,' fl--ink')}<p class="qz__price">$8.00 <span>Per Bottle</span></p><p class="qz__pack">4 Pack</p>${rec?`<p class="qz__rec">Try it in the <a href="#/blogs/recipes/${rec.s}">${rec.t}</a></p>`:''}<button class="qz__next" data-quick="${h}">${MODE==='prelaunch'?'Join Waitlist':'Add to cart'}</button></article>`}).join('')}</div>`;
  r.classList.add('on');document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'})}
 const A='https://www.altrdbliss.com/cdn/shop/articles/';
 const AI=(f,w)=>A+f+'&width='+w;
@@ -1525,9 +1597,9 @@ const RECIPES=[
 const FRUITS=[['berries','Berries'],['citrus','Citrus'],['cranberry','Cranberry'],['cherry','Cherry'],['mango','Mango'],['passion','Passion fruit'],['pomegranate','Pomegranate']];
 const R_FRUIT={'altrd-bliss-ice-cream':['cranberry'],'rosemary-grapefruit-paloma-mocktail':['citrus'],'berry-lime-smoothie':['berries','citrus'],'orange-juice-passion-fruit-spritz':['citrus','passion','mango'],'cran-cherry-sleep-tonic':['cranberry','cherry','citrus'],'altrd-bliss-yogurt-bowl':['berries','pomegranate'],'blackberry-lime-rita-mocktail':['berries','citrus'],'iced-mango-matcha':['mango','passion']};
 const rcard=r=>`<a class="rcard" data-f="${r.h}" data-fr="${(R_FRUIT[r.s]||[]).join(' ')}" href="#/blogs/recipes/${r.s}"><div class="rcard__m"><img loading="lazy" src="${AI(r.img,700)}" alt="${r.t}" width="700" height="700"></div><h3>${r.t}</h3><p>Using The ${P[r.h].name}</p></a>`;
-const FRUIT_NOTE={'the-original':'Classic agave','the-rita':'Blackberry, lime + lavender','the-tini':'Cranberry + thyme','the-spritz':'Passion fruit + mango'};
+
 const FRUITY=/lime|blackberry|lavender|cranberry|thyme|passion|mango/i;
-const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const ing=p.ing.split(',').map(x=>x.trim()).filter(Boolean);return `<div class="six"><p class="six__t">${ing.length} ingredients</p><p class="six__f">${FRUIT_NOTE[h]}</p><ul class="six__l">${ing.map(x=>`<li${FRUITY.test(x)?' class="fr"':''}>${x}</li>`).join('')}</ul><p class="six__n">6 ingredients or fewer, in every bottle.</p></div>`};
+const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const ing=p.ing.split(',').map(x=>x.trim()).filter(Boolean);return `<div class="six"><p class="six__t">${ing.length} ingredients</p>${fmark(h,' fm--pdp')}<p class="six__f">${FRUIT_NOTE[h]}</p><ul class="six__l">${ing.map(x=>`<li${FRUITY.test(x)?' class="fr"':''}>${x}</li>`).join('')}</ul><p class="six__n">6 ingredients or fewer, in every bottle.</p></div>`};
 const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn${h==='the-tini'?' rose':''}" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false"${h==='the-tini'?' data-rose':''}>The ${P[h].name}</button>`).join('')}</div>
 <div class="ffruit" role="group" aria-label="Sort by fruit"><span class="ffruit__l">Or by fruit</span>${FRUITS.map(([k,l])=>`<button class="fchip" data-fruit="${k}" aria-pressed="false">${l}</button>`).join('')}</div><p class="rnone" id="rnone" hidden>No recipes match both. Try another fruit or flavor.</p>
 <div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(rcard).join('')}</div></div></section>
@@ -1596,10 +1668,10 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
  <div class="ft__logo"><img loading="lazy" src="${F}Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"><p class="ft__copy">© 2026 Altrd Bliss. All Rights Reserved · Site by <img class="sclogo sclogo--ft" src="siani-creates-logo.png" width="37" height="18" alt="Siani Creates" onerror="this.replaceWith(document.createTextNode('Siani Creates'))"></p></div>
 </div></footer>`;
 const SHOPDD=[['Shop All','#/pages/shop-all','ALTRD_BLISS_HHD_2A_COCKTAIL_GROUP_HANDS7241-Edit_JAM_v02_88d4db93-6a62-474e-9d7c-c4ef33c59a14.png?v=1778080338'],...SHOP_ORDER.map(h=>['The '+P[h].name,'#/products/'+h,h==='the-multipack'?'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501':pimg(h)])];
-document.getElementById('dd-shop').innerHTML=SHOPDD.map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,240)}" alt="" width="111" height="109">${t}</a>`).join('');
+document.getElementById('dd-shop').innerHTML=SHOPDD.map(([t,u,im])=>{const h=u.split('/').pop();return `<a href="${u}"><img loading="lazy" src="${I(im,240)}" alt="" width="111" height="109"><span>${t}${FRUIT_NOTE[h]?`<small class="ddf">${FRUIT_NOTE[h]}</small>`:''}</span></a>`}).join('');
 const MENU=[['Find your Bliss','#/pages/find-your-bliss'],['About','#/pages/about'],['Learn','#/pages/learn'],['FAQ','#/pages/faq'],['Recipes','#/blogs/recipes'],['Press','#/pages/press'],['The Guide','#/pages/under-the-influence']];
 document.getElementById('dd-menu').innerHTML=`<img loading="lazy" src="${I('DTS_my_own_summer_Daniel_Faro_Photos_ID9790_4e08198d-ca72-4ebf-a8a2-98a3803a2716.png?v=1778081854',600)}" alt="" width="260" height="109">`+MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('');
-document.getElementById('drawer').innerHTML=`<p class="dm__h">Shop</p><div class="dm__shop">${SHOPDD.map(([t,u,im])=>`<a href="${u}"><img loading="lazy" src="${I(im,120)}" alt="" width="48" height="48">${t}</a>`).join('')}</div><hr><p class="dm__h">Explore</p><div class="dm__links">${MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('')}</div>`;
+document.getElementById('drawer').innerHTML=`<p class="dm__h">Shop</p><div class="dm__shop">${SHOPDD.map(([t,u,im])=>{const h=u.split('/').pop();return `<a href="${u}"><img loading="lazy" src="${I(im,120)}" alt="" width="48" height="48"><span>${t}${FRUIT_NOTE[h]?`<small class="ddf">${FRUIT_NOTE[h]}</small>`:''}</span></a>`}).join('')}</div><hr><p class="dm__h">Explore</p><div class="dm__links">${MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('')}</div>`;
 
 /* --- live clock: follows the visitor's device time zone --- */
 function clockTick(){const m=document.getElementById('moment');if(m&&!momentShift)m.innerHTML=momentLine();guideTick()}
