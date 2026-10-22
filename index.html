@@ -916,7 +916,8 @@ html.ag-no #gate .gate__no{display:block}
 .cdu b{font:900 clamp(56px,6vw,88px)/.82 var(--font-compressed);letter-spacing:-1px;color:var(--c)}
 .cdu span{font:800 12px/1 var(--font-matria);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
 .seal{display:flex;align-items:center;gap:20px;max-width:520px}
-.seal__ring{width:132px;height:132px;flex:none;color:#fff;animation:sealSpin 40s linear infinite}
+.seal__ring{width:132px;height:132px;flex:none;color:#fff}
+.seal__spin{transform-origin:100px 100px;animation:sealSpin 40s linear infinite}
 .seal__ring text{font:800 16px var(--font-matria);fill:#fff;letter-spacing:2px}
 @keyframes sealSpin{to{transform:rotate(360deg)}}
 .seal__t{margin:0;font-size:1.6rem;line-height:1.5}
@@ -1427,7 +1428,7 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
  <div class="uti__copy"><p class="guide__k">The Altrd Bliss drinking guide</p><h1 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h1>
   <p class="uti__lede">30 fruit-forward drinks with zero proof and maximum personality.</p>
   <p>A collection of recipes for people who take pleasure seriously. Five minutes to make. Considerably longer to forget.</p>
-  <div class="seal"><svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sealP" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1"/><text><textPath href="#sealP" textLength="486" lengthAdjust="spacing">MADE WITH JUST AGAVE ✦ MADE WITH JUST AGAVE ✦</textPath></text><path d="M100 70c0 0-20 24-20 38a20 20 0 0 0 40 0c0-14-20-38-20-38z" fill="var(--lime)"/></svg><p class="seal__t"><span class="sr">Made with just agave. </span><b>No CBD. No CBG. No surprises.</b> The Bliss is a dropper away, whenever you’re ready.</p></div>
+  <div class="seal"><svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sealP" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1"/><g class="seal__spin"><text><textPath href="#sealP" textLength="486" lengthAdjust="spacing">MADE WITH JUST AGAVE ✦ MADE WITH JUST AGAVE ✦</textPath></text></g><path d="M100 70c0 0-20 24-20 38a20 20 0 0 0 40 0c0-14-20-38-20-38z" fill="var(--lime)"/></svg><p class="seal__t"><span class="sr">Made with just agave. </span><b>No CBD. No CBG. No surprises.</b> The Bliss is a dropper away, whenever you’re ready.</p></div>
   <div class="cd" id="cd" aria-live="off"></div>
   ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
