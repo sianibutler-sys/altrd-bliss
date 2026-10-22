@@ -796,6 +796,8 @@ body.has-bar .badge{bottom:96px}
 .refill p{margin:10px 0 0!important;font-size:1.4rem}
 .badge{flex-wrap:wrap}
 .badge .b-sm{display:none}
+.badge__logo{height:34px;width:auto;display:block;margin:0 4px 0 6px}
+@media (max-width:600px){.badge__logo{height:26px;margin:0 2px 0 0}}
 @media (max-width:600px){.badge{flex-wrap:nowrap;left:12px;bottom:12px;gap:6px;padding:4px 4px 4px 12px;font-size:1.1rem;white-space:nowrap;max-width:calc(100% - 24px);transition:bottom .25s ease,transform .35s ease}.badge button{padding:7px 10px;font-size:1.1rem;white-space:nowrap}.badge .b-lg{display:none}.badge .b-sm{display:inline}body.sc-down .badge{transform:translateY(calc(100% + 24px))}body.has-bar .badge{bottom:84px}}
 #btsBtn{background:var(--rose);color:#fff}
 .bts{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:95;background:#fff;color:var(--ink);transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.3)}
@@ -1209,7 +1211,7 @@ html.ag-no #gate .gate__no{display:block}
   </div>
 </div>
 
-<div class="badge"><span><span class="b-lg">Demo by </span>Siani Creates<span class="b-sm"> demo</span></span><button id="modeBtn" aria-live="polite"></button><button id="btsBtn" aria-expanded="false" aria-controls="bts">Behind the scenes</button></div>
+<div class="badge"><img class="badge__logo" src="siani-creates-logo.png" alt="Demo by Siani Creates" width="265" height="130"><button id="modeBtn" aria-live="polite"></button><button id="btsBtn" aria-expanded="false" aria-controls="bts">Behind the scenes</button></div>
 <aside class="bts" id="bts" aria-label="Behind the scenes" aria-hidden="true">
   <div class="bts__h"><h2>Behind the scenes</h2><button class="xbtn" id="btsClose" aria-label="Close behind the scenes">×</button></div>
   <div class="bts__tabs" role="tablist"><button role="tab" aria-selected="true" data-btstab="page">This page</button><button role="tab" aria-selected="false" data-btstab="share">Search &amp; sharing</button><button role="tab" aria-selected="false" data-btstab="a11y">Accessibility</button></div>
