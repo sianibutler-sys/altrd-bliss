@@ -471,6 +471,9 @@ body.menu-open .hdr{z-index:57}
 
 /* quiz */
 .quiz{padding:60px 0 100px;text-align:center}
+.quiz[hidden]{display:none}
+.quiz{scroll-margin-top:70px}
+.quiz:not([hidden]){animation:capIn .5s ease both}
 .quiz__q{font:800 24px/1.2 var(--font-matria);text-transform:uppercase;margin:0 0 30px}
 .quiz__opts{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px;margin:0 auto}
 @media (min-width:760px){.quiz__opts{grid-template-columns:1fr 1fr}}
@@ -1449,8 +1452,8 @@ const QUIZ=[
  {q:'How often do you want to enjoy your syrup? 📅',o:[['🎊 Every weekend',['the-rita','the-spritz']],['🌞 Daily',['the-original']],['A few times a week',['the-original','the-spritz']],['🌙 Just for special occasions',['the-rita']]],w:.5}];
 const findBliss=()=>`
 <section class="banner" style="text-align:left;justify-content:flex-start"><div class="banner__media"><img src="${I('Group_157.png?v=1775062117',1800)}" alt="" width="1800" height="1100"></div>
- <div class="banner__box" style="align-items:flex-start;padding-left:clamp(20px,6vw,130px)"><h1 class="banner__h1">FIND</h1><h2 class="banner__h2">YOUR FLAVOR</h2><p class="banner__p" style="max-width:520px">Need some help? Your perfect syrup match is just 30 seconds away (and a surprise promo code might be waiting for you at the end)</p><a class="button" href="#quiz" data-scroll="quiz">Start Quiz</a></div></section>
-<section class="quiz" id="quiz"><div class="pw"><div id="quizBox"></div><div class="quiz__res" id="quizRes" aria-live="polite"></div></div></section>`;
+ <div class="banner__box" style="align-items:flex-start;padding-left:clamp(20px,6vw,130px)"><h1 class="banner__h1">FIND</h1><h2 class="banner__h2">YOUR FLAVOR</h2><p class="banner__p" style="max-width:520px">Need some help? Your perfect syrup match is just 30 seconds away (and a surprise promo code might be waiting for you at the end)</p><a class="button" href="#quiz" data-qstart>Start Quiz</a></div></section>
+<section class="quiz" id="quiz" hidden><div class="pw"><div id="quizBox"></div><div class="quiz__res" id="quizRes" aria-live="polite"></div></div></section>`;
 let qa=[],qSel=null,qMail='';
 function quizStep(){const box=document.getElementById('quizBox');if(!box)return;const n=qa.length;const res=document.getElementById('quizRes');res.classList.remove('on');res.innerHTML='';box.hidden=false;
  if(n>=QUIZ.length){qMail='';box.innerHTML=`<button class="qz__back" data-qback>← Go back</button><div class="qz__mail"><span class="qz__ic" aria-hidden="true">✉</span><h2 class="qz__q" id="qzQ">Enter your email for 10% off your first order and personalized recommendations in the future!</h2><p class="qz__sub">Fill in your email to get the results. We’ll only use your email for relevant product information.</p><form class="qz__form" id="qzForm" novalidate><label for="qzE">Your email</label><input id="qzE" type="email" placeholder="Email address" autocomplete="email"><p class="qz__err" id="qzErr" aria-live="polite"></p><button class="qz__next" type="submit">Submit &amp; get results</button></form><button class="qz__skip" data-qskip>No thanks</button></div>`;return}
@@ -1601,7 +1604,7 @@ function wire(){
   app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}RF.f=on?b.dataset.filter:null;rApply()});
   app.querySelectorAll('[data-fruit]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-fruit]').forEach(x=>x.setAttribute('aria-pressed',false));if(on)b.setAttribute('aria-pressed',true);RF.fr=on?b.dataset.fruit:null;rApply()});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
-  qa=[];quizStep();
+  qa=[];
   MB.f=MB.b=MB.g=null;MB.t='iced';MBV.key='';MBV.sc='';MBV.f=MBV.b=MBV.g=null;mbClear();mbRender();byoRender();
   const mixS=document.getElementById('mix');if(mixS&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();['the-original','the-tini','the-rita','the-spritz'].forEach(h=>{const i=new Image();i.src=I(P[h].hov,1400)})},{rootMargin:'600px'});o.observe(mixS)}
   igInit();guideInit();seasonInit();
@@ -1659,6 +1662,7 @@ document.addEventListener('click',e=>{const t=e.target;
   if(t.closest('[data-subclose]')){document.getElementById('subDlg').classList.remove('on');return}
   const qn=t.closest('[data-qnext]');if(qn&&qSel!=null){qa.push(qSel);if(qa.length>=QUIZ.length){quizStep()}else quizStep();const q=document.querySelector('.qz__q');q&&q.focus&&q.setAttribute('tabindex','-1');return}
   if(t.closest('[data-qskip]')){qMail='';quizFinish();return}
+  if(t.closest('[data-qstart]')){e.preventDefault();const qs=document.getElementById('quiz');if(qs.hidden){qs.hidden=false;qa=[];quizStep()}qs.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(()=>{const q=document.querySelector('.qz__q');if(q){q.setAttribute('tabindex','-1');q.focus({preventScroll:true})}},500);return}
   if(t.closest('[data-qback]')){qa.pop();quizStep();return}
   if(t.closest('[data-qrestart]')){qa=[];quizStep();document.getElementById('quiz').scrollIntoView({behavior:'smooth'});return}
   if(t.closest('[data-tonl]')){e.preventDefault();closeCart();document.getElementById('nlE').focus();document.querySelector('.nl').scrollIntoView({behavior:'smooth'});return}
