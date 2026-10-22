@@ -1282,7 +1282,7 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
   ${row('Main headlines',st?(st.h1===1?'1':`<span class="bad">${st.h1}</span>`):'',`<span class="good">${app.querySelectorAll('h1').length}</span>`)}
   ${row('Images without a description',st?(st.noalt?`<span class="bad">${st.noalt} of ${st.imgs}</span>`:`0 of ${st.imgs}`):'',`<span class="good">${miss} of ${imgs.length}</span>${dec?`<small>${dec} marked decorative</small>`:''}`)}
   ${row('Data for Google',st?esc(st.ld):'',`<span class="good">${esc(ld)}</span>`)}
-  ${row('Files loaded',`<span class="bad">About 280</span><small>65 scripts</small>`,`<span class="good">${FIRST_LOAD||14}</span><small>first visit, whole site</small>`)}
+  ${row('Files loaded',`<span class="bad">${path?'About 280':'237'}</span><small>${path?'65 scripts':'37 scripts, 2.4 MB'}</small>`,`<span class="good">14</span><small>homepage, first visit</small>`)}
   </tbody></table>
   ${iss.length?`<h3>Needs attention today</h3><ul class="issl">${iss.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
   ${add.length?`<h3>New on this page</h3><ul class="checkl">${add.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
