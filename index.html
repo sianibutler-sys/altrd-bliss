@@ -121,9 +121,10 @@ body.menu-open .hdr{z-index:57}
 .banner__h2{font-family:var(--font-compressed);font-weight:900;font-size:55px;letter-spacing:-2.02px;line-height:1.1;margin:-20px 0 16px;text-transform:uppercase}
 .banner__p{font-size:16px;line-height:1.5;margin-bottom:24px}
 @media (min-width:990px){.banner__h1{font-size:102px;margin-bottom:0}.banner__h2{font-size:102px}.banner__p{font-size:22px}}
-.fade{position:relative;display:inline-block}
-.fade [data-w]{display:none}
-.fade [data-w].on{display:inline}
+.fade{position:relative;display:inline-grid}
+.fade [data-w]{grid-area:1/1;opacity:0;transition:opacity 1s ease-in-out}
+.fade [data-w].on{opacity:1}
+@media (prefers-reduced-motion:reduce){.fade [data-w]{transition:none}}
 
 /* two column */
 .two{display:grid;grid-template-columns:1fr;gap:24px}
