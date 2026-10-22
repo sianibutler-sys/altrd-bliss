@@ -33,6 +33,9 @@ a{color:inherit}
 h1,h2,h3,h4,p{margin:0}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 :focus-visible{outline:2px solid #fff;outline-offset:3px}
+.skip{position:fixed;top:-60px;left:16px;z-index:200;background:#fff;color:var(--ink);padding:12px 18px;border-radius:999px;text-decoration:none;transition:top .15s}
+.skip:focus{top:16px}
+#app:focus{outline:none}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .pw{max-width:1920px;margin:0 auto;padding:0 20px}
 @media (min-width:990px){.pw{padding:0 40px}}
@@ -129,6 +132,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .slide__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .3s ease,transform .3s ease}
 .slide__media .hov{opacity:0;z-index:1}
 @media (hover:hover) and (pointer:fine){.slide a:hover .hov,.slide a:focus-visible .hov{opacity:1}.slide a:hover img:not(.hov){transform:scale(1.01)}}
+.vpill.rose{color:#fff}
 .vpill{position:absolute;left:1rem;bottom:1rem;z-index:2;min-height:3.6rem;padding:.5rem 1.2rem;border-radius:32px;display:inline-flex;align-items:center;font-size:1.3rem;color:var(--ink)}
 @media (min-width:990px){.vpill{left:34px;bottom:36px;min-height:64px;padding:0 48px;font-size:1.5rem}}
 
@@ -383,7 +387,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .fq__q{width:100%;border-radius:999px;padding:2px;font-size:14px;background:#fff;color:#050505;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;transition:transform .4s;line-height:1.4}
 .fq__q:hover{transform:translateY(-2px)}
 .fq__q span:first-child{padding:2rem 2rem 2rem 4rem;font-size:15px}
-.fq__icon{width:6rem;min-width:6rem;height:6rem;border-radius:50%;background:var(--fc,var(--mint));color:#050505;display:grid;place-items:center;font-size:2.4rem;transition:transform .3s}
+.fq__icon{width:6rem;min-width:6rem;height:6rem;border-radius:50%;background:var(--fc,var(--mint));color:var(--ff,#050505);display:grid;place-items:center;font-size:2.4rem;transition:transform .3s}
 .fq.open .fq__icon{transform:rotate(-90deg)}
 .fq__a{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s,opacity .4s;padding:0 2rem;font-size:15px;line-height:1.6;color:#fff}
 .fq.open .fq__a{max-height:900px;opacity:1;padding:1.5rem 4rem 1rem}
@@ -396,6 +400,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .fbtn{min-width:150px;height:6.4rem;padding:0 4rem;border-radius:3.2rem;border:2px solid var(--acc);color:var(--acc);font-size:1.5rem;flex:none;transition:background-color .2s,color .2s}
 @media (min-width:990px){.fbtn{min-width:194px}}
 .fbtn:hover,.fbtn.on{background:var(--acc);color:var(--ink)}
+.fbtn.rose:hover,.fbtn.rose.on{color:#fff}
 .rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 @media (min-width:990px){.rgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:42px}}
 .rcard{text-decoration:none;color:#fff;display:block}
@@ -630,11 +635,50 @@ body.has-bar .badge{bottom:96px}
 .refill .chips .chip{border-color:rgba(16,22,24,.35);color:var(--ink);min-height:40px;font-size:1.4rem}
 .refill .chips .chip[aria-pressed="true"]{--c:var(--lime)}
 .refill p{margin:10px 0 0!important;font-size:1.4rem}
+.badge{flex-wrap:wrap}
+#btsBtn{background:var(--rose);color:#fff}
+.bts{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:95;background:#fff;color:var(--ink);transform:translateX(100%);transition:transform .25s ease;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.3)}
+.bts.on{transform:none}
+.bts__h{display:flex;justify-content:space-between;align-items:center;padding:20px 22px 10px}
+.bts__h h2{font:800 20px/1 var(--font-expanded);text-transform:uppercase}
+.bts__tabs{display:flex;gap:6px;padding:0 22px 12px;border-bottom:1px solid rgba(16,22,24,.12)}
+.bts__tabs button{border-radius:999px;padding:8px 16px;font-size:1.4rem;border:1px solid rgba(16,22,24,.25)}
+.bts__tabs button[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bts__body{flex:1;overflow:auto;padding:18px 22px 40px;font-size:1.4rem;line-height:1.5}
+.bts__body h3{font:800 14px/1.2 var(--font-matria);text-transform:uppercase;margin:22px 0 10px;letter-spacing:.02em}
+.bts__body h3:first-child{margin-top:0}
+.bts__lbl{display:inline-block;font-size:1.1rem;border-radius:999px;padding:2px 10px;margin-bottom:6px}
+.bts__lbl.old{background:#f2e6e8;color:#7a1f30}.bts__lbl.new{background:#e5f6ec;color:#1c5a35}
+.serp{border:1px solid rgba(16,22,24,.12);border-radius:14px;padding:14px;margin-bottom:12px;font-family:Arial,sans-serif}
+.serp .u{font-size:12px;color:#4d5156}
+.serp .t{font-size:18px;color:#1a0dab;line-height:1.3;margin:2px 0 4px}
+.serp .d{font-size:13px;color:#4d5156;line-height:1.5}
+.serp .d.miss{color:#9a3a2b;font-style:italic}
+.og{border:1px solid rgba(16,22,24,.12);border-radius:14px;overflow:hidden;margin-bottom:12px;font-family:-apple-system,Arial,sans-serif;background:#f5f5f7}
+.og .im{aspect-ratio:1.91/1;background:#fff center/cover no-repeat;border-bottom:1px solid rgba(16,22,24,.08)}
+.og .tx{padding:10px 12px}
+.og .s{font-size:11px;color:#6b6b70;text-transform:lowercase}
+.og .t{font-size:14px;font-weight:600;margin:2px 0}
+.og .d{font-size:12px;color:#55555a}
+.bts__note{background:var(--cream);border-radius:12px;padding:12px 14px;font-size:1.3rem;margin-top:10px}
+.checkl{list-style:none;margin:0;padding:0}
+.checkl li{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:8px 0;border-top:1px solid rgba(16,22,24,.08)}
+.checkl li::before{content:"✓";width:20px;height:20px;border-radius:50%;background:#1c7a45;color:#fff;display:grid;place-items:center;font-size:12px;margin-top:2px}
+.sr-list{list-style:none;margin:0;padding:0;font-family:ui-monospace,Menlo,monospace;font-size:1.2rem}
+.sr-list li{padding:6px 0;border-top:1px solid rgba(16,22,24,.08)}
+.sr-list b{display:inline-block;min-width:68px;color:#6b6b70;font-weight:400}
+.togg{display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border-radius:999px;padding:10px 16px;font-size:1.4rem;margin:4px 0 6px}
+.togg[aria-pressed="true"]{background:#1c7a45}
+.a11y-tag{position:absolute;max-width:220px;overflow:hidden;z-index:40;background:#1c7a45;color:#fff;font:600 11px/1.2 ui-monospace,Menlo,monospace;padding:3px 6px;border-radius:6px;pointer-events:none;max-width:220px;white-space:normal}
+.a11y-tag.img{background:#3a599d}.a11y-tag.dec{background:#6b6b70}
+.a11y-on h1,.a11y-on h2,.a11y-on h3{outline:2px dashed #1c7a45;outline-offset:3px}
+.a11y-on #app img:not([aria-hidden]){outline:2px dashed #3a599d;outline-offset:-2px}
 .mini{border-radius:999px;background:var(--ink);color:#fff;padding:8px 14px;font-size:1.3rem;flex:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#app" data-skip>Skip to content</a>
 <header class="hdr">
   <div class="hdr__left">
     <button class="circle glass burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="#fff" stroke-width="1.6"/></svg></button>
@@ -655,7 +699,7 @@ body.has-bar .badge{bottom:96px}
 <a class="logo" href="#/" aria-label="Altrd Bliss home"><img src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"></a>
 <nav class="drawer-menu" id="drawer" aria-label="Menu"></nav>
 
-<main id="app"></main>
+<main id="app" tabindex="-1"></main>
 
 <div id="footer"></div>
 
@@ -716,7 +760,12 @@ body.has-bar .badge{bottom:96px}
   </div>
 </div>
 
-<div class="badge"><span>Demo by Siani Creates</span><button id="modeBtn" aria-live="polite"></button></div>
+<div class="badge"><span>Demo by Siani Creates</span><button id="modeBtn" aria-live="polite"></button><button id="btsBtn" aria-expanded="false" aria-controls="bts">Behind the scenes</button></div>
+<aside class="bts" id="bts" aria-label="Behind the scenes" aria-hidden="true">
+  <div class="bts__h"><h2>Behind the scenes</h2><button class="xbtn" id="btsClose" aria-label="Close behind the scenes">×</button></div>
+  <div class="bts__tabs" role="tablist"><button role="tab" aria-selected="true" data-btstab="share">Search &amp; sharing</button><button role="tab" aria-selected="false" data-btstab="a11y">Accessibility</button></div>
+  <div class="bts__body" id="btsBody"></div>
+</aside>
 
 <script>
 const F='https://www.altrdbliss.com/cdn/shop/files/';
@@ -733,7 +782,7 @@ const P={
    desc:'BRIGHT, BERRY-FORWARD, AND MADE FOR A NIGHT OUT. Blackberry and lime with a soft hint of lavender. Shake me into your favorite mocktail and bring the party, minus the morning after.',draft:true,
    ing:'Agave, Lime Juice, Blackberry, Lavender, CBG, Citric Acid',nut:NUT(3),serv:'5 servings per bottle<br>5mg CBG per serving<br>25mg per bottle',lab:LAB+'rita-1/',
    how:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit_JAM_v02.png?v=1778080103',q:'So, What’s CBG anyway?',a:'Think of CBG as your brain’s personal cheerleader. It’s fast-acting and ready to boost mental clarity and uplift your mood. CBG is known for sharpening focus and enhancing pleasure. Think of it as your go-to for a clearer mind, better focus, and a smoother day.'},
- 'the-tini':{name:'Tini',theme:'#cc3f59',fg:'#050505',bg:'#101618',text:'#fff',sub:'CBD-Infused Agave',use:'For Unwinding',img:'Untitled-13-04.jpg?v=1777412092',hov:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708',
+ 'the-tini':{name:'Tini',theme:'#cc3f59',fg:'#ffffff',bg:'#101618',text:'#fff',sub:'CBD-Infused Agave',use:'For Unwinding',img:'Untitled-13-04.jpg?v=1777412092',hov:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708',
    desc:'TART, EARTHY, AND BRIGHTLY FLAVORFUL. My bold cranberry flavor with a hint of thyme brings a unique, refreshing twist to every sip. Ideal for winding down before bed, but equally great for spicing up social occasions or adding a bold touch to your daily mix.',
    ing:'Agave, Cranberry Juice, Thyme, CBD, Citric Acid',nut:NUT(3),serv:'5 servings per bottle<br>5mg CBD per serving<br>25mg CBD per bottle',lab:LAB+'tini-1/',
    how:'The-Tini-GIF.png?v=1775063989',q:'So, What’s CBD anyway?',a:'CBD is your quick-acting remedy for life’s stressors. Think of it as your go-to for relief from anxiety, sleep troubles, and pain, of course, without the high. Unlike hemp, which provides general balance, CBD zeroes in on easing your immediate discomforts.'},
@@ -768,7 +817,7 @@ function byoRender(){const el=document.getElementById('byo');if(!el)return;const
  <div class="byo__pick">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button style="--c:${P[h].theme}" data-byo="${h}"${full?' disabled':''}><span>The ${P[h].name}</span><span>${BYO.filter(x=>x===h).length?'× '+BYO.filter(x=>x===h).length:'+'}</span></button>`).join('')}</div>
  <div class="byo__acts"><button class="button" data-byoadd${full?'':' disabled'}>${MODE==='prelaunch'?'Join Waitlist':full?'Add my 4 Pack, $32':`Pick ${4-BYO.length} more`}</button>${BYO.length?'<button class="clear" data-byoclear>Start over</button>':''}</div>`}
 const SHOP_ORDER=['the-multipack','the-original','the-tini','the-rita','the-spritz'];
-const VIBE=[['the-tini','For unwinding','#cc3f59'],['the-spritz','For daytime','#e57945'],['the-original','For everyday','#e0f47b'],['the-rita','For socializing','#cdb4f9']];
+const VIBE=[['the-tini','For unwinding','#cc3f59'],['the-spritz','For daytime','#e57945'],['the-original','For everything','#e0f47b'],['the-rita','For socializing','#cdb4f9']];
 const PRICE={bottle:8,pack:32};
 let MODE=(()=>{try{return localStorage.getItem('ab_mode')||'prelaunch'}catch(e){return 'prelaunch'}})();
 const buyLabel=()=>MODE==='prelaunch'?'Join Waitlist':'Add to cart';
@@ -799,8 +848,7 @@ const home=()=>`
 <section class="banner">
   <div class="banner__media"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',1500)}" srcset="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',750)} 750w, ${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',1500)} 1500w, ${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',2400)} 2400w" sizes="100vw" alt="Four Altrd Bliss mocktails on a bright table" fetchpriority="high" width="1500" height="1000"></div>
   <div class="banner__box">
-    <h1 class="banner__h1"><span class="fade"><span data-w class="on">CBG</span><span data-w>CBD</span></span></h1>
-    <h2 class="banner__h2">INFUSED AGAVE SYRUPS</h2>
+    <h1 style="margin:0"><span class="sr">CBG and CBD infused agave syrups</span><span class="banner__h1" style="display:block" aria-hidden="true"><span class="fade"><span data-w class="on">CBG</span><span data-w>CBD</span></span></span><span class="banner__h2" style="display:block" aria-hidden="true">INFUSED AGAVE SYRUPS</span></h1>
     <p class="banner__p">Your tasty, guilt-free alternative to cannabis &amp; alcohol</p>
     <a class="button" href="#/pages/learn">Find Your Bliss</a>
   </div>
@@ -814,7 +862,7 @@ const home=()=>`
 </div></div></section>
 <section class="vibe">
   <div class="vibe__head"><div><h2 class="c h66">What we're mixing up</h2><p>Pick your vibe</p><p class="moment" id="moment">${momentLine()}</p></div><a class="button" href="#/pages/shop-all">Shop our syrups</a></div>
-  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill" style="background:${c}">${l}</span></div></a></div>`).join('')}</div>
+  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill${c==='#cc3f59'?' rose':''}" style="background:${c}">${l}</span></div></a></div>`).join('')}</div>
 </section>
 <section class="unwind"><div class="pw"><div class="two">
   <div><img class="two__img" loading="lazy" src="${I('ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit_JAM_v01f.png?v=1773156399',1200)}" alt="Mixing a mocktail with The Original" width="1200" height="1300"></div>
@@ -964,8 +1012,8 @@ const FAQ=[['The Bliss',[['What does it feel like?','<p>Like collapsing into a p
  ['General',[['What is CBD, CBG?','<p>Think of them as two very different family members, all from the same household, the hemp plant. It’s a variety of cannabis that’s naturally low in THC (so, no, it won’t get you high), but each brings something different to the table.</p><p>CBD: The chill older sibling. Smooths the edges, eases tension, and helps you drift into deeper sleep. CBG: The focused cousin. Sharpens your thinking, clears the fog, and keeps your body in that easy, steady flow. They’re cut from the same plant, but each brings their own vibe.</p>'],['Is this legal in my state?','<p>Yes, our products are made from hemp-derived ingredients that are federally legal across the United States. However, we can’t ship to a handful of states yet: AK, DC, HI, ID, KS, KY, ME, MA, MI, MS, MT, NE, NV, NH, NC, ND, PA, RI, VA, WA, CO, CT, FL, IA, LA, MN, NY, OR. We’re lobbying hard to change that, so hopefully your state will get with the program soon.</p>'],['What is the shelf life of ALTRD Bliss products?','<p>Our syrups have a shelf life of 12 months when stored in a cool, dry place. Be sure to check the expiration date on the bottle; bliss is always better fresh.</p>']]],
  ['Find Us',[['Where can I find ALTRD Bliss products?','<p>The easiest way is right here on our website. We also partner with select retailers across the country, and we’re adding new ones all the time. Check our store locator for the latest list, and if you don’t see your area yet, tell your favorite shop they’re missing out.</p>'],['Can I sell ALTRD Bliss in my store?','<p>Absolutely. We love working with new retailers. Just email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> with your store info, and we’ll get back to you with the next steps.</p>']]],
  ['Shipping & Returns',[['What’s your return policy?','<p>Because our syrups are made in small batches and considered a food product, we can’t accept returns or offer refunds once they’ve shipped. That said, if your order shows up looking rough, leaking, or just… wrong, email us at <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> and we’ll make it right.</p>']]]];
-const FAQC=['#b3edd4','#e0f47b','#cdb4f9','#cc3f59'];
-const faq=()=>`<section class="ptitle"><h1>Frequently Asked Questions</h1><p>Everything you need to know</p></section><section class="faq">${FAQ.map(([t,items],si)=>`<div class="faq__sec" style="--fc:${FAQC[si]}"><h2>${t}</h2><div class="faq__items">${items.map(([q,a],i)=>`<div class="fq"><button class="fq__q" aria-expanded="false" aria-controls="fq${si}-${i}"><span>${q}</span><span class="fq__icon" aria-hidden="true">→</span></button><div class="fq__a" id="fq${si}-${i}">${a}${/legal in my state/.test(q)?shipCheck('faq'):''}${/Where can I find/.test(q)?`<p><a class="button button--sm" href="mailto:hello@altrdbliss.com?subject=My%20favorite%20shop%20is%20missing%20out">Tell us your favorite shop</a></p>`:''}</div></div>`).join('')}</div></div>`).join('')}
+const FAQC=['#b3edd4','#e0f47b','#cdb4f9','#cc3f59'];const FAQF=['#050505','#050505','#050505','#ffffff'];
+const faq=()=>`<section class="ptitle"><h1>Frequently Asked Questions</h1><p>Everything you need to know</p></section><section class="faq">${FAQ.map(([t,items],si)=>`<div class="faq__sec" style="--fc:${FAQC[si]};--ff:${FAQF[si]}"><h2>${t}</h2><div class="faq__items">${items.map(([q,a],i)=>`<div class="fq"><button class="fq__q" aria-expanded="false" aria-controls="fq${si}-${i}"><span>${q}</span><span class="fq__icon" aria-hidden="true">→</span></button><div class="fq__a" id="fq${si}-${i}">${a}${/legal in my state/.test(q)?shipCheck('faq'):''}${/Where can I find/.test(q)?`<p><a class="button button--sm" href="mailto:hello@altrdbliss.com?subject=My%20favorite%20shop%20is%20missing%20out">Tell us your favorite shop</a></p>`:''}</div></div>`).join('')}</div></div>`).join('')}
 <div class="faq__sec" style="--fc:#e57945"><h2>Do we ship to you?</h2>${shipCheck('page')}</div></section>`;
 const STATES=[['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','Washington, D.C.'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
 /* their FAQ list, verbatim */
@@ -1010,7 +1058,7 @@ const RECIPES=[
  {s:'iced-mango-matcha',t:'Iced Mango Matcha',h:'the-spritz',kind:'drink',img:'Iced_Mango_Matcha_1_41c35261-df51-4269-9d63-a93e37a85741.jpg?v=1778103967',ing:['1 serving matcha','2 tbsp water','1 cup milk of your choice (coconut, almond, or oat)','1 serving Altrd Bliss Spritz','1/4–1/3 cup fresh mango purée (see instructions below)','Ice','#Mango Purée Ingredients','1 ripe mango','1 tsp lemon or lime juice (optional, to brighten flavor)','1 tsp sugar or honey (optional, depending on sweetness)'],steps:['#Step 1: Make the mango purée','Peel and chop the mango, removing the pit.','Place mango pieces in a blender. Add lemon/lime juice and sugar or honey if using.','Blend until smooth. For a thinner purée, add 1–2 tsp water and blend again.','#Step 2: Assemble the drink','Add 2–3 tablespoons of the mango purée to the bottom of a glass (more if you like it sweeter).','Fill the glass with ice.','Pour in the milk over the ice.','Add 1 serving Altrd Bliss Spritz and gently stir.','#Step 3: Prepare the matcha','In a small bowl or cup, whisk 1 serving matcha with 2 tbsp water until smooth and frothy.','Slowly pour the matcha on top of the milk, spritz, and mango mixture to create layers.','#Step 4: Serve','Stir before drinking (or enjoy the layered effect).']}
 ];
 const rcard=r=>`<a class="rcard" data-f="${r.h}" href="#/blogs/recipes/${r.s}"><div class="rcard__m"><img loading="lazy" src="${AI(r.img,700)}" alt="${r.t}" width="700" height="700"></div><h3>${r.t}</h3><p>Using The ${P[r.h].name}</p></a>`;
-const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div>
+const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn${h==='the-tini'?' rose':''}" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false"${h==='the-tini'?' data-rose':''}>The ${P[h].name}</button>`).join('')}</div>
 <div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(rcard).join('')}</div></div></section>`;
 function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound();const p=P[r.h];
  const li=(arr,ol)=>arr.map((x,i)=>x.startsWith('#')?`<li class="rh">${x.slice(1)}</li>`:ol?`<li>${x}</li>`:`<li><label><input type="checkbox"><span>${x}</span></label></li>`).join('');
@@ -1055,6 +1103,8 @@ const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about'
 const DESC={'':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.'};
 const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes','pages/contact':'Contact Us'};
 let fadeTimer=null;
+function setOg(t,d,img){const set=(p,v)=>{let m=document.querySelector(`meta[property="${p}"]`);if(!m){m=document.createElement('meta');m.setAttribute('property',p);document.head.appendChild(m)}m.setAttribute('content',v)};set('og:title',t);set('og:description',d);set('og:image',img);CUR={t,d,img}}
+let CUR={};
 function setMeta(d,ld){let m=document.querySelector('meta[name=description]');m.setAttribute('content',d);let s=document.getElementById('ld');if(!s){s=document.createElement('script');s.type='application/ld+json';s.id='ld';document.head.appendChild(s)}s.textContent=ld?JSON.stringify(ld):''}
 function route(){
   const path=(location.hash.replace(/^#\/?/,'')||'').replace(/\/$/,'');
@@ -1063,7 +1113,7 @@ function route(){
   if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss';desc=`The ${p.name}: ${p.sub}. ${p.desc.split('.')[0].toLowerCase().replace(/^./,c=>c.toUpperCase())}.`;ld={'@context':'https://schema.org','@type':'Product',name:'The '+p.name,brand:{'@type':'Brand',name:'Altrd Bliss'},image:I(p.img,1200),description:p.desc,offers:{'@type':'Offer',price:p.packOnly?'32.00':'8.00',priceCurrency:'USD',availability:MODE==='prelaunch'?'https://schema.org/PreOrder':'https://schema.org/InStock'}}}}
   else if(path.startsWith('blogs/recipes/')){root.removeProperty('background-color');const r=RECIPES.find(x=>x.s===path.split('/')[2]);html=recipe(path.split('/')[2]);if(r){title=r.t+' – Altrd Bliss';desc=`${r.t}, made with The ${P[r.h].name}. ${r.ing.filter(x=>!x.startsWith('#')).length} ingredients, ${r.steps.filter(x=>!x.startsWith('#')).length} steps.`;ld={'@context':'https://schema.org','@type':'Recipe',name:r.t,image:AI(r.img,1200),recipeIngredient:r.ing.filter(x=>!x.startsWith('#')),recipeInstructions:r.steps.filter(x=>!x.startsWith('#')).map(t=>({'@type':'HowToStep',text:t})),author:{'@type':'Organization',name:'Altrd Bliss'}}}}
   else{root.removeProperty('background-color');html=(ROUTES[path]||notFound)();if(TITLES[path])title=TITLES[path]+' – Altrd Bliss';desc=DESC[path]||desc}
-  app.innerHTML=html;document.title=title;setMeta(desc,ld);window.scrollTo(0,0);wire();
+  app.innerHTML=html;document.title=title;setMeta(desc,ld);setOg(title,desc,ogImg(path));CUR.path=path;if(typeof bts!=='undefined'){if(bts.classList.contains('on'))btsRender();if(a11yOn)setTimeout(a11yPaint,300)}window.scrollTo(0,0);wire();
 }
 function wire(){
   clearInterval(fadeTimer);
@@ -1148,7 +1198,7 @@ document.addEventListener('click',e=>{const t=e.target;
   if(t.closest('[data-close]'))document.getElementById('checkoutDlg').classList.remove('on');
 });
 document.getElementById('cartBtn').onclick=openCart;document.getElementById('cartClose').onclick=closeCart;scrim.onclick=closeCart;
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeAll();document.getElementById('checkoutDlg').classList.remove('on');document.getElementById('subDlg').classList.remove('on')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(typeof btsOpen==='function'&&bts.classList.contains('on'))btsOpen(false);closeCart();closeAll();document.getElementById('checkoutDlg').classList.remove('on');document.getElementById('subDlg').classList.remove('on')}});
 
 function refillRender(pace){const el=document.getElementById('refill');const bottles=cart.reduce((a,i)=>a+i.q*(i.h==='the-multipack'||i.h==='custom'||i.v==='pack'?4:1),0);const per={nightly:7,weekends:2,sometimes:1};
  let out='';if(pace){const weeks=Math.max(1,Math.round(bottles*5/per[pace]));const d=new Date();d.setDate(d.getDate()+weeks*7-5);out=`<p>${bottles} bottle${bottles>1?'s':''} at 5 servings each lasts about ${weeks} week${weeks>1?'s':''}. We'll send a refill reminder around ${d.toLocaleDateString([],{month:'long',day:'numeric'})}.</p>`}
@@ -1164,13 +1214,62 @@ document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');
 /* --- newsletter (demo) --- */
 document.getElementById('nl').onsubmit=e=>{e.preventDefault();const em=document.getElementById('nlE'),m=document.getElementById('nlMsg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent='You’re in. In the live site, this signs you up through Klaviyo.';e.target.reset()};
 
+/* --- behind the scenes: what Google and link previews see, and what assistive tech hears --- */
+const LOGO_OG='https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?height=628&pad_color=ffffff&v=1772195683&width=1200';
+/* scanned from altrdbliss.com on October 21, 2026 */
+const TODAY=path=>{const pg={'':['Altrd Bliss'],'pages/shop-all':['Shop All'],'pages/learn':['Learn'],'pages/about':['About'],'pages/faq':['FAQ'],'pages/find-your-bliss':['Find your Bliss'],'blogs/recipes':['Recipes'],'pages/contact':['Contact Us']};
+ if(path.startsWith('products/')){const p=P[path.split('/')[1]];if(!p)return null;return {title:`The ${p.name} – Altrd Bliss`,desc:p.desc,ogt:`The ${p.name}`,ogd:p.desc,img:I(p.img,1200),url:path}}
+ if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);if(!r)return null;const old={'cran-cherry-sleep-tonic':'green-mango-matcha','altrd-bliss-yogurt-bowl':'iced-mango-matcha-3','blackberry-lime-rita-mocktail':'iced-mango-matcha-2','iced-mango-matcha':'iced-mango-matcha-1'}[r.s]||r.s;return {title:`${r.t} – Altrd Bliss`,desc:'Prep Time: 2 minutesServes: 1',ogt:r.t,ogd:'Prep Time: 2 minutesServes: 1',img:AI(r.img,1200),url:'blogs/recipes/'+old}}
+ const t=pg[path];if(!t)return null;return {title:path?`${t[0]} – Altrd Bliss`:'Altrd Bliss',desc:null,ogt:path?t[0]:'Altrd Bliss',ogd:'Altrd Bliss',img:LOGO_OG,url:path}};
+function ogImg(path){if(path.startsWith('products/')){const p=P[path.split('/')[1]];return p?I(p.img,1200):I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',1200)}if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);if(r)return AI(r.img,1200)}
+ const m={'pages/learn':'Group_159_f21ce4e1-4abf-4133-805e-a197d50bb615.png?v=1777937613','pages/about':'ALTRD5016.png?v=1778079819','pages/faq':'ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062237','pages/find-your-bliss':'Group_157.png?v=1775062117','blogs/recipes':'ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693','pages/shop-all':'ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7420-Edit_JAM_v02.png?v=1778079956'};return I(m[path]||'ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7410-Edit_JAM_v02.png?v=1777935682',1200)}
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const cut=(t,n)=>t&&t.length>n?t.slice(0,n-1).trim()+'…':t;
+const serp=(o,old)=>`<div class="serp"><div class="u">altrdbliss.com${o.url?' › '+esc(o.url.replace(/\//g,' › ')):''}</div><div class="t">${esc(cut(o.title,60))}</div>${o.desc?`<div class="d">${esc(cut(o.desc,155))}</div>`:`<div class="d miss">No description set. Google picks text from the page itself, which can be the age gate: "ARE YOU 21+? Sorry, before we get to the good stuff…"</div>`}</div>`;
+const ogc=o=>`<div class="og"><div class="im" style="background-image:url('${o.img}')"></div><div class="tx"><div class="s">altrdbliss.com</div><div class="t">${esc(cut(o.ogt,70))}</div><div class="d">${esc(cut(o.ogd,110))}</div></div></div>`;
+let btsTab='share',a11yOn=false;
+const bts=document.getElementById('bts');
+function accName(el){const l=el.getAttribute('aria-label');if(l)return l;const img=el.querySelector('img[alt]:not([alt=""])');const txt=el.textContent.replace(/\s+/g,' ').trim();return txt||(img&&img.alt)||''}
+function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');
+ if(btsTab==='share'){const old=TODAY(path);const now={title:document.title,desc:CUR.d,ogt:CUR.t.replace(' – Altrd Bliss',''),ogd:CUR.d,img:CUR.img,url:path};
+  body.innerHTML=`<h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old,1)}`:''}<span class="bts__lbl new">New</span>${serp(now)}
+  <h3>Link preview</h3><p style="margin-bottom:8px">What people see when this page is texted or posted.</p>${old?`<span class="bts__lbl old">Today</span>${ogc(old)}`:''}<span class="bts__lbl new">New</span>${ogc(now)}
+  <div class="bts__note">Today most pages send "Altrd Bliss" as the description and a white logo on a white background as the image, so shared links show a blank card. In the live build, every page gets its own address, description, photo and product or recipe details written into its code, where Google, iMessage, Instagram and Facebook read them.</div>`}
+ else{const heads=[...app.querySelectorAll('h1,h2,h3')].filter(h=>h.offsetParent).slice(0,14).map(h=>`<li><b>${h.tagName==='H1'?'Main':'Heading '+h.tagName[1]}</b>${esc(h.textContent.replace(/\s+/g,' ').trim())}</li>`).join('');
+  const links=[...app.querySelectorAll('a[href],button')].filter(a=>a.offsetParent).slice(0,12).map(a=>`<li><b>${a.tagName==='A'?'Link':'Button'}</b>${esc(cut(accName(a),70))}</li>`).join('');
+  body.innerHTML=`<button class="togg" id="a11yT" aria-pressed="${a11yOn}">${a11yOn?'Hide':'Show'} labels on the page</button><p>Outlines every heading and image on this page with what assistive technology reads.</p>
+  <h3>What a screen reader hears: headings</h3><ul class="sr-list">${heads}</ul>
+  <h3>Links and buttons, in order</h3><ul class="sr-list">${links}</ul>
+  <h3>Built into the demo</h3><ul class="checkl">
+   <li>A "Skip to content" link for keyboard users. Press Tab on any page to see it.</li>
+   <li>One main headline per page, with the rest in order beneath it.</li>
+   <li>Every product card names its flavor. Today the vibe cards only say "For socializing," twice.</li>
+   <li>Photos that carry meaning are described. Decorative ones are marked so screen readers skip them.</li>
+   <li>The age gate and pop-ups take keyboard focus and keep it until they close, and Escape closes them.</li>
+   <li>Dark text on The Tini's rose is switched to white. The live site's dark-on-rose buttons fall below the contrast guideline.</li>
+   <li>Every form field has a label, and errors say how to fix them.</li>
+   <li>Moving sections stop for visitors who set their device to reduce motion.</li>
+  </ul>
+  <div class="bts__note">A full accessibility review against WCAG 2.1 AA, the standard used in ADA website claims, is part of the launch package.</div>`;
+  document.getElementById('a11yT').onclick=()=>{a11yOn=!a11yOn;a11yPaint();btsRender()}}}
+function a11yPaint(){document.querySelectorAll('.a11y-tag').forEach(t=>t.remove());document.body.classList.toggle('a11y-on',a11yOn);if(!a11yOn)return;
+ const add=(el,txt,cls)=>{const r=el.getBoundingClientRect();if(!r.width||!el.offsetParent||r.left<0||r.left>innerWidth-40)return;const t=document.createElement('span');t.className='a11y-tag '+(cls||'');t.textContent=txt;t.style.left=Math.min(r.left+scrollX,document.documentElement.clientWidth-232)+'px';t.style.top=(r.top+scrollY-18)+'px';document.body.appendChild(t)};
+ app.querySelectorAll('h1,h2,h3').forEach(h=>add(h,(h.tagName==='H1'?'Main headline':h.tagName)+': '+cut(h.textContent.replace(/\s+/g,' ').trim(),40)));
+ app.querySelectorAll('img').forEach(i=>{if(i.closest('[aria-hidden="true"]'))return;const a=i.getAttribute('alt');add(i,a?'Image: '+cut(a,40):'Decorative, skipped',a?'img':'dec')})}
+window.addEventListener('resize',()=>a11yOn&&a11yPaint());
+const btsBtn=document.getElementById('btsBtn');
+function btsOpen(o){bts.classList.toggle('on',o);bts.setAttribute('aria-hidden',!o);btsBtn.setAttribute('aria-expanded',o);if(o){btsRender();document.getElementById('btsClose').focus()}}
+btsBtn.onclick=()=>btsOpen(!bts.classList.contains('on'));document.getElementById('btsClose').onclick=()=>btsOpen(false);
+document.querySelectorAll('[data-btstab]').forEach(b=>b.onclick=()=>{btsTab=b.dataset.btstab;document.querySelectorAll('[data-btstab]').forEach(x=>x.setAttribute('aria-selected',x===b));btsRender()});
+document.querySelector('[data-skip]').onclick=e=>{e.preventDefault();app.focus()};
 /* --- preview switch: pre-launch (live today) vs launch --- */
 const modeBtn=document.getElementById('modeBtn');
 const paintMode=()=>{modeBtn.textContent=MODE==='prelaunch'?'Pre-launch view · switch':'Launch view · switch'};
 modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();route()};paintMode();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
-if(!store.get('ab_21',false)){gate.classList.add('on');document.body.style.overflow='hidden'}
+if(!store.get('ab_21',false)){gate.classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('yes').focus(),50)}
+document.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const open=[...document.querySelectorAll('.gate.on')].pop();if(!open)return;const f=[...open.querySelectorAll('button,a[href],input,select,textarea')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}else if(!open.contains(document.activeElement)){e.preventDefault();a.focus()}});
 document.getElementById('yes').onclick=()=>{store.set('ab_21',true);gate.classList.remove('on');document.body.style.overflow=''};
 document.getElementById('no').onclick=()=>{document.getElementById('gateC').innerHTML='<h2>COME BACK SOON</h2><p>Altrd Bliss is for adults 21 and over.</p>'};
 
