@@ -195,17 +195,13 @@ body.menu-open .hdr{z-index:57}
 .ig__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px}
 .ig__head h2{margin:0;font-size:clamp(40px,5vw,66px)}
 .ig__head p{margin:6px 0 0;font-size:1.6rem;opacity:.85}
-.ig__track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
-.ig__card{flex:0 0 min(280px,70vw);scroll-snap-align:start;border-radius:20px;overflow:hidden;background:var(--ink);position:relative;aspect-ratio:9/16;display:block;color:#fff;text-decoration:none;isolation:isolate}
-.ig__card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.ig__card:hover img,.ig__card:focus-visible img{transform:scale(1.04)}
-.ig__card::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(16,22,24,.88));z-index:1}
-.ig__cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px;display:flex;flex-direction:column;gap:6px}
-.ig__d{font:800 11px/1 var(--font-matria);letter-spacing:.14em;text-transform:uppercase;opacity:.8}
-.ig__t{font-size:1.5rem;line-height:1.3}
-.ig__w{font:800 11px/1 var(--font-matria);letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-top:6px;display:flex;align-items:center;gap:8px}
-.ig__w::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--lime) no-repeat center/9px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 12'%3E%3Cpath d='M0 0l10 6-10 6z' fill='%23101618'/%3E%3C/svg%3E");background-position:55% 50%;flex:none}
-.ig__card iframe{width:100%;height:100%;border:0;display:block}
+.ig .track{margin-top:8px}
+@media (min-width:990px){.ig .track{gap:30px;padding:0 40px}}
+.ig .slide{flex:0 0 calc((100% - 20px) / 1.2)}
+@media (min-width:990px){.ig .slide{flex-basis:calc((100% - 6 * 30px) / 4.2);max-width:443px}}
+.ig__h{gap:8px}
+.ig .card__body{justify-content:flex-end;gap:14px}
+.ig__play{width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent var(--lime)}
 .press{padding:150px 0 90px}
 .press__h{text-align:center;margin:0 0 50px}
 .press__h h1{font-size:clamp(56px,8vw,110px);margin:0}
@@ -484,10 +480,11 @@ body.menu-open .hdr{z-index:57}
 .frame__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:10px}
 .frame h3{font:800 25px/1.1 var(--font-matria);text-transform:uppercase;margin:42px 0 23px}
 .frame p{font-size:16px;line-height:1.5;margin-bottom:30px}
-.para{position:relative;min-height:40vh;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;text-align:center}
-@media (min-width:990px){.para{min-height:70vh;background-attachment:fixed}}
-.para::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.para h2{position:relative;line-height:1}
+.para{position:relative;min-height:40vh;padding:100px 20px;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;text-align:center}
+.para__h{display:flex;flex-direction:column;align-items:center;margin:0;color:#fff;line-height:50px;text-transform:uppercase}
+.para__h span{font-size:60px;letter-spacing:-3.52px}
+.para__h .p1{font-family:var(--font-matria);font-weight:800}.para__h .p2{font-family:var(--font-compressed);font-weight:900}.para__h .p3{font-family:var(--font-expanded);font-weight:800}
+@media (min-width:901px){.para{padding:273px 40px;background-attachment:fixed;background-position:center calc(50% + 80px)}.para__h{display:block;line-height:1}.para__h span{font-size:min(176px,11.6vw);margin-right:30px}.para__h span:last-child{margin-right:0}}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:absolute;inset:0}
 .duo img{width:100%;height:100%;object-fit:cover}
 
@@ -612,6 +609,8 @@ body.has-bar .badge{bottom:96px}
 .rcp__img img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px}
 .rcp__t{font:800 36px/1 var(--font-matria);text-transform:uppercase}
 @media (min-width:990px){.rcp__t{font-size:52px}}
+.rcp__all{display:inline-block;margin:0 0 14px;font:800 12px/1 var(--font-matria);letter-spacing:.12em;text-transform:uppercase;color:inherit;opacity:.8;text-decoration:none}
+.rcp__all:hover,.rcp__all:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:4px}
 .rcp__using{display:inline-block;margin:18px 0 28px;border:1px solid var(--acc);color:var(--acc);border-radius:20px;padding:10px 24px;text-decoration:none;font-size:1.4rem}
 .rcp__using:hover{background:var(--acc);color:var(--ink)}
 .rcp__box{background:#fff;color:var(--ink);border-radius:20px;padding:28px;margin-bottom:16px}
@@ -1435,7 +1434,7 @@ function guideInit(){guideTick()}
 /* reels from @altrdbliss: covers and first caption lines as posted */
 const IG=[['DeI0plnvuCY','October 5','So what exactly is Altrd Bliss?','Altrd Bliss in 10 seconds: two coupes of orange juice behind the four bottles'],['DewrqlZv7Wz','October 21','Three years. Two sisters. An unreasonable number of opinions.','Erika and Jamie Isaac side by side in denim'],['DeuQEGZs-38','October 20','Some things are better with a little extra fruit.','Pours of fruit: four drinks topped with dragon fruit, orange, pomegranate and kiwi'],['DeFEfYMtxdM','October 4','we’ve been working on something.','We’re building our own: the twins from behind, looking out a window'],['DepNFphhGkL','October 18','Postcards from the bar: Paris, France','A Kir Royale in a coupe on a silver tray against a starry backdrop'],['DecCcXrxnJ9','October 13','some people collect handbags. we make drinks in them.','What’s in my bag: a cherry fizz served in a clear handbag']];
 const igRow=()=>`<section class="ig" aria-labelledby="igH"><div class="pw"><div class="ig__head"><div><h2 class="c" id="igH">@altrdbliss</h2><p>Twin founders making drinks differently.</p></div><a class="button" href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Follow on Instagram</a></div>
- <div class="ig__track" data-drag>${IG.map(([id,d,c,a])=>`<a class="ig__card" href="https://www.instagram.com/reel/${id}/" target="_blank" rel="noopener"><img loading="lazy" src="img/ig/${id}.webp" alt="${a}" width="600" height="1066"><span class="ig__cap"><span class="ig__d">${d}</span><span class="ig__t">${c}</span><span class="ig__w">Watch on Instagram</span></span></a>`).join('')}</div></div></section>`;
+ </div><div class="track" data-drag>${IG.map(([id,d,c,a])=>`<div class="slide"><a class="card" href="https://www.instagram.com/reel/${id}/" target="_blank" rel="noopener" aria-label="Watch on Instagram: ${c}"><div class="card__media"><img loading="lazy" src="img/ig/${id}.webp" alt="${a}" width="600" height="1066" style="object-position:center 30%"></div><div class="card__body"><p class="card__q">${c}</p><span class="handle ig__h"><span class="ig__play" aria-hidden="true"></span>${d}</span></div></a></div>`).join('')}</div></section>`;
 function igInit(){}
 function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
@@ -1600,7 +1599,7 @@ ${marquee()}
 <section class="frames"><div class="pw"><h2 class="c h66 frames__h">WE'RE GIVING EVERYONE A FAIR SHOT AT CREATING THEIR VERSION OF BLISS</h2><div class="frames__grid">
  ${[['DTS_HERBAL_PIONEER_Felix_NIKADO_10233.png?v=1775062005','Quality','We don’t mess around when it comes to quality. Our products are always top-notch, made with precise dosages of all-natural ingredients and bursting with bold, mouthwatering flavors. We believe you deserve the very best, and we’re here to deliver just that, every single time.'],['DTS_FIRST_ROUND_JELLY_LUISE_10670.png?v=1775062005','Philanthropy','As Black women founders, we’re all about giving back. We’re committed to supporting our community, customers, and the causes that matter. From advocating for those impacted by unjust cannabis laws to contributing to initiatives that uplift, we’re here to make a difference.'],['DTS_FIRST_ROUND_JELLY_LUISE_10635.png?v=1775062005','Inclusivity','Fun and bliss should be for everyone. No judgment, no pressure, just pure enjoyment. We’re breaking barriers and creating a space where everyone feels welcome to find their bliss, their way. Whether it’s unwinding after a long day or celebrating life’s little wins, you deserve to feel good.']].map(f=>`<div class="frame"><div class="frame__img"><img loading="lazy" src="${I(f[0],700)}" alt="" width="700" height="780"></div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join('')}
 </div></div></section>
-<section class="para" style="background-image:url('${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693',1800)}')"><a href="#/pages/find-your-bliss" style="text-decoration:none;position:relative"><h2 class="h66"><span class="x">FIND YOUR</span> <span class="c">BLISS</span></h2></a></section>
+<section class="para" style="background-image:url('${I('ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910',2400)}')"><h2 class="para__h" aria-label="Find your bliss"><span class="p1">FIND</span><span class="p2">YOUR</span><span class="p3">BLISS</span></h2></section>
 ${igRow()}`;
 
 const FAQ=[['The Bliss',[['What does it feel like?','<p>Like collapsing into a plush couch after being on your feet all day, shoes kicked off, cozy clothes on. Your body loosens, your mind quiets, but not in a zoned-out way. You’re still fully you, just… the version that isn’t gripping the steering wheel so tight.</p><p>It’s not a big, wild, “whoa, what just happened?” moment. It’s a slooooww melt. A smoooooth untangling of every knot you’ve been carrying around, the kind that lets you slide deeper into your night without missing a single beat of whatever you were doing before.</p><p>Each syrup delivers its own flavor of bliss: CBD: smooths the edges. The low hum of tension fades, leaving you softer, lighter, more at ease. CBG: clears the fog. Focus clicks in, mind feels light, alert without the jittery edges. CBG + CBD: grounds you. Shoulders drop, breath deepens, that “I’m finally home” feeling settles in. Pick your bliss based on what you need most right now.</p>'],['Are there any side effects?','<p>We keep our blends clean, no bullsh*t, ever. So most people feel nothing but pure bliss. But bodies are funny. Yours isn’t your neighbor’s, and your neighbor’s isn’t that girl on TikTok. If you’ve got health stuff going on, are pregnant, breastfeeding, or just want to be extra safe, check in with your doctor first.</p>'],['Will I get paranoid?','<p>Nope! This isn’t weed-you-found-in-your-cousin’s backpack in 2009. We’ve formulated our syrups to give you the benefits of CBD and CBG without the high, and certainly without the “oh f*ck, everyone\'s looking at me??” paranoia. Think steady, mellow, unbothered energy.</p>'],['How do I use ALTRD Bliss syrups?','<p>However the heck you want :)</p><p>Most people splash it into sparkling water, tea, mocktails, whatever’s in your glass. But if you’re feeling bold (or impatient), drip it straight under your tongue for the fast lane to bliss. Every bottle comes with a calibrated dropper so you can adjust your serving depending on your mood, a little for a light lift, a little more when you’re chasing that ahhh.</p>']]],
@@ -1673,6 +1672,7 @@ function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound(
  return `<section class="rcp" style="--acc:${p.theme}"><div class="pw"><div class="rcp__grid">
   <div class="rcp__img"><img src="${AI(r.img,1200)}" alt="${r.t}" width="1200" height="1200"></div>
   <div class="rcp__body">
+   <a class="rcp__all" href="#/blogs/recipes">← All recipes</a>
    <h1 class="rcp__t">${r.t}</h1>
    <a class="rcp__using" href="#/products/${r.h}">Using The ${p.name}</a>
    <div class="rcp__box"><h2>INGREDIENTS</h2><ul class="checks">${li(r.ing)}</ul><p class="rcp__hint">Tap to check off what you've got.</p></div>
@@ -1680,6 +1680,7 @@ function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound(
    <div class="rcp__shop"><img src="${I(pimg(r.h),200)}" alt="" width="72" height="72"><div><b>The ${p.name}</b><span>${p.sub}</span></div><a class="button" href="#/products/${r.h}">Shop Now</a></div>
   </div></div>
   <h2 class="c h66" style="text-align:center;margin:80px 0 40px">MORE TO SIP</h2><div class="rgrid">${more.map(rcard).join('')}</div>
+  <p style="text-align:center;margin-top:48px"><a class="button" href="#/blogs/recipes">See all recipes</a></p>
  </div></section>`}
 
 const contact=()=>`<section class="ptitle"><h1>Hi</h1><p class="ct__k">Get in touch</p><p class="ct__m"><a href="mailto:hello@altrdbliss.com">HELLO@ALTRDBLISS.COM</a></p><p><a class="ct__r" href="https://www.altrdbliss.com/pages/return-policy" target="_blank" rel="noopener">View Return policy</a></p></section><section class="faq"><h2 class="ct__h">Contact form</h2><form class="sub-form contact" data-capture="contact" style="max-width:640px;margin:0 auto"><label for="cN">Name</label><input id="cN" type="text" autocomplete="name"><label for="cE">Email</label><input id="cE" type="email" autocomplete="email" required style="width:100%;border:1px solid rgba(255,255,255,.4);border-radius:16px;padding:12px 16px;font:400 1.5rem var(--font-body)"><label for="cP">Phone number</label><input id="cP" type="text" inputmode="tel" autocomplete="tel"><label for="cC">Comment</label><textarea id="cC"></textarea><p class="cap__msg" aria-live="polite"></p><div><button class="button" type="submit">Send</button></div></form></section>`;
@@ -1932,7 +1933,7 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'blogs/recipes':['No search description, so Google strings recipe names together with semicolons.','Shared links show the age gate photo.'],
  'pages/contact':['No main headline on the page.','No search description, so Google reads out the form labels: “Name. Email *. Phone number. Comment. Send.”']})[path]||[]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];const fix0=ART_ON?['Fruit illustration over the ingredients (preview option)']:[];const fix={'the-rita':['A draft description written from Rita’s own ingredients, labeled on the page for you to replace'],'the-spritz':['The tag reads “For Daytime” to match its own copy. Live has “For Socializing,” the same as The Rita']}[h]||[];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front in their own box, with the fruit called out (this replaces the Ingredients dropdown)','Nutritional Facts laid out as a nutrition label, every line from the live page','Serving Size shown as three numbers you can read at a glance','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch',...fix,...fix0]}
- if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist you can tap','More to sip: three more recipes','Recipe data Google can show with the photo','A clean address that matches the drink'];
+ if(path.startsWith('blogs/recipes/'))return ['A way back to all recipes, at the top and bottom of the page','Ingredient checklist you can tap','More to sip: three more recipes','Recipe data Google can show with the photo','A clean address that matches the drink'];
  return ({'':['The headline cycles all three moods from your Voyage LA interview: CBG for Uplift, CBG + CBD for Balance, CBD for Unwind, each in its flavor’s color','Texted links show the homepage photo with the white Altrd Bliss logo','Each flavor’s fruit named under its bottle','The right flavor first, by time of day','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup','Your mom’s story now sits under “She deserved better,” your own line from that story'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['The quiz runs on your own site, under Start Quiz','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Filter by fruit, alone or with a flavor','Mix your bliss: pick a flavor, a base (tea hot or iced) and fruit, in real glassware, with a card to save or share','In Mix your bliss, each fruit says what goes in the drink and what goes on the glass, and which fruit is already in the bottle','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram reels as cards with their own covers and first lines, each opening the reel on Instagram'],'pages/shop-all':['Each flavor’s fruit named on its card','Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline (“Hi”) and labeled fields','The email address opens a new message in one tap']})[path]||[]};
 const SAME=path=>{if(path.startsWith('products/')){const h=path.split('/')[1],p=P[h];if(!p)return [];return h==='the-multipack'?['Name, “4 Flavors, 1 Box of Bliss” and the full description','4 Pack for $32.00 and Join Waitlist','Ingredients, Nutritional Facts and Serving Size, word for word','How To Indulge: Shake, Mix, Sip','The scrolling banner, Happy sippers and Wait, there’s more to love!']:[`The ${p.name} title and “${p.sub}”`,...(h==='the-spritz'?[]:[`The “${p.use}” tag`]),...(p.draft?[]:['The description, word for word']),'$8.00 Per Bottle, 4 Pack for $32.00 and Join Waitlist','The health disclaimer','The ingredient list, Nutritional Facts and Serving Size, word for word','How To Indulge: Shake, Mix, Sip',...(p.q?[`“${p.q}” and its answer`]:[]),'The scrolling banner, Happy sippers and Wait, there’s more to love!']}
  if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);return r?[`${r.t}, its photo and “Using The ${P[r.h].name}”`,'Ingredients and instructions, word for word','Shop Now, which opens the flavor']:[]}
