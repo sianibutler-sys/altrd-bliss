@@ -388,7 +388,7 @@ body.menu-open .hdr{z-index:57}
 
 /* product page */
 .prod{padding:110px 0 40px}
-@media (min-width:1001px){.prod{padding-top:140px}}
+@media (min-width:1001px){.prod{padding-top:170px}}
 .prod__grid{display:flex;flex-direction:column;gap:30px}
 @media (min-width:1001px){.prod__grid{flex-direction:row;justify-content:space-between;align-items:flex-start}}
 .prod__media{border-radius:20px;overflow:hidden;aspect-ratio:1/1;width:100%}
@@ -798,20 +798,44 @@ body.has-bar .badge{bottom:96px}
 .sub-form .drop img{max-height:160px;margin:0 auto 8px;border-radius:12px}
 .sub-form .row{display:flex;gap:8px;align-items:flex-start;font-size:1.3rem}
 .pending{position:absolute;top:14px;left:14px;z-index:2;background:var(--lime);color:var(--ink);border-radius:999px;padding:4px 12px;font-size:1.2rem}
-.byo{background:var(--cream);color:var(--ink);border-radius:20px;padding:22px;width:100%;margin-top:10px;text-align:left}
-.byo h3{font:800 20px/1.1 var(--font-matria);text-transform:uppercase}
-.byo p{font-size:1.4rem;margin:6px 0 14px}
-.byo__slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-.byo__slot{aspect-ratio:1/1.3;border-radius:12px;border:2px dashed rgba(16,22,24,.3);display:grid;place-items:center;font-size:1.2rem;text-align:center;padding:4px;overflow:hidden}
-.byo__slot.full{border-style:solid;border-color:transparent;background:var(--c)}
-.byo__slot img{width:100%;height:100%;object-fit:cover;border-radius:10px}
-.byo__pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}
-.byo__pick button{display:flex;justify-content:space-between;align-items:center;border-radius:999px;border:2px solid var(--c);padding:8px 14px;font-size:1.4rem}
-.byo__pick button:disabled{opacity:.35}
-.byo__acts{display:flex;gap:10px;flex-wrap:wrap}
-.byo__acts .button{height:52px;padding:0 24px;background:var(--ink);color:#fff}
-.byo__acts .button:hover{color:var(--ink)}
-.byo__acts .clear{text-decoration:underline;font-size:1.4rem}
+.byos{padding:20px 0 70px}
+.byo{background:var(--cream);color:var(--ink);border-radius:20px;padding:28px 20px;display:grid;gap:28px}
+@media (min-width:990px){.byo{grid-template-columns:1.05fr .95fr;gap:56px;padding:56px}}
+.byo__h{margin:0;text-transform:uppercase;line-height:.95}
+.byo__h .a{display:block;font:900 clamp(40px,5vw,66px)/1 var(--font-compressed)}
+.byo__h .b{display:block;font:800 clamp(40px,5vw,66px)/1 var(--font-expanded);letter-spacing:-1px}
+.byo__p{font-size:1.6rem;line-height:1.45;margin:14px 0 22px;max-width:44ch}
+.byo__pick{display:grid;gap:10px}
+.byo__fl{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:8px 10px 8px 8px;box-shadow:inset 0 0 0 2px transparent;transition:box-shadow .25s}
+.byo__fl.on{box-shadow:inset 0 0 0 2px var(--c)}
+.byo__th{width:56px;height:56px;border-radius:12px;overflow:hidden;background:var(--c)}
+.byo__th img{width:100%;height:100%;object-fit:cover}
+.byo__nm b{display:block;font:800 15px/1.1 var(--font-matria);text-transform:uppercase}
+.byo__nm span{display:block;font-size:1.3rem;opacity:.7;margin-top:3px}
+.byo__st{display:flex;align-items:center;gap:4px;background:var(--cream);border-radius:999px;padding:4px}
+.byo__st button{width:40px;height:40px;border-radius:50%;font-size:2rem;line-height:1;display:grid;place-items:center;transition:background .2s,color .2s}
+.byo__st button[data-byo]{background:var(--c);color:#050505}
+.byo__st button:disabled{opacity:.3;cursor:not-allowed}
+.byo__st output{min-width:22px;text-align:center;font:800 15px/1 var(--font-matria)}
+.byo__k{display:flex;justify-content:space-between;align-items:baseline;font:800 13px/1 var(--font-matria);letter-spacing:.14em;text-transform:uppercase;margin:0 0 12px}
+.byo__k span{letter-spacing:.06em;opacity:.7}
+.byo__box{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:var(--ink);border-radius:20px;padding:12px;box-shadow:inset 0 0 0 3px var(--lime)}
+.byo__slot{position:relative;aspect-ratio:1/1;border-radius:12px;display:flex;align-items:center;justify-content:center;width:100%;color:rgba(255,255,255,.35);background:rgba(255,255,255,.05);overflow:hidden}
+.byo__slot svg{width:28%;height:auto}
+.byo__n{position:absolute;left:10px;top:8px;font:800 12px/1 var(--font-matria)}
+.byo__slot.full{background:var(--c);color:#050505;cursor:pointer}
+.byo__slot.full img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.byo__slot.pop{animation:byoPop .45s cubic-bezier(.3,1.4,.5,1)}
+@keyframes byoPop{0%{transform:scale(.6);opacity:0}100%{transform:none;opacity:1}}
+.byo__tag{position:absolute;left:8px;bottom:8px;z-index:1;background:rgba(16,22,24,.8);color:#fff;font:800 11px/1 var(--font-matria);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+.byo__x{position:absolute;right:8px;top:8px;z-index:1;width:26px;height:26px;border-radius:50%;background:rgba(16,22,24,.8);color:#fff;display:grid;place-items:center;font-size:16px;opacity:0;transition:opacity .2s}
+.byo__slot.full:hover .byo__x,.byo__slot.full:focus-visible .byo__x{opacity:1}
+@media (hover:none){.byo__x{opacity:1}}
+.byo__acts{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;margin-top:16px}
+.byo__cta{height:56px;padding:0 30px;background:var(--lime);color:#050505;border:0}
+.byo__cta:disabled{background:rgba(16,22,24,.12);color:rgba(16,22,24,.55);cursor:not-allowed}
+.byo__lnk{font-size:1.4rem;text-decoration:underline;text-underline-offset:4px}
+@media (prefers-reduced-motion:reduce){.byo__slot.pop{animation:none}}
 .refill{background:var(--cream);border-radius:16px;padding:16px;margin:0 0 18px}
 .refill b{font:800 15px/1.2 var(--font-matria);text-transform:uppercase;display:block;margin-bottom:8px}
 .refill .chips .chip{border-color:rgba(16,22,24,.35);color:var(--ink);min-height:40px;font-size:1.4rem}
@@ -1341,11 +1365,14 @@ const ART={
 const MB={f:null,b:null,g:null,t:'iced'};
 const vibeOrdered=()=>{const h=momentNow()[0];return [...VIBE.filter(v=>v[0]===h),...VIBE.filter(v=>v[0]!==h)]};
 let BYO=[];
-function byoRender(){const el=document.getElementById('byo');if(!el)return;const full=BYO.length>=4;
- el.innerHTML=`<h3>Or build your own 4 Pack</h3><p>Some might call you indecisive, we call you ready for anything. Pick any four for the same $32.</p>
- <div class="byo__slots">${[0,1,2,3].map(i=>{const h=BYO[i];return h?`<div class="byo__slot full" style="--c:${P[h].theme}"><img src="${I(pimg(h),200)}" alt="The ${P[h].name}"></div>`:`<div class="byo__slot">Bottle ${i+1}</div>`}).join('')}</div>
- <div class="byo__pick">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button style="--c:${P[h].theme}" data-byo="${h}"${full?' disabled':''}><span>The ${P[h].name}</span><span>${BYO.filter(x=>x===h).length?'× '+BYO.filter(x=>x===h).length:'+'}</span></button>`).join('')}</div>
- <div class="byo__acts"><button class="button" data-byoadd${full?'':' disabled'}>${MODE==='prelaunch'?'Join Waitlist':full?'Add my 4 Pack, $32':`Pick ${4-BYO.length} more`}</button>${BYO.length?'<button class="clear" data-byoclear>Start over</button>':''}</div>`}
+let BYO_LAST=-1;
+function byoRender(){const el=document.getElementById('byo');if(!el)return;const full=BYO.length>=4,left=4-BYO.length,cnt=h=>BYO.filter(x=>x===h).length;
+ const cta=MODE==='prelaunch'?'Join Waitlist':full?'Add my 4 Pack, $32':`Pick ${left} more`;
+ el.innerHTML=`<div class="byo__l"><h2 class="byo__h"><span class="a">Build your own</span><span class="b">4 Pack</span></h2><p class="byo__p">Some might call you indecisive, we call you ready for anything. Pick any four for the same $32.</p>
+  <div class="byo__pick">${MP_ORDER.map(h=>{const n=cnt(h);return `<div class="byo__fl${n?' on':''}" style="--c:${P[h].theme}"><div class="byo__th"><img src="${I(pimg(h),240)}" alt="" width="120" height="120"></div><div class="byo__nm"><b>The ${P[h].name}</b><span>${FRUIT_NOTE[h]}</span></div><div class="byo__st" role="group" aria-label="The ${P[h].name}"><button data-byorm="${h}" aria-label="Remove a bottle of The ${P[h].name}"${n?'':' disabled'}>−</button><output aria-live="polite">${n}</output><button data-byo="${h}" aria-label="Add a bottle of The ${P[h].name}"${full?' disabled':''}>+</button></div></div>`}).join('')}</div></div>
+ <div class="byo__r"><p class="byo__k">Your box <span>${BYO.length} of 4</span></p>
+  <div class="byo__box">${[0,1,2,3].map(i=>{const h=BYO[i];return h?`<button class="byo__slot full${i===BYO_LAST?' pop':''}" style="--c:${P[h].theme}" data-byoslot="${i}" aria-label="Bottle ${i+1}: The ${P[h].name}. Remove"><img src="${I(pimg(h),360)}" alt="" width="180" height="180"><span class="byo__tag">The ${P[h].name}</span><span class="byo__x" aria-hidden="true">×</span></button>`:`<div class="byo__slot"><svg viewBox="0 0 40 64" aria-hidden="true"><path d="M16 2h8v8h3v6l4 4v40H9V20l4-4v-6h3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3 3"/></svg><span class="byo__n">${i+1}</span></div>`}).join('')}</div>
+  <div class="byo__acts"><button class="button byo__cta" data-byoadd${full||MODE==='prelaunch'?'':' disabled'}>${cta}</button>${full?'':`<button class="byo__lnk" data-byofill>${BYO.length?'Fill the rest for me':'Surprise me'}</button>`}${BYO.length?'<button class="byo__lnk" data-byoclear>Start over</button>':''}</div></div>`;BYO_LAST=-1}
 const SHOP_ORDER=['the-multipack','the-original','the-tini','the-rita','the-spritz'];
 const VIBE=[['the-tini','For unwinding','#cc3f59'],['the-spritz','For daytime','#e57945'],['the-original','For everything','#e0f47b'],['the-rita','For socializing','#cdb4f9']];
 const PRICE={bottle:8,pack:32};
@@ -1586,7 +1613,7 @@ function product(h){const p=P[h];if(!p)return notFound();
      <div><h3>Sip</h3><p>Can’t be bothered? Simply drip it under the tongue.</p></div>
      <p class="fn">*Please use calibrated dropper</p></div>
  </div></div></section>
- ${h==='the-multipack'?`<section class="tryin"><div class="pw" style="max-width:760px"><div class="byo" id="byo"></div></div></section>`:''}
+ ${h==='the-multipack'?`<section class="byos"><div class="pw"><div class="byo" id="byo"></div></div></section>`:''}
  ${RECIPES.some(r=>r.h===h)?`<section class="tryin"><div class="pw"><h2 class="c h66">TRY IT IN</h2><div class="rgrid">${RECIPES.filter(r=>r.h===h).map(rcard).join('')}</div></div></section>`:''}
  <div class="wrap-ink">${happy(h)}</div>
  <div class="sbar" id="sbar" aria-hidden="true"><img src="${I(pimg(h),120)}" alt="" width="48" height="48"><div><b>The ${p.name}</b><span>${p.packOnly?'4 Pack for $32.00':'From $8.00'}</span></div><button class="addbtn" data-sbar>${buyLabel()}</button></div>
@@ -1864,7 +1891,10 @@ document.addEventListener('click',e=>{const t=e.target;
   if(t.closest('[data-mbcard]')){mbCard().then(c=>{const a=document.createElement('a');a.download=`altrd-bliss-${MB.f}-${MB.b}.png`;try{a.href=c.toDataURL('image/png')}catch(e){return}a.click()});return}
   if(t.closest('[data-mbshare]')){const f=P[MB.f],b=mbB();const text=`My mix: The ${f.name} ${b[2]}. 6 droppers + ${b[1].toLowerCase()}. #SipALTRD`;mbCard().then(c=>c.toBlob(blob=>{const file=new File([blob],'altrd-mix.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]}))navigator.share({files:[file],text}).catch(()=>{});else if(navigator.share)navigator.share({text}).catch(()=>{});else{navigator.clipboard&&navigator.clipboard.writeText(text);t.closest('[data-mbshare]').textContent='Copied'}}));return}
   if(t.closest('[data-moment]')){momentShift=(momentShift+1)%4;document.getElementById('moment').innerHTML=momentLine();const tr=document.getElementById('vibeTrack');const h=momentNow()[0];const first=[...tr.children].find(c=>c.querySelector(`a[href="#/products/${h}"]`));tr.prepend(first);tr.scrollTo({left:0,behavior:'smooth'});return}
-  const byo=t.closest('[data-byo]');if(byo){if(BYO.length<4)BYO.push(byo.dataset.byo);byoRender();return}
+  const byo=t.closest('[data-byo]');if(byo){if(BYO.length<4){BYO.push(byo.dataset.byo);BYO_LAST=BYO.length-1}byoRender();return}
+  const byr=t.closest('[data-byorm]');if(byr){const k=BYO.lastIndexOf(byr.dataset.byorm);if(k>-1)BYO.splice(k,1);byoRender();return}
+  const bys=t.closest('[data-byoslot]');if(bys){BYO.splice(+bys.dataset.byoslot,1);byoRender();return}
+  if(t.closest('[data-byofill]')){while(BYO.length<4)BYO.push(MP_ORDER[Math.floor(Math.random()*4)]);BYO_LAST=3;byoRender();return}
   if(t.closest('[data-byoclear]')){BYO=[];byoRender();return}
   if(t.closest('[data-byoadd]')){if(MODE==='prelaunch'){const f=app.querySelector('.wl');f.hidden=false;f.scrollIntoView({behavior:'smooth',block:'center'});f.querySelector('input').focus();return}if(BYO.length===4){cart.push({h:'custom',v:'pack',q:1,mix:[...BYO]});BYO=[];save();openCart();byoRender()}return}
   if(t.closest('[data-subopen]')){document.getElementById('subDlg').classList.add('on');return}
