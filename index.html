@@ -127,7 +127,7 @@ body.menu-open .hdr{z-index:57}
 @media (min-width:990px){.mix .h66+.h66{margin-top:-18px}}
 
 /* pick your vibe slider */
-.vibe{padding:20px 0 24px}
+.vibe{padding:60px 0 24px}
 @media (min-width:990px){.vibe{padding:120px 0}}
 .vibe__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:16px 20px;margin-bottom:40px;text-align:center}
 .vibe__head p{font-size:1.4rem}
@@ -947,6 +947,62 @@ html.ag-no #gate .gate__no{display:block}
 .mood a:hover{color:inherit}
 .nw{white-space:nowrap}
 .unwind h2.h66{text-wrap:balance}
+@property --liq{syntax:'<color>';inherits:true;initial-value:#ffffff}
+@property --liqd{syntax:'<color>';inherits:true;initial-value:#cccccc}
+.mb__stage{--set:#59636a;--gd:62%;background:#101618;transition:--set .8s ease,--liq .9s ease,--liqd .9s ease}
+.mb__stage::after{background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.62) 100%)}
+.mb__ph,.mb__shown{display:none}
+.bar{position:absolute;inset:0;background:linear-gradient(118deg,transparent 28%,rgba(255,255,255,.12) 40%,rgba(255,255,255,.03) 48%,transparent 56%),radial-gradient(130% 110% at 26% 16%,color-mix(in srgb,var(--set) 58%,#fff) 0%,var(--set) 44%,color-mix(in srgb,var(--set) 48%,#000) 100%)}
+.mb__phtag{position:absolute;top:14px;right:14px;z-index:7;color:#fff;background:rgba(16,22,24,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0}
+.mb__stage[data-base="mocktail"]{--gd:66%}.mb__stage[data-base="sparkling"]{--gd:56%}.mb__stage[data-base="tonic"]{--gd:48%}.mb__stage[data-base="tea"]{--gd:50%}
+.gl{position:absolute;left:45%;top:42%;width:var(--gd);aspect-ratio:1;transform:translate(-50%,-50%);transition:width .9s cubic-bezier(.2,.8,.2,1);z-index:1}
+.gl>div,.gl>img{position:absolute}
+.gl__sh{inset:0;border-radius:50%;background:rgba(0,0,0,.5);filter:blur(16px);transform:translate(8%,10%)}
+.gl__ca{inset:10%;border-radius:50%;background:radial-gradient(circle,var(--liq) 0,transparent 70%);opacity:0;filter:blur(12px);transform:translate(20%,22%);mix-blend-mode:screen;transition:opacity .8s}
+.has-liq .gl__ca{opacity:.6}
+.gl__body{inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.03) 0 57%,rgba(255,255,255,.1) 70%,rgba(255,255,255,.24) 84%,rgba(255,255,255,.07) 90%,rgba(255,255,255,.38) 96%,rgba(255,255,255,.1) 100%);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6),inset 0 0 40px rgba(255,255,255,.07)}
+.mb__stage[data-base="tonic"] .gl__body{background:radial-gradient(circle,rgba(255,255,255,.05) 0 46%,rgba(255,255,255,.2) 50%,rgba(255,255,255,.06) 56% 82%,rgba(255,255,255,.3) 92%,rgba(255,255,255,.1) 100%)}
+.gl__liq{inset:9%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 42% 38%,color-mix(in srgb,var(--liq) 70%,#fff) 0,var(--liq) 48%,var(--liqd) 100%);transform:scale(var(--ls,0));opacity:var(--lo,0);transition:transform 1.3s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.gl__liq::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.22),inset 0 0 28px rgba(0,0,0,.3)}
+.gl__swirl{position:absolute;inset:-12%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.4),transparent 28%,rgba(0,0,0,.2) 48%,transparent 66%,rgba(255,255,255,.3),transparent);filter:blur(10px);opacity:0}
+.gl__swirl.go{animation:swirl 1.8s ease-out}
+@keyframes swirl{0%{opacity:.95;transform:rotate(0)}100%{opacity:0;transform:rotate(320deg)}}
+.gl__ice{position:absolute;inset:0;display:none}
+.mb__stage[data-base="tonic"] .gl__ice{display:block}
+.gl__ice i{position:absolute;width:34%;aspect-ratio:1;border-radius:16%;background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,.04) 45%,rgba(255,255,255,.2) 82%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),inset -6px -8px 14px rgba(255,255,255,.14),0 4px 10px rgba(0,0,0,.18)}
+.gl__ice i:nth-child(1){left:14%;top:14%;transform:rotate(14deg)}.gl__ice i:nth-child(2){left:50%;top:30%;transform:rotate(-18deg)}.gl__ice i:nth-child(3){left:20%;top:52%;transform:rotate(31deg)}
+.gl__ice.go i{animation:ice .7s cubic-bezier(.3,1.4,.5,1) both}.gl__ice.go i:nth-child(2){animation-delay:.12s}.gl__ice.go i:nth-child(3){animation-delay:.24s}
+@keyframes ice{from{opacity:0;scale:1.5}to{opacity:1;scale:1}}
+.gl__fizz{position:absolute;inset:0;display:none}
+.mb__stage[data-base="sparkling"] .gl__fizz,.mb__stage[data-base="tonic"] .gl__fizz{display:block}
+.gl__fizz i{position:absolute;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 0 2px rgba(255,255,255,.8);animation:fizz 2s ease-in-out infinite;opacity:0}
+@keyframes fizz{0%{opacity:0;scale:.3}30%{opacity:.9;scale:1}70%{opacity:.7}100%{opacity:0;scale:1.4}}
+.gl__rips{position:absolute;inset:0}
+.gl__rips i{position:absolute;width:18%;aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.75);transform:translate(-50%,-50%) scale(.1);opacity:0;animation:rip 1.2s ease-out forwards}
+.gl__rips i::after{content:"";position:absolute;left:50%;top:50%;width:26%;aspect-ratio:1;border-radius:50%;background:var(--liqd);transform:translate(-50%,-50%)}
+.gl__rips i.big{width:34%;border-width:3px}
+@keyframes rip{0%{opacity:1;transform:translate(-50%,-50%) scale(.1)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.3)}}
+.gl__fruit{z-index:3;transform:translate(-50%,-50%) rotate(var(--fr,0deg));filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}
+.gl__fruit.w{left:60%;top:40%;width:54%}
+.gl__fruit.c{left:52%;top:54%;width:48%}
+.gl__fruit.drop{animation:fdrop .8s cubic-bezier(.3,1.25,.5,1) both}
+@keyframes fdrop{0%{opacity:0;transform:translate(-50%,-90%) rotate(calc(var(--fr,0deg) - 30deg)) scale(1.5);filter:drop-shadow(0 50px 30px rgba(0,0,0,.2))}100%{opacity:1;transform:translate(-50%,-50%) rotate(var(--fr,0deg)) scale(1);filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}}
+.gl__sheen{inset:9%;border-radius:50%;z-index:4;background:radial-gradient(ellipse 58% 40% at 34% 26%,rgba(255,255,255,.34),transparent 62%);opacity:0;transition:opacity .8s;pointer-events:none}
+.has-liq .gl__sheen{opacity:1}
+.gl__rim{inset:0;border-radius:50%;z-index:5;background:conic-gradient(from 210deg,transparent 0 6%,rgba(255,255,255,.9) 11%,transparent 17% 56%,rgba(255,255,255,.55) 61%,transparent 67%);-webkit-mask:radial-gradient(circle,transparent calc(50% - 7px),#000 calc(50% - 6px),#000 calc(50% - 1px),transparent 50%);mask:radial-gradient(circle,transparent calc(50% - 7px),#000 calc(50% - 6px),#000 calc(50% - 1px),transparent 50%)}
+.gl__handle{display:none;width:30%;height:44%;right:-22%;top:28%;border-radius:46%;border:clamp(7px,1.8vw,12px) solid rgba(255,255,255,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 0 0 1px rgba(255,255,255,.4),6px 10px 16px rgba(0,0,0,.3);z-index:0}
+.mb__stage[data-base="tea"] .gl__handle{display:block}
+.gl__steam{inset:-10%;display:none;z-index:6;pointer-events:none}
+.mb__stage[data-base="tea"] .gl__steam{display:block}
+.gl__steam i{position:absolute;left:40%;top:40%;width:34%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 70%);filter:blur(8px);animation:steamt 4s ease-in-out infinite}
+.gl__steam i:nth-child(2){left:28%;animation-delay:1.3s}.gl__steam i:nth-child(3){left:52%;animation-delay:2.6s}
+@keyframes steamt{0%{opacity:0;transform:translate(0,10%) scale(.6)}40%{opacity:.8}100%{opacity:0;transform:translate(14%,-60%) scale(1.3)}}
+.side{position:absolute;z-index:2;right:5%;top:9%;width:21%;filter:drop-shadow(6px 10px 12px rgba(0,0,0,.4));transform:rotate(-16deg)}
+.side.c{width:19%}
+.side.drop2{animation:sdrop .7s .25s cubic-bezier(.3,1.25,.5,1) both}
+@keyframes sdrop{0%{opacity:0;transform:translateY(-40%) rotate(-40deg) scale(1.3)}100%{opacity:1;transform:rotate(-16deg)}}
+.side[hidden],.gl__fruit[hidden]{display:none}
+@media (max-width:600px){.mb__phtag{top:10px;right:10px}}
 </style>
 </head>
 <body>
@@ -1200,7 +1256,7 @@ function igInit(){const cards=app.querySelectorAll('[data-ig]');if(!cards.length
 function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
  <div class="mb__grid">
-  <div class="mb__stage" id="mbStage"><img class="mb__ph on" alt="" width="1200" height="1200" data-src=""><img class="mb__ph" alt="" width="1200" height="1200" data-src=""><p class="mb__shown" id="mbShown" hidden></p><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
+  <div class="mb__stage" id="mbStage" data-base="" data-fruit=""><div class="bar"></div><span class="ph mb__phtag">Placeholder fruit photos</span><img class="side" id="mbSide" alt="" hidden><div class="gl" aria-hidden="true"><div class="gl__sh"></div><div class="gl__ca"></div><div class="gl__handle"></div><div class="gl__body"></div><div class="gl__liq" id="mbLiq"><div class="gl__swirl" id="mbSwirl"></div><div class="gl__ice" id="mbIce"><i></i><i></i><i></i></div><div class="gl__fizz"><i style="left:36.0%;top:23.2%;width:4.0px;animation-delay:0.17s;animation-duration:2.04s"></i><i style="left:39.1%;top:16.3%;width:3.5px;animation-delay:0.09s;animation-duration:1.92s"></i><i style="left:17.2%;top:18.7%;width:3.3px;animation-delay:1.98s;animation-duration:1.55s"></i><i style="left:28.5%;top:58.4%;width:4.8px;animation-delay:1.39s;animation-duration:1.88s"></i><i style="left:84.2%;top:15.4%;width:4.6px;animation-delay:0.70s;animation-duration:1.57s"></i><i style="left:20.7%;top:34.8%;width:4.4px;animation-delay:0.43s;animation-duration:2.10s"></i><i style="left:59.3%;top:39.6%;width:3.6px;animation-delay:0.15s;animation-duration:1.47s"></i><i style="left:27.2%;top:62.3%;width:3.3px;animation-delay:0.75s;animation-duration:2.10s"></i><i style="left:45.5%;top:34.2%;width:4.4px;animation-delay:1.68s;animation-duration:1.69s"></i><i style="left:54.5%;top:50.9%;width:4.6px;animation-delay:1.75s;animation-duration:1.75s"></i><i style="left:84.5%;top:20.7%;width:3.3px;animation-delay:1.82s;animation-duration:1.58s"></i><i style="left:48.2%;top:14.9%;width:4.0px;animation-delay:1.83s;animation-duration:2.09s"></i><i style="left:76.8%;top:35.2%;width:4.1px;animation-delay:1.43s;animation-duration:2.10s"></i><i style="left:45.8%;top:74.2%;width:4.8px;animation-delay:1.14s;animation-duration:2.20s"></i><i style="left:16.5%;top:63.9%;width:3.9px;animation-delay:2.38s;animation-duration:2.39s"></i><i style="left:33.1%;top:40.5%;width:4.0px;animation-delay:0.05s;animation-duration:1.95s"></i><i style="left:24.4%;top:20.7%;width:2.2px;animation-delay:1.84s;animation-duration:1.56s"></i><i style="left:30.3%;top:40.9%;width:4.6px;animation-delay:0.19s;animation-duration:1.94s"></i><i style="left:52.7%;top:77.4%;width:4.5px;animation-delay:2.07s;animation-duration:1.73s"></i><i style="left:42.7%;top:38.5%;width:4.7px;animation-delay:2.30s;animation-duration:1.58s"></i><i style="left:25.0%;top:29.2%;width:2.7px;animation-delay:1.16s;animation-duration:2.11s"></i><i style="left:31.4%;top:12.3%;width:3.3px;animation-delay:0.89s;animation-duration:2.08s"></i><i style="left:82.5%;top:63.1%;width:3.5px;animation-delay:1.48s;animation-duration:2.21s"></i><i style="left:16.0%;top:78.6%;width:4.3px;animation-delay:2.10s;animation-duration:2.36s"></i><i style="left:41.0%;top:41.5%;width:2.3px;animation-delay:1.52s;animation-duration:1.47s"></i><i style="left:17.0%;top:27.4%;width:2.5px;animation-delay:0.82s;animation-duration:1.46s"></i><i style="left:12.0%;top:23.2%;width:2.3px;animation-delay:0.87s;animation-duration:1.43s"></i><i style="left:76.7%;top:57.4%;width:2.4px;animation-delay:0.61s;animation-duration:1.82s"></i><i style="left:38.9%;top:21.1%;width:4.5px;animation-delay:2.38s;animation-duration:1.96s"></i><i style="left:47.8%;top:18.4%;width:2.3px;animation-delay:0.82s;animation-duration:1.72s"></i><i style="left:73.3%;top:23.9%;width:2.1px;animation-delay:2.28s;animation-duration:2.03s"></i><i style="left:22.8%;top:52.2%;width:2.1px;animation-delay:1.27s;animation-duration:2.57s"></i><i style="left:75.9%;top:63.5%;width:2.8px;animation-delay:0.88s;animation-duration:1.60s"></i><i style="left:69.1%;top:51.4%;width:4.3px;animation-delay:0.79s;animation-duration:1.67s"></i></div><div class="gl__rips" id="mbRips"></div></div><img class="gl__fruit" id="mbFruit" alt="" hidden><div class="gl__sheen"></div><div class="gl__rim"></div><div class="gl__steam"><i></i><i></i><i></i></div></div><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
   <div class="mb__steps">
    <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
    <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div></div>
@@ -1214,18 +1270,29 @@ const rnd=i=>{const x=Math.sin(i*99.13+7)*43758.5453;return x-Math.floor(x)};
 const MB_GROUP='ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693';
 const MB_REC={'the-original':{sparkling:'rosemary-grapefruit-paloma-mocktail',mocktail:'rosemary-grapefruit-paloma-mocktail'},'the-spritz':{sparkling:'orange-juice-passion-fruit-spritz',mocktail:'orange-juice-passion-fruit-spritz',tea:'iced-mango-matcha'},'the-tini':{tonic:'cran-cherry-sleep-tonic',mocktail:'cran-cherry-sleep-tonic'},'the-rita':{mocktail:'blackberry-lime-rita-mocktail',sparkling:'blackberry-lime-rita-mocktail'}};
 const MB_AMT={mocktail:'1 cup of your favorite mocktail',tonic:'1 cup tonic water',sparkling:'1 cup sparkling water',tea:'1 cup tea, hot or iced'};
-const MBV={src:'',key:''};
+const MBV={src:'',key:'',f:null,b:null,g:null};
 function mbPhoto(src,alt){const st=document.getElementById('mbStage');if(!st)return;const ims=[...st.querySelectorAll('.mb__ph')],cur=ims.find(i=>i.classList.contains('on'))||ims[0],nx=ims.find(i=>i!==cur);MBV.src=src;if(cur.dataset.src===src){cur.alt=alt;return}
  const show=()=>{if(MBV.src!==src)return;nx.alt=alt;cur.alt='';nx.classList.add('on');cur.classList.remove('on')};
  if(nx.dataset.src===src&&nx.complete){requestAnimationFrame(show);return}
  nx.onload=show;nx.dataset.src=src;nx.src=src}
 function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);
- const cap=document.getElementById('mbCap'),shown=document.getElementById('mbShown');if(!cap)return;
+ const cap=document.getElementById('mbCap'),st=document.getElementById('mbStage');if(!cap||!st)return;
  const rs=f&&b&&MB_REC[MB.f][MB.b],rec=rs&&RECIPES.find(r=>r.s===rs);
- const src=!f?I(MB_GROUP,1400):!b?I(f.hov,1400):I(f.how,1400);
- const alt=!f?'Four Altrd Bliss mocktails on the set':!b?`Six droppers of The ${f.name} going into a drink`:`The ${f.name} bottle beside a finished drink`;
- mbPhoto(src,alt);
- shown.hidden=true;
+ MBV.src=f?I(f.how,1400):I(MB_GROUP,1400);
+ const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const DRINK={'the-original':'#d9a441','the-tini':'#9e1631','the-rita':'#6a2a63','the-spritz':'#f0952e'},BASEMIX={mocktail:['#ffffff',0],tonic:['#eef3f0',.24],sparkling:['#f3f7fb',.28],tea:['#8a4a1c',.45]};const dk=f&&DRINK[MB.f];const col=f&&b?mixC(dk,BASEMIX[b[0]][0],BASEMIX[b[0]][1]):f?dk:b?b[3]:'#ffffff';
+ st.style.setProperty('--set',f?f.theme:'#59636a');st.style.setProperty('--liq',col);st.style.setProperty('--liqd',mixC(col,'#000000',.3));
+ st.style.setProperty('--ls',!f&&!b?0:f&&!b?.44:1);st.style.setProperty('--lo',f||b?1:0);st.classList.toggle('has-liq',!!(f||b));
+ st.dataset.base=b?b[0]:'';st.dataset.fruit=g?g[0]:'';
+ const restart=(el,c)=>{if(!el||still)return;el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
+ const rips=document.getElementById('mbRips');
+ const ripple=(x,y,d,big)=>{if(still)return;const i=document.createElement('i');if(big)i.className='big';i.style.left=x+'%';i.style.top=y+'%';i.style.animationDelay=d+'s';rips.appendChild(i);setTimeout(()=>i.remove(),(d+1.4)*1000)};
+ if(f&&MB.f!==MBV.f){for(let k=0;k<6;k++)ripple(50+(rnd(k+Date.now()%97)*2-1)*14,50+(rnd(k*3+Date.now()%89)*2-1)*14,.15+k*.22)}
+ if(b&&MB.b!==MBV.b){restart(document.getElementById('mbSwirl'),'go');restart(document.getElementById('mbIce'),'go')}
+ const fr=document.getElementById('mbFruit'),sd=document.getElementById('mbSide');
+ if(g){if(MB.g!==MBV.g){const src=`img/fruit/${g[0]}.webp`,wheel=['lime','grapefruit','orange'].includes(g[0]);fr.src=src;sd.src=src;fr.alt='';sd.alt='';fr.hidden=false;sd.hidden=false;fr.className='gl__fruit '+(wheel?'w':'c');sd.className='side '+(wheel?'w':'c');fr.style.setProperty('--fr',(Math.round(rnd(Date.now()%53)*60)-30)+'deg');restart(fr,'drop');restart(sd,'drop2');ripple(wheel?60:52,wheel?40:54,.62,true)}}
+ else{fr.hidden=true;sd.hidden=true}
+ MBV.f=MB.f;MBV.b=MB.b;MBV.g=MB.g;
  const gl=g?g[2]:'';
  const html=!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
   :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>`;
@@ -1505,7 +1572,7 @@ function wire(){
   app.querySelectorAll('[data-fruit]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-fruit]').forEach(x=>x.setAttribute('aria-pressed',false));if(on)b.setAttribute('aria-pressed',true);RF.fr=on?b.dataset.fruit:null;rApply()});
   app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById(a.dataset.scroll).scrollIntoView({behavior:'smooth'})});
   qa=[];quizStep();
-  MB.f=MB.b=MB.g=null;MBV.key='';mbRender();byoRender();
+  MB.f=MB.b=MB.g=null;MBV.key='';MBV.f=MBV.b=MBV.g=null;mbRender();byoRender();
   const mixS=document.getElementById('mix');if(mixS&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();['the-original','the-tini','the-rita','the-spritz'].forEach(h=>{const i=new Image();i.src=I(P[h].hov,1400)})},{rootMargin:'600px'});o.observe(mixS)}
   igInit();guideInit();seasonInit();
 }
