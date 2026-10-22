@@ -874,6 +874,23 @@ body.has-bar .badge{bottom:96px}
 .six__l li{font-size:1.3rem;padding:5px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ptext) 30%,transparent)}
 .six__l li.fr{background:var(--theme);color:var(--themefg);border-color:var(--theme)}
 .six__n{font-size:1.2rem;opacity:.75;margin:4px 0 0}
+.pf{margin:0;line-height:1.05;letter-spacing:-1.32px;text-wrap:balance}
+.pf span{display:block}
+.pf__a{font:800 clamp(30px,8.2vw,42px)/1.05 var(--font-matria)}
+.pf__b{font:900 clamp(32px,9vw,46px)/1 var(--font-compressed);margin-top:.02em}
+@media (min-width:990px){.pf__a{font-size:clamp(40px,4vw,66px)}.pf__b{font-size:clamp(44px,4.6vw,76px)}}
+.mix .two__copy{width:100%}
+@media (min-width:990px){.mix .two__copy{max-width:82%}.mix .two__img{max-height:min(86vh,820px)}}
+.moods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:30px;width:100%;text-align:left}
+.mood{position:relative;border-radius:16px;background:rgba(255,255,255,.06);padding:20px 16px 18px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.mood__bar{position:absolute;left:0;right:0;top:0;height:5px}
+.mood b{font:800 clamp(18px,1.6vw,24px)/1 var(--font-matria);text-transform:uppercase;letter-spacing:-.3px}
+.mood small{font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+.mood a{color:#fff;font-size:1.5rem;text-decoration:none;line-height:1.5}
+.mood a:hover{text-decoration:underline;text-underline-offset:3px;color:var(--mc)}
+@media (max-width:420px){.moods{gap:6px}.mood{padding:16px 10px 14px}.mood a{font-size:1.3rem}}
+.ph{display:inline-block;vertical-align:middle;font:400 1.1rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px dashed currentColor;margin-right:8px;opacity:.85}
+.uti__tiles+.uti__lockc .ph{border-color:#fff}
 </style>
 </head>
 <body>
@@ -1059,6 +1076,7 @@ const home=()=>`
   <div class="two__copy">
     <h2 class="c h66">MIX</h2><h2 class="x h66">SIP</h2><h2 class="m h66">RELAX</h2><h2 class="c h66">REPEAT</h2>
     <p style="margin-top:24px">Morning, night, gym, home, work —whatever &amp; wherever floats your bliss. Step into a true ALTRD state (with zero hangovers and all the flavor).</p>
+    <div class="moods" role="list" aria-label="Three moods">${[['Uplift','CBG',['the-spritz','the-rita']],['Balance','CBG + CBD',['the-original']],['Unwind','CBD',['the-tini']]].map(([m,c,hs])=>`<div class="mood" role="listitem" style="--mc:${P[hs[0]].theme}"><span class="mood__bar" style="background:${hs.length>1?`linear-gradient(90deg,${P[hs[0]].theme} 50%,${P[hs[1]].theme} 50%)`:P[hs[0]].theme}"></span><b>${m}</b><small>${c}</small>${hs.map(h=>`<a href="#/products/${h}">The ${P[h].name}</a>`).join('')}</div>`).join('')}</div>
   </div>
 </div></div></section>
 <section class="vibe">
@@ -1250,7 +1268,7 @@ const about=()=>`
 ${marquee()}
 <section class="feat"><div class="pw"><div class="feat__row">
  <div class="feat__img"><img loading="lazy" src="${I('ALTRD5016.png?v=1778079819',1100)}" alt="Erika and Jamie, sisters and co-founders of Altrd Bliss" width="1100" height="1300"></div>
- <div class="feat__copy"><div><h2 class="c h66">PERFECT FOR</h2><h2 class="x h66" style="font-size:clamp(28px,3.4vw,48px)">WHEREVER LIFE TAKES YOU</h2></div>
+ <div class="feat__copy"><h2 class="pf"><span class="pf__a">PERFECT FOR</span><span class="pf__b">WHEREVER LIFE TAKES YOU</span></h2>
   <p>As twin sisters turned co-founders, we’re eager to change the 'lazy pothead' narrative. We love cannabis and believe everyone should experience its benefits. But we get it—the cannabis high isn't for everyone. After watching our beloved mom battle breast cancer, we knew we had to step in. It was difficult to find precise cannabis-infused products she could take to relieve her pain without the high. That’s why we turned to hemp. We wanted to create products that gave everyone, even those with specific health issues, a chance to find their ALTRD state. With our love for cocktails, we thought, why not mix the two? We hope you can taste the love and excitement that's gone into every flavor. Happy unwinding!</p>
   <h3 class="m" style="font-size:20px">SISTERS &amp; CO-FOUNDERS, ALTRD BLISS</h3></div>
 </div></div></section>
@@ -1359,10 +1377,10 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
   ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
  <div class="uti__facts"><div><b>30</b><span>drinks</span></div><div><b>0</b><span>proof</span></div><div><b>5</b><span>minutes each</span></div><div><b>1</b><span>sweetener: agave</span></div></div>
- <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub">Three fruit-forward recipes already on the site.</p>
+ <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub"><span class="ph">Placeholder</span> These three recipes are already on the site. Three recipes from the guide will go here.</p>
  <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
  <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
-  <div class="uti__lockc"><p class="guide__k">27 more inside</p><p class="uti__lockh">${got?'Unlocks November 6':'The full guide is for the waitlist'}</p>${got?'<p>Watch your inbox.</p>':'<a class="button" href="#gE2" data-scroll="gE2">Get the guide</a>'}</div></div>
+  <div class="uti__lockc"><p class="guide__k"><span class="ph">Placeholder</span> 27 more inside</p><p class="uti__lockh">${got?'Unlocks November 6':'The full guide is for the waitlist'}</p>${got?'<p>Watch your inbox.</p>':'<a class="button" href="#gE2" data-scroll="gE2">Get the guide</a>'}</div></div>
 </div></section>`};
 const notFound=()=>`<section class="ptitle"><h1>Page not found</h1><p>That page isn't part of this demo.</p><p style="margin-top:24px"><a class="button" href="#/">Back home</a></p></section>`;
 
