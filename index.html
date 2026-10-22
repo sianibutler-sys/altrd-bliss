@@ -1084,10 +1084,10 @@ function mbPhoto(src,alt){const st=document.getElementById('mbStage');if(!st)ret
 function mbRender(){const f=MB.f&&P[MB.f],b=MB.b&&BASES.find(x=>x[0]===MB.b),g=MB.g&&GARN.find(x=>x[0]===MB.g);
  const cap=document.getElementById('mbCap'),shown=document.getElementById('mbShown');if(!cap)return;
  const rs=f&&b&&MB_REC[MB.f][MB.b],rec=rs&&RECIPES.find(r=>r.s===rs);
- const src=!f?I(MB_GROUP,1400):!b?I(f.hov,1400):rec?AI(rec.img,1400):I(f.how,1400);
- const alt=!f?'Four Altrd Bliss mocktails on the set':!b?`Six droppers of The ${f.name} going into a drink`:rec?rec.t:`The ${f.name} with a finished drink`;
+ const src=!f?I(MB_GROUP,1400):!b?I(f.hov,1400):I(f.how,1400);
+ const alt=!f?'Four Altrd Bliss mocktails on the set':!b?`Six droppers of The ${f.name} going into a drink`:`The ${f.name} bottle beside a finished drink`;
  mbPhoto(src,alt);
- shown.hidden=!rec;shown.textContent=rec?`Pictured: ${rec.t}`:'';
+ shown.hidden=true;
  const gl=g&&g[0]!=='none'?g[1].toLowerCase():'';
  const html=!f?`<span class="mb__rule"></span><p class="mb__kick">Mix your bliss</p><p class="mb__name"><span>Your drink.</span><span>Your dose.</span><span>Your Bliss.</span></p>`
   :`<span class="mb__rule"></span><p class="mb__kick">${b?'Your mix':'Six droppers of'}</p><p class="mb__name">The ${f.name}${b?' '+b[2]:''}</p><p class="mb__meta">${b?`6 droppers + ${MB_AMT[b[0]]}${gl?' + '+gl:''}`:`${f.sub} · ${f.use}`}</p>`;
