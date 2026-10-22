@@ -1757,7 +1757,7 @@ function route(){
 function wire(){
   clearInterval(fadeTimer);
   const cbx=app.querySelector('.cbx');if(cbx){const ts=[...cbx.querySelectorAll('[data-t]')],ms=[...app.querySelectorAll('.moodk [data-m]')],tw=cbx.querySelector('.cbx__t'),inn=cbx.querySelector('.cbx__in');let k=0;
-   const fit=()=>{const w=ts[k].scrollWidth;tw.style.setProperty('--tw',w+'px');const full=inn.offsetWidth-tw.offsetWidth+w,room=(cbx.closest('.banner__box')||cbx).clientWidth-40;inn.style.setProperty('--s',Math.min(1,room/full).toFixed(3))};
+   const fit=()=>{const w=ts[k].scrollWidth;tw.style.setProperty('--tw',w+'px');const full=inn.offsetWidth-tw.offsetWidth+w,room=Math.min(cbx.closest('section').clientWidth,document.documentElement.clientWidth)-40;inn.style.setProperty('--s',Math.min(1,room/full).toFixed(3))};
    requestAnimationFrame(fit);addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
    if(!matchMedia('(prefers-reduced-motion: reduce)').matches)fadeTimer=setInterval(()=>{ts[k].classList.remove('on');ms[k]&&ms[k].classList.remove('on');k=(k+1)%ts.length;ts[k].classList.add('on');ms[k]&&ms[k].classList.add('on');fit()},4000)}
   const words=app.querySelectorAll('.fade [data-w]');
