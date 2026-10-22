@@ -72,6 +72,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .navwrap{position:relative}
 .dd{position:absolute;top:calc(100% + 30px);left:0;background:#fff;border-radius:20px;padding:10px;display:none;color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .dd.open{display:grid}
+.dd::before{content:"";position:absolute;left:0;right:0;top:-32px;height:32px}
 .dd--shop{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;min-width:280px}
 .dd--shop a{display:flex;flex-direction:column;gap:12px;text-decoration:none;font-size:1.5rem;line-height:1.9rem}
 .dd--shop img{width:111px;height:109px;object-fit:cover;border-radius:10px}
@@ -359,10 +360,10 @@ body.menu-open .hdr{z-index:57}
 @media (min-width:1001px){.prod__media{width:calc(55% - 3px);position:sticky;top:20px}}
 .prod__info{background:var(--pbg);border-radius:20px;padding:40px 5%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:15px;color:var(--ptext);width:100%}
 @media (min-width:1001px){.prod__info{width:calc(45% - 31px);aspect-ratio:.79/1;justify-content:center}}
-.prod__title{font:800 clamp(34px,13vw,60px)/.9 var(--font-expanded);letter-spacing:.15em;text-transform:uppercase;color:var(--theme);margin-bottom:1rem;max-width:100%}
-.prod__title span{display:block;font-size:28px;letter-spacing:.15em}
-.prod__title.long{font-size:clamp(26px,8vw,44px)}
-@media (min-width:981px){.prod__title{font-size:clamp(60px,6.4vw,118px)}.prod__title.long{font-size:clamp(40px,3.6vw,66px)}.prod__title span{font-size:52px}}
+.prod__title{font:900 60px/.9 var(--font-compressed);letter-spacing:.6px;text-transform:uppercase;color:var(--theme);margin-bottom:1rem;max-width:100%}
+.prod__title span{display:block;font:800 28px/.9 var(--font-expanded);letter-spacing:.6px}
+
+@media (min-width:981px){.prod__title{font-size:118px}.prod__title span{font-size:52px}}
 .prod__comp{font-size:18px;margin-top:-1rem}
 @media (min-width:981px){.prod__comp{font-size:22px}}
 .prod__usage{border:1px solid var(--theme);color:var(--theme);font-size:1.1rem;padding:12px 30px;border-radius:20px;margin-top:1rem}
@@ -387,6 +388,28 @@ body.menu-open .hdr{z-index:57}
 .dr__a{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s,opacity .4s;font-size:15px;line-height:1.6;padding:0 1rem 0 1.8rem;color:var(--ptext)}
 .dr.open .dr__a{max-height:100vh;opacity:1;padding:.25rem 1rem .75rem 1.8rem}
 .dr__a p{margin:0 0 .5rem}
+.dr.open .dr__a{max-height:1400px}
+.nf{background:#fff;color:#101618;border-radius:16px;padding:16px 18px 14px;margin:.5rem 0 .75rem;font-size:13px;line-height:1.35;max-width:380px;box-shadow:inset 0 6px 0 var(--theme)}
+.nf p{margin:0}
+.nf__h{font:900 40px/.95 var(--font-compressed);text-transform:uppercase;letter-spacing:.3px;padding:6px 0 4px;border-bottom:1px solid #101618}
+.nf__s{padding-top:6px}
+.nf__ss{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding-bottom:6px;border-bottom:10px solid #101618}
+.nf__cal{display:flex;justify-content:space-between;align-items:flex-end;padding:4px 0 6px;border-bottom:5px solid #101618}
+.nf__cal span{font:800 22px/1 var(--font-matria);text-transform:uppercase}
+.nf__cal small{display:block;font:700 12px/1.4 var(--font-body);text-transform:none}
+.nf__cal b{font:900 44px/.85 var(--font-compressed)}
+.nf__dv{text-align:right;font-weight:700;font-size:12px;padding:4px 0;border-bottom:1px solid #101618}
+.nf__r{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px solid rgba(16,22,24,.35)}
+.nf__r b{font-weight:400}.nf__r strong{font-weight:700}
+.nf__r.in{padding-left:14px}.nf__r.in2{padding-left:28px}
+.nf__r.thick{border-bottom:10px solid #101618}
+.nf__r.last{border-bottom:5px solid #101618}
+.nf__f{font-size:11px;line-height:1.4;padding-top:6px;opacity:.8}
+.sv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:.5rem 0 .75rem}
+.sv p{margin:0;border:1px solid color-mix(in srgb,var(--ptext) 30%,transparent);border-radius:16px;padding:12px 10px;display:flex;flex-direction:column;gap:4px;text-align:center}
+.sv b{font:900 30px/.95 var(--font-compressed);color:var(--theme)}
+.sv span{font-size:13px;line-height:1.3}
+@media (max-width:420px){.sv b{font-size:24px}}
 .dr__a a{color:var(--ptext);text-underline-offset:3px}
 
 .hti{padding:40px 0 80px}
@@ -850,9 +873,24 @@ body.has-bar .badge{bottom:96px}
 .ulabel__srv b{font-weight:400}
 .ulabel__g{margin:0;display:grid;grid-template-columns:minmax(0,1fr)}
 @media (min-width:600px){.ulabel__g{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}}
-.ulabel__g div{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0 10px;border-top:1px solid rgba(16,22,24,.2)}
+.ulabel__g div{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 10px 10px;border-top:1px solid rgba(16,22,24,.2);cursor:default;outline:0;transition:border-radius .3s}
+.ulabel__g div::after{content:"";position:absolute;z-index:-1;left:10px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--c);transform:scale(0);transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.ulabel__g div:hover,.ulabel__g div:focus-visible{border-radius:0 0 14px 14px}
+.ulabel__g div:hover::after,.ulabel__g div:focus-visible::after{transform:scale(90)}
+.ulabel__g div:focus-visible{box-shadow:inset 0 0 0 2px var(--ink)}
+.ulabel__g dt>span{transition:opacity .3s,transform .35s}
+.ulabel__g dt{display:grid!important}
+.ulabel__g dt::before{grid-row:1;grid-column:1}
+.ulabel__l,.ulabel__n{grid-row:1;grid-column:2}
+.ulabel__n{opacity:0;transform:translateY(8px);text-transform:none;letter-spacing:0;font:400 1.4rem/1.25 var(--font-body)}
+.ulabel__g div:hover .ulabel__l,.ulabel__g div:focus-visible .ulabel__l{opacity:0;transform:translateY(-8px)}
+.ulabel__g div:hover .ulabel__n,.ulabel__g div:focus-visible .ulabel__n{opacity:1;transform:none}
+.ulabel__v{display:inline-block;font-variant-numeric:tabular-nums}
+.ulabel__v.ch{display:inline-flex}.ulabel__v.ch i{font-style:normal;display:inline-block;opacity:0;transform:translateY(40%);animation:ulUp .5s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*70ms)}
+@keyframes ulUp{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ulabel__g div::after,.ulabel__g dt>span{transition:none}.ulabel__v.ch i{animation:none;opacity:1;transform:none}}
 @media (min-width:990px){.ulabel__g div:nth-child(-n+2){border-top:4px solid var(--ink)}}
-.ulabel__g dt{font:800 14px/1.2 var(--font-matria);text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:10px}
+.ulabel__g dt{font:800 14px/1.2 var(--font-matria);text-transform:uppercase;letter-spacing:.03em;grid-template-columns:10px minmax(0,1fr);align-items:center;gap:10px}
 .ulabel__g dt::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(16,22,24,.25);flex:none}
 .ulabel__g dd{margin:0;font:900 clamp(48px,5vw,76px)/.9 var(--font-compressed);text-transform:uppercase}
 .ulabel__f{grid-column:1/-1;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ink);font-size:1.3rem;letter-spacing:.02em}
@@ -980,8 +1018,8 @@ html.ag-no #gate .gate__no{display:block}
 .ms.on{opacity:1;z-index:1}
 .ms.pour{opacity:1;-webkit-mask-image:linear-gradient(to top,#000 40%,transparent 56%);mask-image:linear-gradient(to top,#000 40%,transparent 56%);-webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:pour 1.5s cubic-bezier(.45,.05,.3,1) both}
 @keyframes pour{from{-webkit-mask-position:0 0;mask-position:0 0}to{-webkit-mask-position:0 100%;mask-position:0 100%}}
-.dr{position:absolute;z-index:3;left:50%;top:0;height:32%;width:auto;pointer-events:none;opacity:0;transform:translate(-50%,-110%);filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
-.dr.go{animation:drIn 3.1s cubic-bezier(.3,.7,.2,1) both}
+.mbdr{position:absolute;z-index:3;left:50%;top:0;height:32%;width:auto;pointer-events:none;opacity:0;transform:translate(-50%,-110%);filter:drop-shadow(0 14px 18px rgba(0,0,0,.35))}
+.mbdr.go{animation:drIn 3.1s cubic-bezier(.3,.7,.2,1) both}
 @keyframes drIn{0%{opacity:0;transform:translate(-50%,-110%)}10%{opacity:1}24%{transform:translate(-50%,0)}26%{transform:translate(-50%,0) scaleY(1)}84%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-110%)}}
 .drops{position:absolute;inset:0;z-index:2;pointer-events:none}
 .drops i{position:absolute;width:1.4%;aspect-ratio:3/4;border-radius:50% 50% 50% 50%/62% 62% 40% 40%;background:radial-gradient(circle at 38% 34%,rgba(255,255,255,.75) 0 14%,var(--dc) 46%,color-mix(in srgb,var(--dc) 60%,#000) 100%);transform:translate(-50%,0);opacity:0;animation:drip .5s cubic-bezier(.55,0,1,.45) forwards}
@@ -1012,7 +1050,7 @@ html.ag-no #gate .gate__no{display:block}
 @media (prefers-reduced-motion:reduce){.stm{display:none}}
 .mb__cap .mb__glass{display:inline-block;margin-top:12px;font-size:1.2rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
 @media (max-width:600px){.mb__phtag{top:10px;right:10px}.mb__cap{padding:20px 20px 22px}.mb__cap .mb__meta{font-size:1.3rem;margin-top:8px}.mb__cap .mb__glass{margin-top:8px;font-size:1.05rem}}
-@media (prefers-reduced-motion:reduce){.ms{transition:none}.ms.pour{animation:none;-webkit-mask-image:none;mask-image:none}.dr,.drops{display:none}.gz.drop.w,.gz.drop.k{animation:none}}
+@media (prefers-reduced-motion:reduce){.ms{transition:none}.ms.pour{animation:none;-webkit-mask-image:none;mask-image:none}.mbdr,.drops{display:none}.gz.drop.w,.gz.drop.k{animation:none}}
 </style>
 </head>
 <body>
@@ -1111,7 +1149,8 @@ const F='https://www.altrdbliss.com/cdn/shop/files/';
 const I=(f,w)=>F+f+(f.includes('?')?'&':'?')+'width='+w;
 const V='https://www.altrdbliss.com/cdn/shop/videos/c/vp/';
 const LAB='https://client.sclabs.com/altrd-bliss/';
-const NUT=s=>`<p><strong>Servings Per Container:</strong> 5<br><strong>Serving Size:</strong> 6 droppers (6 mL)</p><p><strong>Amount Per Serving · Calories:</strong> 20</p><p>Total Fat 0g (0%) · Sodium 0mg (0%) · Total Carbohydrate 5g (2%) · Total Sugars ${s}g, includes 0g added sugars · Protein 0g</p>`;
+const NUT=g=>{const R=(l,v,d,c='')=>`<div class="nf__r${c}"><span>${l} <b>${v}</b></span>${d!==undefined?`<b>${d}</b>`:''}</div>`;return `<div class="nf" role="table" aria-label="Nutrition facts"><p class="nf__h">Nutrition Facts</p><p class="nf__s">5 servings per container</p><div class="nf__ss"><b>Serving size</b><b>6 droppers (6 mL)</b></div><div class="nf__cal"><span><small>Amount per serving</small>Calories</span><b>20</b></div><p class="nf__dv">% Daily Value*</p>${R('<strong>Total Fat</strong>','0g','0%')}${R('Saturated Fat','0g','0%',' in')}${R('<i>Trans</i> Fat','0g',undefined,' in')}${R('<strong>Cholesterol</strong>','0mg','0%')}${R('<strong>Sodium</strong>','0mg','0%')}${R('<strong>Total Carbohydrate</strong>','5g','2%')}${R('Dietary Fiber','0g','0%',' in')}${R('Total Sugars',g+'g',undefined,' in')}${R('Includes 0g Added Sugars','','0%',' in2')}${R('<strong>Protein</strong>','0g',undefined,' thick')}${R('Vitamin D','0mcg','0%')}${R('Calcium','0mg','0%')}${R('Iron','0mg','0%')}${R('Potassium','0mg','0%',' last')}<p class="nf__f">*The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</p></div>`};
+const SERV=t=>`<div class="sv">${t.split('<br>').map(l=>{const m=l.match(/^((?:[\d.]+mg|\d+)(?: CB[DG])?(?: \+ [\d.]+mg CB[DG])?) (.*)$/);return m?`<p><b>${m[1]}</b><span>${m[2]}</span></p>`:`<p><span>${l}</span></p>`}).join('')}</div>`;
 const P={
  'the-original':{name:'Original',theme:'#e0f47b',fg:'#050505',bg:'#101618',text:'#fff',sub:'CBG + CBD-Infused Agave',use:'For Everyday',img:'Untitled-13-02.jpg?v=1772477267',hov:'ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit-2.png?v=1775060929',
    desc:'SMOOTH, SWEET, AND UTTERLY DELICIOUS. I bring a touch of warmth and sweetness to every occasion. Your effortlessly smooth choice for chill nights in, lively gatherings, or just adding a bit of sweetness to your everyday routine.',
@@ -1268,7 +1307,7 @@ function igInit(){const cards=app.querySelectorAll('[data-ig]');if(!cards.length
 function mixBuilder(){return `<section class="mb" id="mix"><div class="pw">
  <div class="mb__head"><h2 class="h66"><span class="c">MIX</span> <span class="x">YOUR</span> <span class="m">BLISS</span></h2><p>Three taps to your next drink. Simply mix 6 droppers into your drink of choice.</p></div>
  <div class="mb__grid">
-  <div class="mb__stage" id="mbStage"><img class="ms on" src="img/mix/neutral.webp" data-sc="neutral" alt="An empty crystal coupe on a black foil-curtain set" width="1200" height="1200" decoding="async"><img class="ms" alt="" width="1200" height="1200" decoding="async"><span class="ph mb__phtag">Placeholder imagery</span><img class="dr" id="mbDr" alt="" aria-hidden="true"><div class="drops" id="mbDrops" aria-hidden="true"></div><img class="gz" id="mbGz" alt="" aria-hidden="true" hidden><div class="stm" aria-hidden="true"><i></i><i></i><i></i></div><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
+  <div class="mb__stage" id="mbStage"><img class="ms on" src="img/mix/neutral.webp" data-sc="neutral" alt="An empty crystal coupe on a black foil-curtain set" width="1200" height="1200" decoding="async"><img class="ms" alt="" width="1200" height="1200" decoding="async"><span class="ph mb__phtag">Placeholder imagery</span><img class="mbdr" id="mbDr" alt="" aria-hidden="true"><div class="drops" id="mbDrops" aria-hidden="true"></div><img class="gz" id="mbGz" alt="" aria-hidden="true" hidden><div class="stm" aria-hidden="true"><i></i><i></i><i></i></div><div class="mb__cap" id="mbCap" aria-live="polite"></div></div>
   <div class="mb__steps">
    <div class="mb__step"><h3><span aria-hidden="true">1</span><span class="sr">Step 1: </span>Pick your flavor</h3><div class="chips">${['the-original','the-tini','the-rita','the-spritz'].map(h=>`<button class="chip" style="--c:${P[h].theme}" data-mb="f" data-v="${h}" aria-pressed="false">The ${P[h].name}</button>`).join('')}</div></div>
    <div class="mb__step"><h3><span aria-hidden="true">2</span><span class="sr">Step 2: </span>Pick your base</h3><div class="chips">${BASES.map(([k,l])=>`<button class="chip" data-mb="b" data-v="${k}" aria-pressed="false">${l}</button>`).join('')}</div><div class="mb__temp" id="mbTemp" role="group" aria-label="Tea temperature" hidden><span>Serve it</span><button class="chip" data-mb="t" data-v="iced" aria-pressed="${MB.t!=='hot'}">Iced</button><button class="chip" data-mb="t" data-v="hot" aria-pressed="${MB.t==='hot'}">Hot</button></div></div>
@@ -1368,7 +1407,7 @@ function product(h){const p=P[h];if(!p)return notFound();
  return `<section class="prod"><div class="pw"><div class="prod__grid">
   <div class="prod__media"><img src="${I(p.img,1200)}" alt="The ${p.name} bottle" width="1200" height="1200"></div>
   <div class="prod__info">
-   <h1 class="prod__title${p.name.length>7?' long':''}"><span>The</span>${p.name}</h1>
+   <h1 class="prod__title"><span>The</span>${p.name}</h1>
    <p class="prod__comp">${p.sub}</p>
    ${p.use?`<p class="prod__usage">${p.use}</p>`:''}
    <p class="prod__desc">${p.desc}</p>${draft}${sixBlock(h)}
@@ -1380,7 +1419,7 @@ function product(h){const p=P[h];if(!p)return notFound();
    <form class="wl" data-capture="waitlist" hidden><label for="wlE">Be first to sip The ${p.name}. We’ll email you the day it drops.</label><div><input id="wlE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Notify me</button></div><p class="cap__msg" aria-live="polite"></p></form>
    ${p.dose?`<div class="dose" role="group" aria-label="Find your dose"><p class="dose__t">Find your dose</p><div class="dose__btns"><button data-dose="3" aria-pressed="false">Microdose</button><button data-dose="6" aria-pressed="true">Low dose</button></div><div class="dose__drops" aria-hidden="true">${'<i></i>'.repeat(6)}</div><p class="dose__out" aria-live="polite"></p></div>`:''}
    <div class="drawers">
-     ${[['Ingredients',p.ing],['Nutritional Facts',p.nut],['Serving Size',p.serv],['Lab Report',p.packOnly?`<p>Each flavor is tested by an independent lab. <a href="${p.lab}" target="_blank" rel="noopener">See all reports</a></p>`:`<p>Independent lab results for this flavor. <a href="${p.lab}" target="_blank" rel="noopener">View the report</a></p>`]].map(([t,a],i)=>`<div class="dr"><button class="dr__h" aria-expanded="false" aria-controls="dr${i}"><span>${t}</span><span class="dr__icon" aria-hidden="true">→</span></button><div class="dr__a" id="dr${i}">${a.startsWith('<')?a:`<p>${a}</p>`}</div></div>`).join('')}
+     ${[['Ingredients',p.ing],['Nutritional Facts',p.nut],['Serving Size',p.packOnly?p.serv:SERV(p.serv)],['Lab Report',p.packOnly?`<p>Each flavor is tested by an independent lab. <a href="${p.lab}" target="_blank" rel="noopener">See all reports</a></p>`:`<p>Independent lab results for this flavor. <a href="${p.lab}" target="_blank" rel="noopener">View the report</a></p>`]].map(([t,a],i)=>`<div class="dr"><button class="dr__h" aria-expanded="false" aria-controls="dr${i}"><span>${t}</span><span class="dr__icon" aria-hidden="true">→</span></button><div class="dr__a" id="dr${i}">${a.startsWith('<')?a:`<p>${a}</p>`}</div></div>`).join('')}
    </div>
   </div>
  </div></div></section>
@@ -1533,7 +1572,7 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
   ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
  <section class="ulabel" aria-labelledby="ulabelH"><div class="ulabel__a"><h2 class="ulabel__h" id="ulabelH">Guide facts</h2><p class="ulabel__srv"><span>Serving size</span><b>1 glass</b></p><p class="ulabel__srv"><span>Delivered</span><b>By email</b></p></div>
-  <dl class="ulabel__g">${[['Recipes','30','var(--lime)'],['Proof','0','var(--lavender)'],['Minutes per drink','5','var(--ember)'],['Sweetener','Agave','var(--rose)']].map(([l,v,c])=>`<div style="--c:${c}"><dt>${l}</dt><dd>${v}</dd></div>`).join('')}</dl>
+  <dl class="ulabel__g">${[['Recipes','30','var(--lime)','Fruit-forward, every one','0'],['Proof','Zero','var(--lavender)','Maximum personality','80'],['Minutes per drink','5','var(--ember)','Considerably longer to forget','0'],['Sweetener','Agave','var(--rose)','No CBD. No CBG. No surprises.','']].map(([l,v,c,n,f])=>`<div tabindex="0" style="--c:${c}"><dt><span class="ulabel__l">${l}</span><span class="ulabel__n">${n}</span></dt><dd><span class="ulabel__v" data-v="${v}"${f?` data-from="${f}"`:''}>${v}</span></dd></div>`).join('')}</dl>
   <p class="ulabel__f">Contains fruit. Made with just agave. Arrives November 6.</p></section>
  <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub"><span class="ph">Placeholder</span> These three recipes are already on the site. Three recipes from the guide will go here.</p>
  <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
@@ -1581,7 +1620,7 @@ function route(){
   if(path.startsWith('products/')){const h=path.split('/')[1];html=product(h);const p=P[h];if(p){root.setProperty('background-color',p.theme);['--theme','--themefg','--pbg','--ptext'].forEach((v,i)=>root.setProperty(v,[p.theme,p.fg,p.bg,p.text][i]));title='The '+p.name+' – Altrd Bliss';desc=(()=>{const sen=p.desc.split(/(?<=\.)\s+/);let body=(sen[1]||sen[0]);const pre=`The ${p.name}: ${p.sub}${p.use?', '+p.use.toLowerCase():''}. `,post=' 4 Pack for $32.';const room=158-pre.length-post.length;if(body.length>room)body=body.slice(0,room-1).replace(/[\s,]+\S*$/,'')+'…';return pre+body+post})();ld={'@context':'https://schema.org','@type':'Product',name:'The '+p.name,brand:{'@type':'Brand',name:'Altrd Bliss'},image:I(p.img,1200),description:p.desc,offers:{'@type':'Offer',price:p.packOnly?'32.00':'8.00',priceCurrency:'USD',availability:MODE==='prelaunch'?'https://schema.org/PreOrder':'https://schema.org/InStock'}}}}
   else if(path.startsWith('blogs/recipes/')){root.removeProperty('background-color');const r=RECIPES.find(x=>x.s===path.split('/')[2]);html=recipe(path.split('/')[2]);if(r){title=r.t+' – Altrd Bliss';desc=`${r.t}, made with The ${P[r.h].name}. ${r.ing.filter(x=>!x.startsWith('#')).length} ingredients, ${r.steps.filter(x=>!x.startsWith('#')).length} steps.`;ld={'@context':'https://schema.org','@type':'Recipe',name:r.t,image:AI(r.img,1200),recipeIngredient:r.ing.filter(x=>!x.startsWith('#')),recipeInstructions:r.steps.filter(x=>!x.startsWith('#')).map(t=>({'@type':'HowToStep',text:t})),author:{'@type':'Organization',name:'Altrd Bliss'}}}}
   else{root.removeProperty('background-color');html=(ROUTES[path]||notFound)();if(TITLES[path])title=TITLES[path]+' – Altrd Bliss';desc=DESC[path]||desc}
-  app.innerHTML=html;document.title=title;setMeta(desc,ld);setOg(title,desc,ogImg(path));CUR.path=path;if(want&&typeof bts!=='undefined'){btsTab=['page','share','a11y'].includes(want)?want:'page';document.querySelectorAll('[data-btstab]').forEach(x=>x.setAttribute('aria-selected',x.dataset.btstab===btsTab));setTimeout(()=>btsOpen(true),400)}if(typeof bts!=='undefined'){if(bts.classList.contains('on'))btsRender();if(a11yOn)setTimeout(a11yPaint,300)}window.scrollTo(0,0);wire();
+  app.innerHTML=html;ulabelRun(app);document.title=title;setMeta(desc,ld);setOg(title,desc,ogImg(path));CUR.path=path;if(want&&typeof bts!=='undefined'){btsTab=['page','share','a11y'].includes(want)?want:'page';document.querySelectorAll('[data-btstab]').forEach(x=>x.setAttribute('aria-selected',x.dataset.btstab===btsTab));setTimeout(()=>btsOpen(true),400)}if(typeof bts!=='undefined'){if(bts.classList.contains('on'))btsRender();if(a11yOn)setTimeout(a11yPaint,300)}window.scrollTo(0,0);wire();
 }
 function wire(){
   clearInterval(fadeTimer);
@@ -1627,7 +1666,9 @@ function stickyInit(){if(ssHandler)window.removeEventListener('scroll',ssHandler
 const burger=document.getElementById('burger'),drawer=document.getElementById('drawer');
 const mscrim=document.getElementById('mscrim');mscrim.onclick=()=>closeAll();
 function closeAll(){const wasOpen=drawer.classList.contains('open');mscrim.classList.remove('on');document.body.classList.remove('menu-open');if(wasOpen&&drawer.contains(document.activeElement))burger.focus({preventScroll:true});document.querySelectorAll('.dd').forEach(d=>d.classList.remove('open'));document.querySelectorAll('[data-dd]').forEach(b=>b.setAttribute('aria-expanded','false'));drawer.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu')}
-document.querySelectorAll('[data-dd]').forEach(b=>b.onclick=e=>{e.stopPropagation();const d=document.getElementById('dd-'+b.dataset.dd);const open=!d.classList.contains('open');closeAll();if(open){d.classList.add('open');b.setAttribute('aria-expanded','true')}});
+const HOV=matchMedia('(hover:hover) and (pointer:fine)').matches;
+document.querySelectorAll('[data-dd]').forEach(b=>b.onclick=e=>{e.stopPropagation();const d=document.getElementById('dd-'+b.dataset.dd);const open=!d.classList.contains('open')||(HOV&&e.detail>0);closeAll();if(open){d.classList.add('open');b.setAttribute('aria-expanded','true')}});
+if(HOV)document.querySelectorAll('.navwrap').forEach(w=>{let t;const b=w.querySelector('[data-dd]'),d=w.querySelector('.dd');w.addEventListener('mouseenter',()=>{clearTimeout(t);if(d.classList.contains('open'))return;closeAll();d.classList.add('open');b.setAttribute('aria-expanded','true')});w.addEventListener('mouseleave',()=>{t=setTimeout(()=>{d.classList.remove('open');b.setAttribute('aria-expanded','false')},180)})});
 document.addEventListener('click',e=>{if(!e.target.closest('.navwrap'))document.querySelectorAll('.dd.open').forEach(()=>closeAll())});
 burger.onclick=()=>{const o=!drawer.classList.contains('open');closeAll();if(o){drawer.classList.add('open');mscrim.classList.add('on');document.body.classList.add('menu-open');burger.setAttribute('aria-expanded','true');burger.setAttribute('aria-label','Close menu');drawer.scrollTop=0}};
 drawer.addEventListener('click',e=>{if(e.target.tagName==='A')closeAll()});
@@ -1792,6 +1833,7 @@ modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStora
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
+function ulabelRun(root){const box=root.querySelector('.ulabel');if(!box||box.dataset.run)return;const go=()=>{box.dataset.run=1;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;box.querySelectorAll('.ulabel__v').forEach((el,k)=>{const v=el.dataset.v,f=el.dataset.from;if(rm)return;if(f===undefined){el.classList.add('ch');el.innerHTML=[...v].map((c,i)=>`<i style="--i:${i+k*2}">${c}</i>`).join('');return}const to=/^\d+$/.test(v)?+v:0,from=+f,t0=performance.now(),dur=1100+k*120;const step=t=>{const q=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-q,3),n=Math.round(from+(to-from)*e);el.textContent=q<1?n:v;if(q<1)requestAnimationFrame(step)};el.textContent=from;requestAnimationFrame(step)})};if(!('IntersectionObserver' in window))return go();const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();go()}},{threshold:.45});io.observe(box)}
 const ageLock=on=>{['header.hdr','#app','#footer','.badge','.logo','#drawer'].forEach(sel=>{const el=document.querySelector(sel);if(el){if(on)el.setAttribute('inert','');else el.removeAttribute('inert')}})};
 if(document.documentElement.classList.contains('ag')){ageLock(true);setTimeout(()=>{const y=document.getElementById('yes');(y&&y.offsetParent?y:document.getElementById('gateT')).focus()},50)}
 document.getElementById('yes').onclick=()=>{ageSet('yes');document.documentElement.classList.remove('ag','ag-no');ageLock(false);app.focus({preventScroll:true})};
