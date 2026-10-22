@@ -168,10 +168,6 @@ body.menu-open .hdr{z-index:57}
 .guide__h .c{display:block;font-size:clamp(52px,6vw,88px);letter-spacing:-1.5px}
 .guide__h .x{display:block;font-size:clamp(22px,2.4vw,34px);color:var(--lime);margin-top:6px}
 .guide__p{margin:0;font-size:1.6rem;max-width:30em}
-.cd{display:flex;gap:10px;flex-wrap:wrap}
-.cd div{min-width:78px;padding:12px 10px;border-radius:14px;background:rgba(255,255,255,.08);text-align:center}
-.cd b{display:block;font:800 30px/1 var(--font-expanded)}
-.cd span{font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
 .guide .quiz__code{max-width:460px}
 .ig{padding:40px 0 90px}
 .ig__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px}
@@ -200,10 +196,6 @@ body.menu-open .hdr{z-index:57}
 .pfeat .button:hover{color:var(--ink)}
 .pkit{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}
 @media (min-width:990px){.pkit{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
-.pkit>div{border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:clamp(24px,3vw,40px)}
-.pkit h2{font:800 22px/1 var(--font-matria);text-transform:uppercase;margin:0 0 18px}
-.pkit ul{margin:0;padding-left:18px;font-size:1.6rem;line-height:1.8}
-.pkit p{font-size:1.6rem;margin:0 0 20px}
 .badge__by{display:inline-flex;align-items:center;gap:6px}.sclogo{height:18px;width:auto;vertical-align:middle;display:inline-block}.ft__logo .sclogo--ft{width:auto!important;height:18px!important;max-width:none;display:inline-block;filter:brightness(0) invert(1);opacity:.75;margin-left:4px;vertical-align:middle}
 /* marquee */
 .mq{overflow:hidden;padding:40px 0}
@@ -839,15 +831,9 @@ body.has-bar .badge{bottom:96px}
 .uti__copy{display:flex;flex-direction:column;gap:18px}
 .uti__copy p{margin:0;font-size:1.7rem;max-width:32em}
 .uti__copy .uti__lede{font-size:2.2rem;line-height:1.35}
-.uti__stamp{display:flex;flex-direction:column;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:16px 18px;max-width:420px}
-.uti__stamp b{font:800 14px/1 var(--font-matria);letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
-.uti__stamp span{font-size:1.5rem}
 .uti__in{color:var(--lime)}
 .uti__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:60px 0}
 @media (min-width:750px){.uti__facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.uti__facts div{border-radius:16px;background:rgba(255,255,255,.06);padding:22px;text-align:center}
-.uti__facts b{display:block;font:800 44px/1 var(--font-expanded)}
-.uti__facts span{font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
 .uti__h2{font:900 clamp(36px,4.6vw,60px)/1 var(--font-compressed);text-transform:uppercase;text-align:center;margin:0}
 .uti__sub{text-align:center;font-size:1.6rem;margin:10px 0 34px}
 .uti__lock{position:relative;margin-top:40px;border-radius:20px;overflow:hidden}
@@ -924,6 +910,40 @@ html.ag-no #gate .gate__no{display:block}
 .cart .shipr{padding:12px 14px;gap:10px}.cart .shipr p{font-size:1.3rem}.cart .shipr .shipr__h{font-size:15px}
 .cart .shipr--ok,.cart .shipr--no{color:var(--ink)}
 .cart .shipr--no .shipr__h{color:#a3213c}.cart .shipr--ok .shipr__h{color:#1d6b4b}.cart .shipr--ok svg{color:#2f9b6e}
+.cd{display:flex;align-items:flex-end;flex-wrap:wrap;row-gap:12px}
+.cdu{display:flex;flex-direction:column;gap:6px;padding:0 clamp(16px,2.2vw,28px);border-left:1px solid rgba(255,255,255,.2)}
+.cdu:first-child{padding-left:0;border-left:0}
+.cdu b{font:900 clamp(56px,6vw,88px)/.82 var(--font-compressed);letter-spacing:-1px;color:var(--c)}
+.cdu span{font:800 12px/1 var(--font-matria);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.seal{display:flex;align-items:center;gap:20px;max-width:520px}
+.seal__ring{width:132px;height:132px;flex:none;color:#fff;animation:sealSpin 40s linear infinite}
+.seal__ring text{font:800 16px var(--font-matria);fill:#fff;letter-spacing:2px}
+@keyframes sealSpin{to{transform:rotate(360deg)}}
+.seal__t{margin:0;font-size:1.6rem;line-height:1.5}
+.seal__t b{display:block;font:800 18px/1.25 var(--font-matria);text-transform:uppercase;color:var(--lime);margin-bottom:4px}
+@media (max-width:480px){.seal{gap:14px}.seal__ring{width:104px;height:104px}}
+.ufact{background:var(--c);color:var(--ink);border-radius:20px;padding:22px 22px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:190px}
+.ufact b{font:900 clamp(88px,9vw,132px)/.8 var(--font-compressed);letter-spacing:-2px}
+.ufact span{font:800 15px/1.15 var(--font-matria);text-transform:uppercase;letter-spacing:.02em}
+.ufact--rose{color:#fff}
+.pkit{align-items:stretch;margin-top:28px}
+.pkit__facts{padding:clamp(8px,2vw,24px) 0}
+.pkit__h{margin:0 0 22px;font-size:clamp(42px,5vw,66px);line-height:1;letter-spacing:-1.32px}
+.pkit__l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.pkit__l li{display:flex;align-items:flex-start;gap:12px;font-size:1.7rem;line-height:1.4}
+.pkit__l svg{width:22px;height:22px;flex:none;margin-top:2px}
+.pkit__press{background:var(--mint);color:var(--ink);border-radius:20px;padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.pkit__press .nl__h{text-align:left;margin:0}
+.pkit__press p{margin:0;font-size:1.8rem;line-height:1.5}
+.pkit__btn{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:64px;border-radius:32px;background:var(--ink);color:#fff;padding:0 40px;font-size:1.5rem;text-decoration:none}
+.pkit__btn:hover{background:#1a2226}
+.mood{background:var(--lime);color:var(--ink)}
+.mood:nth-child(1){background:linear-gradient(135deg,var(--ember) 0%,var(--ember) 45%,var(--lavender) 100%)}
+.mood:nth-child(3){background:var(--rose);color:#fff}
+.mood__bar{display:none}
+.mood small{opacity:.8}
+.mood a{color:inherit}
+.mood a:hover{color:inherit}
 </style>
 </head>
 <body>
@@ -1165,8 +1185,8 @@ const guide=()=>`<section class="guide" id="guide"><div class="pw"><div class="g
   <div class="cd" id="cd" aria-live="off"></div>
   <form class="quiz__code" data-capture="guide"><label for="gE">Get the guide first</label><div><input id="gE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>
  </div></div></div></section>`;
-function guideTick(){const el=document.getElementById('cd');if(!el)return;const ms=GUIDE_AT()-new Date();if(ms<=0){el.innerHTML='<div style="min-width:0;padding:12px 18px"><b style="font-size:22px">Out now</b></div>';return}
- const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60;el.innerHTML=[[d,'Days'],[h,'Hours'],[m,'Min']].map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join('');el.setAttribute('aria-label',`${d} days, ${h} hours and ${m} minutes until November 6`)}
+function guideTick(){const el=document.getElementById('cd');if(!el)return;const ms=GUIDE_AT()-new Date();if(ms<=0){el.innerHTML='<div class="cdu" style="--c:var(--lime)"><b>Out now</b></div>';return}
+ const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60;el.innerHTML=[[d,d===1?'Day':'Days','var(--lime)'],[h,h===1?'Hour':'Hours','var(--lavender)'],[m,m===1?'Minute':'Minutes','var(--ember)']].map(([n,l,c])=>`<div class="cdu" style="--c:${c}"><b>${n}</b><span>${l}</span></div>`).join('');el.setAttribute('aria-label',`${d} days, ${h} hours and ${m} minutes until November 6`)}
 function guideInit(){guideTick()}
 const IG=[['reel','DeI0plnvuCY','October 5'],['reel','DewrqlZv7Wz','October 21'],['reel','DeuQEGZs-38','October 20'],['reel','DeFEfYMtxdM','October 4'],['reel','DepNFphhGkL','October 18'],['reel','DecCcXrxnJ9','October 13']];
 const igRow=()=>`<section class="ig" aria-labelledby="igH"><div class="pw"><div class="ig__head"><div><h2 class="c" id="igH">@altrdbliss</h2><p>Twin founders making drinks differently.</p></div><a class="button" href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Follow on Instagram</a></div>
@@ -1397,8 +1417,8 @@ const press=()=>`<section class="press"><div class="pw">
    <p>The twins on starting Altrd Bliss for their mom, choosing to self-fund the launch, and Under the Influence (of Fruit), their first drinking guide.</p>
    <blockquote>“We’re expanding what can be in the glass.”<cite>Jamie Isaac, co-founder</cite></blockquote>
    <a class="button" href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Read the interview</a></div></article>
- <div class="pkit"><div><h2>Fast facts</h2><ul><li>Founded by identical twin sisters Erika and Jamie Isaac</li><li>CBD and CBG infused agave syrups, non-intoxicating</li><li>Four flavors: The Original, The Tini, The Rita and The Spritz</li><li>$8 a bottle, $32 a 4 pack</li><li>Drinking guide out November 6, product launch in Q1</li></ul></div>
- <div><h2>For press</h2><p>Interviews, samples and images. Write to us and we’ll get back to you.</p><a class="button" href="#/pages/contact">Contact us</a></div></div>
+ <div class="pkit"><div class="pkit__facts"><h2 class="pkit__h"><span class="c">Fast</span> <span class="x">facts</span></h2><ul class="pkit__l">${[['Founded by identical twin sisters Erika and Jamie Isaac','#cc3f59'],['CBD and CBG infused agave syrups, non-intoxicating','#e57945'],['Four flavors: The Original, The Tini, The Rita and The Spritz','#cdb4f9'],['$8 a bottle, $32 a 4 pack','#e0f47b'],['Drinking guide out November 6, product launch in Q1','#b3edd4']].map(([t,c])=>`<li>${check(c)}<span>${t}</span></li>`).join('')}</ul></div>
+ <div class="pkit__press"><h2 class="nl__h"><span class="a">FOR</span><span class="b">PRESS</span></h2><p>Interviews, samples and images. Write to us and we’ll get back to you.</p><a class="pkit__btn" href="#/pages/contact">Contact us</a></div></div>
 </div></section>`;
 const UTI_TEASE=['rosemary-grapefruit-paloma-mocktail','orange-juice-passion-fruit-spritz','cran-cherry-sleep-tonic'];
 const UTI_LOCK=['ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit-2.png?v=1775060929'];
@@ -1407,11 +1427,11 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
  <div class="uti__copy"><p class="guide__k">The Altrd Bliss drinking guide</p><h1 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h1>
   <p class="uti__lede">30 fruit-forward drinks with zero proof and maximum personality.</p>
   <p>A collection of recipes for people who take pleasure seriously. Five minutes to make. Considerably longer to forget.</p>
-  <div class="uti__stamp"><b>Made with just agave</b><span>No CBD. No CBG. No surprises. The Bliss is a dropper away, whenever you’re ready.</span></div>
+  <div class="seal"><svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sealP" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1"/><text><textPath href="#sealP" textLength="486" lengthAdjust="spacing">MADE WITH JUST AGAVE ✦ MADE WITH JUST AGAVE ✦</textPath></text><path d="M100 70c0 0-20 24-20 38a20 20 0 0 0 40 0c0-14-20-38-20-38z" fill="var(--lime)"/></svg><p class="seal__t"><span class="sr">Made with just agave. </span><b>No CBD. No CBG. No surprises.</b> The Bliss is a dropper away, whenever you’re ready.</p></div>
   <div class="cd" id="cd" aria-live="off"></div>
   ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
- <div class="uti__facts"><div><b>30</b><span>drinks</span></div><div><b>0</b><span>proof</span></div><div><b>5</b><span>minutes each</span></div><div><b>1</b><span>sweetener: agave</span></div></div>
+ <div class="uti__facts">${[['30','Drinks','var(--lime)'],['0','Proof','var(--lavender)'],['5','Minutes each','var(--ember)'],['1','Sweetener: agave','var(--rose)']].map(([n,l,c],i)=>`<div class="ufact${i===3?' ufact--rose':''}" style="--c:${c}"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
  <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub"><span class="ph">Placeholder</span> These three recipes are already on the site. Three recipes from the guide will go here.</p>
  <div class="rgrid uti__tease">${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
  <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
