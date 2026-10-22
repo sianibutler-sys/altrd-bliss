@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>(function(){try{var q=new URLSearchParams(location.search);if(q.get('agegate')==='reset'){document.cookie='ab_age=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';q.delete('agegate');try{localStorage.removeItem('ab_age')}catch(e){}history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}try{localStorage.removeItem('ab_21')}catch(e){}var m=document.cookie.match(/(?:^|; )ab_age=([^;]*)/),v=m?m[1]:'';if(!v){try{var o=JSON.parse(localStorage.getItem('ab_age')||'null');if(o&&o.exp>Date.now())v=o.v}catch(e){}}if(v!=='yes')document.documentElement.classList.add('ag');if(v==='no')document.documentElement.classList.add('ag-no')}catch(e){document.documentElement.classList.add('ag')}})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Altrd Bliss</title>
 <meta name="description" content="CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.">
@@ -891,6 +892,11 @@ body.has-bar .badge{bottom:96px}
 @media (max-width:420px){.moods{gap:6px}.mood{padding:16px 10px 14px}.mood a{font-size:1.3rem}}
 .ph{display:inline-block;vertical-align:middle;font:400 1.1rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px dashed currentColor;margin-right:8px;opacity:.85}
 .uti__tiles+.uti__lockc .ph{border-color:#fff}
+html.ag,html.ag body{overflow:hidden}
+html.ag #gate{display:flex}
+#gate .gate__no{display:none}
+html.ag-no #gate .gate__act,html.ag-no #gate .gate__q{display:none}
+html.ag-no #gate .gate__no{display:block}
 </style>
 </head>
 <body>
@@ -932,7 +938,7 @@ body.has-bar .badge{bottom:96px}
   <div class="gate__modal">
     <div class="gate__c" id="gateC">
       <h2 id="gateT">ARE YOU 21+?</h2>
-      <p>Sorry, before we get to the good stuff, we need to check your age.</p>
+      <p class="gate__q">Sorry, before we get to the good stuff, we need to check your age.</p><p class="gate__no" role="alert">You must be 21 or older to access this site.</p>
       <div class="gate__act"><button class="gbtn" id="yes">Yes</button><button class="gbtn" id="no">No</button></div>
       <small>By entering this site you are agreeing to the Terms of Service and <a href="https://www.altrdbliss.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></small>
     </div>
@@ -1094,10 +1100,8 @@ const home=()=>`
     <div><a class="button" href="#/blogs/recipes">Try Our Recipes</a></div>
   </div>
 </div></div></section>
-${season()}
-${mixBuilder()}
+${featureSlot()}
 ${marquee()}
-${guide()}
 <section class="vid"><div class="vid__inner">
   <div class="vid__copy">
     <div>
@@ -1113,7 +1117,6 @@ ${guide()}
   <div class="vid__media"><video muted loop playsinline preload="none" data-lazyplay poster="${F}preview_images/a2a63a8982af49bca96b6866e22f949f.thumbnail.0000000000_2000x.jpg?v=1772811864" aria-label="An Altrd Bliss mocktail rotating"><source src="${V}a2a63a8982af49bca96b6866e22f949f/a2a63a8982af49bca96b6866e22f949f.HD-1080p-2.5Mbps-77314244.mp4?v=0" type="video/mp4"></video></div>
 </div></section>
 ${happy()}
-${igRow()}
 ${sticky()}`;
 
 const GUIDE_AT=()=>new Date(2026,10,6,0,0,0);
@@ -1126,6 +1129,7 @@ const season=()=>{const [m,x]=seasonPick(),p=P[x.h],r=RECIPES.find(z=>z.s===x.re
  <div class="season__media"><img loading="lazy" src="${I(x.img,1200)}" alt="The ${p.name} in a martini glass with a cherry" width="1200" height="1200"><span class="vpill" style="background:#fff">The ${p.name} · ${p.use}</span></div>
 </div></div></section>`};
 function seasonInit(){}
+const featureSlot=()=>new Date()<GUIDE_AT()?guide():season();
 const guide=()=>`<section class="guide" id="guide"><div class="pw"><div class="guide__in">
  <a class="guide__cov" href="#/pages/under-the-influence" aria-label="Preview Under the Influence (of Fruit)"><img class="guide__img" loading="lazy" src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></a>
  <div class="guide__b"><p class="guide__k">Our first drinking guide</p>
@@ -1275,7 +1279,8 @@ ${marquee()}
 <section class="frames"><div class="pw"><h2 class="c h66 frames__h">WE'RE GIVING EVERYONE A FAIR SHOT AT CREATING THEIR VERSION OF BLISS</h2><div class="frames__grid">
  ${[['DTS_HERBAL_PIONEER_Felix_NIKADO_10233.png?v=1775062005','Quality','We don’t mess around when it comes to quality. Our products are always top-notch, made with precise dosages of all-natural ingredients and bursting with bold, mouthwatering flavors. We believe you deserve the very best, and we’re here to deliver just that, every single time.'],['DTS_FIRST_ROUND_JELLY_LUISE_10670.png?v=1775062005','Philanthropy','As Black women founders, we’re all about giving back. We’re committed to supporting our community, customers, and the causes that matter. From advocating for those impacted by unjust cannabis laws to contributing to initiatives that uplift, we’re here to make a difference.'],['DTS_FIRST_ROUND_JELLY_LUISE_10635.png?v=1775062005','Inclusivity','Fun and bliss should be for everyone. No judgment, no pressure, just pure enjoyment. We’re breaking barriers and creating a space where everyone feels welcome to find their bliss, their way. Whether it’s unwinding after a long day or celebrating life’s little wins, you deserve to feel good.']].map(f=>`<div class="frame"><div class="frame__img"><img loading="lazy" src="${I(f[0],700)}" alt="" width="700" height="780"></div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join('')}
 </div></div></section>
-<section class="para" style="background-image:url('${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693',1800)}')"><a href="#/pages/find-your-bliss" style="text-decoration:none;position:relative"><h2 class="h66"><span class="x">FIND YOUR</span> <span class="c">BLISS</span></h2></a></section>`;
+<section class="para" style="background-image:url('${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693',1800)}')"><a href="#/pages/find-your-bliss" style="text-decoration:none;position:relative"><h2 class="h66"><span class="x">FIND YOUR</span> <span class="c">BLISS</span></h2></a></section>
+${igRow()}`;
 
 const FAQ=[['The Bliss',[['What does it feel like?','<p>Like collapsing into a plush couch after being on your feet all day, shoes kicked off, cozy clothes on. Your body loosens, your mind quiets, but not in a zoned-out way. You’re still fully you, just… the version that isn’t gripping the steering wheel so tight.</p><p>It’s not a big, wild, “whoa, what just happened?” moment. It’s a slooooww melt. A smoooooth untangling of every knot you’ve been carrying around, the kind that lets you slide deeper into your night without missing a single beat of whatever you were doing before.</p><p>Each syrup delivers its own flavor of bliss: CBD: smooths the edges. The low hum of tension fades, leaving you softer, lighter, more at ease. CBG: clears the fog. Focus clicks in, mind feels light, alert without the jittery edges. CBG + CBD: grounds you. Shoulders drop, breath deepens, that “I’m finally home” feeling settles in. Pick your bliss based on what you need most right now.</p>'],['Are there any side effects?','<p>We keep our blends clean, no bullsh*t, ever. So most people feel nothing but pure bliss. But bodies are funny. Yours isn’t your neighbor’s, and your neighbor’s isn’t that girl on TikTok. If you’ve got health stuff going on, are pregnant, breastfeeding, or just want to be extra safe, check in with your doctor first.</p>'],['Will I get paranoid?','<p>Nope! This isn’t weed-you-found-in-your-cousin’s backpack in 2009. We’ve formulated our syrups to give you the benefits of CBD and CBG without the high, and certainly without the “oh f*ck, everyone\'s looking at me??” paranoia. Think steady, mellow, unbothered energy.</p>'],['How do I use ALTRD Bliss syrups?','<p>However the heck you want :)</p><p>Most people splash it into sparkling water, tea, mocktails, whatever’s in your glass. But if you’re feeling bold (or impatient), drip it straight under your tongue for the fast lane to bliss. Every bottle comes with a calibrated dropper so you can adjust your serving depending on your mood, a little for a light lift, a little more when you’re chasing that ahhh.</p>']]],
  ['General',[['What is CBD, CBG?','<p>Think of them as two very different family members, all from the same household, the hemp plant. It’s a variety of cannabis that’s naturally low in THC (so, no, it won’t get you high), but each brings something different to the table.</p><p>CBD: The chill older sibling. Smooths the edges, eases tension, and helps you drift into deeper sleep. CBG: The focused cousin. Sharpens your thinking, clears the fog, and keeps your body in that easy, steady flow. They’re cut from the same plant, but each brings their own vibe.</p>'],['Is this legal in my state?','<p>Yes, our products are made from hemp-derived ingredients that are federally legal across the United States. However, we can’t ship to a handful of states yet: AK, DC, HI, ID, KS, KY, ME, MA, MI, MS, MT, NE, NV, NH, NC, ND, PA, RI, VA, WA, CO, CT, FL, IA, LA, MN, NY, OR. We’re lobbying hard to change that, so hopefully your state will get with the program soon.</p>'],['What is the shelf life of ALTRD Bliss products?','<p>Our syrups have a shelf life of 12 months when stored in a cool, dry place. Be sure to check the expiration date on the bottle; bliss is always better fresh.</p>']]],
@@ -1337,7 +1342,9 @@ const FRUITY=/lime|blackberry|lavender|cranberry|thyme|passion|mango/i;
 const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const ing=p.ing.split(',').map(x=>x.trim()).filter(Boolean);return `<div class="six"><p class="six__t">${ing.length} ingredients</p><p class="six__f">${FRUIT_NOTE[h]}</p><ul class="six__l">${ing.map(x=>`<li${FRUITY.test(x)?' class="fr"':''}>${x}</li>`).join('')}</ul><p class="six__n">6 ingredients or fewer, in every bottle.</p></div>`};
 const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn${h==='the-tini'?' rose':''}" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false"${h==='the-tini'?' data-rose':''}>The ${P[h].name}</button>`).join('')}</div>
 <div class="ffruit" role="group" aria-label="Sort by fruit"><span class="ffruit__l">Or by fruit</span>${FRUITS.map(([k,l])=>`<button class="fchip" data-fruit="${k}" aria-pressed="false">${l}</button>`).join('')}</div><p class="rnone" id="rnone" hidden>No recipes match both. Try another fruit or flavor.</p>
-<div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(rcard).join('')}</div></div></section>`;
+<div class="pw"><div class="rgrid" id="rgrid">${RECIPES.map(rcard).join('')}</div></div></section>
+${mixBuilder()}
+${season()}`;
 function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound();const p=P[r.h];
  const li=(arr,ol)=>arr.map((x,i)=>x.startsWith('#')?`<li class="rh">${x.slice(1)}</li>`:ol?`<li>${x}</li>`:`<li><label><input type="checkbox"><span>${x}</span></label></li>`).join('');
  const more=RECIPES.filter(x=>x.h===r.h&&x.s!==r.s).concat(RECIPES.filter(x=>x.h!==r.h)).slice(0,3);
@@ -1567,7 +1574,7 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'pages/contact':['No main headline on the page.','No search description.']})[path]||[]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];return h==='the-multipack'?['Build your own 4 Pack','A Lab Report panel','A buy bar that stays on screen on phones']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front, with the fruit called out','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch']}
  if(path.startsWith('blogs/recipes/'))return ['Ingredient checklist','Buy the flavor from the recipe','More recipes to sip','Recipe data Google can show with the photo'];
- return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','In season this month: one fruit, the flavor it matches, and a recipe','Mix your bliss, shot on your own photography, with a pick-your-fruit step and a shareable card','Under the Influence (of Fruit) countdown in each visitor’s own time zone','Your latest Instagram posts, loaded only when someone scrolls to them','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
+ return ({'':['The right flavor first, by time of day','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup'],'pages/faq':['Do we ship to you? state checker','A button to tell you about a favorite shop'],'pages/find-your-bliss':['Your same five questions, on your own site','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Every recipe opens on your site, with filters by flavor','Filter by fruit, alone or with a flavor','Mix your bliss, with a pick-your-fruit step and a shareable card','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram posts, loaded only when someone scrolls to them'],'pages/shop-all':['Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline and labeled fields']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
 function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBody');const old=shareOld(path),st=todayStats(path);
@@ -1631,10 +1638,11 @@ const paintMode=()=>{modeBtn.textContent=MODE==='prelaunch'?'Pre-launch view · 
 modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();route()};paintMode();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
-if(!store.get('ab_21',false)){gate.classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('yes').focus(),50)}
-document.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const open=[...document.querySelectorAll('.gate.on')].pop();if(!open)return;const f=[...open.querySelectorAll('button,a[href],input,select,textarea')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}else if(!open.contains(document.activeElement)){e.preventDefault();a.focus()}});
-document.getElementById('yes').onclick=()=>{store.set('ab_21',true);gate.classList.remove('on');document.body.style.overflow=''};
-document.getElementById('no').onclick=()=>{document.getElementById('gateC').innerHTML='<h2>COME BACK SOON</h2><p>Altrd Bliss is for adults 21 and over.</p>'};
+const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
+const ageLock=on=>{['header.hdr','#app','#footer','.badge','.logo','#drawer'].forEach(sel=>{const el=document.querySelector(sel);if(el){if(on)el.setAttribute('inert','');else el.removeAttribute('inert')}})};
+if(document.documentElement.classList.contains('ag')){ageLock(true);setTimeout(()=>{const y=document.getElementById('yes');(y&&y.offsetParent?y:document.getElementById('gateT')).focus()},50)}
+document.getElementById('yes').onclick=()=>{ageSet('yes');document.documentElement.classList.remove('ag','ag-no');ageLock(false);app.focus({preventScroll:true})};
+document.getElementById('no').onclick=()=>{ageSet('no');document.documentElement.classList.add('ag-no');document.getElementById('gateT').setAttribute('tabindex','-1');document.getElementById('gateT').focus()};
 
 window.addEventListener('hashchange',route);
 route();renderCart();
