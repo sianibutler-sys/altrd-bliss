@@ -67,8 +67,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 /* top strip: changes with pre-launch / launch view */
 :root{--sh:34px}
 body{padding-top:var(--sh)}
-.strip{position:fixed;top:0;left:0;right:0;height:var(--sh);z-index:58;display:flex;align-items:center;justify-content:center;padding:0 16px;background:var(--lime);color:var(--ink);font-size:1.3rem;line-height:1.2;text-align:center;transition:background-color .3s ease}
-.strip.is-launch{background:var(--ember)}
+.strip{position:fixed;top:0;left:0;right:0;height:var(--sh);z-index:58;display:flex;align-items:center;justify-content:center;padding:0 16px;background:linear-gradient(90deg,#abdbca,#d9e36a,#c9b3d7,#f3703b,#c9b3d7,#abdbca) 0 0/200vw 100% repeat-x;color:var(--ink);font-size:1.3rem;font-weight:500;line-height:1.2;text-align:center;animation:stripflow 18s linear infinite}
+@keyframes stripflow{to{background-position:-200vw 0}}
+@media (prefers-reduced-motion:reduce){.strip{animation:none}}
 .strip a{color:inherit;text-decoration:none}
 .strip u{text-underline-offset:3px;font-weight:600}
 .strip .s-sm{display:none}
@@ -429,7 +430,7 @@ body.menu-open .hdr{z-index:57}
 .prod__comp{font-size:18px;margin-top:-1rem}
 @media (min-width:981px){.prod__comp{font-size:22px}}
 .prod__usage{border:1px solid var(--theme);color:var(--theme);font-size:1.1rem;padding:12px 30px;border-radius:20px;margin-top:1rem}
-.prod__desc{font-size:15px;line-height:1.7;letter-spacing:.06em;text-transform:uppercase;max-width:48rem;margin-bottom:1rem}
+.prod__desc{font-size:15px;line-height:1.7;letter-spacing:.04em;max-width:48rem;margin-bottom:1rem}
 .prod__foot{font-size:9px}
 .buy{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:.5rem}
 .variants{display:flex;gap:.6rem;background:#fff;padding:.6rem;border-radius:999px;width:100%}
