@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>(function(){try{var q=new URLSearchParams(location.search);if(q.get('agegate')==='reset'){document.cookie='ab_age=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';q.delete('agegate');try{localStorage.removeItem('ab_age')}catch(e){}history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}try{localStorage.removeItem('ab_21')}catch(e){}var m=document.cookie.match(/(?:^|; )ab_age=([^;]*)/),v=m?m[1]:'';if(!v){try{var o=JSON.parse(localStorage.getItem('ab_age')||'null');if(o&&o.exp>Date.now())v=o.v}catch(e){}}if(v!=='yes')document.documentElement.classList.add('ag');if(v==='no')document.documentElement.classList.add('ag-no')}catch(e){document.documentElement.classList.add('ag')}})();</script>
+<script>(function(){try{var q=new URLSearchParams(location.search);if(q.get('agegate')==='reset'){document.cookie='ab_age=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';q.delete('agegate');try{localStorage.removeItem('ab_age')}catch(e){}history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash)}try{localStorage.removeItem('ab_21')}catch(e){}var m=document.cookie.match(/(?:^|; )ab_age=([^;]*)/),v=m?m[1]:'';if(!v){try{var o=JSON.parse(localStorage.getItem('ab_age')||'null');if(o&&o.exp>Date.now())v=o.v}catch(e){}}if(v!=='yes')document.documentElement.classList.add('ag');try{if(!sessionStorage.getItem('ab_intro')&&q.get('intro')!=='off')document.documentElement.classList.add('intro-on')}catch(e){}if(v==='no')document.documentElement.classList.add('ag-no')}catch(e){document.documentElement.classList.add('ag')}})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Altrd Bliss</title>
 <meta name="description" content="CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.">
@@ -64,6 +64,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .button--ink:hover{color:var(--ink)}
 .button--sm{height:auto;min-height:48px;padding:12px 28px;white-space:normal;text-align:center}
 
+/* swipe rows on narrow screens */
+.shop__row{display:contents}
+@media (max-width:900px){.shop__row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding-inline:20px;cursor:grab}.shop__row::-webkit-scrollbar{display:none}.shop__row .shop__card{flex:0 0 78%;scroll-snap-align:start}.shop__row .shop__media{height:auto}.shop__row .shop__media img{height:auto;min-height:0}}
+@media (min-width:600px) and (max-width:900px){.shop__row .shop__card{flex-basis:44%}}
+@media (max-width:759px){.frames .frames__grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding-inline:20px;cursor:grab}.frames .frames__grid::-webkit-scrollbar{display:none}.frames .frames__grid .frame{flex:0 0 82%;scroll-snap-align:start}}
+/* Siani Creates house special: one short intro per visit, before the age gate */
+.intro{display:none}
+html.intro-on .intro{position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;background:#101618;color:#fff;text-align:center;clip-path:inset(0 0 0 0);transition:clip-path .7s cubic-bezier(.7,0,.3,1)}
+html.intro-on .intro.out{clip-path:inset(0 0 100% 0)}
+.intro__k{font-size:1.2rem;letter-spacing:.32em;text-transform:uppercase;color:var(--lime);opacity:0;animation:inUp .6s .15s ease forwards}
+.intro__logo{width:min(220px,56vw);height:auto;filter:invert(1);opacity:0;animation:inUp .7s .45s ease forwards}
+.intro__pour{display:block;width:min(220px,56vw);height:3px;border-radius:3px;background:linear-gradient(90deg,#abdbca,#d9e36a,#c9b3d7,#f3703b,#e02d59);transform:scaleX(0);transform-origin:left;animation:pour .9s 1s cubic-bezier(.6,0,.2,1) forwards}
+.intro__t{font:900 clamp(34px,8vw,56px)/1 var(--font-compressed);letter-spacing:-1px;text-transform:uppercase;opacity:0;animation:inUp .6s 1.5s ease forwards}
+.intro__s{font-size:1.5rem;line-height:1.4;color:rgba(255,255,255,.75);opacity:0;animation:inUp .6s 1.75s ease forwards}
+.intro__skip{position:absolute;right:20px;bottom:24px;color:rgba(255,255,255,.7);font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px}
+.intro__skip:hover{color:#fff;border-color:#fff}
+@keyframes inUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pour{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.intro__k,.intro__logo,.intro__t,.intro__s{animation:none;opacity:1}.intro__pour{animation:none;transform:none}html.intro-on .intro{transition:opacity .3s}html.intro-on .intro.out{clip-path:none;opacity:0}}
 /* top strip: changes with pre-launch / launch view */
 :root{--sh:34px}
 body{padding-top:var(--sh)}
@@ -1233,6 +1252,7 @@ html.ag-no #gate .gate__no{display:block}
 </head>
 <body>
 <a class="skip" href="#app" data-skip>Skip to content</a>
+<div class="intro" id="intro"><p class="intro__k">House special</p><img class="intro__logo" src="siani-creates-logo.png" alt="Siani Creates" width="265" height="130"><span class="intro__pour" aria-hidden="true"></span><p class="intro__t">Altrd Bliss, remixed</p><p class="intro__s">A preview poured for Erika and Jamie Isaac</p><button class="intro__skip" id="introSkip">Skip intro</button></div>
 <div class="strip" id="strip"></div>
 <div class="vtoast" id="vtoast" role="status" aria-live="polite"></div>
 <header class="hdr">
@@ -1641,7 +1661,7 @@ function sticky(){return `<section class="ss">
 const shopAll=()=>`<h1 class="sr">Shop All</h1><section class="shop" style="padding-top:140px"><div class="pw"><div class="shop__grid">
   <article class="shop__hero"><a class="shop__media" href="#/products/the-multipack"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7420-Edit_JAM_v02.png?v=1778079956',1400)}" alt="All four Altrd Bliss flavors" width="1400" height="1400">${soon()}
    <div class="shop__overlay"><h3>The Multipack</h3><p>4 Flavors, 1 Box of Bliss</p><span class="button">${PRE()?'Join Waitlist':'4 Pack For $32'}</span></div></a></article>
-  ${SHOP_ORDER.slice(1).map(shopCard).join('')}
+  <div class="shop__row" data-drag>${SHOP_ORDER.slice(1).map(shopCard).join('')}</div>
 </div></div></section>`;
 
 const MP_ORDER=['the-original','the-tini','the-rita','the-spritz'];
@@ -1695,7 +1715,7 @@ const learn=()=>`
  <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Screenshot_2026-03-30_at_12.09.41_AM.png?v=1774810858',1000)}" alt="" width="1000" height="1000"></div>
   <div class="feat__copy"><h2 class="c h66">SHE DESERVED BETTER</h2><p>While our mom was battling breast cancer and searching for plant-based relief that didn’t feel like buying weed from a guy named Brian behind a gas station, there was nothing she could truly trust. Questionable labels and Ingredients no one could explain. “Testing” that brands claimed they did… but never showed.</p><p>She deserved better, and so does everyone else. We started ALTRD Bliss in her honor, making a promise: no shady fine print, no “just trust us.” Every batch is tested by independent labs for potency, purity, and safety, and we share the receipts so you never have to guess.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See our test results</a></div></div>
 </div></section>
-<section class="frames"><div class="pw"><div class="frames__grid">
+<section class="frames"><div class="pw"><div class="frames__grid" data-drag>
  ${[['ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062237','Faq','Got questions? We’ve probably answered them, from “will I get paranoid?” to “is this legal in my state?” Yeah, we’ve heard it all. And we’ve answered it all','Read the FAQ','#/pages/faq'],['ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693','Quiz','Can’t decide what kind of bliss you need? Take our 30-second quiz and we’ll tell you exactly which blend is about to become your new favorite vice (;','Find your flavor','#/pages/find-your-bliss'],['ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910','Shop the collection','From The Original to The Tini, every flavor’s got a personality. One will be your go to. The rest? They’re waiting to crash the party.','Shop All','#/pages/shop-all']].map(f=>`<div class="frame"><div class="frame__img"><img loading="lazy" src="${I(f[0],700)}" alt="" width="700" height="780"></div><h3>${f[1]}</h3><p>${f[2]}</p><a class="button button--sm" href="${f[4]}">${f[3]}</a></div>`).join('')}
 </div></div></section>`;
 
@@ -1709,7 +1729,7 @@ ${marquee()}
   <p>As twin sisters turned co-founders, we’re eager to change the 'lazy pothead' narrative. We love cannabis and believe everyone should experience its benefits. But we get it—the cannabis high isn't for everyone. After watching our beloved mom battle breast cancer, we knew we had to step in. It was difficult to find precise cannabis-infused products she could take to relieve her pain without the high. That’s why we turned to hemp. We wanted to create products that gave everyone, even those with specific health issues, a chance to find their ALTRD state. With our love for cocktails, we thought, why not mix the two? We hope you can taste the love and excitement that's gone into every flavor. Happy unwinding!</p>
   <h3 class="m" style="font-size:20px">ERIKA AND JAMIE<br>SISTERS &amp; CO-FOUNDERS, ALTRD BLISS</h3></div>
 </div></div></section>
-<section class="frames"><div class="pw"><h2 class="c h66 frames__h">WE'RE GIVING EVERYONE A FAIR SHOT AT CREATING THEIR VERSION OF BLISS</h2><div class="frames__grid">
+<section class="frames"><div class="pw"><h2 class="c h66 frames__h">WE'RE GIVING EVERYONE A FAIR SHOT AT CREATING THEIR VERSION OF BLISS</h2><div class="frames__grid" data-drag>
  ${[['DTS_HERBAL_PIONEER_Felix_NIKADO_10233.png?v=1775062005','Quality','We don’t mess around when it comes to quality. Our products are always top-notch, made with precise dosages of all-natural ingredients and bursting with bold, mouthwatering flavors. We believe you deserve the very best, and we’re here to deliver just that, every single time.'],['DTS_FIRST_ROUND_JELLY_LUISE_10670.png?v=1775062005','Philanthropy','As Black women founders, we’re all about giving back. We’re committed to supporting our community, customers, and the causes that matter. From advocating for those impacted by unjust cannabis laws to contributing to initiatives that uplift, we’re here to make a difference.'],['DTS_FIRST_ROUND_JELLY_LUISE_10635.png?v=1775062005','Inclusivity','Fun and bliss should be for everyone. No judgment, no pressure, just pure enjoyment. We’re breaking barriers and creating a space where everyone feels welcome to find their bliss, their way. Whether it’s unwinding after a long day or celebrating life’s little wins, you deserve to feel good.']].map(f=>`<div class="frame"><div class="frame__img"><img loading="lazy" src="${I(f[0],700)}" alt="" width="700" height="780"></div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join('')}
 </div></div></section>
 <section class="para" style="background-image:url('${I('ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910',2400)}')"><h2 class="para__h" aria-label="Find your bliss"><span class="p1">FIND</span><span class="p2">YOUR</span><span class="p3">BLISS</span></h2></section>
@@ -2144,6 +2164,10 @@ const paintMode=()=>{const v=MODE==='prelaunch'?'Pre-launch':'Launch';modeBtn.in
 const paintStrip=()=>{const el=document.getElementById('strip');el.classList.toggle('is-launch',!PRE());el.innerHTML=PRE()?'<a href="#nl" data-tonl>Syrups launch Q1. <u>Join our email list</u> to hear first.</a>':'<a href="#nl" data-tonl><span class="s-lg">Get the free guide and a promo code in your inbox. </span><span class="s-sm">Free guide and a promo code. </span><u>Join our email list</u></a>'};
 let vtT;const vtoast=()=>{const t=document.getElementById('vtoast');t.textContent=PRE()?'Pre-launch view: the site today':'Launch view: the site once syrups ship';t.classList.add('on');clearTimeout(vtT);vtT=setTimeout(()=>t.classList.remove('on'),3200)};
 modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();paintStrip();if(cartEl.classList.contains('on')){PRE()?paintPreCart():renderCart()}route();vtoast()};paintMode();paintStrip();
+/* --- Siani Creates intro --- */
+(()=>{const root=document.documentElement,el=document.getElementById('intro');if(!root.classList.contains('intro-on'))return;let done=false;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ const end=()=>{if(done)return;done=true;try{sessionStorage.setItem('ab_intro','1')}catch(e){}el.classList.add('out');setTimeout(()=>{root.classList.remove('intro-on');const y=document.getElementById('yes');if(root.classList.contains('ag')&&y)y.focus({preventScroll:true})},rm?320:720)};
+ document.getElementById('introSkip').onclick=end;el.addEventListener('click',e=>{if(e.target===el)end()});addEventListener('keydown',e=>{if(e.key==='Escape'||e.key==='Enter')end()});setTimeout(end,rm?1600:2900)})();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
