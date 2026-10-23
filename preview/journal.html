@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>The Bliss Brief – preview</title><style>@font-face{font-family:"Matria Compressed";src:url("https://www.altrdbliss.com/cdn/shop/files/MatriaCompressed-Black.otf?v=4643254518131425102") format("opentype");font-weight:900;font-display:swap}
+@font-face{font-family:"Matria Expanded";src:url("https://www.altrdbliss.com/cdn/shop/files/MatriaExpanded-ExtraBold.otf?v=11777718432762818198") format("opentype");font-weight:800;font-display:swap}
+@font-face{font-family:"Matria";src:url("https://www.altrdbliss.com/cdn/shop/files/Matria-ExtraBold.otf?v=17149302385647990183") format("opentype");font-weight:800;font-display:swap}
+@font-face{font-family:"Supreme LL";src:url("https://cdn.shopify.com/s/files/1/0742/7001/5660/files/SupremeLL-Regular.woff") format("woff"),url("https://www.altrdbliss.com/cdn/shop/files/SupremeLL-Regular.otf?v=10139123942964630977") format("opentype");font-weight:400;font-display:swap}
+
+:root{--rose:#CC3F59;--ember:#E57945;--lavender:#CDB4F9;--lime:#E0F47B;--mint:#B3EDD4;--ink:#101618;--cream:#F6F2E7;--sky:#a9d3e3;--fc:"Matria Compressed","Arial Narrow",sans-serif;--fx:"Matria Expanded","Arial Black",sans-serif;--fm:"Matria","Arial Black",sans-serif;--fb:"Supreme LL",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:62.5%}body{background:var(--ink);color:#fff;font:400 1.7rem/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+a{color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+@media(min-width:990px){.wrap{padding:0 40px}}
+.top{display:flex;justify-content:space-between;align-items:center;padding:22px 20px}
+.top img{width:180px}
+.top span{font-size:1.1rem;letter-spacing:.22em;text-transform:uppercase;opacity:.6}
+.ph{display:inline-block;border:1px dashed currentColor;border-radius:999px;padding:3px 10px;font-size:1rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8;vertical-align:middle}
+.k{font-size:1.15rem;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+.pill{display:inline-block;border-radius:999px;padding:7px 14px;font-size:1.1rem;letter-spacing:.16em;text-transform:uppercase;background:var(--c,var(--lime));color:var(--ink)}
+.btn{display:inline-flex;align-items:center;min-height:56px;padding:0 30px;border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;font-size:1.5rem}
+.foot{margin-top:100px;padding:40px 20px;border-top:1px solid rgba(255,255,255,.15);text-align:center;font-size:1.3rem;opacity:.7}
+
+.mast{border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);display:flex;justify-content:space-between;gap:10px;padding:10px 0;font-size:1.1rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.h1{text-align:center;text-transform:uppercase;margin:clamp(24px,4vw,40px) 0 10px;display:flex;flex-direction:column;align-items:center}
+.h1 .x{font:800 clamp(52px,11vw,170px)/.85 var(--fx);letter-spacing:-.03em}
+.h1 .c{font:900 clamp(56px,12vw,180px)/.85 var(--fc);color:var(--lime)}
+.dek{text-align:center;max-width:46ch;margin:18px auto 0;font-size:clamp(1.7rem,1.6vw,2rem);opacity:.85}
+.lead{display:grid;grid-template-columns:1fr;margin-top:clamp(40px,6vw,72px);border-radius:20px;overflow:hidden;background:var(--cream);color:var(--ink);text-decoration:none}
+@media(min-width:900px){.lead{grid-template-columns:1.1fr 1fr}}
+.lead img{width:100%;height:100%;min-height:300px;object-fit:cover}
+.lead__b{padding:clamp(28px,4.4vw,64px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.lead h2{font:900 clamp(40px,4.6vw,72px)/.92 var(--fc);text-transform:uppercase}
+.lead p{font-size:1.7rem;line-height:1.55;max-width:44ch;opacity:.85}
+.lead .more{font-size:1.5rem;border-bottom:1px solid var(--ink);align-self:flex-start;padding-bottom:3px;opacity:1}
+.sec{margin-top:clamp(56px,7vw,96px)}
+.sec__h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;margin-bottom:26px}
+.sec__h h2{font:900 clamp(36px,4vw,60px)/1 var(--fc);text-transform:uppercase}
+.grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:750px){.grid{grid-template-columns:repeat(3,1fr)}}
+.card{display:flex;flex-direction:column;gap:12px;text-decoration:none}
+.card .im{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--c)}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .im img{transform:scale(1.04)}
+.card h3{font:800 2.2rem/1.1 var(--fm);text-transform:uppercase}
+.card p{font-size:1.5rem;opacity:.75;line-height:1.5}
+.card .t{font-size:1.15rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
+.gloss{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid rgba(255,255,255,.25)}
+@media(min-width:750px){.gloss{grid-template-columns:1fr 1fr;column-gap:48px}}
+.gloss div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.25)}
+.gloss dt{font:900 2.6rem/1 var(--fc);text-transform:uppercase;color:var(--c)}
+.gloss dd{font-size:1.5rem;line-height:1.5;opacity:.85}
+.track{position:relative;display:grid;gap:0;border-radius:20px;background:var(--sky);color:var(--ink);padding:clamp(28px,4vw,56px)}
+.track ol{list-style:none;position:relative;display:grid;gap:22px;padding-left:28px;border-left:2px solid rgba(16,22,24,.35)}
+.track li{position:relative}
+.track li::before{content:"";position:absolute;left:-36px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--ink)}
+.track li.now::before{background:var(--rose);box-shadow:0 0 0 6px rgba(204,63,89,.25)}
+.track li.next::before{background:transparent;border:2px dashed var(--ink)}
+.track b{display:block;font:900 2.4rem/1 var(--fc);text-transform:uppercase}
+.track span{font-size:1.55rem;line-height:1.5}
+.track small{display:block;margin-top:22px;font-size:1.3rem;opacity:.75}
+</style></head><body>
+<div class="top"><img src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss"><span>Preview · not on the site yet</span></div>
+<main class="wrap">
+<p class="mast"><span>Issue 01</span><span>The Bliss Brief <span class="ph">Name placeholder</span></span><span>October 2026</span></p>
+<h1 class="h1"><span class="x">The Bliss</span><span class="c">Brief</span></h1>
+<p class="dek">What’s in the bottle, what the research says and where the law stands. Written plainly, checked often.</p>
+
+<a class="lead" href="journal-cbd-cbg.html"><img src="https://www.altrdbliss.com/cdn/shop/files/ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693&width=1400" alt=""><div class="lead__b"><span class="pill">The basics</span><h2>CBD and CBG, explained</h2><p>Two cannabinoids from the same plant. Neither gets you high. Here’s how they differ, and what the research actually shows so far.</p><span class="more">Read the story →</span></div></a>
+
+<section class="sec"><div class="sec__h"><h2>Read next</h2><span class="k">Three ways in</span></div><div class="grid">
+ <a class="card" href="#" style="--c:var(--rose)"><div class="im"><img src="https://www.altrdbliss.com/cdn/shop/files/ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708&width=800" alt=""></div><span class="t">The law · 6 min</span><h3>What December 11 means for hemp</h3><p>Congress narrowed the federal definition of hemp. What changes, what doesn’t and what’s still undecided.</p></a>
+ <a class="card" href="#" style="--c:var(--lavender)"><div class="im"><img src="https://www.altrdbliss.com/cdn/shop/files/ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929&width=800" alt=""></div><span class="t">Ritual · 4 min</span><h3>How to read a lab report</h3><p>Batch numbers, potency and what “non-detect” means, using a real Altrd Bliss report.</p></a>
+ <a class="card" href="#" style="--c:var(--ember)"><div class="im"><img src="https://www.altrdbliss.com/cdn/shop/files/ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929&width=800" alt=""></div><span class="t">Reform · 5 min</span><h3>The bills that could change it again</h3><p>Ban, regulate or delay: the proposals in Congress right now, in plain terms.</p></a>
+</div></section>
+
+<section class="sec"><div class="sec__h"><h2>The law, so far</h2><span class="k">Updated October 23, 2026</span></div><div class="track"><ol>
+ <li><b>2018</b><span>The Farm Bill makes hemp legal: cannabis with no more than 0.3% delta-9 THC by dry weight.</span></li>
+ <li><b>January 2023</b><span>The FDA says its food and supplement rules don’t fit CBD and asks Congress for a new path.</span></li>
+ <li><b>November 12, 2025</b><span>Congress narrows the definition of hemp in a funding law, with a one-year runway.</span></li>
+ <li><b>September 2, 2026</b><span>A new law pushes most of the change back 30 days.</span></li>
+ <li class="now"><b>November 12, 2026</b><span>Cannabinoids made outside the plant lose federal hemp status.</span></li>
+ <li class="now"><b>December 11, 2026</b><span>Finished products with more than 0.4 mg of total THC per container fall outside the definition.</span></li>
+ <li class="next"><b>Still in Congress</b><span>Bills to regulate hemp drinks instead, or to delay the change to 2028. All are still in committee.</span></li>
+</ol><small>This tracker explains, it doesn’t advise. Not legal advice.</small></div></section>
+
+<section class="sec"><div class="sec__h"><h2>Say it right</h2><span class="k">A short glossary</span></div><dl class="gloss">
+ <div style="--c:var(--lime)"><dt>CBD</dt><dd>Cannabidiol. A non-intoxicating compound from hemp, the one most people have heard of.</dd></div>
+ <div style="--c:var(--ember)"><dt>CBG</dt><dd>Cannabigerol. Another non-intoxicating compound, found in smaller amounts in the plant.</dd></div>
+ <div style="--c:var(--rose)"><dt>THC</dt><dd>The compound in cannabis that gets you high. Altrd Bliss is made with zero THC.</dd></div>
+ <div style="--c:var(--lavender)"><dt>Hemp</dt><dd>Cannabis that is naturally low in THC, defined by federal law.</dd></div>
+ <div style="--c:var(--mint)"><dt>COA</dt><dd>Certificate of analysis. A lab report showing what is, and isn’t, in a batch.</dd></div>
+ <div style="--c:var(--lime)"><dt>Isolate</dt><dd>A single cannabinoid, separated from the rest of the plant.</dd></div>
+</dl></section>
+</main>
+<p class="foot">Not medical or legal advice. Every story lists its sources and the date it was last checked.</p>
+</body></html>
