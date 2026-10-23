@@ -355,6 +355,12 @@ body{padding-top:var(--sh)}
 .drawer-menu.open{display:flex;animation:ddIn .18s ease-out}
 .drawer-menu{max-height:calc(100dvh - 112px - var(--sh) - var(--bdg,0px))}
 .drawer-menu>*{flex-shrink:0}
+.dm-more{position:fixed;z-index:57;display:flex;align-items:center;gap:4px;transform:translateX(-50%);padding:6px 14px 6px 10px;border-radius:999px;background:var(--ink);color:#fff;font:600 1.2rem/1 var(--font-body);box-shadow:0 6px 18px rgba(0,0,0,.25);animation:dmBob 1.6s ease-in-out infinite}
+.dm-more[hidden]{display:none}
+.dm-more svg{display:block}
+@keyframes dmBob{50%{transform:translate(-50%,3px)}}
+@media (prefers-reduced-motion:reduce){.dm-more{animation:none}}
+@media (min-width:990px){.dm-more{display:none!important}}
 @keyframes ddIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
 .dm__h{font:800 12px/1 var(--font-matria);text-transform:uppercase;letter-spacing:.08em;color:rgba(16,22,24,.6);margin:6px 8px 8px}
 .dm__shop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
@@ -1559,7 +1565,7 @@ a:hover>.mag,.rguide:hover .mag,.mag:hover{transform:rotate(calc(var(--tilt) / 3
 </header>
 <a class="logo" href="#/" aria-label="Altrd Bliss home"><img src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"></a>
 <div class="mscrim" id="mscrim"></div>
-<nav class="drawer-menu" id="drawer" aria-label="Menu"></nav>
+<nav class="drawer-menu" id="drawer" aria-label="Menu"></nav><button class="dm-more" id="dmMore" type="button" aria-label="Scroll the menu for more links" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg><span>More</span></button>
 
 <main id="app" tabindex="-1"></main>
 
@@ -2612,7 +2618,9 @@ route();renderCart();
 /* keep the menu clear of the demo pill: measure how much of the screen bottom the pill covers */
 (()=>{const bd=document.querySelector('.badge'),dr=document.getElementById('drawer');if(!bd||!dr)return;
  const m=()=>{const r=bd.getBoundingClientRect();document.documentElement.style.setProperty('--bdg',Math.max(0,Math.round(innerHeight-r.top+8))+'px')};
- new MutationObserver(m).observe(dr,{attributes:true,attributeFilter:['class']});addEventListener('resize',m);bd.addEventListener('transitionend',m);m()})();
+ const mb=document.getElementById('dmMore');const f=()=>{const open=dr.classList.contains('open'),more=open&&dr.scrollTop+dr.clientHeight<dr.scrollHeight-24;mb.hidden=!more;if(more){const r=dr.getBoundingClientRect();mb.style.left=(r.left+r.width/2)+'px';mb.style.top=(r.bottom-44)+'px'}};
+ mb.onclick=()=>dr.scrollBy({top:dr.clientHeight*.7,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});dr.addEventListener('scroll',f,{passive:true});addEventListener('resize',f);
+ new MutationObserver(()=>{m();requestAnimationFrame(()=>requestAnimationFrame(f))}).observe(dr,{attributes:true,attributeFilter:['class']});addEventListener('resize',m);bd.addEventListener('transitionend',m);m()})();
 </script>
 </body>
 </html>
