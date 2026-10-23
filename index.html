@@ -126,8 +126,24 @@ html.intro-on .intro.out{opacity:0;pointer-events:none}
 .ig__deny{display:none}
 html.ag-no .ig__deny{display:block}html.ag-no .ig__ask .ig__acts,html.ag-no .ig__ask .ig__q{display:none}
 .ig__enter{display:none}
-html:not(.ag) .ig__ask{display:none}html:not(.ag) .ig__enter{display:flex}
-.ig__enter .ig__yes{min-width:200px}
+html:not(.ag) .ig__ask{display:none}
+html:not(.ag) .ig__enter{display:grid}
+.ig__enter{position:absolute;left:50%;bottom:clamp(56px,10vh,110px);width:clamp(150px,19vh,190px);aspect-ratio:1;place-items:center;border-radius:50%;background:none;color:#fff;opacity:0;transform:translate(-50%,24px) scale(.85);animation:igSeal 1s .9s cubic-bezier(.2,.9,.3,1.2) forwards;-webkit-tap-highlight-color:transparent}
+.ig__ring{position:absolute;inset:0;width:100%;height:100%;animation:igSpin 16s linear infinite;transition:transform .4s}
+.ig__ring text{font:800 15px var(--font-expanded);letter-spacing:.06em;fill:#fff}
+.ig__enter::before{content:"";position:absolute;inset:16%;border-radius:50%;border:1px solid rgba(255,255,255,.55)}
+.ig__core{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:58%;aspect-ratio:1;border-radius:50%;background:var(--lime);color:var(--ink);box-shadow:0 0 0 0 rgba(224,244,123,.55);animation:igPulse 2.4s 2s ease-out infinite;transition:transform .35s cubic-bezier(.2,.9,.3,1.3),background-color .3s}
+.ig__core svg{width:14px;height:auto;fill:var(--ink);transition:transform .35s}
+.ig__core b{font:900 clamp(24px,3.2vh,32px)/.9 var(--font-compressed);text-transform:uppercase;letter-spacing:.01em}
+.ig__enter:hover .ig__core,.ig__enter:focus-visible .ig__core{transform:scale(1.08);background:#fff}
+.ig__enter:hover .ig__core svg,.ig__enter:focus-visible .ig__core svg{transform:translateY(3px)}
+.ig__enter:active .ig__core{transform:scale(.96)}
+.ig__enter:focus-visible{outline:none}.ig__enter:focus-visible::before{border:2px solid var(--lime)}
+@keyframes igSeal{to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes igSpin{to{transform:rotate(360deg)}}
+@keyframes igPulse{0%{box-shadow:0 0 0 0 rgba(224,244,123,.55)}80%,100%{box-shadow:0 0 0 22px rgba(224,244,123,0)}}
+.intro.in .ig__enter{opacity:0!important;transform:translate(-50%,0) scale(1.4)!important;transition:opacity .35s,transform .5s;animation:none}
+@media (prefers-reduced-motion:reduce){.ig__enter{animation:none;opacity:1;transform:translate(-50%,0)}.ig__ring,.ig__core{animation:none}}
 .ig__flood{position:absolute;inset:0;z-index:4;background:radial-gradient(circle at 58% 52%,#d9283f,#7a0f22);clip-path:circle(0 at 58% 52%);transition:clip-path 1.1s .35s cubic-bezier(.7,0,.3,1)}
 .intro.in .ig__film{transform:scale(3.2)}
 .intro.in .ig__flood{clip-path:circle(150% at 58% 52%)}
@@ -1320,7 +1336,7 @@ html.ag-no #gate .gate__no{display:block}
  <div class="ig__film" aria-hidden="true"><video id="introVid" muted playsinline autoplay loop preload="auto" poster="img/intro/rita-drop.webp"><source src="img/intro/rita-drop.mp4" type="video/mp4"></video></div>
  <img class="ig__logo" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45">
  <div class="ig__card ig__ask"><h2 id="igT">Are you 21+?</h2><p class="ig__q">Sorry, before we get to the good stuff, we need to check your age.</p><div class="ig__acts"><button class="ig__yes" id="igYes">Yes</button><button class="ig__no" id="igNo">No</button></div><p class="ig__deny" role="alert">You must be 21 or older to access this site.</p><small>By entering this site you are agreeing to the Terms of Service and <a href="https://www.altrdbliss.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></small></div>
- <div class="ig__card ig__enter"><div class="ig__acts"><button class="ig__yes" id="igEnter">Enter</button></div></div>
+ <button class="ig__enter" id="igEnter" aria-label="Enter Altrd Bliss"><svg class="ig__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="igRingP" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text><textPath href="#igRingP" textLength="500" lengthAdjust="spacing">FIND YOUR BLISS ✦ FIND YOUR BLISS ✦ FIND YOUR BLISS ✦</textPath></text></svg><span class="ig__core"><svg viewBox="0 0 22 30" aria-hidden="true"><path d="M11 0C11 0 0 13 0 19a11 11 0 0 0 22 0C22 13 11 0 11 0z"/></svg><b>Enter</b></span></button>
  <div class="ig__flood" aria-hidden="true"></div>
  <p class="intro__by" aria-hidden="true">Preview by <img src="siani-creates-logo.png" alt="" width="265" height="130"></p></div>
 <div class="strip" id="strip"></div>
