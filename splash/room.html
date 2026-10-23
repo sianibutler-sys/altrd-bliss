@@ -10,7 +10,7 @@ button{font:inherit;cursor:pointer;border:0}
 a{color:inherit}
 .mk{position:fixed;top:12px;left:12px;z-index:50;display:flex;gap:6px;font-size:12px;letter-spacing:.06em}
 .mk a{background:rgba(16,22,24,.72);color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.mk a[aria-current]{background:#fff;color:var(--ink)}
+.mk .s{display:none}@media (max-width:600px){.mk .l{display:none}.mk .s{display:inline}.mk a{min-width:34px;text-align:center}}.mk a[aria-current]{background:#fff;color:var(--ink)}
 .by{position:fixed;right:16px;bottom:14px;z-index:40;display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
 .by img{width:52px;height:auto}
 .age h2{font:800 clamp(26px,4.4vw,40px)/1 var(--fx);text-transform:uppercase;letter-spacing:-.01em}
@@ -55,7 +55,7 @@ body.in .room{transform:scale(1.6)}
 body.in .center{opacity:0;transform:scale(1.08);transition:opacity .5s,transform .8s}
 .white{position:fixed;inset:0;background:#fff;opacity:0;z-index:20;pointer-events:none;transition:opacity .6s .8s}
 body.in .white{opacity:1}
-</style></head><body><nav class="mk" aria-label="Mockups"><a href="glass.html">1 · Into the glass</a><a href="room.html" aria-current="page">2 · The iridescent room</a><a href="doors.html">3 · Four mood doors</a></nav><div class="room" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="blob b4"></i><i class="blob b5"></i></div><div class="sheen" aria-hidden="true"></div>
+</style></head><body><nav class="mk" aria-label="Mockups"><a href="glass.html"><span class="l">1 · Into the glass</span><span class="s">1</span></a><a href="room.html" aria-current="page"><span class="l">2 · The iridescent room</span><span class="s">2</span></a><a href="doors.html"><span class="l">3 · Four mood doors</span><span class="s">3</span></a></nav><div class="room" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="blob b4"></i><i class="blob b5"></i></div><div class="sheen" aria-hidden="true"></div>
 <div class="drops" aria-hidden="true"><span class="dr d1"><img src="../img/mix/dropper-original.webp" alt=""></span><span class="dr d2"><img src="../img/mix/dropper-tini.webp" alt=""></span><span class="dr d3"><img src="../img/mix/dropper-spritz.webp" alt=""></span><span class="dr d4"><img src="../img/mix/dropper-rita.webp" alt=""></span></div>
 <div class="center"><img class="logo" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"><div class="age" role="dialog" aria-labelledby="ageT"><h2 id="ageT">Are you 21+?</h2><p>Sorry, before we get to the good stuff, we need to check your age.</p><div class="acts"><button data-yes>Yes</button><button data-no>No</button></div><p class="no" role="alert">You must be 21 or older to access this site.</p><small>By entering this site you are agreeing to the Terms of Service and <a href="https://www.altrdbliss.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></small></div></div>
 <div class="white" aria-hidden="true"></div><p class="by" aria-hidden="true">Preview by <img src="../siani-creates-logo.png" alt="" style="filter:invert(1)"></p><script>
