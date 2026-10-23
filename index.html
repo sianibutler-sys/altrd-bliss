@@ -64,6 +64,112 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .button--ink:hover{color:var(--ink)}
 .button--sm{height:auto;min-height:48px;padding:12px 28px;white-space:normal;text-align:center}
 
+/* The Bliss Brief */
+.bb{padding-top:130px}
+.bb__hub{padding-bottom:40px}
+.bb .ph{border-color:currentColor}
+.bb :focus-visible{outline:2px solid var(--lime);outline-offset:3px;box-shadow:0 0 0 5px var(--ink)}
+.bb__mast{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);font-size:1.1rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75);margin:0}
+@media (max-width:600px){.bb__mast span:first-child,.bb__mast span:last-child{display:none}.bb__mast{justify-content:center}}
+.bb__h1{display:flex;flex-direction:column;align-items:center;text-align:center;text-transform:uppercase;margin:clamp(24px,4vw,40px) 0 10px}
+.bb__h1 .x{font:800 clamp(48px,11vw,170px)/.85 var(--font-expanded);letter-spacing:-.03em}
+.bb__h1 .c{font:900 clamp(56px,12vw,180px)/.85 var(--font-compressed);color:var(--lime)}
+.bb__dek{text-align:center;max-width:50ch;margin:18px auto 0;font-size:clamp(1.7rem,1.6vw,2rem);line-height:1.5;color:rgba(255,255,255,.88)}
+.bb__lead{display:grid;grid-template-columns:minmax(0,1fr);margin-top:clamp(40px,6vw,72px);border-radius:20px;overflow:hidden;background:var(--cream);color:var(--ink);text-decoration:none}
+@media (min-width:900px){.bb__lead{grid-template-columns:1.1fr 1fr}}
+.bb__lead img{width:100%;height:100%;min-height:260px;object-fit:cover}
+.bb__leadb{padding:clamp(28px,4.4vw,64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px}
+.bb__pill{display:inline-block;border-radius:999px;padding:7px 14px;font-size:1.1rem;letter-spacing:.16em;text-transform:uppercase;background:var(--lime);color:var(--ink)}
+.bb__lh{font:900 clamp(40px,4.6vw,72px)/.92 var(--font-compressed);text-transform:uppercase}
+.bb__lp{font-size:1.7rem;line-height:1.55;max-width:44ch}
+.bb__more{font-size:1.5rem;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.bb__lead:hover .bb__more{border-bottom-width:2px}
+.bb__teaser{margin:clamp(40px,6vw,80px) auto}
+.bb__teaser .bb__lead{margin-top:0}
+.bb__teasem{text-align:center;margin:18px 0 0;font-size:1.5rem}
+.bb__sec{margin-top:clamp(56px,7vw,96px)}
+.bb__sech{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 12px;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:14px;margin-bottom:26px}
+.bb__sech h2{font:900 clamp(36px,4vw,60px)/1 var(--font-compressed);text-transform:uppercase;margin:0}
+.bb__k{font-size:1.15rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.bb__grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+@media (min-width:750px){.bb__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.bb__card{display:flex;flex-direction:column;gap:10px}
+.bb__im{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--c)}
+.bb__im img{width:100%;height:100%;object-fit:cover}
+.bb__soon{position:absolute;left:12px;top:12px;background:var(--ink);color:#fff;border-radius:999px;padding:6px 12px;font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase}
+.bb__t{margin:6px 0 0;font-size:1.15rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.bb__card h3{font:800 2.2rem/1.1 var(--font-matria);text-transform:uppercase;margin:0}
+.bb__card p:last-child{margin:0;font-size:1.5rem;line-height:1.5;color:rgba(255,255,255,.8)}
+.bb__track{border-radius:20px;background:#a9d3e3;color:var(--ink);padding:clamp(28px,4vw,56px)}
+.bb__track ol{list-style:none;margin:0;display:grid;gap:22px;padding:0 0 0 28px;border-left:2px solid rgba(16,22,24,.4)}
+@media (min-width:990px){.bb__track ol{grid-template-columns:1fr 1fr;column-gap:56px}}
+.bb__track li{position:relative}
+.bb__track li::before{content:"";position:absolute;left:-36px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--ink)}
+@media (min-width:990px){.bb__track li:nth-child(even)::before{display:none}}
+.bb__track li.is-now::before{background:var(--rose);box-shadow:0 0 0 6px rgba(204,63,89,.25)}
+.bb__track li.is-next::before{background:transparent;border:2px dashed var(--ink)}
+.bb__track b{display:block;font:900 2.4rem/1.05 var(--font-compressed);text-transform:uppercase}
+.bb__track em{font-style:normal;font:700 1rem/1 var(--font-body);letter-spacing:.14em;vertical-align:middle;margin-left:8px;padding:4px 8px;border-radius:999px;background:var(--ink);color:#fff}
+.bb__track span{font-size:1.55rem;line-height:1.5}
+.bb__small{margin:22px 0 0;font-size:1.35rem}
+.bb__gloss{display:grid;grid-template-columns:minmax(0,1fr);margin:0;border-top:1px solid rgba(255,255,255,.25)}
+@media (min-width:750px){.bb__gloss{grid-template-columns:1fr 1fr;column-gap:48px}}
+.bb__gloss div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.25)}
+.bb__gloss dt{font:900 2.6rem/1 var(--font-compressed);text-transform:uppercase;color:var(--c)}
+.bb__gloss dd{margin:0;font-size:1.55rem;line-height:1.5;color:rgba(255,255,255,.9)}
+.bb__gloss a,.bb__src a,.bb__foot a,.bb__body p a,.bb__teasem a{text-decoration:underline;text-underline-offset:3px}
+.bb__cite{font-size:.7em;line-height:0;margin-left:2px;white-space:nowrap}
+.bb__cite a{display:inline-block;min-width:1.7em;padding:0 .35em;border-radius:999px;background:rgba(224,244,123,.18);color:var(--lime);text-decoration:none;font-weight:700;text-align:center;line-height:1.6}
+.bb__cite a:hover{background:var(--lime);color:var(--ink)}
+.bb__track .bb__cite a,.bb__study .bb__cite a{background:var(--ink);color:#fff}
+.bb__src{margin-top:clamp(48px,6vw,80px);padding-top:20px;border-top:1px solid rgba(255,255,255,.25)}
+.bb__src h2{font:900 clamp(30px,3vw,44px)/1 var(--font-compressed);text-transform:uppercase;margin:0 0 14px}
+.bb__src ol{margin:0;padding-left:24px;display:grid;gap:12px;font-size:1.5rem;line-height:1.5}
+.bb__src li:focus{outline:2px solid var(--lime);outline-offset:4px;border-radius:4px}
+.bb__src li:target,.bb__src li:focus{background:rgba(224,244,123,.08)}
+.bb__pub{color:rgba(255,255,255,.75)}
+.bb__back{font-size:1.3rem;white-space:nowrap;color:var(--lime)}
+.bb__src p{margin:16px 0 0;font-size:1.4rem;color:rgba(255,255,255,.8)}
+.bb__foot{margin:40px 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);text-align:center;font-size:1.35rem;color:rgba(255,255,255,.75)}
+.bb .bb__art{margin-top:-130px}
+.bb__hero{position:relative;min-height:min(78vh,760px);display:flex;align-items:flex-end;overflow:hidden}
+.bb__hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bb__hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,22,24,.25),rgba(16,22,24,.9))}
+.bb__herob{position:relative;z-index:1;width:100%;max-width:1240px;margin:0 auto;padding:140px 20px clamp(36px,6vw,72px);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+@media (min-width:990px){.bb__herob{padding-left:40px;padding-right:40px}}
+.bb__crumb{font-size:1.4rem;text-decoration:underline;text-underline-offset:3px}
+.bb__herob h1{display:flex;flex-direction:column;text-transform:uppercase;margin:0}
+.bb__herob h1 .x{font:800 clamp(40px,8vw,120px)/.9 var(--font-expanded);letter-spacing:-.02em}
+.bb__herob h1 .c{font:900 clamp(48px,9vw,140px)/.88 var(--font-compressed);color:var(--lime)}
+.bb__adek{max-width:48ch;font-size:clamp(1.7rem,1.6vw,2.1rem);line-height:1.5;margin:0}
+.bb__meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0;font-size:1.2rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.bb__body{max-width:720px;margin:0 auto;padding:clamp(40px,6vw,80px) 20px 60px}
+.bb__body>p{font-size:1.9rem;line-height:1.7;margin:0 0 1.3em;color:rgba(255,255,255,.92)}
+.bb__body>p.bb__first::first-letter{float:left;font:900 5.2em/.78 var(--font-compressed);color:var(--lime);margin:8px 12px 0 0}
+.bb__body>h2{font:900 clamp(34px,4vw,52px)/1 var(--font-compressed);text-transform:uppercase;margin:1.6em 0 .6em}
+.bb__body>p.bb__lbl{font-size:1.2rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin:0 0 10px}
+.bb__duo{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin:0 0 36px}
+@media (min-width:650px){.bb__duo{grid-template-columns:1fr 1fr}}
+.bb__duo>div{border-radius:20px;padding:26px;color:var(--ink);background:var(--c)}
+.bb__duo p{margin:0;font-size:1.6rem;line-height:1.5}
+.bb__duo .bb__dn{font:900 5.2rem/.9 var(--font-compressed)}
+.bb__duo .bb__di{font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;margin:4px 0 12px}
+.bb__pull{margin:44px 0;padding:32px 0;border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25)}
+.bb__pull blockquote{margin:0}
+.bb__pull blockquote p{font:900 clamp(32px,4.4vw,56px)/1 var(--font-compressed);text-transform:uppercase;color:var(--lime);margin:0}
+.bb__pull figcaption{margin-top:14px;font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.bb__study{border-radius:20px;background:var(--cream);color:var(--ink);padding:28px;margin:6px 0 36px}
+.bb__sk{margin:0;font-size:1.15rem;letter-spacing:.22em;text-transform:uppercase}
+.bb__study h3{font:800 2.2rem/1.15 var(--font-matria);text-transform:uppercase;margin:8px 0 14px}
+.bb__study dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 18px;margin:0;font-size:1.5rem;line-height:1.45}
+.bb__study dt{font-weight:700}.bb__study dd{margin:0}
+.bb__bottles{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@media (min-width:650px){.bb__bottles{grid-template-columns:1fr 1fr}}
+.bb__bottles a{display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:rgba(255,255,255,.07);text-decoration:none}
+.bb__bottles a:hover{background:rgba(255,255,255,.12)}
+.bb__bottles img{width:64px;height:64px;border-radius:10px;object-fit:cover}
+.bb__bottles b{display:block;font:800 1.8rem/1.1 var(--font-matria);text-transform:uppercase}
+.bb__bottles span{font-size:1.4rem;color:rgba(255,255,255,.8)}
 /* find us */
 .fu{padding:150px 0 100px}
 .fu__h{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
@@ -1858,6 +1964,7 @@ const learn=()=>`
  <div class="feat__row"><div class="feat__img"><img loading="lazy" src="${I('Screenshot_2026-03-30_at_12.09.41_AM.png?v=1774810858',1000)}" alt="" width="1000" height="1000"></div>
   <div class="feat__copy"><h2 class="c h66">SHE DESERVED BETTER</h2><p>While our mom was battling breast cancer and searching for plant-based relief that didn’t feel like buying weed from a guy named Brian behind a gas station, there was nothing she could truly trust. Questionable labels and Ingredients no one could explain. “Testing” that brands claimed they did… but never showed.</p><p>She deserved better, and so does everyone else. We started ALTRD Bliss in her honor, making a promise: no shady fine print, no “just trust us.” Every batch is tested by independent labs for potency, purity, and safety, and we share the receipts so you never have to guess.</p><a class="button" href="${LAB}" target="_blank" rel="noopener">See our test results</a></div></div>
 </div></section>
+<section class="pw bb__teaser"><a class="bb__lead" href="#/blogs/the-bliss-brief/cbd-and-cbg-explained"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693',1200)}" alt="" width="1200" height="900" loading="lazy"><span class="bb__leadb"><span class="bb__pill">From The Bliss Brief</span><span class="bb__lh">CBD and CBG, explained</span><span class="bb__lp">How they differ, what the research shows and where the law stands, with every claim linked to its source.</span><span class="bb__more">Read the story <span aria-hidden="true">→</span></span></span></a><p class="bb__teasem"><a href="#/blogs/the-bliss-brief">Visit The Bliss Brief</a></p></section>
 <section class="frames"><div class="pw"><div class="frames__grid" data-drag>
  ${[['ALTRD_BLISS_HHD_4A_ORIGINAL_HERO8261-Edit_JAM_v01f.png?v=1775062237','Faq','Got questions? We’ve probably answered them, from “will I get paranoid?” to “is this legal in my state?” Yeah, we’ve heard it all. And we’ve answered it all','Read the FAQ','#/pages/faq'],['ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693','Quiz','Can’t decide what kind of bliss you need? Take our 30-second quiz and we’ll tell you exactly which blend is about to become your new favorite vice (;','Find your flavor','#/pages/find-your-bliss'],['ALTRD_BLISS_HHD_1B_GROUP7155-Edit_JAM_v02.png?v=1777935910','Shop the collection','From The Original to The Tini, every flavor’s got a personality. One will be your go to. The rest? They’re waiting to crash the party.','Shop All','#/pages/shop-all']].map(f=>`<div class="frame"><div class="frame__img"><img loading="lazy" src="${I(f[0],700)}" alt="" width="700" height="780"></div><h3>${f[1]}</h3><p>${f[2]}</p><a class="button button--sm" href="${f[4]}">${f[3]}</a></div>`).join('')}
 </div></div></section>`;
@@ -1996,6 +2103,67 @@ const fuList=q=>{q=q.trim().toLowerCase();const st=STATES.find(([c,n])=>c.toLowe
  return Object.keys(by).sort().map(c=>`<div class="fu__st"><h3>${(STATES.find(x=>x[0]===c)||[c,c])[1]}</h3><ul>${by[c].map(([n,a,ci,s,z])=>`<li><b>${n}</b><span>${a}, ${ci}, ${s} ${z}</span><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', '+ci+', '+s+' '+z)}" target="_blank" rel="noopener">Directions</a></li>`).join('')}</ul></div>`).join('')};
 document.addEventListener('submit',e=>{const f=e.target;if(f.matches('[data-fusearch]')){e.preventDefault();document.getElementById('fuList').innerHTML=fuList(f.querySelector('input').value);return}
  if(f.matches('[data-shop]')){e.preventDefault();const m=f.querySelector('.cap__msg'),sh=f.querySelector('#fuShop'),ci=f.querySelector('#fuCity');if(!sh.value.trim()||!ci.value.trim()){m.textContent='Add the shop name and its city.';(sh.value.trim()?ci:sh).focus();return}m.textContent='Thanks. In the live site, this goes to hello@altrdbliss.com so the team knows where to pitch first.';f.reset()}});
+
+/* The Bliss Brief: education, with every claim cited */
+const BB_SRC={
+ crs:{t:'2018 Farm Bill Primer: Hemp Cultivation and Processing',p:'Congressional Research Service',d:'January 30, 2019',u:'https://www.everycrsreport.com/reports/IF11088.html'},
+ fda23:{t:'FDA Concludes that Existing Regulatory Frameworks for Foods and Supplements are Not Appropriate for Cannabidiol, Will Work with Congress on a New Way Forward',p:'U.S. Food and Drug Administration',d:'January 26, 2023',u:'https://www.fda.gov/news-events/press-announcements/fda-concludes-existing-regulatory-frameworks-foods-and-supplements-are-not-appropriate-cannabidiol'},
+ fda18:{t:'FDA approves first drug comprised of an active ingredient derived from marijuana to treat rare, severe forms of epilepsy',p:'U.S. Food and Drug Administration',d:'June 25, 2018',u:'https://www.fda.gov/newsevents/newsroom/pressannouncements/ucm611046.htm'},
+ ro:{t:'Congress Narrows Federal Definition of “Hemp,” Effectively Banning Most Intoxicating Hemp Products',p:'Regulatory Oversight',d:'December 10, 2025',u:'https://www.regulatoryoversight.com/2025/12/congress-narrows-federal-definition-of-hemp-effectively-banning-most-intoxicating-hemp-products/'},
+ hlg:{t:'Federal Hemp Ban 2026: Where Things Stand',p:'Hemp Law Group',d:'current as of October 19, 2026',u:'https://www.hemplawgroup.com/news/federal-hemp-ban-2026-where-things-stand'},
+ hill:{t:'Federal ban on hemp-derived THC products delayed by one month',p:'The Hill',d:'2026',u:'https://thehill.com/policy/healthcare/6017926-senate-delays-hemp-thc-ban/'},
+ cbg:{t:'Acute effects of cannabigerol on anxiety, stress, and mood: a double-blind, placebo-controlled, crossover, field trial',p:'Scientific Reports',d:'2024',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11246434/'},
+ ecs:{t:'Endocannabinoid System: Chemical Characteristics and Biological Activity',p:'PubMed Central, National Library of Medicine',d:'2023',u:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9966761/'},
+ voy:{t:'Hidden Gems: Meet Erika And Jamie Isaac of Altrd Bliss',p:'Voyage LA',d:'October 12, 2026',u:'https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/'}};
+const bbCiter=()=>{const order=[],seen={};const c=(...keys)=>`<sup class="bb__cite">${keys.map(k=>{if(!seen[k]){order.push(k);seen[k]=order.length}const n=seen[k];return `<a href="#bbsrc-${n}" id="bbref-${n}-${Math.random().toString(36).slice(2,6)}" data-cite="bbsrc-${n}" aria-label="Source ${n}: ${BB_SRC[k].p}">${n}</a>`}).join('<span aria-hidden="true">,</span>')}</sup>`;
+ const list=(note)=>`<section class="bb__src" aria-labelledby="bbSrcH"><h2 id="bbSrcH">Sources</h2><ol>${order.map((k,i)=>{const s=BB_SRC[k];return `<li id="bbsrc-${i+1}" tabindex="-1"><a href="${s.u}" target="_blank" rel="noopener">${s.t}<span class="sr"> (opens in a new tab)</span></a> <span class="bb__pub">${s.p}, ${s.d}.</span> <a class="bb__back" href="#top" data-citeback="${i+1}" aria-label="Back to where source ${i+1} is cited">Back to text <span aria-hidden="true">↑</span></a></li>`}).join('')}</ol>${note?`<p>${note}</p>`:''}</section>`;return {c,list}};
+const BB_CHECKED='October 23, 2026';
+const brief=()=>{const {c,list}=bbCiter();return `<div class="bb"><section class="pw bb__hub">
+ <p class="bb__mast"><span>Issue 01</span><span>The Bliss Brief <span class="ph">Name placeholder</span></span><span>October 2026</span></p>
+ <h1 class="bb__h1"><span class="x">The Bliss</span><span class="c">Brief</span></h1>
+ <p class="bb__dek">What’s in the bottle, what the research says and where the law stands. Written plainly, checked often, and every claim linked to its source.</p>
+ <a class="bb__lead" href="#/blogs/the-bliss-brief/cbd-and-cbg-explained"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693',1400)}" alt="" width="1400" height="1050" loading="lazy"><span class="bb__leadb"><span class="bb__pill">The basics</span><span class="bb__lh">CBD and CBG, explained</span><span class="bb__lp">Two cannabinoids from the same plant. Neither gets you high. Here’s how they differ, and what the research actually shows so far.</span><span class="bb__more">Read the story <span aria-hidden="true">→</span></span></span></a>
+ <section class="bb__sec" aria-labelledby="bbNext"><div class="bb__sech"><h2 id="bbNext">Coming next</h2><span class="bb__k">In the works</span></div><ul class="bb__grid">
+  ${[['The law','What December 11 means for hemp','Congress narrowed the federal definition of hemp. What changes, what doesn’t and what’s still undecided.','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708','var(--rose)'],['Ritual','How to read a lab report','Batch numbers, potency and what “non-detect” means, using a real Altrd Bliss report.','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929','var(--lavender)'],['Reform','The bills that could change it again','Ban, regulate or delay: the proposals in Congress right now, in plain terms.','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929','var(--ember)']].map(([t,h,p,img,col])=>`<li class="bb__card" style="--c:${col}"><div class="bb__im"><img src="${I(img,800)}" alt="" width="800" height="600" loading="lazy"><span class="bb__soon">Coming soon</span></div><p class="bb__t">${t}</p><h3>${h}</h3><p>${p}</p></li>`).join('')}
+ </ul></section>
+ <section class="bb__sec" aria-labelledby="bbLaw"><div class="bb__sech"><h2 id="bbLaw">The law, so far</h2><span class="bb__k">Last checked ${BB_CHECKED}</span></div><div class="bb__track"><ol>
+  <li><b>2018</b><span>The Farm Bill makes hemp legal: cannabis with no more than 0.3% delta-9 THC by dry weight.${c('crs')}</span></li>
+  <li><b>January 2023</b><span>The FDA says its food and supplement rules don’t fit CBD and asks Congress for a new path.${c('fda23')}</span></li>
+  <li><b>November 12, 2025</b><span>Congress narrows the definition of hemp in a funding law, with a one-year runway.${c('ro')}</span></li>
+  <li><b>September 2, 2026</b><span>A new law pushes most of the change back 30 days.${c('hlg','hill')}</span></li>
+  <li class="is-now"><b>November 12, 2026 <em>Takes effect</em></b><span>Cannabinoids made outside the plant lose federal hemp status.${c('hlg','ro')}</span></li>
+  <li class="is-now"><b>December 11, 2026 <em>Takes effect</em></b><span>Finished products with more than 0.4 mg of total THC per container fall outside the definition.${c('hlg','ro')}</span></li>
+  <li class="is-next"><b>Still in Congress <em>Pending</em></b><span>Bills to regulate hemp drinks instead, or to delay the change to 2028. All are still in committee.${c('hlg')}</span></li>
+ </ol><p class="bb__small">This tracker explains the law. It isn’t legal advice.</p></div></section>
+ <section class="bb__sec" aria-labelledby="bbGl"><div class="bb__sech"><h2 id="bbGl">Say it right</h2><span class="bb__k">A short glossary</span></div><dl class="bb__gloss">
+  <div style="--c:var(--lime)"><dt>CBD</dt><dd>Cannabidiol. A non-intoxicating compound from hemp, the one most people have heard of.${c('fda23')}</dd></div>
+  <div style="--c:var(--ember)"><dt>CBG</dt><dd>Cannabigerol. Another non-intoxicating compound, found in smaller amounts in the plant.${c('cbg')}</dd></div>
+  <div style="--c:var(--rose)"><dt>THC</dt><dd>The compound in cannabis that gets you high. Altrd Bliss is made with zero THC.${c('voy')}</dd></div>
+  <div style="--c:var(--lavender)"><dt>Hemp</dt><dd>Cannabis that is naturally low in THC, defined by federal law.${c('crs')}</dd></div>
+  <div style="--c:var(--mint)"><dt>COA</dt><dd>Certificate of analysis. A lab report showing what is, and isn’t, in a batch. <a href="${LAB}" target="_blank" rel="noopener">See ours<span class="sr"> (opens in a new tab)</span></a>.</dd></div>
+  <div style="--c:var(--lime)"><dt>Isolate</dt><dd>A single cannabinoid, separated from the rest of the plant.</dd></div>
+ </dl></section>
+ ${list('Every source opens the original. If something here goes out of date, email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> and we’ll fix it.')}
+ <p class="bb__foot">Not medical or legal advice.</p>
+</section></div>`};
+const briefCbd=()=>{const {c,list}=bbCiter();const fl=[['the-original','CBG + CBD','Balance'],['the-tini','CBD','Unwind'],['the-rita','CBG','Uplift'],['the-spritz','CBG','Uplift']];return `<div class="bb"><article class="bb__art" aria-labelledby="bbArtH">
+ <header class="bb__hero"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7450-Edit_JAM_v02.png?v=1777937693',2000)}" alt="" width="2000" height="1500"><div class="bb__herob"><a class="bb__crumb" href="#/blogs/the-bliss-brief"><span aria-hidden="true">←</span> The Bliss Brief</a><span class="bb__pill">The basics</span><h1 id="bbArtH"><span class="x">CBD and CBG,</span><span class="c">explained</span></h1><p class="bb__adek">Two cannabinoids from the same plant. Neither gets you high. Here’s how they differ, and what the research actually shows so far.</p><p class="bb__meta"><span>5 min read</span><span>Last checked ${BB_CHECKED}</span></p></div></header>
+ <div class="bb__body">
+ <p class="bb__first">Hemp is a variety of cannabis that is naturally low in THC, the compound that gets you high.${c('crs')} It also makes dozens of other compounds called cannabinoids. Two of them, CBD and CBG, are what go into every bottle of Altrd Bliss.</p>
+ <p class="bb__lbl">How we describe them, from <a href="#/pages/faq">our FAQ</a></p>
+ <div class="bb__duo"><div style="--c:var(--lime)"><p class="bb__dn">CBD</p><p class="bb__di">Cannabidiol · The chill older sibling</p><p>Smooths the edges, eases tension, and helps you drift into deeper sleep.</p></div><div style="--c:var(--ember)"><p class="bb__dn">CBG</p><p class="bb__di">Cannabigerol · The focused cousin</p><p>Sharpens your thinking, clears the fog, and keeps your body in that easy, steady flow.</p></div></div>
+ <h2>Same plant, different jobs</h2>
+ <p>Both interact with the endocannabinoid system, a network of receptors throughout the body that scientists are still mapping.${c('ecs')} CBD is the better studied of the two. It’s the active ingredient in Epidiolex, a prescription medicine the FDA approved in 2018 for two rare seizure disorders.${c('fda18')} CBG has far less research behind it, but that is starting to change.${c('cbg')}</p>
+ <figure class="bb__pull"><blockquote><p>“Feeling good shouldn’t mean giving up the ritual, flavor, or fun of a great drink.”</p></blockquote><figcaption>Erika Isaac, co-founder, in Voyage LA${c('voy')}</figcaption></figure>
+ <h2>What the research says about CBG</h2>
+ <p>In 2024, researchers ran a placebo-controlled trial on CBG, anxiety and stress. It was small and early, and it’s worth reading for exactly that reason.${c('cbg')}</p>
+ <section class="bb__study" aria-labelledby="bbStH"><p class="bb__sk">The study</p><h3 id="bbStH">Acute effects of cannabigerol on anxiety, stress and mood</h3><dl><dt>Published</dt><dd>Scientific Reports, 2024${c('cbg')}</dd><dt>Who</dt><dd>34 healthy adults, each tested once with 20 mg of CBG and once with a placebo</dd><dt>Found</dt><dd>Lower self-rated anxiety and stress with CBG, a small possible memory boost, and no intoxication or impairment</dd><dt>Caveats</dt><dd>A small sample, a single dose and funding from a company that works with CBG. The authors call for larger studies.</dd></dl></section>
+ <h2>How it shows up in your glass</h2>
+ <p>Each flavor leans on one or both, matched to a mood.</p>
+ <ul class="bb__bottles">${fl.map(([h,w,m])=>`<li><a href="#/products/${h}"><img src="${I(P[h].img,200)}" alt="" width="64" height="64" loading="lazy"><span><b>The ${P[h].name}</b>${w} · ${m}</span></a></li>`).join('')}</ul>
+ ${list('This story explains. It doesn’t advise. Talk to your doctor before adding anything new, especially if you take medication.')}
+ <p class="bb__foot">Not medical or legal advice. <a href="#/blogs/the-bliss-brief">More from The Bliss Brief</a></p>
+ </div></article></div>`};
 const UTI_TEASE=['rosemary-grapefruit-paloma-mocktail','orange-juice-passion-fruit-spritz'];
 const GUIDE_REC={t:'Strawberry Lemonade Stand Off',img:'img/guide-strawberry-lemonade.webp',ing:['4 strawberries','1 oz lemon juice','3 tsp agave','½ cup sparkling water','Ice'],steps:['Muddle strawberries and agave in a shaker.','Add lemon juice and ice.','Shake until chilled.','Strain into an ice-filled glass.','Top with sparkling water and garnish with a strawberry and lemon wheel.']};
 const gcard=()=>{const r=GUIDE_REC;return `<article class="rcard gcard" data-fr="berries citrus"><div class="rcard__m"><img loading="lazy" src="${r.img}" alt="Strawberry lemonade splashing over a ribbed glass with a strawberry and a lemon wheel on the rim" width="800" height="800"><span class="gcard__tag">From the guide</span></div><h3>${r.t}</h3><p>Prep time 5 min · Serves 1 drink · Made with just agave</p><details class="gcard__d"><summary>See the recipe</summary><h4>Ingredients</h4><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Instructions</h4><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol></details></article>`};
@@ -2030,7 +2198,7 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
 <footer class="ft"><div class="ft__row">
  <div class="ft__cols">
   <div><h4>Shop</h4><ul><li><a href="#/pages/shop-all">Shop All</a></li>${['the-multipack','the-original','the-spritz','the-tini','the-rita'].map(h=>`<li><a href="#/products/${h}">The ${P[h].name}</a></li>`).join('')}</ul></div>
-  <div><h4>Explore</h4><ul><li><a href="#/pages/find-your-bliss">Find your Bliss</a></li><li><a href="#/pages/about">About</a></li><li><a href="#/pages/learn">Learn</a></li><li><a href="#/blogs/recipes">Recipes</a></li><li><a href="#/pages/under-the-influence">The Guide</a></li><li><a href="#/pages/find-us">Find us</a></li><li><a href="#/pages/press">Press</a></li></ul></div>
+  <div><h4>Explore</h4><ul><li><a href="#/pages/find-your-bliss">Find your Bliss</a></li><li><a href="#/pages/about">About</a></li><li><a href="#/pages/learn">Learn</a></li><li><a href="#/blogs/the-bliss-brief">The Bliss Brief</a></li><li><a href="#/blogs/recipes">Recipes</a></li><li><a href="#/pages/under-the-influence">The Guide</a></li><li><a href="#/pages/find-us">Find us</a></li><li><a href="#/pages/press">Press</a></li></ul></div>
   <div><h4>Help</h4><ul><li><a href="#/pages/faq">FAQ</a></li><li><a href="#/pages/contact">Contact Us</a></li>${[['Privacy Policy','pages/privacy-policy'],['Terms & Conditions','pages/terms-conditions'],['Return Policy','pages/return-policy']].map(([t,u])=>`<li><a href="https://www.altrdbliss.com/${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>
   <div><h4>Connect</h4><ul><li><a href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@altrdbliss" target="_blank" rel="noopener">TikTok</a></li></ul></div>
  </div>
@@ -2038,7 +2206,7 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
 </div></footer>`;
 const SHOPDD=[['Shop All','#/pages/shop-all','ALTRD_BLISS_HHD_2A_COCKTAIL_GROUP_HANDS7241-Edit_JAM_v02_88d4db93-6a62-474e-9d7c-c4ef33c59a14.png?v=1778080338'],...SHOP_ORDER.map(h=>['The '+P[h].name,'#/products/'+h,h==='the-multipack'?'ALTRD_BLISS_HHD_1B_GROUP_BOX7184-Edit_JAM_v02.png?v=1778081501':pimg(h)])];
 document.getElementById('dd-shop').innerHTML=SHOPDD.map(([t,u,im])=>{const h=u.split('/').pop();return `<a href="${u}"><img loading="lazy" src="${I(im,240)}" alt="" width="111" height="109"><span>${t}${FRUIT_NOTE[h]?`<small class="ddf">${FRUIT_NOTE[h]}</small>`:''}</span></a>`}).join('');
-const MENU=[['Find your Bliss','#/pages/find-your-bliss'],['About','#/pages/about'],['Learn','#/pages/learn'],['FAQ','#/pages/faq'],['Recipes','#/blogs/recipes'],['The Guide','#/pages/under-the-influence'],['Press','#/pages/press']];
+const MENU=[['Find your Bliss','#/pages/find-your-bliss'],['About','#/pages/about'],['Learn','#/pages/learn'],['The Bliss Brief','#/blogs/the-bliss-brief'],['FAQ','#/pages/faq'],['Recipes','#/blogs/recipes'],['The Guide','#/pages/under-the-influence'],['Press','#/pages/press']];
 document.getElementById('dd-menu').innerHTML=`<img loading="lazy" src="${I('DTS_my_own_summer_Daniel_Faro_Photos_ID9790_4e08198d-ca72-4ebf-a8a2-98a3803a2716.png?v=1778081854',600)}" alt="" width="260" height="109">`+MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('');
 document.getElementById('drawer').innerHTML=`<p class="dm__h">Shop</p><div class="dm__shop">${SHOPDD.map(([t,u,im])=>{const h=u.split('/').pop();return `<a href="${u}"><img loading="lazy" src="${I(im,120)}" alt="" width="48" height="48"><span>${t}${FRUIT_NOTE[h]?`<small class="ddf">${FRUIT_NOTE[h]}</small>`:''}</span></a>`}).join('')}</div><hr><p class="dm__h">Explore</p><div class="dm__links">${MENU.map(([t,u])=>`<a href="${u}">${t}</a>`).join('')}</div>`;
 
@@ -2047,9 +2215,9 @@ function clockTick(){const m=document.getElementById('moment');if(m&&!momentShif
 setInterval(clockTick,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)clockTick()});window.addEventListener('focus',clockTick);
 /* --- router --- */
 const app=document.getElementById('app');
-const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about':about,'pages/faq':faq,'pages/find-your-bliss':findBliss,'blogs/recipes':recipes,'pages/contact':contact,'pages/press':press,'pages/find-us':findUs,'pages/under-the-influence':uti};
-const DESC={'pages/find-us':'Where to find Altrd Bliss: online first, with stores to follow after launch. Name a shop you want to see carry us, or ask about stocking it.','':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.','pages/under-the-influence':'Under the Influence (of Fruit): 30 fruit-forward, zero-proof drinks made with just agave. Out November 6 for the waitlist.','pages/press':'Altrd Bliss in the news, with fast facts and a press contact.','pages/contact':'Questions about an order, wholesale or your bliss? Send Altrd Bliss a note and we’ll get back to you.'};
-const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes','pages/contact':'Contact Us','pages/press':'Press','pages/find-us':'Find us','pages/under-the-influence':'Under the Influence (of Fruit)'};
+const ROUTES={'':home,'pages/shop-all':shopAll,'pages/learn':learn,'pages/about':about,'pages/faq':faq,'pages/find-your-bliss':findBliss,'blogs/recipes':recipes,'pages/contact':contact,'pages/press':press,'pages/find-us':findUs,'blogs/the-bliss-brief':brief,'blogs/the-bliss-brief/cbd-and-cbg-explained':briefCbd,'pages/under-the-influence':uti};
+const DESC={'blogs/the-bliss-brief':'The Bliss Brief: what’s in the bottle, what the research says about CBD and CBG, and where hemp law stands, with every claim linked to its source.','blogs/the-bliss-brief/cbd-and-cbg-explained':'CBD and CBG come from the same plant and neither gets you high. How they differ and what a 2024 trial found, with sources.','pages/find-us':'Where to find Altrd Bliss: online first, with stores to follow after launch. Name a shop you want to see carry us, or ask about stocking it.','':'CBD and CBG infused agave syrups. Your tasty, guilt-free alternative to cannabis and alcohol. 100% agave nectar, all-natural, lab tested, Black-owned.','pages/shop-all':'Shop The Original, The Tini, The Rita, The Spritz and The Multipack. CBD and CBG infused agave syrups, 4 Pack for $32.','pages/learn':'How CBD and CBG work together, what is in every bottle, and our independent lab results.','pages/about':'Twin sisters Erika and Jamie started Altrd Bliss in honor of their mom. Quality, philanthropy and inclusivity in every bottle.','pages/faq':'What it feels like, how to use it, whether we ship to your state, and our return policy.','pages/find-your-bliss':'Take our 30-second quiz to find your perfect syrup match.','blogs/recipes':'Mocktails, smoothies and treats made with Altrd Bliss infused agave syrups.','pages/under-the-influence':'Under the Influence (of Fruit): 30 fruit-forward, zero-proof drinks made with just agave. Out November 6 for the waitlist.','pages/press':'Altrd Bliss in the news, with fast facts and a press contact.','pages/contact':'Questions about an order, wholesale or your bliss? Send Altrd Bliss a note and we’ll get back to you.'};
+const TITLES={'pages/shop-all':'Shop All','pages/learn':'Learn','pages/about':'About','pages/faq':'FAQ','pages/find-your-bliss':'Find your Bliss','blogs/recipes':'Recipes','pages/contact':'Contact Us','pages/press':'Press','pages/find-us':'Find us','blogs/the-bliss-brief':'The Bliss Brief','blogs/the-bliss-brief/cbd-and-cbg-explained':'CBD and CBG, explained · The Bliss Brief','pages/under-the-influence':'Under the Influence (of Fruit)'};
 let fadeTimer=null;
 function setOg(t,d,img){const set=(p,v)=>{let m=document.querySelector(`meta[property="${p}"]`);if(!m){m=document.createElement('meta');m.setAttribute('property',p);document.head.appendChild(m)}m.setAttribute('content',v)};set('og:title',t);set('og:description',d);set('og:image',img);CUR={t,d,img}}
 let CUR={};
@@ -2161,6 +2329,7 @@ document.addEventListener('click',e=>{const t=e.target;
   if(t.closest('[data-qstart]')){e.preventDefault();const qs=document.getElementById('quiz');if(qs.hidden){qs.hidden=false;qa=[];quizStep()}qs.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(()=>{const q=document.querySelector('.qz__q');if(q){q.setAttribute('tabindex','-1');q.focus({preventScroll:true})}},500);return}
   if(t.closest('[data-qback]')){qa.pop();quizStep();return}
   if(t.closest('[data-qrestart]')){qa=[];quizStep();document.getElementById('quiz').scrollIntoView({behavior:'smooth'});return}
+  {const ci=t.closest('[data-cite]');if(ci){e.preventDefault();const tg=document.getElementById(ci.dataset.cite);if(tg){window.__bbFrom=ci;const r=tg.getBoundingClientRect();scrollTo({top:r.top+scrollY-140,behavior:'smooth'});tg.focus({preventScroll:true})}return}const cb=t.closest('[data-citeback]');if(cb){e.preventDefault();const from=window.__bbFrom&&window.__bbFrom.dataset.cite==='bbsrc-'+cb.dataset.citeback?window.__bbFrom:app.querySelector(`[data-cite="bbsrc-${cb.dataset.citeback}"]`);if(from){const r=from.getBoundingClientRect();scrollTo({top:r.top+scrollY-200,behavior:'smooth'});from.focus({preventScroll:true})}return}}
   if(t.closest('[data-tonl]')){e.preventDefault();closeCart();goTo(document.getElementById('nlE'));return}
   const inc=t.closest('[data-inc]');if(inc){cart[+inc.dataset.inc].q++;save();return}
   const dec=t.closest('[data-dec]');if(dec){const k=+dec.dataset.dec;cart[k].q--;if(cart[k].q<1)cart.splice(k,1);save();return}
@@ -2255,7 +2424,7 @@ const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];c
  if(path.startsWith('blogs/recipes/'))return ['A way back to all recipes, at the top and bottom of the page','Ingredient checklist you can tap','More to sip: three more recipes','Recipe data Google can show with the photo','A clean address that matches the drink'];
  return ({'':['Unwind your way shows The Tini, your unwinding flavor. Live shows The Original, which is For everything','The headline cycles all three moods from your Voyage LA interview: CBG for Uplift, CBG + CBD for Balance, CBD for Unwind, each in its flavor’s color','Texted links show the homepage photo with the white Altrd Bliss logo','Each flavor’s fruit named under its bottle','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup','Your mom’s story now sits under “She deserved better,” your own line from that story'],'pages/faq':['A state checker inside “Is this legal in my state?” where the typed list of states was','A button to tell you about a favorite shop'],'pages/find-your-bliss':['The quiz runs on your own site, under Start Quiz','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['A feature for Under the Influence (of Fruit) after the recipes, with the cover set like a real book, and the Strawberry Lemonade Stand Off from the guide, tagged “From the guide”','Filter by fruit, alone or with a flavor','Mix your bliss: pick a flavor, a base (tea hot or iced) and fruit, in real glassware, with a card to save or share','In Mix your bliss, each fruit says what goes in the drink and what goes on the glass, and which fruit is already in the bottle','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram reels as cards with their own covers and first lines, each opening the reel on Instagram'],'pages/shop-all':['Each flavor’s fruit named on its card','Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline (“Hi”) and labeled fields','The email address opens a new message in one tap'],
  'pages/under-the-influence':['A countdown to November 6','Guide facts that count up as they scroll into view, each one filling with a flavor color on hover or tap','Inside the guide: the spread from Voyage LA, with its garnish line','The Strawberry Lemonade Stand Off as a recipe card you can open','Fruit first, while you wait: one recipe from the guide and two from the site','A waitlist signup for the guide'],
- 'pages/find-us':['Before launch: the shipping checker for “can you send it to me,” a form to name a favorite shop, and your retailer answer for store owners','At launch: search stores by state or ZIP code, grouped by state, with directions. <span class="ph">Placeholder</span> stores until real retailers sign on','The FAQ’s “store locator” link and a footer link both point here'],'pages/press':['A newsroom layout: masthead, your Voyage LA feature as a magazine spread, two pull quotes from the interview, a numbered fact sheet a writer can copy','Your press email and a Contact us button']})[path]||[]};
+ 'blogs/the-bliss-brief':['An education hub under Learn, laid out like a magazine: lead story, coming stories, a law timeline and a glossary','Numbered citations in the text that jump to the source list, and back again, for keyboard and screen reader users too','<span class="ph">Placeholder</span> name, “The Bliss Brief,” for you to rename'],'blogs/the-bliss-brief/cbd-and-cbg-explained':['A sample story with in-text citations, the 2024 CBG trial summarized with its caveats, and links to each flavor'],'pages/find-us':['Before launch: the shipping checker for “can you send it to me,” a form to name a favorite shop, and your retailer answer for store owners','At launch: search stores by state or ZIP code, grouped by state, with directions. <span class="ph">Placeholder</span> stores until real retailers sign on','The FAQ’s “store locator” link and a footer link both point here'],'pages/press':['A newsroom layout: masthead, your Voyage LA feature as a magazine spread, two pull quotes from the interview, a numbered fact sheet a writer can copy','Your press email and a Contact us button']})[path]||[]};
 const SAME=path=>{if(path.startsWith('products/')){const h=path.split('/')[1],p=P[h];if(!p)return [];return h==='the-multipack'?['Name, “4 Flavors, 1 Box of Bliss” and the full description','4 Pack for $32.00 and Join Waitlist','Each flavor’s ingredients, nutrition facts and serving size, word for word from its own page','How To Indulge: Shake, Mix, Sip','The scrolling banner and Happy sippers']:[`The ${p.name} title and “${p.sub}”`,...(h==='the-spritz'?[]:[`The “${p.use}” tag`]),...(p.draft?[]:['The description, word for word']),'$8.00 Per Bottle, 4 Pack for $32.00 and Join Waitlist','The health disclaimer','The ingredient list, Nutritional Facts and Serving Size, word for word','How To Indulge: Shake, Mix, Sip',...(p.q?[`“${p.q}” and its answer`]:[]),'The scrolling banner, Happy sippers and Wait, there’s more to love!','Sip Smarter in black, with Join Now in this flavor’s color','The title set in Matria Compressed with “The” in Matria Expanded']}
  if(path.startsWith('blogs/recipes/')){const r=RECIPES.find(x=>x.s===path.split('/')[2]);return r?[`${r.t}, its photo and “Using The ${P[r.h].name}”`,'Ingredients and instructions, word for word','Shop Now, which opens the flavor']:[]}
  return ({'':['Infused Agave Syrups, the tagline and Find Your Bliss','Mix, Sip, Relax, Repeat and its copy','What we’re mixing up: the four bottle photos and their vibe tags','Unwind your way and How to indulge, with microdose and low dose','The scrolling banner: 100% agave nectar, no hangovers, no high, all-natural, portable, Black-owned','Find your bliss discreetly & guilt free, with CBD, CBG and CBD+CBG','Happy sippers and every review','Pure bliss, no bullsh*t: The real deal, Precise dosages every time, Fighting for justice','The stacked logo as the browser tab icon'],
@@ -2266,7 +2435,7 @@ const SAME=path=>{if(path.startsWith('products/')){const h=path.split('/')[1],p=
  'pages/find-your-bliss':['Find your flavor, the intro and the promo code line','The Start Quiz button','The same five questions and answers'],
  'blogs/recipes':['Recipes and “Elevated drinks, made simple”','The four flavor buttons','All eight recipes and their photos'],
  'pages/contact':['Hi, Get in touch and hello@altrdbliss.com','View Return policy','The contact form: Name, Email, Phone number, Comment, Send'],
- 'pages/press':['This page is new. The interview, quotes and dates come from Voyage LA, October 12, 2026.'],'pages/find-us':['This page is new. Your FAQ already promises a store locator; this is where that link now goes. The retailer answer is your FAQ copy, word for word.'],
+ 'pages/press':['This page is new. The interview, quotes and dates come from Voyage LA, October 12, 2026.'],'blogs/the-bliss-brief':['This section is new. Every claim links to its source, and the sources list at the bottom links back to the line that cites it. Law facts last checked October 23, 2026; it needs a monthly check and a read from your lawyer before launch.'],'blogs/the-bliss-brief/cbd-and-cbg-explained':['This story is new. The CBD and CBG descriptions are your FAQ copy, labeled as yours. Research and law facts are cited to the FDA, the Congressional Research Service, a 2024 Scientific Reports trial and Voyage LA.'],'pages/find-us':['This page is new. Your FAQ already promises a store locator; this is where that link now goes. The retailer answer is your FAQ copy, word for word.'],
  'pages/under-the-influence':['This page is new. The guide’s name, cover, 30 recipes and November 6 date come from your Voyage LA interview and the cover file.','Inside the guide: the Strawberry Lemonade Stand Off spread, as Voyage LA showed it.','The Strawberry Lemonade Stand Off recipe card uses the ingredients and steps from that spread, word for word.']})[path]||[]};
 function shareOld(path){const t=TODAY(path);if(!t)return null;const usesLogo=t.img===LOGO_OG;return {...t,imsg:usesLogo?GATE_IMG:t.img,usesLogo}}
 const thumb=u=>`<span class="th" style="background-image:url('${u}')"></span>`;
@@ -2275,7 +2444,7 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
  if(btsTab==='page'){const imgs=[...app.querySelectorAll('img')],dec=imgs.filter(i=>i.getAttribute('alt')==='').length,miss=imgs.filter(i=>!i.hasAttribute('alt')).length;
   const ld=(()=>{try{const j=JSON.parse(document.getElementById('ld').textContent||'null');return j?j['@type']:'Organization'}catch(e){return 'Organization'}})();
   const row=(k,a,b)=>`<tr><th>${k}</th><td>${a}</td><td>${b}</td></tr>`;
-  const iss=ISSUES(path),add=ADDED(path),same=SAME(path),fresh=path==='pages/press'||path==='pages/under-the-influence'||path==='pages/find-us';
+  const iss=ISSUES(path),add=ADDED(path),same=SAME(path),fresh=path==='pages/press'||path==='pages/under-the-influence'||path==='pages/find-us'||path.startsWith('blogs/the-bliss-brief');
   body.innerHTML=`<p class="bts__path">altrdbliss.com/${esc(path)}</p>
   <h3>At a glance</h3><table class="snap"><thead><tr><th></th><th>Today</th><th>New</th></tr></thead><tbody>
   ${row('Search description',old?(old.desc?`<span class="warn">${esc(cut(old.desc,48))}</span>`:`<span class="bad">None</span>${GSHOW[path]?'<small>Google picks page text</small>':''}`):'',`<span class="good">${CUR.d.length} characters</span>`)}
