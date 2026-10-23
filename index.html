@@ -69,26 +69,34 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 @media (max-width:900px){.shop__row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding-inline:20px;cursor:grab}.shop__row::-webkit-scrollbar{display:none}.shop__row .shop__card{flex:0 0 78%;scroll-snap-align:start}.shop__row .shop__media{height:auto}.shop__row .shop__media img{height:auto;min-height:0}}
 @media (min-width:600px) and (max-width:900px){.shop__row .shop__card{flex-basis:44%}}
 @media (max-width:759px){.frames .frames__grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding-inline:20px;cursor:grab}.frames .frames__grid::-webkit-scrollbar{display:none}.frames .frames__grid .frame{flex:0 0 82%;scroll-snap-align:start}}
-/* Siani Creates intro for Altrd Bliss: one short splash per visit, before the age gate */
+/* Siani Creates intro: an editorial cover built from their rotating mocktail film. One per visit, before the age gate */
 .intro{display:none}
-html.intro-on .intro{position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:var(--ink);color:#fff;text-align:center;overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path .7s cubic-bezier(.7,0,.3,1)}
+html.intro-on .intro{position:fixed;inset:0;z-index:300;display:grid;grid-template-rows:auto 1fr auto;background:#0b0b0b;color:#fff;overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path .8s cubic-bezier(.7,0,.3,1)}
 html.intro-on .intro.out{clip-path:inset(0 0 100% 0)}
-.intro__stage{position:relative;display:grid;place-items:center;width:min(300px,72vw);height:120px}
-.intro__drop{position:absolute;left:50%;top:50%;width:22px;height:30px;margin:-15px 0 0 -11px;transform:translateY(-46vh);animation:drop .55s .1s cubic-bezier(.55,0,1,.45) forwards}
-.intro__ring{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:2px solid var(--c);opacity:0;animation:ring 1.3s var(--d) cubic-bezier(.2,.7,.3,1) forwards}
-.intro__logo{position:relative;width:100%;height:auto;opacity:0;transform:scale(.94);animation:logoIn .7s 1s ease forwards}
-.intro__beats{display:flex;gap:.35em;margin-top:26px;font:900 clamp(36px,9vw,60px)/1 var(--font-compressed);letter-spacing:-1px;text-transform:uppercase}
-.intro__beats span{opacity:0;transform:translateY(14px);animation:beat .45s var(--d) cubic-bezier(.2,.8,.3,1.2) forwards;color:var(--c)}
-.intro__by{position:absolute;left:0;right:0;bottom:28px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:1.1rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55);opacity:0;animation:fadeIn .6s 1.9s ease forwards}
-.intro__by img{width:64px;height:auto;filter:invert(1);opacity:.8}
-.intro__skip{position:absolute;right:20px;top:20px;color:rgba(255,255,255,.6);font-size:1.2rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px}
+.intro__film{position:absolute;left:50%;top:50%;height:min(64vh,78vw);aspect-ratio:16/9;transform:translate(-50%,-46%) scale(1.04);opacity:0;transition:opacity 1s ease,transform 4.5s cubic-bezier(.2,.6,.2,1);-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);mask-image:radial-gradient(closest-side,#000 72%,transparent)}
+.intro__film video,.intro__film img{width:100%;height:100%;object-fit:cover}
+.intro.go .intro__film{opacity:1;transform:translate(-50%,-46%) scale(1)}
+.intro__top,.intro__foot{position:relative;z-index:2;padding:22px 20px 0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.intro__foot{padding:0 20px 24px}
+.intro__mast{width:min(560px,82vw);height:auto;clip-path:inset(0 0 100% 0);transition:clip-path .9s .2s cubic-bezier(.7,0,.2,1)}
+.intro.go .intro__mast{clip-path:inset(0 0 0 0)}
+.intro__rule{display:flex;justify-content:space-between;align-items:center;width:min(1100px,100%);padding:10px 0;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);font-size:1.05rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75);transform:scaleX(0);transition:transform .9s .5s cubic-bezier(.7,0,.2,1)}
+.intro.go .intro__rule{transform:none}
+.intro__rule span{opacity:0;transition:opacity .5s 1.2s}
+.intro.go .intro__rule span{opacity:1}
+.intro__head{text-align:center;line-height:.9}
+.intro__head span{display:block;overflow:hidden}
+.intro__head b{display:block;transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.intro__head .x b{font:800 clamp(40px,11vw,104px)/1 var(--font-expanded);letter-spacing:-.02em;transition-delay:1.5s}
+.intro__head .c b{font:900 clamp(40px,11vw,104px)/1 var(--font-compressed);letter-spacing:-.01em;color:var(--lime);transition-delay:1.7s}
+.intro.go .intro__head b{transform:none}
+.intro__by{display:flex;align-items:center;gap:10px;font-size:1.05rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0;transition:opacity .6s 2.2s}
+.intro.go .intro__by{opacity:1}
+.intro__by img{width:60px;height:auto;filter:invert(1)}
+.intro__skip{position:absolute;right:16px;bottom:18px;z-index:3;color:rgba(255,255,255,.6);font-size:1.15rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px}
 .intro__skip:hover{color:#fff;border-color:#fff}
-@keyframes drop{80%{opacity:1}to{transform:translateY(0);opacity:0}}
-@keyframes ring{0%{opacity:.9;transform:scale(.2)}to{opacity:0;transform:scale(9)}}
-@keyframes logoIn{to{opacity:1;transform:none}}
-@keyframes beat{to{opacity:1;transform:none}}
-@keyframes fadeIn{to{opacity:1}}
-@media (prefers-reduced-motion:reduce){.intro__drop,.intro__ring{display:none}.intro__logo,.intro__beats span,.intro__by{animation:none;opacity:1;transform:none}html.intro-on .intro{transition:opacity .3s}html.intro-on .intro.out{clip-path:none;opacity:0}}
+@media (max-width:600px){.intro__rule .r2{display:none}.intro__rule{justify-content:center;gap:18px}}
+@media (prefers-reduced-motion:reduce){.intro *{transition:none!important}html.intro-on .intro{transition:opacity .3s}html.intro-on .intro.out{clip-path:none;opacity:0}}
 /* top strip: changes with pre-launch / launch view */
 :root{--sh:34px}
 body{padding-top:var(--sh)}
@@ -330,7 +338,9 @@ body.menu-open .hdr{z-index:57}
 .step p{color:rgba(255,255,255,.78);font-size:1.5rem;line-height:1.5}
 .ss__mobile{padding:20px;text-align:center;display:flex;flex-direction:column;gap:32px}
 .ss__mobile .step{display:flex;flex-direction:column;gap:12px}
-.ss__mobile .imgw{border-radius:12px;overflow:hidden;height:400px}
+.ss__mobile .imgw{border-radius:12px;overflow:hidden;aspect-ratio:4/5;margin-bottom:8px}
+.ss__row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-padding-inline:20px;cursor:grab}.ss__row::-webkit-scrollbar{display:none}.ss__row .step{flex:0 0 82%;scroll-snap-align:start}
+@media (min-width:600px){.ss__row .step{flex-basis:46%}}
 .ss__mobile .imgw img{width:100%;height:100%;object-fit:cover}
 .ss__desk{display:none}
 @media (min-width:990px){
@@ -1258,10 +1268,12 @@ html.ag-no #gate .gate__no{display:block}
 </head>
 <body>
 <a class="skip" href="#app" data-skip>Skip to content</a>
-<div class="intro" id="intro"><span class="sr">Altrd Bliss. Shake. Mix. Sip. Preview by Siani Creates.</span><button class="intro__skip" id="introSkip">Skip</button>
- <div class="intro__stage" aria-hidden="true"><svg class="intro__drop" viewBox="0 0 22 30"><path d="M11 0C11 0 0 13 0 19a11 11 0 0 0 22 0C22 13 11 0 11 0z" fill="#E0F47B"/></svg><span class="intro__ring" style="--c:var(--lime);--d:.62s"></span><span class="intro__ring" style="--c:var(--lavender);--d:.78s"></span><span class="intro__ring" style="--c:var(--ember);--d:.94s"></span><img class="intro__logo" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="" width="253" height="45"></div>
- <p class="intro__beats" aria-hidden="true"><span style="--c:var(--mint);--d:1.35s">Shake.</span><span style="--c:var(--lavender);--d:1.55s">Mix.</span><span style="--c:var(--ember);--d:1.75s">Sip.</span></p>
- <p class="intro__by" aria-hidden="true">Preview by <img src="siani-creates-logo.png" alt="Siani Creates" width="265" height="130"></p></div>
+<div class="intro" id="intro"><span class="sr">Altrd Bliss. Pure bliss, no bullsh*t. A preview by Siani Creates.</span>
+ <div class="intro__film" aria-hidden="true"><video id="introVid" muted playsinline autoplay preload="auto" poster="https://www.altrdbliss.com/cdn/shop/files/preview_images/a2a63a8982af49bca96b6866e22f949f.thumbnail.0000000000_1100x.jpg?v=1772811864"><source src="https://www.altrdbliss.com/cdn/shop/videos/c/vp/a2a63a8982af49bca96b6866e22f949f/a2a63a8982af49bca96b6866e22f949f.HD-1080p-2.5Mbps-77314244.mp4?v=0" type="video/mp4"></video></div>
+ <div class="intro__top" aria-hidden="true"><img class="intro__mast" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="" width="253" height="45"><p class="intro__rule"><span>Infused agave syrups</span><span class="r2">100% agave nectar</span><span>CBD + CBG</span></p></div>
+ <div></div>
+ <div class="intro__foot" aria-hidden="true"><p class="intro__head"><span class="x"><b>Pure bliss</b></span><span class="c"><b>No bullsh*t</b></span></p><p class="intro__by">Preview by <img src="siani-creates-logo.png" alt="" width="265" height="130"></p></div>
+ <button class="intro__skip" id="introSkip">Skip</button></div>
 <div class="strip" id="strip"></div>
 <div class="vtoast" id="vtoast" role="status" aria-live="polite"></div>
 <header class="hdr">
@@ -1663,7 +1675,7 @@ function sticky(){return `<section class="ss">
   <div class="ss__imgs">${STEPS.map((s,i)=>`<img class="${i?'':'on'}" loading="lazy" src="${I(s[2],1200)}" alt="" width="1200" height="1200">`).join('')}</div>
 </div></div></div>
 <div class="ss__mobile"><div><h2 class="ss__h">PURE BLISS</h2><h2 class="ss__s">NO BULLSH*T</h2></div>
- ${STEPS.map(s=>`<article class="step"><h3>${s[0]}</h3><p>${s[1]}</p><div class="imgw"><img loading="lazy" src="${I(s[2],800)}" alt="" width="800" height="800"></div></article>`).join('')}
+ <div class="ss__row" data-drag>${STEPS.map(s=>`<article class="step"><div class="imgw"><img loading="lazy" src="${I(s[2],800)}" alt="" width="800" height="800"></div><h3>${s[0]}</h3><p>${s[1]}</p></article>`).join('')}</div>
  <div class="btns"><a class="button button--lime" href="#/pages/shop-all">Find Out More</a></div></div>
 </section>`}
 
@@ -2176,7 +2188,7 @@ modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStora
 /* --- Siani Creates intro --- */
 (()=>{const root=document.documentElement,el=document.getElementById('intro');if(!root.classList.contains('intro-on'))return;let done=false;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const end=()=>{if(done)return;done=true;try{sessionStorage.setItem('ab_intro','1')}catch(e){}el.classList.add('out');setTimeout(()=>{root.classList.remove('intro-on');const y=document.getElementById('yes');if(root.classList.contains('ag')&&y)y.focus({preventScroll:true})},rm?320:720)};
- document.getElementById('introSkip').onclick=end;el.addEventListener('click',e=>{if(e.target===el)end()});addEventListener('keydown',e=>{if(e.key==='Escape'||e.key==='Enter')end()});setTimeout(end,rm?1800:3100)})();
+ document.getElementById('introSkip').onclick=end;el.addEventListener('click',e=>{if(e.target===el)end()});addEventListener('keydown',e=>{if(e.key==='Escape'||e.key==='Enter')end()});requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('go')));setTimeout(()=>el.classList.add('go'),60);setTimeout(end,rm?1800:4300)})();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
