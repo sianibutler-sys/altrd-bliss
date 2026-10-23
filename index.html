@@ -1538,6 +1538,15 @@ a:hover>.mag,.rguide:hover .mag,.mag:hover{transform:rotate(calc(var(--tilt) / 3
 .rguide__book .mag{width:100%}
 .rguide__book{transform:none!important}
 .rguide__book::after{display:none}
+
+/* tasting-note seal on the bottle photo: the flavor's first line on the ring, its fruit in the middle */
+.prod__media{position:relative}
+.pseal{position:absolute;z-index:2;right:4%;bottom:4%;width:clamp(140px,27%,190px);aspect-ratio:1;border-radius:50%;background:rgba(16,22,24,.86);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);pointer-events:none}
+.pseal::before{content:"";position:absolute;inset:16%;border-radius:50%;border:1px solid rgba(255,255,255,.4)}
+.pseal__r{position:absolute;inset:0;width:100%;height:100%;animation:igSpin 28s linear infinite}
+.pseal__r text{font:800 14px var(--font-expanded);letter-spacing:.04em;fill:#fff}
+.pseal__c{position:relative;display:grid;place-items:center;width:58%;aspect-ratio:1;border-radius:50%;background:var(--theme);color:var(--themefg);padding:8%;text-align:center;font:900 clamp(15px,1.35vw,20px)/.95 var(--font-compressed);text-transform:uppercase;text-wrap:balance;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){.pseal__r{animation:none}}
 </style>
 </head>
 <body>
@@ -1969,13 +1978,15 @@ function drawerItems(p,inPack){const ing=inPack?`<p>${p.ing}</p>`:null;return [.
 function product(h){const p=P[h];if(!p)return notFound();
  const others=SHOP_ORDER.filter(x=>x!==h);
  const draft=p.draft?`<p class="prod__foot" style="opacity:.7">Draft description written from the ingredients. Replace with your own words.</p>`:'';
+ const lm=!p.packOnly&&FRUIT_NOTE[h]&&p.desc.match(/^([A-Z0-9 ,’'+&-]+)\.\s+/),lead=lm?lm[1]:'',rest=lm?p.desc.slice(lm[0].length):p.desc;
+ const seal=lead?`<div class="pseal" aria-hidden="true"><svg class="pseal__r" viewBox="0 0 200 200"><defs><path id="psP" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#psP" textLength="488" lengthAdjust="spacingAndGlyphs">${lead} ✦</textPath></text></svg><span class="pseal__c">${FRUIT_NOTE[h]}</span></div>`:'';
  return `<section class="prod"><div class="pw"><div class="prod__grid">
-  <div class="prod__media"${p.packOnly?' id="mpMedia"':''}><img src="${I(p.img,1200)}" alt="${p.packOnly?'All four Altrd Bliss flavors':'The '+p.name+' bottle'}" width="1200" height="1200"></div>
+  <div class="prod__media"${p.packOnly?' id="mpMedia"':''}>${seal}<img src="${I(p.img,1200)}" alt="${p.packOnly?'All four Altrd Bliss flavors':'The '+p.name+' bottle'}" width="1200" height="1200"></div>
   <div class="prod__info">
    <h1 class="prod__title"><span>The</span>${p.name}</h1>
    <p class="prod__comp">${p.sub}</p>
    ${p.use?`<p class="prod__usage">${p.use}</p>`:''}
-   <p class="prod__desc">${p.desc}</p>${draft}${sixBlock(h)}
+   <p class="prod__desc">${lead?`<span class="sr">${lead}. </span>`:''}${rest}</p>${draft}${sixBlock(h)}
    <p class="prod__foot">*While we hope you love our syrups, we can’t guarantee any specific health benefits.</p>
    <div class="buy"><div class="buy__row">
      <div class="variants" role="group" aria-label="Size">${p.packOnly?`<button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`:`<button aria-pressed="false" data-v="bottle">$8.00 Per Bottle</button><button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`}</div>
