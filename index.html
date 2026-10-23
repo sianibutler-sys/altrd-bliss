@@ -154,6 +154,7 @@ html:not(.ag) .ig__enter{display:grid}
 @media (max-width:600px){.intro__by{right:50%;transform:translateX(50%);bottom:10px}.ig__card{bottom:44px}}
 @keyframes igUp{to{opacity:1;transform:translate(-50%,0)}}
 @media (prefers-reduced-motion:reduce){.ig__logo,.ig__card{animation:none;opacity:1;transform:translate(-50%,0)}.ig__film,.ig__flood{transition:none}}
+video::-webkit-media-controls,video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none;opacity:0}
 /* top strip: changes with pre-launch / launch view */
 :root{--sh:34px}
 body{padding-top:var(--sh)}
@@ -1132,7 +1133,7 @@ body.has-bar .badge{bottom:96px}
 .ulabel__h{font:900 clamp(56px,6.4vw,92px)/.86 var(--font-compressed);text-transform:uppercase;letter-spacing:-1px;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--ink)}
 .ulabel__srv{display:flex;justify-content:space-between;gap:12px;margin:0;padding:7px 0;font-size:1.5rem;border-bottom:1px solid rgba(16,22,24,.2)}
 .ulabel__srv:last-child{border-bottom:0}
-.ulabel__srv b{font:800 1.5rem/1.2 var(--font-matria);text-transform:uppercase;letter-spacing:.02em}
+.ulabel__srv b{font:800 1.5rem/1.2 var(--font-matria);text-transform:uppercase;letter-spacing:.02em;text-align:right}
 .ulabel__srv--top{border-bottom:6px solid var(--ink)!important;padding-bottom:10px;font-size:1.7rem}
 .ulabel__srv--top b{font-size:1.7rem}
 .ulabel__amt{margin:10px 0 2px;font-size:1.15rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;opacity:.7}
@@ -1334,7 +1335,7 @@ html.ag-no #gate .gate__no{display:block}
 <body>
 <a class="skip" href="#app" data-skip>Skip to content</a>
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Welcome to Altrd Bliss">
- <div class="ig__film" aria-hidden="true"><video id="introVid" muted playsinline autoplay loop preload="auto" poster="img/intro/rita-drop.webp"><source src="img/intro/rita-drop.mp4" type="video/mp4"></video></div>
+ <div class="ig__film" aria-hidden="true"><video id="introVid" muted playsinline webkit-playsinline autoplay loop preload="auto" disablepictureinpicture disableremoteplayback poster="img/intro/rita-drop.webp"><source src="img/intro/rita-drop.mp4" type="video/mp4"></video></div>
  <img class="ig__logo" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45">
  <div class="ig__card ig__ask"><h2 id="igT">Are you 21+?</h2><p class="ig__q">Sorry, before we get to the good stuff, we need to check your age.</p><div class="ig__acts"><button class="ig__yes" id="igYes">Yes</button><button class="ig__no" id="igNo">No</button></div><p class="ig__deny" role="alert">You must be 21 or older to access this site.</p><small>By entering this site you are agreeing to the Terms of Service and <a href="https://www.altrdbliss.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></small></div>
  <button class="ig__enter" id="igEnter" aria-label="Enter Altrd Bliss"><svg class="ig__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="igRingP" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text><textPath href="#igRingP" textLength="500" lengthAdjust="spacing">FIND YOUR BLISS ✦ FIND YOUR BLISS ✦ FIND YOUR BLISS ✦</textPath></text></svg><span class="ig__core"><svg viewBox="0 0 22 30" aria-hidden="true"><path d="M11 0C11 0 0 13 0 19a11 11 0 0 0 22 0C22 13 11 0 11 0z"/></svg><b>Enter</b></span></button>
@@ -1932,7 +1933,7 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
   <div class="cd" id="cd" aria-live="off"></div>
   ${got?`<p class="uti__in">${PRE()?'You’re on the list. The guide lands in your inbox November 6.':'Check your inbox. The guide is on its way.'}</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">${PRE()?'Get the guide first':'Get the guide'}</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">${PRE()?'Join the waitlist':'Send me the guide'}</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
- <section class="ulabel" aria-labelledby="ulabelH"><div class="ulabel__a"><h2 class="ulabel__h" id="ulabelH">Guide facts</h2><p class="ulabel__srv ulabel__srv--top"><span>Serving size</span><b>1 glass</b></p><p class="ulabel__amt">Amount per glass</p>${[['Under the influence of','Fruit'],['Garnish math','Included'],['Hangovers','None'],['Delivered',PRE()?'By email':'Out now']].map(([k,v])=>`<p class="ulabel__srv"><span>${k}</span><b>${v}</b></p>`).join('')}</div>
+ <section class="ulabel" aria-labelledby="ulabelH"><div class="ulabel__a"><h2 class="ulabel__h" id="ulabelH">Guide facts</h2><p class="ulabel__srv ulabel__srv--top"><span>Serving size</span><b>1 glass</b></p><p class="ulabel__amt">Amount per glass</p>${[['Main character','Fruit'],['Garnish','Not an afterthought'],['Reads like','A magazine'],['Drama','100%']].map(([k,v])=>`<p class="ulabel__srv"><span>${k}</span><b>${v}</b></p>`).join('')}</div>
   <dl class="ulabel__g">${[['Recipes','30','var(--lime)','Fruit-forward, every one','0'],['Proof','Zero','var(--lavender)','Maximum personality','80'],['Minutes per drink','5','var(--ember)','Considerably longer to forget','0'],['Sweetener','Agave','var(--rose)','No CBD. No CBG. No surprises.','']].map(([l,v,c,n,f])=>`<div tabindex="0" style="--c:${c}"><dt><span class="ulabel__l">${l}</span><span class="ulabel__n">${n}</span></dt><dd><span class="ulabel__v" data-v="${v}"${f?` data-from="${f}"`:''}>${v}</span></dd></div>`).join('')}</dl>
   <p class="ulabel__f">Contains fruit. Made with just agave. ${PRE()?'Arrives November 6.':'Out now.'}</p></section>
  <figure class="peek"><p class="guide__k">First look</p><h2 class="uti__h2">Inside the guide</h2>
@@ -2263,7 +2264,7 @@ const introRun=()=>{const root=document.documentElement,el=document.getElementBy
  document.getElementById('igNo').onclick=()=>{document.getElementById('no').click()};
  document.getElementById('igEnter').onclick=dive;
  addEventListener('keydown',e=>{if(e.key==='Enter'&&!root.classList.contains('ag')&&root.classList.contains('intro-on'))dive()});
- const iv=document.getElementById('introVid');if(iv){const pp=iv.play();pp&&pp.catch(()=>{})}
+ const iv=document.getElementById('introVid');if(iv){iv.muted=true;iv.defaultMuted=true;iv.setAttribute('muted','');iv.controls=false;const kick=()=>{const pp=iv.play();pp&&pp.catch(()=>{})};kick();iv.addEventListener('loadeddata',kick,{once:true});['touchstart','pointerdown'].forEach(ev=>addEventListener(ev,kick,{once:true,passive:true}))}
  setTimeout(()=>{const f=root.classList.contains('ag')?document.getElementById('igYes'):document.getElementById('igEnter');f&&f.focus({preventScroll:true,focusVisible:false})},900)};
 /* --- age gate --- */
 const gate=document.getElementById('gate');
