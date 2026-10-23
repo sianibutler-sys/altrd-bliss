@@ -64,39 +64,40 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .button--ink:hover{color:var(--ink)}
 .button--sm{height:auto;min-height:48px;padding:12px 28px;white-space:normal;text-align:center}
 
-/* press: editorial newsroom */
+/* press: editorial newsroom in the house style */
 .pr{padding:150px 0 100px}
-.pr__mast{border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:22px;margin-bottom:clamp(36px,5vw,64px)}
-.pr__dl{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.3);font-size:1.1rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);margin:0}
-.pr__h1{font:800 clamp(88px,22vw,300px)/.82 var(--font-expanded);letter-spacing:-.03em;text-transform:uppercase;margin:18px 0 0;text-align:center}
-.pr__dk{text-align:center;font-size:1.8rem;margin:14px 0 0;color:rgba(255,255,255,.8)}
-.pr__feat{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:center}
-@media (min-width:900px){.pr__feat{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(40px,5vw,90px)}}
-.pr__img{border-radius:14px;overflow:hidden}
-.pr__img img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.pr__kick{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);margin:0 0 18px}
-.pr__kick span:first-child{color:var(--lime)}
-.pr__body h2{font:800 clamp(30px,3.6vw,56px)/1.05 var(--font-expanded);letter-spacing:-.01em;margin:0 0 22px}
-.pr__stand{font-size:clamp(1.7rem,1.6vw,2.1rem);line-height:1.5;color:rgba(255,255,255,.85);margin:0 0 28px;max-width:46ch}
-.pr__stand::first-letter{float:left;font:900 4.4em/.8 var(--font-compressed);color:var(--lime);margin:6px 10px 0 0}
-.pr__read{display:inline-flex;gap:10px;align-items:center;font-size:1.6rem;border-bottom:1px solid var(--lime);padding-bottom:4px}
-.pr__read:hover{color:var(--lime)}
-.pr__q{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;margin:clamp(56px,8vw,110px) 0;padding:clamp(36px,5vw,64px) 0;border-top:1px solid rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.3)}
-@media (min-width:900px){.pr__q{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,6vw,100px)}}
-.pr__q blockquote{margin:0}
-.pr__q p{font:900 clamp(34px,4.4vw,68px)/1 var(--font-compressed);letter-spacing:-.01em;text-transform:uppercase;margin:0 0 16px}
-.pr__q blockquote:first-child p{color:var(--lime)}
-.pr__q cite{font-style:normal;font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65)}
-.pr__kit{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
-@media (min-width:900px){.pr__kit{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(40px,5vw,80px)}}
+.pr__mast{margin-bottom:clamp(36px,5vw,64px)}
+.pr__dl{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);font-size:1.1rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65);margin:0}
+.pr__h1{display:flex;flex-direction:column;align-items:center;text-align:center;margin:clamp(20px,3vw,36px) 0 0;text-transform:uppercase;letter-spacing:-.02em}
+.pr__h1 .x{font:800 clamp(72px,17vw,240px)/.85 var(--font-expanded)}
+.pr__h1 .c{font:900 clamp(40px,7.5vw,108px)/.95 var(--font-compressed);color:var(--lime);margin-top:.12em}
+.pr__feat{display:grid;grid-template-columns:minmax(0,1fr);background:var(--cream);color:var(--ink);border-radius:20px;overflow:hidden}
+@media (min-width:900px){.pr__feat{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.pr__img img{width:100%;height:100%;min-height:320px;aspect-ratio:4/3;object-fit:cover}
+@media (min-width:900px){.pr__img img{aspect-ratio:auto;min-height:560px}}
+.pr__body{padding:clamp(28px,4.4vw,72px);display:flex;flex-direction:column;justify-content:center}
+.pr__kick{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(16,22,24,.65);margin:0 0 22px}
+.pr__pill{background:var(--ink);color:var(--lime);border-radius:999px;padding:7px 14px;letter-spacing:.16em}
+.pr__body h2{font:800 clamp(28px,3.2vw,50px)/1.05 var(--font-matria);text-transform:uppercase;letter-spacing:-.01em;margin:0 0 22px}
+.pr__stand{font-size:clamp(1.6rem,1.4vw,1.9rem);line-height:1.6;color:rgba(16,22,24,.82);margin:0 0 30px;max-width:46ch}
+.pr__btn{background:var(--ink);color:#fff;align-self:flex-start}
+.pr__btn:hover{background:var(--rose);color:#fff}
+.pr__q{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin:clamp(40px,6vw,80px) 0}
+@media (min-width:900px){.pr__q{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}}
+.pr__q blockquote{margin:0;background:var(--qc);color:var(--ink);border-radius:20px;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.pr__q p{font:900 clamp(32px,3.8vw,60px)/1 var(--font-compressed);letter-spacing:-.01em;text-transform:uppercase;margin:0}
+.pr__q cite{font-style:normal;font-size:1.15rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(16,22,24,.7)}
+.pr__kit{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+@media (min-width:900px){.pr__kit{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,4vw,60px)}}
 .pr__facts h2{font-size:clamp(40px,5vw,66px);line-height:1;text-transform:uppercase;margin:0 0 20px}
-.pr__facts dl{margin:0;border-top:1px solid rgba(255,255,255,.3)}
-.pr__facts dl>div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)}
+.pr__facts dl{margin:0;border-top:1px solid rgba(255,255,255,.25)}
+.pr__facts dl>div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.25);align-items:baseline}
 @media (max-width:600px){.pr__facts dl>div{grid-template-columns:minmax(0,1fr);gap:6px}}
-.pr__facts dt{font-size:1.2rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;gap:12px}
-.pr__facts dt span{color:var(--lime)}
+.pr__facts dt{font-size:1.2rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:10px}
+.pr__facts dt svg{width:18px;height:18px;flex:none}
 .pr__facts dd{margin:0;font-size:1.7rem;line-height:1.4}
 .pr__ask{background:var(--mint);color:var(--ink);border-radius:20px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:16px;align-self:start}
+.pr__ask .nl__h{text-align:left;margin:0}
 .pr__ask p{margin:0;font-size:1.7rem;line-height:1.5}
 .pr__mail{font:800 clamp(20px,2vw,26px)/1.2 var(--font-matria);border-bottom:2px solid var(--ink);align-self:flex-start;word-break:break-all}
 .pr__ask .pkit__btn{align-self:flex-start}
@@ -109,7 +110,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .intro{display:none}
 html.intro-on .intro{position:fixed;inset:0;z-index:300;display:grid;grid-template-rows:auto 1fr auto;background:#0b0b0b;color:#fff;overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path .8s cubic-bezier(.7,0,.3,1)}
 html.intro-on .intro.out{clip-path:inset(0 0 100% 0)}
-.intro__film{position:absolute;left:50%;top:50%;height:min(56vh,92vw);aspect-ratio:9/16;border-radius:6px;overflow:hidden;transform:translate(-50%,-52%) scale(1.03);opacity:0;transition:opacity 1s ease,transform 4.5s cubic-bezier(.2,.6,.2,1)}
+.intro__film{position:absolute;left:50%;top:50%;height:min(56vh,92vw);aspect-ratio:2/3;border-radius:14px;overflow:hidden;transform:translate(-50%,-52%) scale(1.03);opacity:0;transition:opacity 1s ease,transform 4.5s cubic-bezier(.2,.6,.2,1)}
 .intro__film video,.intro__film img{width:100%;height:100%;object-fit:cover}
 .intro.go .intro__film{opacity:1;transform:translate(-50%,-52%) scale(1)}
 .intro__top,.intro__foot{position:relative;z-index:2;padding:22px 20px 0;display:flex;flex-direction:column;align-items:center;gap:14px}
@@ -1306,7 +1307,7 @@ html.ag-no #gate .gate__no{display:block}
 <body>
 <a class="skip" href="#app" data-skip>Skip to content</a>
 <div class="intro" id="intro"><span class="sr">Altrd Bliss. Pure bliss, no bullsh*t. A preview by Siani Creates.</span>
- <div class="intro__film" aria-hidden="true"><video id="introVid" muted playsinline autoplay preload="auto" poster="https://www.altrdbliss.com/cdn/shop/files/preview_images/d07e34e8c2104cb499486abd0dbe4ecd.thumbnail.0000000000_800x.jpg?v=1775061604"><source src="https://www.altrdbliss.com/cdn/shop/videos/c/vp/d07e34e8c2104cb499486abd0dbe4ecd/d07e34e8c2104cb499486abd0dbe4ecd.HD-720p-4.5Mbps-80050506.mp4#t=4" type="video/mp4"></video></div>
+ <div class="intro__film" aria-hidden="true"><video id="introVid" muted playsinline autoplay loop preload="auto" poster="img/intro/rita-drop.webp"><source src="img/intro/rita-drop.mp4" type="video/mp4"></video></div>
  <div class="intro__top" aria-hidden="true"><img class="intro__mast" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="" width="253" height="45"><p class="intro__rule"><span>Infused agave syrups</span><span class="r2">100% agave nectar</span><span>CBD + CBG</span></p></div>
  <div></div>
  <div class="intro__foot" aria-hidden="true"><p class="intro__head"><span class="x"><b>Pure bliss</b></span><span class="c"><b>No bullsh*t</b></span></p><p class="intro__by">Preview by <img src="siani-creates-logo.png" alt="" width="265" height="130"></p></div>
@@ -1875,18 +1876,18 @@ function recipe(slug){const r=RECIPES.find(x=>x.s===slug);if(!r)return notFound(
 
 const contact=()=>`<section class="ptitle"><h1>Hi</h1><p class="ct__k">Get in touch</p><p class="ct__m"><a href="mailto:hello@altrdbliss.com">HELLO@ALTRDBLISS.COM</a></p><p><a class="ct__r" href="https://www.altrdbliss.com/pages/return-policy" target="_blank" rel="noopener">View Return policy</a></p></section><section class="faq"><h2 class="ct__h">Contact form</h2><form class="sub-form contact" data-capture="contact" style="max-width:640px;margin:0 auto"><label for="cN">Name</label><input id="cN" type="text" autocomplete="name"><label for="cE">Email</label><input id="cE" type="email" autocomplete="email" required style="width:100%;border:1px solid rgba(255,255,255,.4);border-radius:16px;padding:12px 16px;font:400 1.5rem var(--font-body)"><label for="cP">Phone number</label><input id="cP" type="text" inputmode="tel" autocomplete="tel"><label for="cC">Comment</label><textarea id="cC"></textarea><p class="cap__msg" aria-live="polite"></p><div><button class="button" type="submit">Send</button></div></form></section>`;
 const press=()=>`<section class="pr"><div class="pw">
- <header class="pr__mast"><p class="pr__dl"><span>Altrd Bliss</span><span>Newsroom</span><span>October 2026</span></p><h1 class="pr__h1">Press</h1><p class="pr__dk">Altrd Bliss, in the news.</p></header>
+ <header class="pr__mast"><p class="pr__dl"><span>Altrd Bliss</span><span>Newsroom</span><span>October 2026</span></p><h1 class="pr__h1"><span class="x">Press</span><span class="c">In the news</span></h1></header>
  <article class="pr__feat"><div class="pr__img"><img loading="lazy" src="${I('ALTRD_BLISS_HHD_2A_COCKTAIL_GROUP_HANDS7266-Edit_JAM_v02.png?v=1777935767',1200)}" alt="Friends toasting with Altrd Bliss mocktails" width="1200" height="900"></div>
-  <div class="pr__body"><p class="pr__kick"><span>Feature</span><span>Voyage LA</span><time datetime="2026-10-12">October 12, 2026</time></p>
+  <div class="pr__body"><p class="pr__kick"><span class="pr__pill">Feature</span><span>Voyage LA</span><time datetime="2026-10-12">October 12, 2026</time></p>
    <h2>Hidden Gems: Meet Erika And Jamie Isaac of Altrd Bliss</h2>
    <p class="pr__stand">The twins on starting Altrd Bliss for their mom, choosing to self-fund the launch, and Under the Influence (of Fruit), their first drinking guide.</p>
-   <a class="pr__read" href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Read the interview <span aria-hidden="true">→</span></a></div></article>
+   <a class="button pr__btn" href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Read the interview</a></div></article>
  <section class="pr__q" aria-label="Quotes from the interview">
-  <blockquote><p>“We’re expanding what can be in the glass.”</p><cite>Jamie Isaac, co-founder</cite></blockquote>
-  <blockquote><p>“We loved the idea of changing what you’re actually ‘under the influence’ of and making fruit the main character instead.”</p><cite>Erika and Jamie Isaac</cite></blockquote>
+  <blockquote style="--qc:var(--lime)"><p>“We’re expanding what can be in the glass.”</p><cite>Jamie Isaac, co-founder</cite></blockquote>
+  <blockquote style="--qc:var(--lavender)"><p>“We loved the idea of changing what you’re actually ‘under the influence’ of and making fruit the main character instead.”</p><cite>Erika and Jamie Isaac</cite></blockquote>
  </section>
  <div class="pr__kit">
-  <section class="pr__facts"><h2><span class="c">Fast</span> <span class="x">facts</span></h2><dl>${[['Founders','Identical twin sisters Erika and Jamie Isaac'],['Product','CBD and CBG infused agave syrups, non-intoxicating'],['Flavors','The Original, The Tini, The Rita and The Spritz'],['Price','$8 a bottle, $32 a 4 pack'],['The guide','Under the Influence (of Fruit), out November 6'],['Syrups','Launching Q1']].map(([k,v],i)=>`<div><dt><span>${String(i+1).padStart(2,'0')}</span>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></section>
+  <section class="pr__facts"><h2><span class="c">Fast</span> <span class="x">facts</span></h2><dl>${[['Founders','Identical twin sisters Erika and Jamie Isaac','#cc3f59'],['Product','CBD and CBG infused agave syrups, non-intoxicating','#e57945'],['Flavors','The Original, The Tini, The Rita and The Spritz','#cdb4f9'],['Price','$8 a bottle, $32 a 4 pack','#e0f47b'],['The guide','Under the Influence (of Fruit), out November 6','#b3edd4'],['Syrups','Launching Q1','#cc3f59']].map(([k,v,c])=>`<div><dt>${checkO(c)}${k}</dt><dd>${v}</dd></div>`).join('')}</dl></section>
   <section class="pr__ask"><h2 class="nl__h"><span class="a">FOR</span><span class="b">PRESS</span></h2><p>Interviews, samples and images. Write to us and we’ll get back to you.</p><a class="pr__mail" href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a><a class="pkit__btn" href="#/pages/contact">Contact us</a></section>
  </div>
 </div></section>`;
@@ -2230,7 +2231,7 @@ modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStora
 /* --- Siani Creates intro --- */
 (()=>{const root=document.documentElement,el=document.getElementById('intro');if(!root.classList.contains('intro-on'))return;let done=false;const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const end=()=>{if(done)return;done=true;try{sessionStorage.setItem('ab_intro','1')}catch(e){}el.classList.add('out');setTimeout(()=>{root.classList.remove('intro-on');const y=document.getElementById('yes');if(root.classList.contains('ag')&&y)y.focus({preventScroll:true})},rm?320:720)};
- document.getElementById('introSkip').onclick=end;el.addEventListener('click',e=>{if(e.target===el)end()});addEventListener('keydown',e=>{if(e.key==='Escape'||e.key==='Enter')end()});const iv=document.getElementById('introVid');if(iv){iv.addEventListener('loadedmetadata',()=>{if(iv.currentTime<3.9)iv.currentTime=4},{once:true});const pp=iv.play();pp&&pp.catch(()=>{})}requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('go')));setTimeout(()=>el.classList.add('go'),60);setTimeout(end,rm?1800:4300)})();
+ document.getElementById('introSkip').onclick=end;el.addEventListener('click',e=>{if(e.target===el)end()});addEventListener('keydown',e=>{if(e.key==='Escape'||e.key==='Enter')end()});const iv=document.getElementById('introVid');if(iv){const pp=iv.play();pp&&pp.catch(()=>{})}requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('go')));setTimeout(()=>el.classList.add('go'),60);setTimeout(end,rm?1800:4300)})();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
