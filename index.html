@@ -1506,6 +1506,25 @@ html.ag-no #gate .gate__no{display:block}
 .mb__cap .mb__glass{display:inline-block;margin-top:12px;font-size:1.2rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
 @media (max-width:600px){.mb__phtag{top:10px;right:10px}.mb__cap{padding:20px 20px 22px}.mb__cap .mb__meta{font-size:1.3rem;margin-top:8px}.mb__cap .mb__glass{margin-top:8px;font-size:1.05rem}}
 @media (prefers-reduced-motion:reduce){.ms{transition:none}.ms.pour{animation:none;-webkit-mask-image:none;mask-image:none}.mbdr,.drops{display:none}.gz.drop.w,.gz.drop.k{animation:none}}
+
+/* the guide as a physical magazine: square corners, perfect-bound spine, page block, gloss */
+.mag{--tilt:-3deg;position:relative;display:block;isolation:isolate;margin:0 auto;transform:rotate(var(--tilt));transition:transform .6s cubic-bezier(.2,.9,.3,1.15)}
+.mag img{position:relative;z-index:1;display:block;width:100%;height:auto;border-radius:0;
+ box-shadow:1px 1px 0 #f4efe4,2px 2px 0 #cdc5b4,3px 2px 0 #efe9dc,3px 3px 0 #d3cbba,4px 4px 0 #ebe4d6,5px 4px 0 #c9c1b0,5px 5px 0 #e6dfd0,6px 6px 0 #bfb7a6,
+ 0 2px 3px 1px rgba(0,0,0,.28),14px 30px 46px -14px rgba(0,0,0,.6),30px 60px 80px -30px rgba(0,0,0,.45)}
+.mag::before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;
+ background:linear-gradient(90deg,rgba(0,0,0,.34) 0,rgba(0,0,0,.08) .8%,rgba(255,255,255,.22) 1.4%,rgba(0,0,0,0) 2.6%,rgba(0,0,0,.16) 3.4%,rgba(255,255,255,.14) 4.1%,rgba(0,0,0,0) 5.6%),
+ linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 1.2%)}
+.mag::after{content:"";position:absolute;z-index:3;inset:0;pointer-events:none;mix-blend-mode:screen;
+ background:linear-gradient(118deg,rgba(255,255,255,0) 28%,rgba(255,255,255,.13) 41%,rgba(255,255,255,.04) 50%,rgba(255,255,255,0) 58%),
+ radial-gradient(120% 70% at 85% 0,rgba(255,255,255,.08),rgba(255,255,255,0) 60%)}
+a:hover>.mag,.rguide:hover .mag,.mag:hover{transform:rotate(calc(var(--tilt) / 3)) translateY(-6px)}
+@media (prefers-reduced-motion:reduce){.mag{transition:none}}
+.guide__cov .mag{max-width:420px}
+.uti__cov .mag{max-width:460px}
+.rguide__book .mag{width:100%}
+.rguide__book{transform:none!important}
+.rguide__book::after{display:none}
 </style>
 </head>
 <body>
@@ -1816,7 +1835,7 @@ const season=()=>{const [m,x]=seasonPick(),p=P[x.h],r=RECIPES.find(z=>z.s===x.re
 function seasonInit(){}
 const featureSlot=()=>new Date()<GUIDE_AT()?guide():season();
 const guide=()=>`<section class="guide" id="guide"><div class="pw"><div class="guide__in">
- <a class="guide__cov" href="#/pages/under-the-influence" aria-label="Preview Under the Influence (of Fruit)"><img class="guide__img" loading="lazy" src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></a>
+ <a class="guide__cov" href="#/pages/under-the-influence" aria-label="Preview Under the Influence (of Fruit)"><span class="mag"><img loading="lazy" src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></span></a>
  <div class="guide__b"><p class="guide__k">Our first drinking guide</p>
   <h2 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h2>
   <p class="guide__p">30 fruit-forward drinks with zero proof and maximum personality. Five minutes to make. Considerably longer to forget.</p><p class="guide__p">${!GO()?'Out November 6, free for everyone on the waitlist.':'Out now and free. Enter your email and it lands in your inbox.'} <a href="#/pages/under-the-influence">Preview the guide</a></p>
@@ -2064,7 +2083,7 @@ const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const in
 const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn${h==='the-tini'?' rose':''}" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false"${h==='the-tini'?' data-rose':''}>The ${P[h].name}</button>`).join('')}</div>
 <div class="ffruit" role="group" aria-label="Sort by fruit"><span class="ffruit__l">Or by fruit</span>${FRUITS.map(([k,l])=>`<button class="fchip" data-fruit="${k}" aria-pressed="false">${l}</button>`).join('')}</div><p class="rnone" id="rnone" hidden>No recipes match both. Try another fruit or flavor.</p>
 <div class="pw"><div class="rgrid" id="rgrid">${gcard()}${RECIPES.map(rcard).join('')}</div></div>
-<section class="rguide" aria-labelledby="rgH"><div class="rguide__book"><span class="rguide__pages" aria-hidden="true"></span><img src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit)" width="612" height="792" loading="lazy"></div>
+<section class="rguide" aria-labelledby="rgH"><div class="rguide__book"><span class="mag"><img src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit)" width="612" height="792" loading="lazy"></span></div>
  <div class="rguide__b"><p class="rguide__k">Our first drinking guide</p><h2 class="rguide__h" id="rgH"><span class="n">30 drinks</span><span class="c">Under the influence</span><span class="x">(of fruit)</span></h2><p class="rguide__p">Fruit-forward, zero-proof drinks with maximum personality. ${GO()?'Out now, free for everyone on the list.':'Out November 6, free for everyone on the waitlist.'}</p><a class="button rguide__btn" href="#/pages/under-the-influence">${GO()?'Get the guide':'Preview the guide'}</a></div></section></section>
 ${mixBuilder()}
 ${season()}`;
@@ -2184,10 +2203,10 @@ const briefCbd=()=>{const {c,list}=bbCiter();const fl=[['the-original','CBG + CB
  </div></article></div>`};
 const UTI_TEASE=['rosemary-grapefruit-paloma-mocktail','orange-juice-passion-fruit-spritz'];
 const GUIDE_REC={t:'Strawberry Lemonade Stand Off',img:'img/guide-strawberry-lemonade.webp',ing:['4 strawberries','1 oz lemon juice','3 tsp agave','½ cup sparkling water','Ice'],steps:['Muddle strawberries and agave in a shaker.','Add lemon juice and ice.','Shake until chilled.','Strain into an ice-filled glass.','Top with sparkling water and garnish with a strawberry and lemon wheel.']};
-const gcard=()=>{const r=GUIDE_REC;return `<article class="rcard gcard" data-fr="berries citrus"><div class="rcard__m"><img loading="lazy" src="${r.img}" alt="Strawberry lemonade splashing over a ribbed glass with a strawberry and a lemon wheel on the rim" width="800" height="800"><span class="gcard__tag">From the guide</span></div><h3>${r.t}</h3><p>Prep time 5 min · Serves 1 drink · Made with just agave</p><details class="gcard__d"><summary>See the recipe</summary><h4>Ingredients</h4><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h4>Instructions</h4><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol></details></article>`};
+const gcard=()=>{const r=GUIDE_REC;return `<article class="rcard gcard" data-fr="berries citrus"><div class="rcard__m"><img loading="lazy" src="${r.img}" alt="Strawberry lemonade splashing over a ribbed glass with a strawberry and a lemon wheel on the rim" width="800" height="800"><span class="gcard__tag">From the guide</span></div><h3>${r.t}</h3><p>Prep time 5 min · Serves 1 drink · Made with just agave</p><details class="gcard__d"><summary>See the recipe</summary><h4>Ingredients</h4><ul>${r.ing.map(x=>`<li><span>${x}</span></li>`).join('')}</ul><h4>Instructions</h4><ol>${r.steps.map(x=>`<li><span>${x}</span></li>`).join('')}</ol></details></article>`};
 const UTI_LOCK=['ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_ORIGINAL7778-Edit-2.png?v=1775060929'];
 const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti"><div class="pw"><div class="uti__hero">
- <div class="uti__cov"><img src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></div>
+ <div class="uti__cov"><span class="mag"><img src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></span></div>
  <div class="uti__copy"><p class="guide__k">The Altrd Bliss drinking guide</p><h1 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h1>
   <p class="uti__lede">30 fruit-forward drinks with zero proof and maximum personality.</p>
   <p>A collection of recipes for people who take pleasure seriously. Five minutes to make. Considerably longer to forget.</p>
@@ -2217,7 +2236,7 @@ document.getElementById('footer').innerHTML=`<section class="nl"><div class="nl_
  <div class="ft__cols">
   <div><h4>Shop</h4><ul><li><a href="#/pages/shop-all">Shop All</a></li>${['the-multipack','the-original','the-spritz','the-tini','the-rita'].map(h=>`<li><a href="#/products/${h}">The ${P[h].name}</a></li>`).join('')}</ul></div>
   <div><h4>Explore</h4><ul><li><a href="#/pages/find-your-bliss">Find your Bliss</a></li><li><a href="#/pages/about">About</a></li><li><a href="#/pages/learn">Learn</a></li><li><a href="#/blogs/the-bliss-brief">The Bliss Brief</a></li><li><a href="#/blogs/recipes">Recipes</a></li><li><a href="#/pages/under-the-influence">The Guide</a></li><li><a href="#/pages/find-us">Find us</a></li><li><a href="#/pages/press">Press</a></li></ul></div>
-  <div><h4>Help</h4><ul><li><a href="#/pages/faq">FAQ</a></li><li><a href="#/pages/contact">Contact Us</a></li>${[['Privacy Policy','pages/privacy-policy'],['Terms & Conditions','pages/terms-conditions'],['Return Policy','pages/return-policy']].map(([t,u])=>`<li><a href="https://www.altrdbliss.com/${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul></div>
+  <div><h4>Help</h4><ul><li><a href="#/pages/faq">FAQ</a></li><li><a href="#/pages/contact">Contact Us</a></li>${[['Privacy Policy','policies/privacy-policy'],['Terms & Conditions','pages/terms-conditions'],['Return Policy','pages/return-policy']].map(([t,u])=>`<li><a href="https://www.altrdbliss.com/${u}" target="_blank" rel="noopener" title="Opens your live site">${t} <span aria-hidden="true">↗</span><span class="sr"> (opens altrdbliss.com in a new tab)</span></a></li>`).join('')}</ul></div>
   <div><h4>Connect</h4><ul><li><a href="https://www.instagram.com/altrdbliss/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@altrdbliss" target="_blank" rel="noopener">TikTok</a></li></ul></div>
  </div>
  <div class="ft__logo"><img loading="lazy" src="${F}Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45"><p class="ft__copy">© 2026 Altrd Bliss. All Rights Reserved · Site by <img class="sclogo sclogo--ft" src="siani-creates-logo.png" width="37" height="18" alt="Siani Creates" onerror="this.replaceWith(document.createTextNode('Siani Creates'))"></p></div>
@@ -2503,12 +2522,12 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
   ${row('Data for Google',st?esc(st.ld):'',`<span class="good">${esc(ld)}</span>`)}
   ${row('Files loaded',`<span class="bad">${path?'About 280':'237'}</span><small>${path?'65 scripts':'37 scripts, 2.4 MB'}</small>`,`<span class="good">14</span><small>homepage, first visit</small>`)}
   </tbody></table>
-  ${same.length?`<h3>${fresh?'Where it comes from':'Same as the live site'}</h3><ul class="samel">${same.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
-  ${add.length?`<h3>New in this preview</h3><ul class="checkl">${add.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
-  <h3>Today, guide out and launch</h3><p class="bts__sub">Step through the views with the button at the bottom left. On this page:</p><ul class="checkl">${VIEWS(path).map(x=>`<li>${x}</li>`).join('')}</ul>
-  ${REVIEW(path).length?`<h3>For you to review</h3><ul class="issl">${REVIEW(path).map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
-  ${iss.length?`<h3>On the live site today, fixed here</h3><ul class="issl">${iss.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
-  <div class="bts__note">Live site figures come from scans of altrdbliss.com on October 21 and 22, 2026. File counts are from loading each page; some images without a description may be decorative.</div>`}
+  ${same.length?`<h3>${fresh?'Where it comes from':'Same as the live site'}</h3><ul class="samel">${same.map(x=>`<li><span>${x}</span></li>`).join('')}</ul>`:''}
+  ${add.length?`<h3>New in this preview</h3><ul class="checkl">${add.map(x=>`<li><span>${x}</span></li>`).join('')}</ul>`:''}
+  <h3>Today, guide out and launch</h3><p class="bts__sub">Step through the views with the button at the bottom left. On this page:</p><ul class="checkl">${VIEWS(path).map(x=>`<li><span>${x}</span></li>`).join('')}</ul>
+  ${REVIEW(path).length?`<h3>For you to review</h3><ul class="issl">${REVIEW(path).map(x=>`<li><span>${x}</span></li>`).join('')}</ul>`:''}
+  ${iss.length?`<h3>On the live site today, fixed here</h3><ul class="issl">${iss.map(x=>`<li><span>${x}</span></li>`).join('')}</ul>`:''}
+  <div class="bts__note">Live site figures come from scans of altrdbliss.com on October 21 and 22, 2026. File counts are from loading each page; some images without a description may be decorative. The footer’s Privacy Policy, Terms &amp; Conditions and Return Policy open your live pages on purpose. Those stay in Shopify, where checkout links to them, so the demo doesn’t copy them.</div>`}
  else if(btsTab==='share'){
   body.innerHTML=`<p class="sm">“New” shows the ${MODE==='prelaunch'?'Today':MODE==='guide'?'Guide out':'Launch'} view. Switch views at the bottom left to see the others.</p><h3>Google result</h3>${old?`<span class="bts__lbl old">Today</span>${serp(old,GSHOW[path],1)}`:''}<span class="bts__lbl new">New</span>${serp(now)}
   <h3>Texted in iMessage</h3>${old?`<span class="bts__lbl old">Today</span>${imsg({...old,img:old.imsg,ogt:old.ogt})}`:''}<span class="bts__lbl new">New</span>${imsg({...now})}
