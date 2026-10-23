@@ -131,12 +131,13 @@ html:not(.ag) .ig__enter{display:grid}
 .ig__enter{position:absolute;left:50%;bottom:clamp(56px,10vh,110px);width:clamp(150px,19vh,190px);aspect-ratio:1;place-items:center;border-radius:50%;background:none;color:#fff;opacity:0;transform:translate(-50%,24px) scale(.85);animation:igSeal 1s .9s cubic-bezier(.2,.9,.3,1.2) forwards;-webkit-tap-highlight-color:transparent}
 .ig__ring{position:absolute;inset:0;width:100%;height:100%;animation:igSpin 16s linear infinite;transition:transform .4s}
 .ig__ring text{font:800 15px var(--font-expanded);letter-spacing:.06em;fill:#fff}
-.ig__enter::before{content:"";position:absolute;inset:16%;border-radius:50%;border:1px solid rgba(255,255,255,.55)}
-.ig__core{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:58%;aspect-ratio:1;border-radius:50%;background:var(--lime);color:var(--ink);box-shadow:0 0 0 0 rgba(224,244,123,.55);animation:igPulse 2.4s 2s ease-out infinite;transition:transform .35s cubic-bezier(.2,.9,.3,1.3),background-color .3s}
+.ig__enter::before{content:"";position:absolute;inset:17%;border-radius:50%;border:1px solid rgba(255,255,255,.55)}
+.ig__enter::after{content:"";position:absolute;inset:-18%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(16,22,24,.55),rgba(16,22,24,0))}
+.ig__core{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:52%;aspect-ratio:1;border-radius:50%;background:var(--lime);color:var(--ink);box-shadow:0 0 0 0 rgba(224,244,123,.55);animation:igPulse 2.4s 2s ease-out infinite;transition:transform .35s cubic-bezier(.2,.9,.3,1.3),background-color .3s}
 .ig__core svg{width:14px;height:auto;fill:var(--ink);transition:transform .35s}
 .ig__core b{font:900 clamp(24px,3.2vh,32px)/.9 var(--font-compressed);text-transform:uppercase;letter-spacing:.01em}
-.ig__enter:hover .ig__core,.ig__enter:focus-visible .ig__core{transform:scale(1.08);background:#fff}
-.ig__enter:hover .ig__core svg,.ig__enter:focus-visible .ig__core svg{transform:translateY(3px)}
+@media (hover:hover){.ig__enter:hover .ig__core{transform:scale(1.08);background:#fff}}
+@media (hover:hover){.ig__enter:hover .ig__core svg{transform:translateY(3px)}}
 .ig__enter:active .ig__core{transform:scale(.96)}
 .ig__enter:focus-visible{outline:none}.ig__enter:focus-visible::before{border:2px solid var(--lime)}
 @keyframes igSeal{to{opacity:1;transform:translate(-50%,0) scale(1)}}
@@ -2263,7 +2264,7 @@ const introRun=()=>{const root=document.documentElement,el=document.getElementBy
  document.getElementById('igEnter').onclick=dive;
  addEventListener('keydown',e=>{if(e.key==='Enter'&&!root.classList.contains('ag')&&root.classList.contains('intro-on'))dive()});
  const iv=document.getElementById('introVid');if(iv){const pp=iv.play();pp&&pp.catch(()=>{})}
- setTimeout(()=>{const f=root.classList.contains('ag')?document.getElementById('igYes'):document.getElementById('igEnter');f&&f.focus({preventScroll:true})},900)};
+ setTimeout(()=>{const f=root.classList.contains('ag')?document.getElementById('igYes'):document.getElementById('igEnter');f&&f.focus({preventScroll:true,focusVisible:false})},900)};
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
