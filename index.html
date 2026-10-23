@@ -92,6 +92,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .pr__facts h2{font-size:clamp(40px,5vw,66px);line-height:1;text-transform:uppercase;margin:0 0 20px}
 .pr__facts dl{margin:0;border-top:1px solid rgba(255,255,255,.3)}
 .pr__facts dl>div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.3)}
+@media (max-width:600px){.pr__facts dl>div{grid-template-columns:minmax(0,1fr);gap:6px}}
 .pr__facts dt{font-size:1.2rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;gap:12px}
 .pr__facts dt span{color:var(--lime)}
 .pr__facts dd{margin:0;font-size:1.7rem;line-height:1.4}
