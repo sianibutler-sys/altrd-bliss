@@ -64,8 +64,32 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .button--ink:hover{color:var(--ink)}
 .button--sm{height:auto;min-height:48px;padding:12px 28px;white-space:normal;text-align:center}
 
+/* top strip: changes with pre-launch / launch view */
+:root{--sh:34px}
+body{padding-top:var(--sh)}
+.strip{position:fixed;top:0;left:0;right:0;height:var(--sh);z-index:58;display:flex;align-items:center;justify-content:center;padding:0 16px;background:var(--lime);color:var(--ink);font-size:1.3rem;line-height:1.2;text-align:center;transition:background-color .3s ease}
+.strip.is-launch{background:var(--ember)}
+.strip a{color:inherit;text-decoration:none}
+.strip u{text-underline-offset:3px;font-weight:600}
+.strip .s-sm{display:none}
+@media (max-width:600px){.strip .s-lg{display:none}.strip .s-sm{display:inline}}
+.soon{position:absolute;top:12px;left:12px;z-index:3;background:var(--ink);color:#fff;border-radius:999px;padding:6px 12px;font-size:1.2rem;line-height:1;letter-spacing:.04em;text-transform:uppercase}
+@media (min-width:990px){.soon{top:20px;left:20px;font-size:1.3rem;padding:8px 14px}}
+.vtoast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);z-index:96;background:var(--ink);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:20px;white-space:nowrap;padding:12px 20px;font-size:1.4rem;line-height:1.3;max-width:calc(100% - 32px);text-align:center;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.bts__sub{font-size:1.3rem;line-height:1.5;margin:-4px 0 8px;opacity:.75}
+.vtoast.on{opacity:1;transform:translate(-50%,0)}
+.cart__pre{padding:8px 0;display:flex;flex-direction:column;gap:14px}
+.cart__pre h3{font:800 2.4rem/1.1 var(--font-matria);text-transform:uppercase;margin:0}
+.cart__pre p{margin:0;font-size:1.5rem;line-height:1.5}
+.cart__pre form div{display:flex;gap:8px;flex-wrap:wrap}
+.cart__pre input{flex:1 1 180px;min-height:48px;border:1px solid rgba(16,22,24,.25);border-radius:999px;padding:0 18px;font:inherit;font-size:1.5rem}
+.cart__pre button[type=submit]{min-height:48px;border-radius:999px;padding:0 20px;background:var(--ink);color:#fff;font-size:1.5rem}
+.cart__pre label{display:block;font-size:1.3rem;margin-bottom:8px}
+.cart__pre .cap__msg{font-size:1.3rem;margin-top:8px}
+.uti__lock.is-out .uti__tiles img{filter:none;transform:none}
+.uti__lock.is-out .uti__lockc{background:linear-gradient(transparent 30%,rgba(11,15,16,.75))}
 /* header */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;pointer-events:none}
+.hdr{position:fixed;top:var(--sh);left:0;right:0;z-index:50;padding:20px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;pointer-events:none}
 @media (min-width:990px){.hdr{padding:20px 40px}}
 .hdr > *{pointer-events:auto}
 .hdr__left{display:flex;gap:13px}
@@ -90,10 +114,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .dd--menu a:hover,.dd--shop a:hover{text-decoration:underline;text-underline-offset:3px}
 .burger{display:none}
 @media (max-width:989px){.hdr__left .navwrap{display:none}.burger{display:grid}}
-.logo{position:fixed;top:40px;left:50%;transform:translateX(-50%);z-index:60;mix-blend-mode:exclusion;width:253px;pointer-events:auto}
+.logo{position:fixed;top:calc(40px + var(--sh));left:50%;transform:translateX(-50%);z-index:60;mix-blend-mode:exclusion;width:253px;pointer-events:auto}
 .logo img{width:100%;height:auto}
-@media (max-width:989px){.logo{width:200px;top:25px}}
-.drawer-menu{position:fixed;top:96px;left:16px;z-index:56;width:min(380px,calc(100vw - 32px));max-height:calc(100dvh - 112px);overflow:auto;overscroll-behavior:contain;background:#fff;color:var(--ink);border-radius:20px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:none;flex-direction:column;transform-origin:top left}
+@media (max-width:989px){.logo{width:200px;top:calc(25px + var(--sh))}}
+.drawer-menu{position:fixed;top:calc(96px + var(--sh));left:16px;z-index:56;width:min(380px,calc(100vw - 32px));max-height:calc(100dvh - 112px - var(--sh));overflow:auto;overscroll-behavior:contain;background:#fff;color:var(--ink);border-radius:20px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:none;flex-direction:column;transform-origin:top left}
 .drawer-menu.open{display:flex;animation:ddIn .18s ease-out}
 @keyframes ddIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
 .dm__h{font:800 12px/1 var(--font-matria);text-transform:uppercase;letter-spacing:.08em;color:rgba(16,22,24,.6);margin:6px 8px 8px}
@@ -1203,6 +1227,8 @@ html.ag-no #gate .gate__no{display:block}
 </head>
 <body>
 <a class="skip" href="#app" data-skip>Skip to content</a>
+<div class="strip" id="strip"></div>
+<div class="vtoast" id="vtoast" role="status" aria-live="polite"></div>
 <header class="hdr">
   <div class="hdr__left">
     <button class="circle glass burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg class="ic-b" width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="#fff" stroke-width="1.6"/></svg><svg class="ic-x" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1l14 14M15 1L1 15" stroke="#fff" stroke-width="1.6"/></svg></button>
@@ -1428,7 +1454,9 @@ const HS=[
 const pendingCards=()=>store.get('ab_subs',[]).map(s=>`<div class="slide"><div class="card"><span class="pending">Pending approval</span><div class="card__media">${s.img?`<img src="${s.img}" alt="">`:`<div style="width:100%;height:100%;background:${P[s.f].theme}"></div>`}</div><div class="card__body"><span class="handle">${s.handle||'@you'} · loves The ${P[s.f].name}</span><p class="card__q" style="opacity:1;transform:none">"${s.msg.replace(/</g,'&lt;')}"</p></div></div></div>`).join('');
 const happy=(h)=>{const list=h?[...HS.filter(s=>s.fav===h),...HS.filter(s=>s.fav!==h)]:HS;return `<section class="hs"><div class="hs__head"><h2>Happy sippers</h2><p>Cheers to less stress and more bliss. Let's see your mix with #SipALTRD</p><button class="button button--sm hs__share" data-subopen>Share your mix</button></div>
 <div class="track" data-drag>${pendingCards()}${list.map(s=>{const media=s.vid?`<video muted loop playsinline preload="none" poster="${F+s.poster}" data-lazyplay><source src="${V+s.vid}" type="video/mp4"></video>`:`<img loading="lazy" src="${I(s.img,600)}" alt="" width="600" height="780">`;const body=s.h?`<div class="card__body"><span class="handle">${s.h}${s.fav?` · loves The ${P[s.fav].name}`:''}</span><p class="card__q">${s.q}</p></div>`:'';return `<div class="slide">${s.href?`<a class="card" href="${s.href}" target="_blank" rel="noopener" aria-label="${s.h} on Instagram">`:'<div class="card">'}<div class="card__media">${media}</div>${body}${s.href?'</a>':'</div>'}${s.fav&&h===s.fav?'':''}</div>`}).join('')}</div></section>`};
-const shopCard=h=>{const p=P[h];const label=p.packOnly?'4 Pack For $32':'4 Pack For $32 — $8 Per Bottle';return `<article class="shop__card"><a class="shop__media" href="#/products/${h}"><img loading="lazy" src="${I(pimg(h),700)}" alt="The ${p.name}" width="700" height="700"></a><div><h3>The ${p.name}</h3>${fline(h)}<p>${p.sub}</p></div><div><a class="button button--sm" href="#/products/${h}">${label}</a></div></article>`};
+const PRE=()=>MODE==='prelaunch';
+const soon=()=>PRE()?'<span class="soon">Launching Q1</span>':'';
+const shopCard=h=>{const p=P[h];const label=PRE()?'Join Waitlist':p.packOnly?'4 Pack For $32':'4 Pack For $32 — $8 Per Bottle';return `<article class="shop__card"><a class="shop__media" href="#/products/${h}">${soon()}<img loading="lazy" src="${I(pimg(h),700)}" alt="The ${p.name}" width="700" height="700"></a><div><h3>The ${p.name}</h3>${fline(h)}<p>${p.sub}</p></div><div><a class="button button--sm" href="#/products/${h}">${label}</a></div></article>`};
 
 /* --- pages --- */
 /* hero: the three moods from the Voyage LA interview, in each flavor's color. Uplift = The Spritz and The Rita, Balance = The Original, Unwind = The Tini */
@@ -1453,7 +1481,7 @@ const home=()=>`
 </div></div></section>
 <section class="vibe">
   <div class="vibe__head"><div><h2 class="c h66">What we're mixing up</h2><p>Pick your vibe</p></div><a class="button" href="#/pages/shop-all">Shop our syrups</a></div>
-  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill${c==='#cc3f59'?' rose':''}" style="background:${c}">${l}</span></div>${fline(h,' fl--slide')}</a></div>`).join('')}</div>
+  <div class="track" data-drag id="vibeTrack">${vibeOrdered().map(([h,l,c])=>`<div class="slide"><a href="#/products/${h}" aria-label="The ${P[h].name}, ${l}"><div class="slide__media"><img loading="lazy" src="${I(P[h].img,900)}" alt="The ${P[h].name} bottle" width="900" height="675"><img class="hov" loading="lazy" src="${I(P[h].hov,900)}" alt="" width="900" height="675"><span class="vpill${c==='#cc3f59'?' rose':''}" style="background:${c}">${l}</span>${soon()}</div>${fline(h,' fl--slide')}</a></div>`).join('')}</div>
 </section>
 <section class="unwind"><div class="pw"><div class="two">
   <div><img class="two__img" loading="lazy" src="${I('The-Tini-GIF.png?v=1775063989',1200)}" alt="A Tini mocktail in a martini glass beside a bottle of The Tini" width="1200" height="1200"></div>
@@ -1500,11 +1528,11 @@ const guide=()=>`<section class="guide" id="guide"><div class="pw"><div class="g
  <a class="guide__cov" href="#/pages/under-the-influence" aria-label="Preview Under the Influence (of Fruit)"><img class="guide__img" loading="lazy" src="under-the-influence-cover.jpg" alt="Cover of Under the Influence (of Fruit), the Altrd Bliss drinking guide" width="612" height="792"></a>
  <div class="guide__b"><p class="guide__k">Our first drinking guide</p>
   <h2 class="guide__h"><span class="c">Under the influence</span><span class="x">(of fruit)</span></h2>
-  <p class="guide__p">30 fruit-forward drinks with zero proof and maximum personality. Five minutes to make. Considerably longer to forget.</p><p class="guide__p">Out November 6, free for everyone on the waitlist. <a href="#/pages/under-the-influence">Preview the guide</a></p>
+  <p class="guide__p">30 fruit-forward drinks with zero proof and maximum personality. Five minutes to make. Considerably longer to forget.</p><p class="guide__p">${PRE()?'Out November 6, free for everyone on the waitlist.':'Out now and free. Enter your email and it lands in your inbox.'} <a href="#/pages/under-the-influence">Preview the guide</a></p>
   <div class="cd" id="cd" aria-live="off"></div>
-  <form class="quiz__code" data-capture="guide"><label for="gE">Get the guide first</label><div><input id="gE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>
+  <form class="quiz__code" data-capture="guide"><label for="gE">${PRE()?'Get the guide first':'Get the guide'}</label><div><input id="gE" type="email" placeholder="Email" autocomplete="email"><button type="submit">${PRE()?'Join the waitlist':'Send me the guide'}</button></div><p class="cap__msg" aria-live="polite"></p></form>
  </div></div></div></section>`;
-function guideTick(){const el=document.getElementById('cd');if(!el)return;const ms=GUIDE_AT()-new Date();if(ms<=0){el.innerHTML='<div class="cdu" style="--c:var(--lime)"><b>Out now</b></div>';return}
+function guideTick(){const el=document.getElementById('cd');if(!el)return;const ms=GUIDE_AT()-new Date();if(ms<=0||!PRE()){el.innerHTML='<div class="cdu" style="--c:var(--lime)"><b>Out now</b></div>';return}
  const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60;el.innerHTML=[[d,d===1?'Day':'Days','var(--lime)'],[h,h===1?'Hour':'Hours','var(--lavender)'],[m,m===1?'Minute':'Minutes','var(--ember)']].map(([n,l,c])=>`<div class="cdu" style="--c:${c}"><b>${n}</b><span>${l}</span></div>`).join('');el.setAttribute('aria-label',`${d} days, ${h} hours and ${m} minutes until November 6`)}
 function guideInit(){guideTick()}
 /* reels from @altrdbliss: covers and first caption lines as posted */
@@ -1605,8 +1633,8 @@ function sticky(){return `<section class="ss">
 </section>`}
 
 const shopAll=()=>`<h1 class="sr">Shop All</h1><section class="shop" style="padding-top:140px"><div class="pw"><div class="shop__grid">
-  <article class="shop__hero"><a class="shop__media" href="#/products/the-multipack"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7420-Edit_JAM_v02.png?v=1778079956',1400)}" alt="All four Altrd Bliss flavors" width="1400" height="1400">
-   <div class="shop__overlay"><h3>The Multipack</h3><p>4 Flavors, 1 Box of Bliss</p><span class="button">4 Pack For $32</span></div></a></article>
+  <article class="shop__hero"><a class="shop__media" href="#/products/the-multipack"><img src="${I('ALTRD_BLISS_HHD_2B_COCKTAIL_GROUP7420-Edit_JAM_v02.png?v=1778079956',1400)}" alt="All four Altrd Bliss flavors" width="1400" height="1400">${soon()}
+   <div class="shop__overlay"><h3>The Multipack</h3><p>4 Flavors, 1 Box of Bliss</p><span class="button">${PRE()?'Join Waitlist':'4 Pack For $32'}</span></div></a></article>
   ${SHOP_ORDER.slice(1).map(shopCard).join('')}
 </div></div></section>`;
 
@@ -1784,18 +1812,18 @@ const uti=()=>{const got=store.get('ab_guide',false);return `<section class="uti
   <p>A collection of recipes for people who take pleasure seriously. Five minutes to make. Considerably longer to forget.</p>
   <div class="seal"><svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="sealP" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="1"/><g class="seal__spin"><text><textPath href="#sealP" textLength="486" lengthAdjust="spacing">MADE WITH JUST AGAVE ✦ MADE WITH JUST AGAVE ✦</textPath></text></g><path d="M100 70c0 0-20 24-20 38a20 20 0 0 0 40 0c0-14-20-38-20-38z" fill="var(--lime)"/></svg><p class="seal__t"><span class="sr">Made with just agave. </span><b>No CBD. No CBG. No surprises.</b> The Bliss is a dropper away, whenever you’re ready.</p></div>
   <div class="cd" id="cd" aria-live="off"></div>
-  ${got?`<p class="uti__in">You’re on the list. The guide lands in your inbox November 6.</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">Get the guide first</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">Join the waitlist</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
+  ${got?`<p class="uti__in">${PRE()?'You’re on the list. The guide lands in your inbox November 6.':'Check your inbox. The guide is on its way.'}</p>`:`<form class="quiz__code" data-capture="guide" data-unlock><label for="gE2">${PRE()?'Get the guide first':'Get the guide'}</label><div><input id="gE2" type="email" placeholder="Email" autocomplete="email"><button type="submit">${PRE()?'Join the waitlist':'Send me the guide'}</button></div><p class="cap__msg" aria-live="polite"></p></form>`}
  </div></div>
  <section class="ulabel" aria-labelledby="ulabelH"><div class="ulabel__a"><h2 class="ulabel__h" id="ulabelH">Guide facts</h2><p class="ulabel__srv"><span>Serving size</span><b>1 glass</b></p><p class="ulabel__srv"><span>Delivered</span><b>By email</b></p></div>
   <dl class="ulabel__g">${[['Recipes','30','var(--lime)','Fruit-forward, every one','0'],['Proof','Zero','var(--lavender)','Maximum personality','80'],['Minutes per drink','5','var(--ember)','Considerably longer to forget','0'],['Sweetener','Agave','var(--rose)','No CBD. No CBG. No surprises.','']].map(([l,v,c,n,f])=>`<div tabindex="0" style="--c:${c}"><dt><span class="ulabel__l">${l}</span><span class="ulabel__n">${n}</span></dt><dd><span class="ulabel__v" data-v="${v}"${f?` data-from="${f}"`:''}>${v}</span></dd></div>`).join('')}</dl>
-  <p class="ulabel__f">Contains fruit. Made with just agave. Arrives November 6.</p></section>
+  <p class="ulabel__f">Contains fruit. Made with just agave. ${PRE()?'Arrives November 6.':'Out now.'}</p></section>
  <figure class="peek"><p class="guide__k">First look</p><h2 class="uti__h2">Inside the guide</h2>
   <div class="peek__img"><img loading="lazy" src="img/guide-spread-1000.webp" srcset="img/guide-spread-1000.webp 1000w, img/guide-spread.webp 2048w" sizes="(min-width:1100px) 1060px, 100vw" alt="Pages 36 and 37 of Under the Influence (of Fruit): a red strawberry lemonade splashing over a ribbed glass with a strawberry and lemon wheel, beside the Strawberry Lemonade Stand Off recipe" width="2048" height="1321"></div>
   <figcaption class="peek__cap"><p class="peek__q">“One garnish is a drink. Two garnishes are a moment. Three is a personality.”</p><p class="peek__m">Strawberry Lemonade Stand Off, pages 36–37. Prep time 5 minutes, serves 1 drink. First shown in <a href="https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/" target="_blank" rel="noopener">Voyage LA</a>.</p></figcaption></figure>
  <h2 class="uti__h2">Fruit first, while you wait</h2><p class="uti__sub">The Strawberry Lemonade Stand Off is from the guide. <span class="ph">Placeholder</span> The other two are already on the site, and two more from the guide will go here.</p>
  <div class="rgrid uti__tease">${gcard()}${UTI_TEASE.map(sl=>rcard(RECIPES.find(r=>r.s===sl))).join('')}</div>
- <div class="uti__lock${got?' open':''}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
-  <div class="uti__lockc"><p class="guide__k"><span class="ph">Placeholder</span> 27 more inside</p><p class="uti__lockh">${got?'Unlocks November 6':'The full guide is for the waitlist'}</p>${got?'<p>Watch your inbox.</p>':'<a class="button" href="#gE2" data-scroll="gE2">Get the guide</a>'}</div></div>
+ <div class="uti__lock${got?' open':''}${PRE()?'':' is-out'}"><div class="uti__tiles" aria-hidden="true">${UTI_LOCK.map(f=>`<img loading="lazy" src="${I(f,500)}" alt="" width="500" height="500">`).join('')}</div>
+  <div class="uti__lockc"><p class="guide__k"><span class="ph">Placeholder</span> 27 more inside</p><p class="uti__lockh">${PRE()?(got?'Unlocks November 6':'The full guide is for the waitlist'):(got?'All 30 are in your inbox':'All 30 recipes, out now')}</p>${got?'<p>Watch your inbox.</p>':'<a class="button" href="#gE2" data-scroll="gE2">Get the guide</a>'}</div></div>
 </div></section>`};
 const notFound=()=>`<section class="ptitle"><h1>Page not found</h1><p>That page isn't part of this demo.</p><p style="margin-top:24px"><a class="button" href="#/">Back home</a></p></section>`;
 
@@ -1868,7 +1896,7 @@ function wire(){
   const RF={f:null,fr:null};const rApply=()=>{let n=0;app.querySelectorAll('.rcard').forEach(c=>{const ok=(!RF.f||c.dataset.f===RF.f)&&(!RF.fr||(c.dataset.fr||'').split(' ').includes(RF.fr));c.style.display=ok?'':'none';if(ok)n++});const rn=app.querySelector('#rnone');if(rn)rn.hidden=n>0};
   app.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-filter]').forEach(x=>{x.setAttribute('aria-pressed',false);x.classList.remove('on')});if(on){b.setAttribute('aria-pressed',true);b.classList.add('on')}RF.f=on?b.dataset.filter:null;rApply()});
   app.querySelectorAll('[data-fruit]').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true';app.querySelectorAll('[data-fruit]').forEach(x=>x.setAttribute('aria-pressed',false));if(on)b.setAttribute('aria-pressed',true);RF.fr=on?b.dataset.fruit:null;rApply()});
-  app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();const t=document.getElementById(a.dataset.scroll);if(!t)return;const el=t.closest('form')||t;const r=el.getBoundingClientRect();window.scrollTo({top:Math.max(0,r.top+scrollY-(innerHeight-r.height)/2),behavior:'smooth'});if(t.matches('input'))setTimeout(()=>t.focus({preventScroll:true}),700)});
+  app.querySelectorAll('[data-scroll]').forEach(a=>a.onclick=e=>{e.preventDefault();goTo(document.getElementById(a.dataset.scroll))});
   qa=[];
   MB.f=MB.b=MB.g=null;MB.t='iced';MBV.key='';MBV.sc='';MBV.f=MBV.b=MBV.g=null;mbClear();mbRender();byoRender();
   const mixS=document.getElementById('mix');if(mixS&&'IntersectionObserver' in window){const o=new IntersectionObserver(([e])=>{if(!e.isIntersecting)return;o.disconnect();['the-original','the-tini','the-rita','the-spritz'].forEach(h=>{const i=new Image();i.src=I(P[h].hov,1400)})},{rootMargin:'600px'});o.observe(mixS)}
@@ -1904,7 +1932,9 @@ const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v)
 let cart=store.get('ab_cart2',[]);
 const cartEl=document.getElementById('cart'),scrim=document.getElementById('scrim');
 const unit=i=>i.h==='the-multipack'||i.h==='custom'?PRICE.pack:PRICE[i.v];
-function openCart(){cartEl.classList.add('on');scrim.classList.add('on');cartEl.setAttribute('aria-hidden','false');document.getElementById('cartClose').focus()}
+function openCart(){if(PRE())paintPreCart();else renderCart();cartEl.classList.add('on');scrim.classList.add('on');cartEl.setAttribute('aria-hidden','false');document.getElementById('cartClose').focus()}
+function paintPreCart(){const h=cartEl.querySelector('.cart__h h2');if(h)h.textContent='Your cart';document.getElementById('cartItems').innerHTML=`<div class="cart__pre"><h3>The cart opens in Q1</h3><p>The syrups launch in Q1. Leave your email and we’ll tell you the day they drop.</p><form data-capture="waitlist"><label for="cwE">Be first to sip</label><div><input id="cwE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Notify me</button></div><p class="cap__msg" aria-live="polite"></p></form><a href="#/pages/under-the-influence" data-closecart>Meanwhile, preview the guide</a></div>`;document.getElementById('cartFoot').innerHTML=''}
+function goTo(t){if(!t)return;const el=t.closest('form')||t;const r=el.getBoundingClientRect();window.scrollTo({top:Math.max(0,r.top+scrollY-(innerHeight-r.height)/2),behavior:'smooth'});if(t.matches('input'))setTimeout(()=>t.focus({preventScroll:true}),700)}
 function closeCart(){cartEl.classList.remove('on');scrim.classList.remove('on');cartEl.setAttribute('aria-hidden','true')}
 function add(h,v,btn){const f=cart.find(i=>i.h===h&&i.v===v&&h!=='custom');f?f.q++:cart.push({h,v,q:1});save();const c=document.getElementById('count');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');if(btn){const t=btn.textContent;btn.textContent='Added';setTimeout(()=>btn.textContent=t,1200)}openCart()}
 function save(){store.set('ab_cart2',cart);renderCart()}
@@ -1936,7 +1966,7 @@ document.addEventListener('click',e=>{const t=e.target;
   if(t.closest('[data-qstart]')){e.preventDefault();const qs=document.getElementById('quiz');if(qs.hidden){qs.hidden=false;qa=[];quizStep()}qs.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});setTimeout(()=>{const q=document.querySelector('.qz__q');if(q){q.setAttribute('tabindex','-1');q.focus({preventScroll:true})}},500);return}
   if(t.closest('[data-qback]')){qa.pop();quizStep();return}
   if(t.closest('[data-qrestart]')){qa=[];quizStep();document.getElementById('quiz').scrollIntoView({behavior:'smooth'});return}
-  if(t.closest('[data-tonl]')){e.preventDefault();closeCart();document.getElementById('nlE').focus();document.querySelector('.nl').scrollIntoView({behavior:'smooth'});return}
+  if(t.closest('[data-tonl]')){e.preventDefault();closeCart();goTo(document.getElementById('nlE'));return}
   const inc=t.closest('[data-inc]');if(inc){cart[+inc.dataset.inc].q++;save();return}
   const dec=t.closest('[data-dec]');if(dec){const k=+dec.dataset.dec;cart[k].q--;if(cart[k].q<1)cart.splice(k,1);save();return}
   if(t.closest('[data-addpack]')){add('the-multipack','pack');return}
@@ -1956,7 +1986,7 @@ document.addEventListener('change',e=>{if(e.target.id!=='subPhoto'||!e.target.fi
 document.addEventListener('submit',e=>{if(e.target.id==='batchForm'){e.preventDefault();document.getElementById('batchRes').innerHTML=batchLookup(document.getElementById('batchIn').value);return}
  if(e.target.id==='subForm'){e.preventDefault();const m=document.getElementById('subMsgOut'),msg=document.getElementById('subMsg').value.trim();if(!msg){m.textContent='Tell us what is in your glass.';document.getElementById('subMsg').focus();return}if(!document.getElementById('subOk').checked){m.textContent='Check the box so we can feature your mix.';return}
   const subs=store.get('ab_subs',[]);subs.unshift({handle:document.getElementById('subHandle').value.trim(),f:document.getElementById('subFlavor').value,msg:msg.slice(0,240),img:subImg});try{store.set('ab_subs',subs.slice(0,3))}catch(x){}subImg='';e.target.reset();document.getElementById('subDlg').classList.remove('on');route();setTimeout(()=>{const hs=document.querySelector('.hs');hs&&hs.scrollIntoView({behavior:'smooth'})},100);return}});
-document.addEventListener('submit',e=>{if(e.target.id==='qzForm'){e.preventDefault();const em=document.getElementById('qzE');if(!/^\S+@\S+\.\S+$/.test(em.value)){document.getElementById('qzErr').textContent='Enter an email address like name@example.com.';em.focus();return}qMail=em.value;store.set('ab_quiz_email',qMail);quizFinish();return}const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='contact'?'Thanks. In the live site, this goes to hello@altrdbliss.com through Shopify.':f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':f.dataset.capture==='guide'?(f.hasAttribute('data-unlock')?(store.set('ab_guide',true),setTimeout(route,900),'You’re on the list. The guide lands in your inbox November 6.'):'You’re on the list. The guide lands in your inbox November 6.'):'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
+document.addEventListener('submit',e=>{if(e.target.id==='qzForm'){e.preventDefault();const em=document.getElementById('qzE');if(!/^\S+@\S+\.\S+$/.test(em.value)){document.getElementById('qzErr').textContent='Enter an email address like name@example.com.';em.focus();return}qMail=em.value;store.set('ab_quiz_email',qMail);quizFinish();return}const f=e.target.closest('[data-capture]');if(!f)return;e.preventDefault();const em=f.querySelector('input[type=email]'),m=f.querySelector('.cap__msg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent=f.dataset.capture==='contact'?'Thanks. In the live site, this goes to hello@altrdbliss.com through Shopify.':f.dataset.capture==='quiz'?'Check your inbox. In the live site, Klaviyo sends the code.':f.dataset.capture==='guide'?(f.hasAttribute('data-unlock')?(store.set('ab_guide',true),setTimeout(route,900),PRE()?'You’re on the list. The guide lands in your inbox November 6.':'Check your inbox. In the live site, Klaviyo sends the guide.'):PRE()?'You’re on the list. The guide lands in your inbox November 6.':'Check your inbox. In the live site, Klaviyo sends the guide.'):'You’re on the list. In the live site, this joins your Klaviyo waitlist.';f.reset()});
 document.addEventListener('change',e=>{const s=e.target.closest('[data-state]');if(!s)return;store.set('ab_state',s.value);document.querySelectorAll('[data-state]').forEach(x=>{x.value=s.value;const m=x.closest('.ship').querySelector('.ship__msg');m.innerHTML=shipMsg(s.value);const c=m.firstElementChild;if(c){c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop')}});renderCart()});
 /* --- newsletter (demo) --- */
 document.getElementById('nl').onsubmit=e=>{e.preventDefault();const em=document.getElementById('nlE'),m=document.getElementById('nlMsg');if(!/^\S+@\S+\.\S+$/.test(em.value)){m.textContent='Enter an email address like name@example.com.';em.focus();return}m.textContent='You’re in. In the live site, this signs you up through Klaviyo.';e.target.reset()};
@@ -2018,6 +2048,13 @@ const ISSUES=path=>{const p=path.split('/')[1];const prod={'the-tini':['Dark tex
  'pages/shop-all':['No search description, so Google lists flavor names and prices and stops at The Rita.','Shared links show the age gate photo.'],
  'blogs/recipes':['No search description, so Google strings recipe names together with semicolons.','Shared links show the age gate photo.'],
  'pages/contact':['No main headline on the page.','No search description, so Google reads out the form labels: “Name. Email *. Phone number. Comment. Send.”']})[path]||[]};
+const VIEWS=path=>{const all=['Top strip. Pre-launch: “Syrups launch Q1. Join SipSmarter to hear first.” Launch: “Get the free guide and a promo code in your inbox.” <span class="ph">Placeholder</span> copy for you to rewrite','Cart. Pre-launch: a note that the cart opens in Q1, with an email signup. Launch: the working cart'];
+ const by={'':['Flavor carousel: a “Launching Q1” tag on each bottle in pre-launch','Drinking guide: countdown and “Join the waitlist” in pre-launch; “Out now” and “Send me the guide” in launch'],
+ 'pages/shop-all':['Every card: a “Launching Q1” tag and Join Waitlist in pre-launch; your price buttons in launch'],
+ 'pages/find-your-bliss':['Quiz result button: Join Waitlist in pre-launch, Add to cart in launch'],
+ 'pages/under-the-influence':['Countdown in pre-launch, “Out now” in launch','The 27 locked recipes: blurred for the waitlist in pre-launch; shown, with “All 30 recipes, out now,” in launch','Signup: “Join the waitlist” in pre-launch, “Send me the guide” in launch']};
+ const p=path.startsWith('products/')?(path==='products/the-multipack'?['Buy button: Join Waitlist in pre-launch, Add to cart in launch','Build your own pack: Join Waitlist in pre-launch, Add my 4 Pack in launch']:['Buy button: Join Waitlist in pre-launch, Add to cart in launch','Wait, there’s more to love: a “Launching Q1” tag and Join Waitlist in pre-launch']):(by[path]||[]);
+ return [...p,...all]};
 const ADDED=path=>{if(path.startsWith('products/')){const h=path.split('/')[1];const fix0=ART_ON?['Fruit illustration over the ingredients (preview option)']:[];const fix={'the-rita':['A draft description written from Rita’s own ingredients, labeled on the page for you to replace'],'the-spritz':['The tag reads “For Daytime” to match its own copy. Live has “For Socializing,” the same as The Rita']}[h]||[];return h==='the-multipack'?['Flip between the four flavors to see each one’s ingredients, nutrition label, serving size and lab report without leaving the page (live says “Please visit each individual flavor page”)','Build your own 4 Pack: add and remove bottles with + and −, watch each one land in the box, tap a bottle to take it out, or let Surprise me fill it','A Lab Report panel','A buy bar that stays on screen on phones','Wait, there’s more to love! is left off this page, since the four flavors are already in the box above and each links to its own page']:[...(P[h].dose?['Find your dose: droppers and milligrams']:[]),'Ingredients up front in their own box, with the fruit called out (this replaces the Ingredients dropdown)','Nutritional Facts laid out as a nutrition label, every line from the live page','Serving Size shown as three numbers you can read at a glance','Try it in: recipes made with this flavor','Reviews from this flavor’s fans first','A Lab Report panel','A buy bar that stays on screen on phones','Waitlist signup per flavor until launch',...(P[h].fg!=='#ffffff'?['Footer text in dark ink, so it reads against this flavor’s light color']:[]),...fix,...fix0]}
  if(path.startsWith('blogs/recipes/'))return ['A way back to all recipes, at the top and bottom of the page','Ingredient checklist you can tap','More to sip: three more recipes','Recipe data Google can show with the photo','A clean address that matches the drink'];
  return ({'':['Unwind your way shows The Tini, your unwinding flavor. Live shows The Original, which is For everything','The headline cycles all three moods from your Voyage LA interview: CBG for Uplift, CBG + CBD for Balance, CBD for Unwind, each in its flavor’s color','Texted links show the homepage photo with the white Altrd Bliss logo','Each flavor’s fruit named under its bottle','Find your dose: tap between microdose and low dose','One feature slot: the guide countdown until November 6, then the fruit in season','Share your mix: customer submissions you approve','Every card opens the flavor it shows'],'pages/learn':['Check your bottle: batch lookup','Your mom’s story now sits under “She deserved better,” your own line from that story'],'pages/faq':['A state checker inside “Is this legal in my state?” where the typed list of states was','A button to tell you about a favorite shop'],'pages/find-your-bliss':['The quiz runs on your own site, under Start Quiz','Answers scored to the flavor they describe','A recipe for each match'],'blogs/recipes':['Filter by fruit, alone or with a flavor','Mix your bliss: pick a flavor, a base (tea hot or iced) and fruit, in real glassware, with a card to save or share','In Mix your bliss, each fruit says what goes in the drink and what goes on the glass, and which fruit is already in the bottle','In season this month: one fruit, its flavor and a recipe'],'pages/about':['Your latest Instagram reels as cards with their own covers and first lines, each opening the reel on Instagram'],'pages/shop-all':['Each flavor’s fruit named on its card','Cart suggests the Multipack and a recipe','State check in the cart before checkout'],'pages/contact':['One main headline (“Hi”) and labeled fields','The email address opens a new message in one tap'],
@@ -2054,6 +2091,7 @@ function btsRender(){const path=CUR.path||'',body=document.getElementById('btsBo
   </tbody></table>
   ${same.length?`<h3>${fresh?'Where it comes from':'Same as the live site'}</h3><ul class="samel">${same.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
   ${add.length?`<h3>New in this preview</h3><ul class="checkl">${add.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  <h3>Pre-launch vs launch view</h3><p class="bts__sub">Switch views with the button at the bottom left. On this page:</p><ul class="checkl">${VIEWS(path).map(x=>`<li>${x}</li>`).join('')}</ul>
   ${iss.length?`<h3>On the live site today, fixed here</h3><ul class="issl">${iss.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
   <div class="bts__note">Live site figures come from scans of altrdbliss.com on October 21 and 22, 2026. File counts are from loading each page; some images without a description may be decorative.</div>`}
  else if(btsTab==='share'){
@@ -2097,7 +2135,9 @@ document.querySelector('[data-skip]').onclick=e=>{e.preventDefault();app.focus()
 const modeBtn=document.getElementById('modeBtn');
 const paintMode=()=>{const v=MODE==='prelaunch'?'Pre-launch':'Launch';modeBtn.innerHTML=`<span class="b-lg">${v} view · switch</span><span class="b-sm">${v} ⇄</span>`;modeBtn.setAttribute('aria-label',`${v} view. Switch view`)};
 {let ly=scrollY;addEventListener('scroll',()=>{const y=scrollY,end=y+innerHeight>document.documentElement.scrollHeight-80;document.body.classList.toggle('sc-down',y>ly+2&&y>240&&!end);if(y<ly-2||end)document.body.classList.remove('sc-down');ly=y},{passive:true})}
-modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();route()};paintMode();
+const paintStrip=()=>{const el=document.getElementById('strip');el.classList.toggle('is-launch',!PRE());el.innerHTML=PRE()?'<a href="#nl" data-tonl>Syrups launch Q1. <u>Join SipSmarter</u> to hear first.</a>':'<a href="#nl" data-tonl><span class="s-lg">Get the free guide and a promo code in your inbox. </span><span class="s-sm">Free guide and a promo code. </span><u>Join SipSmarter</u></a>'};
+let vtT;const vtoast=()=>{const t=document.getElementById('vtoast');t.textContent=PRE()?'Pre-launch view: the site today':'Launch view: the site once syrups ship';t.classList.add('on');clearTimeout(vtT);vtT=setTimeout(()=>t.classList.remove('on'),3200)};
+modeBtn.onclick=()=>{MODE=MODE==='prelaunch'?'launch':'prelaunch';try{localStorage.setItem('ab_mode',MODE)}catch(e){}paintMode();paintStrip();if(cartEl.classList.contains('on')){PRE()?paintPreCart():renderCart()}route();vtoast()};paintMode();paintStrip();
 /* --- age gate --- */
 const gate=document.getElementById('gate');
 const ageSet=v=>{document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}))}catch(e){}};
