@@ -412,6 +412,10 @@ body.menu-open .hdr{z-index:57}
 @media (min-width:900px){.more__box h2{font-size:30px}}
 .more .shop__grid{padding-top:14px}
 @media (min-width:1200px){.more .shop__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.more .shop__media{height:auto}.more .shop__media img{height:auto;min-height:0}
+@media (max-width:1199px){.more .shop__grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -10px;padding:14px 10px 4px;scroll-padding-inline:10px;cursor:grab}.more .shop__grid::-webkit-scrollbar{display:none}.more .shop__card{flex:0 0 78%;scroll-snap-align:start}}
+@media (min-width:600px) and (max-width:1199px){.more .shop__card{flex-basis:44%}}
+@media (min-width:900px) and (max-width:1199px){.more .shop__card{flex-basis:31%}}
 
 /* product page */
 .prod{padding:110px 0 40px}
@@ -1677,7 +1681,7 @@ function product(h){const p=P[h];if(!p)return notFound();
  ${RECIPES.some(r=>r.h===h)?`<section class="tryin"><div class="pw"><h2 class="c h66">TRY IT IN</h2><div class="rgrid">${RECIPES.filter(r=>r.h===h).map(rcard).join('')}</div></div></section>`:''}
  <div class="wrap-ink">${happy(h)}</div>
  <div class="sbar" id="sbar" aria-hidden="true"><img src="${I(pimg(h),120)}" alt="" width="48" height="48"><div><b>The ${p.name}</b><span>${p.packOnly?'4 Pack for $32.00':'From $8.00'}</span></div><button class="addbtn" data-sbar>${buyLabel()}</button></div>
- ${p.packOnly?'':`<section class="more"><div class="pw"><div class="more__box"><h2>WAIT, THERE’S MORE TO LOVE!</h2><div class="shop__grid">${others.map(shopCard).join('')}</div></div></div></section>`}`}
+ ${p.packOnly?'':`<section class="more"><div class="pw"><div class="more__box"><h2>WAIT, THERE’S MORE TO LOVE!</h2><div class="shop__grid" data-drag>${others.map(shopCard).join('')}</div></div></div></section>`}`}
 
 const learn=()=>`
 <section class="banner"><div class="banner__media"><img src="${I('Group_159_f21ce4e1-4abf-4133-805e-a197d50bb615.png?v=1777937613',1800)}" alt="" width="1800" height="1100"></div>
