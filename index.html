@@ -2106,12 +2106,12 @@ document.addEventListener('submit',e=>{const f=e.target;if(f.matches('[data-fuse
 
 /* The Bliss Brief: education, with every claim cited */
 const BB_SRC={
- crs:{t:'2018 Farm Bill Primer: Hemp Cultivation and Processing',p:'Congressional Research Service',d:'January 30, 2019',u:'https://www.everycrsreport.com/reports/IF11088.html'},
+ crs:{t:'Changes to the Statutory Definition of Hemp and Implications for Agricultural Policy (IF13136)',p:'Congressional Research Service',d:'updated September 28, 2026',u:'https://www.congress.gov/crs-product/IF13136'},
+ pl115:{t:'Agriculture Improvement Act of 2018, Public Law 115–334, Section 10113',p:'U.S. Congress',d:'December 20, 2018',u:'https://www.congress.gov/115/plaws/publ334/PLAW-115publ334.pdf'},
+ pl37:{t:'Public Law 119–37, Division B, Section 781',p:'U.S. Congress',d:'November 12, 2025',u:'https://www.congress.gov/119/plaws/publ37/PLAW-119publ37.pdf'},
+ pl103:{t:'Continuing Appropriations and Extensions Act, 2027, Public Law 119–103',p:'U.S. Congress',d:'September 2, 2026',u:'https://www.congress.gov/119/plaws/publ103/PLAW-119publ103.pdf'},
  fda23:{t:'FDA Concludes that Existing Regulatory Frameworks for Foods and Supplements are Not Appropriate for Cannabidiol, Will Work with Congress on a New Way Forward',p:'U.S. Food and Drug Administration',d:'January 26, 2023',u:'https://www.fda.gov/news-events/press-announcements/fda-concludes-existing-regulatory-frameworks-foods-and-supplements-are-not-appropriate-cannabidiol'},
  fda18:{t:'FDA approves first drug comprised of an active ingredient derived from marijuana to treat rare, severe forms of epilepsy',p:'U.S. Food and Drug Administration',d:'June 25, 2018',u:'https://www.fda.gov/newsevents/newsroom/pressannouncements/ucm611046.htm'},
- ro:{t:'Congress Narrows Federal Definition of “Hemp,” Effectively Banning Most Intoxicating Hemp Products',p:'Regulatory Oversight',d:'December 10, 2025',u:'https://www.regulatoryoversight.com/2025/12/congress-narrows-federal-definition-of-hemp-effectively-banning-most-intoxicating-hemp-products/'},
- hlg:{t:'Federal Hemp Ban 2026: Where Things Stand',p:'Hemp Law Group',d:'current as of October 19, 2026',u:'https://www.hemplawgroup.com/news/federal-hemp-ban-2026-where-things-stand'},
- hill:{t:'Federal ban on hemp-derived THC products delayed by one month',p:'The Hill',d:'2026',u:'https://thehill.com/policy/healthcare/6017926-senate-delays-hemp-thc-ban/'},
  cbg:{t:'Acute effects of cannabigerol on anxiety, stress, and mood: a double-blind, placebo-controlled, crossover, field trial',p:'Scientific Reports',d:'2024',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11246434/'},
  ecs:{t:'Endocannabinoid System: Chemical Characteristics and Biological Activity',p:'PubMed Central, National Library of Medicine',d:'2023',u:'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9966761/'},
  voy:{t:'Hidden Gems: Meet Erika And Jamie Isaac of Altrd Bliss',p:'Voyage LA',d:'October 12, 2026',u:'https://voyagela.com/interview/hidden-gems-meet-erika-and-jamie-isaac-of-altrd-bliss/'}};
@@ -2127,23 +2127,23 @@ const brief=()=>{const {c,list}=bbCiter();return `<div class="bb"><section class
   ${[['The law','What December 11 means for hemp','Congress narrowed the federal definition of hemp. What changes, what doesn’t and what’s still undecided.','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_TINI7691-Edit-Edit.png?v=1775060708','var(--rose)'],['Ritual','How to read a lab report','Batch numbers, potency and what “non-detect” means, using a real Altrd Bliss report.','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_RITA7917-Edit-2.png?v=1775060929','var(--lavender)'],['Reform','The bills that could change it again','Ban, regulate or delay: the proposals in Congress right now, in plain terms.','ALTRD_BLISS_HHD_3A_COCKTAILS_GIF_SPRITZ8158-Edit-2.png?v=1775060929','var(--ember)']].map(([t,h,p,img,col])=>`<li class="bb__card" style="--c:${col}"><div class="bb__im"><img src="${I(img,800)}" alt="" width="800" height="600" loading="lazy"><span class="bb__soon">Coming soon</span></div><p class="bb__t">${t}</p><h3>${h}</h3><p>${p}</p></li>`).join('')}
  </ul></section>
  <section class="bb__sec" aria-labelledby="bbLaw"><div class="bb__sech"><h2 id="bbLaw">The law, so far</h2><span class="bb__k">Last checked ${BB_CHECKED}</span></div><div class="bb__track"><ol>
-  <li><b>2018</b><span>The Farm Bill makes hemp legal: cannabis with no more than 0.3% delta-9 THC by dry weight.${c('crs')}</span></li>
+  <li><b>2018</b><span>The Farm Bill makes hemp legal: cannabis with no more than 0.3% delta-9 THC by dry weight.${c('pl115','crs')}</span></li>
   <li><b>January 2023</b><span>The FDA says its food and supplement rules don’t fit CBD and asks Congress for a new path.${c('fda23')}</span></li>
-  <li><b>November 12, 2025</b><span>Congress narrows the definition of hemp in a funding law, with a one-year runway.${c('ro')}</span></li>
-  <li><b>September 2, 2026</b><span>A new law pushes most of the change back 30 days.${c('hlg','hill')}</span></li>
-  <li class="is-now"><b>November 12, 2026 <em>Takes effect</em></b><span>Cannabinoids made outside the plant lose federal hemp status.${c('hlg','ro')}</span></li>
-  <li class="is-now"><b>December 11, 2026 <em>Takes effect</em></b><span>Finished products with more than 0.4 mg of total THC per container fall outside the definition.${c('hlg','ro')}</span></li>
-  <li class="is-next"><b>Still in Congress <em>Pending</em></b><span>Bills to regulate hemp drinks instead, or to delay the change to 2028. All are still in committee.${c('hlg')}</span></li>
+  <li><b>November 12, 2025</b><span>Congress narrows the definition of hemp in a funding law, with a one-year runway.${c('pl37','crs')}</span></li>
+  <li><b>September 2, 2026</b><span>A new law pushes most of the change back to December 11.${c('pl103','crs')}</span></li>
+  <li class="is-now"><b>November 12, 2026 <em>Takes effect</em></b><span>Cannabinoids made outside the plant lose federal hemp status.${c('pl37','crs')}</span></li>
+  <li class="is-now"><b>December 11, 2026 <em>Takes effect</em></b><span>Finished products with more than 0.4 mg of total THC per container fall outside the definition.${c('pl37','pl103','crs')}</span></li>
+  <li class="is-next"><b>Still in Congress <em>Pending</em></b><span>Bills to delay the change two more years, raise the THC limit, or set federal rules for hemp products instead. As of September 28, 2026, none had become law.${c('crs')}</span></li>
  </ol><p class="bb__small">This tracker explains the law. It isn’t legal advice.</p></div></section>
  <section class="bb__sec" aria-labelledby="bbGl"><div class="bb__sech"><h2 id="bbGl">Say it right</h2><span class="bb__k">A short glossary</span></div><dl class="bb__gloss">
   <div style="--c:var(--lime)"><dt>CBD</dt><dd>Cannabidiol. A non-intoxicating compound from hemp, the one most people have heard of.${c('fda23')}</dd></div>
   <div style="--c:var(--ember)"><dt>CBG</dt><dd>Cannabigerol. Another non-intoxicating compound, found in smaller amounts in the plant.${c('cbg')}</dd></div>
   <div style="--c:var(--rose)"><dt>THC</dt><dd>The compound in cannabis that gets you high. Altrd Bliss is made with zero THC.${c('voy')}</dd></div>
-  <div style="--c:var(--lavender)"><dt>Hemp</dt><dd>Cannabis that is naturally low in THC, defined by federal law.${c('crs')}</dd></div>
+  <div style="--c:var(--lavender)"><dt>Hemp</dt><dd>Cannabis that is naturally low in THC, defined by federal law.${c('pl115')}</dd></div>
   <div style="--c:var(--mint)"><dt>COA</dt><dd>Certificate of analysis. A lab report showing what is, and isn’t, in a batch. <a href="${LAB}" target="_blank" rel="noopener">See ours<span class="sr"> (opens in a new tab)</span></a>.</dd></div>
   <div style="--c:var(--lime)"><dt>Isolate</dt><dd>A single cannabinoid, separated from the rest of the plant.</dd></div>
  </dl></section>
- ${list('Every source opens the original. If something here goes out of date, email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> and we’ll fix it.')}
+ ${list('Every source opens the original. If something here goes out of date, email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> and we’ll fix it. The law above is summarized from the laws themselves and the Congressional Research Service, current as of September 28, 2026.')}
  <p class="bb__foot">Not medical or legal advice.</p>
 </section></div>`};
 const briefCbd=()=>{const {c,list}=bbCiter();const fl=[['the-original','CBG + CBD','Balance'],['the-tini','CBD','Unwind'],['the-rita','CBG','Uplift'],['the-spritz','CBG','Uplift']];return `<div class="bb"><article class="bb__art" aria-labelledby="bbArtH">
