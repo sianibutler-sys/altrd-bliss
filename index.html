@@ -1971,7 +1971,7 @@ const findUs=()=>{const pre=PRE();return `<section class="fu"><div class="pw">
  <section class="fu__card fu__lav"><p class="fu__k">Own a shop?</p><h2>Can I sell Altrd Bliss in my store?</h2><p>Absolutely. We love working with new retailers. Just email <a href="mailto:hello@altrdbliss.com">hello@altrdbliss.com</a> with your store info, and we’ll get back to you with the next steps.</p></section></div>`}
 </div></section>`};
 const fuList=q=>{q=q.trim().toLowerCase();const st=STATES.find(([c,n])=>c.toLowerCase()===q||n.toLowerCase()===q);const hits=STOCK.filter(r=>!q||(st&&r[3]===st[0])||(/^\d{3,5}$/.test(q)&&r[4].startsWith(q.slice(0,3)))||r[2].toLowerCase()===q);
- if(!hits.length)return `<p class="fu__none">No stores there yet. You can still order online, or name a shop below.</p>`;
+ if(!hits.length)return `<p class="fu__none">${st&&NOSHIP.includes(st[0])?`No stores in ${st[1]} yet, and we can’t ship there yet either. Name a shop below and we’ll keep you posted.`:'No stores there yet. You can still order online, or name a shop below.'}</p>`;
  const by={};hits.forEach(r=>(by[r[3]]=by[r[3]]||[]).push(r));
  return Object.keys(by).sort().map(c=>`<div class="fu__st"><h3>${(STATES.find(x=>x[0]===c)||[c,c])[1]}</h3><ul>${by[c].map(([n,a,ci,s,z])=>`<li><b>${n}</b><span>${a}, ${ci}, ${s} ${z}</span><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(a+', '+ci+', '+s+' '+z)}" target="_blank" rel="noopener">Directions</a></li>`).join('')}</ul></div>`).join('')};
 document.addEventListener('submit',e=>{const f=e.target;if(f.matches('[data-fusearch]')){e.preventDefault();document.getElementById('fuList').innerHTML=fuList(f.querySelector('input').value);return}
