@@ -687,7 +687,11 @@ body.menu-open .hdr{z-index:57}
 .addbtn::before{content:"";position:absolute;left:0;top:0;width:0;height:100%;z-index:-1;background:var(--rainbow);transition:width .25s ease-out}
 .addbtn:hover::before{width:100%}
 .addbtn:hover{color:var(--ink)}
-@media (min-width:1391px){.buy{flex-direction:row;flex-wrap:wrap;align-items:center}.variants{flex:1 1 260px;width:auto;min-width:0;max-width:342px}.addbtn{flex:1 1 180px;width:auto;min-width:0}}
+.buy{container-type:inline-size}
+.buy__row{display:flex;flex-direction:column;gap:10px}
+.buy__row .variants{height:64px;align-items:stretch}
+.buy__row .variants button{white-space:nowrap;padding:0 1.6rem;display:flex;align-items:center;justify-content:center}
+@container (min-width:540px){.buy__row{flex-direction:row;align-items:stretch}.buy__row .variants{flex:none;width:auto}.buy__row .addbtn{flex:1 1 180px;width:auto;min-width:0}}
 .mpsw{width:100%;margin-top:40px;text-align:center}
 .mpsw__t{font:800 13px/1 var(--font-matria);letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
 .mpsw__b{display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -791,7 +795,8 @@ body.menu-open .hdr{z-index:57}
 .feat__copy p{font-size:16px;line-height:1.6;max-width:56ch}
 .feat__copy .h66{line-height:1}.feat__copy .h66+.h66{margin-top:2px}
 .frames{padding:clamp(3rem,5vw,5rem) 0}
-.frames__h{text-align:center;margin:0 auto 50px;max-width:22ch}
+.frames__h{text-align:center;margin:0 auto 50px;max-width:22ch;text-wrap:balance}
+@media (min-width:990px){.frames__h{max-width:36ch}}
 .frames__grid{display:grid;grid-template-columns:1fr;gap:30px}
 @media (min-width:760px){.frames__grid{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:1040px){.frames .pw{padding:0 133px}}
@@ -1972,10 +1977,10 @@ function product(h){const p=P[h];if(!p)return notFound();
    ${p.use?`<p class="prod__usage">${p.use}</p>`:''}
    <p class="prod__desc">${p.desc}</p>${draft}${sixBlock(h)}
    <p class="prod__foot">*While we hope you love our syrups, we can’t guarantee any specific health benefits.</p>
-   <div class="buy">
+   <div class="buy"><div class="buy__row">
      <div class="variants" role="group" aria-label="Size">${p.packOnly?`<button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`:`<button aria-pressed="false" data-v="bottle">$8.00 Per Bottle</button><button aria-pressed="true" data-v="pack">4 Pack for $32.00</button>`}</div>
      <button class="addbtn" data-addp="${h}">${buyLabel()}</button>
-   </div>
+   </div></div>
    <form class="wl" data-capture="waitlist" hidden><label for="wlE">Be first to sip The ${p.name}. We’ll email you the day it drops.</label><div><input id="wlE" type="email" placeholder="Email" autocomplete="email"><button type="submit">Notify me</button></div><p class="cap__msg" aria-live="polite"></p></form>
    ${p.dose?`<div class="dose" id="dose" role="group" aria-label="Find your dose"><p class="dose__t">Find your dose</p><div class="dose__btns"><button data-dose="3" aria-pressed="false">Microdose</button><button data-dose="6" aria-pressed="true">Low dose</button></div><div class="dose__drops" aria-hidden="true">${'<i></i>'.repeat(6)}</div><p class="dose__out" aria-live="polite"></p></div>`:''}
    ${p.packOnly?`<div class="mpsw" role="group" aria-label="Show details for"><p class="mpsw__t">What’s in the box</p><div class="mpsw__b"><button class="chip chip--all" data-mpf="all" aria-pressed="true">All four</button><div class="mpsw__fl">${MP_ORDER.map(x=>`<button class="chip" data-mpf="${x}" style="--c:${P[x].theme};--f:${P[x].fg}" aria-pressed="false">The ${P[x].name}</button>`).join('')}</div></div><div class="mpsw__cap"><span class="mpsw__th" id="mpThumb" aria-hidden="true"><img src="${I(p.how,160)}" alt="" width="80" height="80"></span><p class="mpsw__n" id="mpNote" aria-live="polite">${mpNote('all')}</p></div></div>`:''}
@@ -2087,7 +2092,7 @@ const R_FRUIT={'altrd-bliss-ice-cream':['cranberry'],'rosemary-grapefruit-paloma
 const rcard=r=>`<a class="rcard" data-f="${r.h}" data-fr="${(R_FRUIT[r.s]||[]).join(' ')}" href="#/blogs/recipes/${r.s}"><div class="rcard__m"><img loading="lazy" src="${AI(r.img,700)}" alt="${r.t}" width="700" height="700"></div><h3>${r.t}</h3><p>Using The ${P[r.h].name}</p></a>`;
 
 const FRUITY=/lime|blackberry|lavender|cranberry|thyme|passion|mango/i;
-const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const ing=p.ing.split(',').map(x=>x.trim()).filter(Boolean);return `<div class="six"><p class="six__t">${ing.length} ingredients</p>${fmark(h,' fm--pdp')}<p class="six__f">${FRUIT_NOTE[h]}</p><ul class="six__l">${ing.map(x=>`<li${FRUITY.test(x)?' class="fr"':''}>${x}</li>`).join('')}</ul><p class="six__n">6 ingredients or fewer, in every bottle.</p></div>`};
+const sixBlock=h=>{const p=P[h];if(p.packOnly||!FRUIT_NOTE[h])return '';const ing=p.ing.split(',').map(x=>x.trim()).filter(Boolean);return `<div class="six"><p class="six__t">${ing.length} ingredients</p>${fmark(h,' fm--pdp')}<ul class="six__l">${ing.map(x=>`<li${FRUITY.test(x)?' class="fr"':''}>${x}</li>`).join('')}</ul><p class="six__n">6 ingredients or fewer, in every bottle.</p></div>`};
 const recipes=()=>`<section class="ptitle"><h1>Recipes</h1><p>Elevated drinks, made simple. Click buttons to sort by flavor.</p></section><section class="rec"><div class="filters">${['the-original','the-tini','the-spritz','the-rita'].map(h=>`<button class="fbtn${h==='the-tini'?' rose':''}" style="--acc:${P[h].theme}" data-filter="${h}" aria-pressed="false"${h==='the-tini'?' data-rose':''}>The ${P[h].name}</button>`).join('')}</div>
 <div class="ffruit" role="group" aria-label="Sort by fruit"><span class="ffruit__l">Or by fruit</span>${FRUITS.map(([k,l])=>`<button class="fchip" data-fruit="${k}" aria-pressed="false">${l}</button>`).join('')}</div><p class="rnone" id="rnone" hidden>No recipes match both. Try another fruit or flavor.</p>
 <div class="pw"><div class="rgrid" id="rgrid">${gcard()}${RECIPES.map(rcard).join('')}</div></div>
