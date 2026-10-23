@@ -109,9 +109,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .intro{display:none}
 html.intro-on .intro{position:fixed;inset:0;z-index:300;display:grid;grid-template-rows:auto 1fr auto;background:#0b0b0b;color:#fff;overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path .8s cubic-bezier(.7,0,.3,1)}
 html.intro-on .intro.out{clip-path:inset(0 0 100% 0)}
-.intro__film{position:absolute;left:50%;top:50%;height:min(50vh,92vw);aspect-ratio:9/16;border-radius:6px;overflow:hidden;transform:translate(-50%,-54%) scale(1.03);opacity:0;transition:opacity 1s ease,transform 4.5s cubic-bezier(.2,.6,.2,1)}
+.intro__film{position:absolute;left:50%;top:50%;height:min(56vh,92vw);aspect-ratio:9/16;border-radius:6px;overflow:hidden;transform:translate(-50%,-52%) scale(1.03);opacity:0;transition:opacity 1s ease,transform 4.5s cubic-bezier(.2,.6,.2,1)}
 .intro__film video,.intro__film img{width:100%;height:100%;object-fit:cover}
-.intro.go .intro__film{opacity:1;transform:translate(-50%,-54%) scale(1)}
+.intro.go .intro__film{opacity:1;transform:translate(-50%,-52%) scale(1)}
 .intro__top,.intro__foot{position:relative;z-index:2;padding:22px 20px 0;display:flex;flex-direction:column;align-items:center;gap:14px}
 .intro__foot{padding:0 20px 24px}
 .intro__mast{width:min(560px,82vw);height:auto;clip-path:inset(0 0 100% 0);transition:clip-path .9s .2s cubic-bezier(.7,0,.2,1)}
