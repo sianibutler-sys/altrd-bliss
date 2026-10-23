@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Into the glass – Altrd Bliss splash mockup</title><meta name="robots" content="noindex"><link rel="icon" href="../img/favicon-32.png"><style>@font-face{font-family:"Matria Compressed";src:url("https://www.altrdbliss.com/cdn/shop/files/MatriaCompressed-Black.otf?v=4643254518131425102") format("opentype");font-weight:900;font-display:swap}
+@font-face{font-family:"Matria Expanded";src:url("https://www.altrdbliss.com/cdn/shop/files/MatriaExpanded-ExtraBold.otf?v=11777718432762818198") format("opentype");font-weight:800;font-display:swap}
+@font-face{font-family:"Matria";src:url("https://cdn.shopify.com/s/files/1/0742/7001/5660/files/Matria-ExtraBold.woff?v=1789032229") format("woff"),url("https://www.altrdbliss.com/cdn/shop/files/Matria-ExtraBold.otf?v=17149302385647990183") format("opentype");font-weight:800;font-display:swap}
+@font-face{font-family:"Supreme LL";src:url("https://cdn.shopify.com/s/files/1/0742/7001/5660/files/SupremeLL-Regular.woff") format("woff"),url("https://www.altrdbliss.com/cdn/shop/files/SupremeLL-Regular.otf?v=10139123942964630977") format("opentype");font-weight:400;font-display:swap}
+
+:root{--rose:#CC3F59;--ember:#E57945;--lavender:#CDB4F9;--lime:#E0F47B;--mint:#B3EDD4;--blue:#415896;--ink:#101618;--cream:#F6F2E7;--fc:"Matria Compressed","Arial Narrow",sans-serif;--fx:"Matria Expanded","Arial Black",sans-serif;--fm:"Matria","Arial Black",sans-serif;--fb:"Supreme LL",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--ink);color:#fff;font-family:var(--fb);overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;border:0}
+a{color:inherit}
+.mk{position:fixed;top:12px;left:12px;z-index:50;display:flex;gap:6px;font-size:12px;letter-spacing:.06em}
+.mk a{background:rgba(16,22,24,.72);color:#fff;text-decoration:none;padding:7px 12px;border-radius:999px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.mk a[aria-current]{background:#fff;color:var(--ink)}
+.by{position:fixed;right:16px;bottom:14px;z-index:40;display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+.by img{width:52px;height:auto}
+.age h2{font:800 clamp(26px,4.4vw,40px)/1 var(--fx);text-transform:uppercase;letter-spacing:-.01em}
+.age p{font-size:15px;line-height:1.5}
+.age .acts{display:flex;gap:10px;justify-content:center}
+.age button{min-width:130px;height:52px;border-radius:999px;font-size:16px}
+.age small{font-size:12px;line-height:1.5;opacity:.75}
+.age .no{display:none;font-size:14px}
+.age.denied .no{display:block}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.film{position:fixed;inset:0;transform-origin:58% 52%;transition:transform 1.3s cubic-bezier(.7,0,.3,1),filter 1.3s}
+.film video{width:100%;height:100%;object-fit:cover}
+.film::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,22,24,.55),rgba(16,22,24,0) 30%,rgba(16,22,24,0) 50%,rgba(16,22,24,.85))}
+.logo{position:fixed;top:clamp(56px,9vh,96px);left:50%;transform:translateX(-50%);width:min(520px,80vw);z-index:5;opacity:0;animation:up 1s .3s ease forwards}
+.age{position:fixed;left:50%;bottom:clamp(40px,7vh,72px);transform:translateX(-50%);width:min(440px,calc(100vw - 32px));z-index:6;display:flex;flex-direction:column;gap:14px;text-align:center;padding:26px 24px;border-radius:24px;background:rgba(16,22,24,.38);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);opacity:0;animation:up .9s .9s ease forwards}
+.age [data-yes]{background:var(--lime);color:var(--ink)}
+.age [data-no]{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.flood{position:fixed;inset:0;z-index:20;background:radial-gradient(circle at 58% 52%,#d9283f,#7a0f22);clip-path:circle(0 at 58% 52%);transition:clip-path 1.1s .35s cubic-bezier(.7,0,.3,1)}
+body.in .film{transform:scale(3.2)}
+body.in .flood{clip-path:circle(150% at 58% 52%)}
+body.in .age,body.in .logo{opacity:0!important;transition:opacity .3s}
+@keyframes up{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+</style></head><body><nav class="mk" aria-label="Mockups"><a href="glass.html" aria-current="page">1 · Into the glass</a><a href="room.html">2 · The iridescent room</a><a href="doors.html">3 · Four mood doors</a></nav><div class="film" aria-hidden="true"><video autoplay muted loop playsinline poster="../img/intro/rita-drop.webp"><source src="../img/intro/rita-drop.mp4" type="video/mp4"></video></div>
+<img class="logo" src="https://www.altrdbliss.com/cdn/shop/files/Horizontal_Logo_White.svg?v=1772195683" alt="Altrd Bliss" width="253" height="45">
+<div class="age" role="dialog" aria-labelledby="ageT"><h2 id="ageT">Are you 21+?</h2><p>Sorry, before we get to the good stuff, we need to check your age.</p><div class="acts"><button data-yes>Yes</button><button data-no>No</button></div><p class="no" role="alert">You must be 21 or older to access this site.</p><small>By entering this site you are agreeing to the Terms of Service and <a href="https://www.altrdbliss.com/policies/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></small></div>
+<div class="flood" aria-hidden="true"></div><p class="by" aria-hidden="true">Preview by <img src="../siani-creates-logo.png" alt="" style="filter:invert(1)"></p><script>
+function setAge(v){document.cookie=`ab_age=${v}; max-age=${30*864e2}; path=/; SameSite=Lax`;try{localStorage.setItem('ab_age',JSON.stringify({v,exp:Date.now()+30*864e5}));sessionStorage.setItem('ab_intro','1')}catch(e){}}
+function wire(enter){const g=document.querySelector('.age');g.querySelector('[data-yes]').onclick=()=>{setAge('yes');enter(()=>location.href='../?intro=off#/')};g.querySelector('[data-no]').onclick=()=>{g.classList.add('denied')}}
+wire(go=>{document.body.classList.add('in');setTimeout(go,1500)});</script></body></html>
