@@ -353,6 +353,8 @@ body{padding-top:var(--sh)}
 @media (max-width:989px){.logo{width:200px;top:calc(25px + var(--sh))}}
 .drawer-menu{position:fixed;top:calc(96px + var(--sh));left:16px;z-index:56;width:min(380px,calc(100vw - 32px));max-height:calc(100dvh - 112px - var(--sh));overflow:auto;overscroll-behavior:contain;background:#fff;color:var(--ink);border-radius:20px;padding:12px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:none;flex-direction:column;transform-origin:top left}
 .drawer-menu.open{display:flex;animation:ddIn .18s ease-out}
+.drawer-menu{max-height:calc(100dvh - 112px - var(--sh) - var(--bdg,0px))}
+.drawer-menu>*{flex-shrink:0}
 @keyframes ddIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
 .dm__h{font:800 12px/1 var(--font-matria);text-transform:uppercase;letter-spacing:.08em;color:rgba(16,22,24,.6);margin:6px 8px 8px}
 .dm__shop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
@@ -1509,7 +1511,7 @@ html.ag-no #gate .gate__no{display:block}
 
 /* the guide as a physical magazine: square corners, perfect-bound spine, page block, gloss */
 .mag{--tilt:-3deg;position:relative;display:block;isolation:isolate;margin:0 auto;transform:rotate(var(--tilt));transition:transform .6s cubic-bezier(.2,.9,.3,1.15)}
-.mag img{position:relative;z-index:1;display:block;width:100%;height:auto;border-radius:0;
+.mag img{position:relative;z-index:1;display:block;width:100%;max-width:none;height:auto;margin:0;border-radius:0;transform:none;
  box-shadow:1px 1px 0 #f4efe4,2px 2px 0 #cdc5b4,3px 2px 0 #efe9dc,3px 3px 0 #d3cbba,4px 4px 0 #ebe4d6,5px 4px 0 #c9c1b0,5px 5px 0 #e6dfd0,6px 6px 0 #bfb7a6,
  0 2px 3px 1px rgba(0,0,0,.28),14px 30px 46px -14px rgba(0,0,0,.6),30px 60px 80px -30px rgba(0,0,0,.45)}
 .mag::before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;
@@ -2606,6 +2608,11 @@ introRun();
 
 window.addEventListener('hashchange',route);
 route();renderCart();
+
+/* keep the menu clear of the demo pill: measure how much of the screen bottom the pill covers */
+(()=>{const bd=document.querySelector('.badge'),dr=document.getElementById('drawer');if(!bd||!dr)return;
+ const m=()=>{const r=bd.getBoundingClientRect();document.documentElement.style.setProperty('--bdg',Math.max(0,Math.round(innerHeight-r.top+8))+'px')};
+ new MutationObserver(m).observe(dr,{attributes:true,attributeFilter:['class']});addEventListener('resize',m);bd.addEventListener('transitionend',m);m()})();
 </script>
 </body>
 </html>
