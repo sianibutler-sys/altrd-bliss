@@ -1572,6 +1572,7 @@ a:hover>.mag,.rguide:hover .mag,.mag:hover{transform:rotate(calc(var(--tilt) / 3
 .fm__card:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
 @media (max-width:899px){.fm__row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;padding:0 20px 6px;scroll-padding-inline:20px;cursor:grab}.fm__row::-webkit-scrollbar{display:none}.fm__card{flex:0 0 78%;max-width:360px;scroll-snap-align:start}}
 @media (prefers-reduced-motion:reduce){.fm__card,.fm__go{transition:none}}
+.bb__di span{display:block;white-space:nowrap}.bb__di span+span{margin-top:4px;opacity:.75}
 </style>
 </head>
 <body>
@@ -2240,7 +2241,7 @@ const briefCbd=()=>{const {c,list}=bbCiter();const fl=[['the-original','CBG + CB
  <div class="bb__body">
  <p class="bb__first">Hemp is a variety of cannabis that is naturally low in THC, the compound that gets you high.${c('crs')} It also makes dozens of other compounds called cannabinoids. Two of them, CBD and CBG, are what go into every bottle of Altrd Bliss.</p>
  <p class="bb__lbl">How we describe them, from <a href="#/pages/faq">our FAQ</a></p>
- <div class="bb__duo"><div style="--c:var(--lime)"><p class="bb__dn">CBD</p><p class="bb__di">Cannabidiol · The chill older sibling</p><p>Smooths the edges, eases tension, and helps you drift into deeper sleep.</p></div><div style="--c:var(--ember)"><p class="bb__dn">CBG</p><p class="bb__di">Cannabigerol · The focused cousin</p><p>Sharpens your thinking, clears the fog, and keeps your body in that easy, steady flow.</p></div></div>
+ <div class="bb__duo"><div style="--c:var(--lime)"><p class="bb__dn">CBD</p><p class="bb__di"><span>Cannabidiol</span><span>The chill older sibling</span></p><p>Smooths the edges, eases tension, and helps you drift into deeper sleep.</p></div><div style="--c:var(--ember)"><p class="bb__dn">CBG</p><p class="bb__di"><span>Cannabigerol</span><span>The focused cousin</span></p><p>Sharpens your thinking, clears the fog, and keeps your body in that easy, steady flow.</p></div></div>
  <h2>Same plant, different jobs</h2>
  <p>Both interact with the endocannabinoid system, a network of receptors throughout the body that scientists are still mapping.${c('ecs')} CBD is the better studied of the two. It’s the active ingredient in Epidiolex, a prescription medicine the FDA approved in 2018 for two rare seizure disorders.${c('fda18')} CBG has far less research behind it, but that is starting to change.${c('cbg')}</p>
  <figure class="bb__pull"><blockquote><p>“Feeling good shouldn’t mean giving up the ritual, flavor, or fun of a great drink.”</p></blockquote><figcaption>Erika Isaac, co-founder, in Voyage LA${c('voy')}</figcaption></figure>
